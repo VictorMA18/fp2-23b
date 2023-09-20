@@ -6,7 +6,7 @@
 */
 import java.util.Arrays;
 import java.util.Scanner;
-public class Copia {
+public class Ahorcado {
     public static void main(String []args){
         String ahor1 = 
         " + - - - + \n"+
@@ -103,18 +103,27 @@ public class Copia {
             System.out.print("_ " );
 
     }
-    public static String ingreseLetra(){
+    public static String ingreseLetra(){// COMPLETANDO EL METODO
         String laLetra;
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese letra: ");
         laLetra = sc.next();
-        while(laLetra.length() != 1){ 
-            System.out.println("Ingrese letra: "); //COMPLETAR PARA VALIDAR CARACTERES PERMITIDOS
+        while(laLetra.length() != 1 || validateletter(laLetra)){
+            System.out.println("No ingreso una letra especifica vuelva a ingresar una letra");
+            System.out.println("Ingrese letra: "); //COMPLETAR PARA VALIDAR 
             laLetra = sc.next();
         }
         return laLetra;
     }
-    public static String[] arraycreado(String palSecreta){ // Creamos un metodo que cree un array para poder usarlo como un comparador que se ve en el metodo finalizar
+    public static boolean validateletter(String letra){ // METODO CREADO PARA EL INGRESO DE UNA LETRA PARA SU COMPROBACION SI ES UN NUMERO NOS DARA TRUE Y SI NO FALSE
+        try {
+            Integer.parseInt(letra);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+    public static String[] arraynew(String palSecreta){ // Creamos un metodo que cree un array para poder usarlo como un comparador que se ve en el metodo finalizar
         String[] arraysecret = new String[palSecreta.length()];
         for(int x = 0; x < palSecreta.length(); x++){
             arraysecret[x] = palSecreta.charAt(x) + "";
@@ -122,7 +131,7 @@ public class Copia {
         return arraysecret;
     }
     public static boolean finish(String[] fill,String palSecreta, int intentos){//METODO CREADO PARA SABER SI GANO Y CUANTOS INTENTOS USO
-        String[] arraysecret = arraycreado(palSecreta);
+        String[] arraysecret = arraynew(palSecreta);
         int count = 0;
         for (int i = 0; i < fill.length; i++) { //VERIFICAMO LA EXISTENCIA DE UN "_ "
             if (fill[i].equals("_ ")){
