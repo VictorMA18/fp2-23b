@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1695314243 "/home/user/fp2-23b/Fase01/Lab01/Latex/InformeLab01.tex" "InformeLab01.pdf" "InformeLab01" 1695314243
+["pdflatex"] 1695314506 "/home/user/fp2-23b/Fase01/Lab01/Latex/InformeLab01.tex" "InformeLab01.pdf" "InformeLab01" 1695314506
   "/etc/texmf/web2c/texmf.cnf" 1695244730 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/user/fp2-23b/Fase01/Lab01/Latex/InformeLab01.tex" 1695314242 22132 ff61322795773f689ec1440bcc7e6138 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -123,7 +123,7 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1695244742 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1695244760 2802157 836bcf8882c264bca8c914dc83bfb65d ""
-  "InformeLab01.aux" 1695314243 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "InformeLab01.aux" 1695314506 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
   "InformeLab01.out" 0 -1 0 "pdflatex"
   "InformeLab01.tex" 1695314242 22132 ff61322795773f689ec1440bcc7e6138 ""
   "img/logo_abet.png" 1695225156 6307 66ff7f82180b3b29c348bdae974447b6 ""

@@ -2,4 +2,6 @@
 *.log
 *.out
 *.gz
+*.fbd_latexmk
+*.fls
 .DS_Store
