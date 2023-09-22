@@ -1,0 +1,594 @@
+%package list
+\documentclass{article}
+\usepackage[top=3cm, bottom=3cm, outer=3cm, inner=3cm]{geometry}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{url}
+%\usepackage{cite}
+\usepackage{hyperref}
+\usepackage{array}
+%\usepackage{multicol}
+\newcolumntype{x}[1]{>{\centering\arraybackslash\hspace{0pt}}p{#1}}
+\usepackage{natbib}
+\usepackage{pdfpages}
+\usepackage{multirow}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+\usepackage{svg}
+\usepackage{xcolor}
+\usepackage{listings}
+\lstdefinestyle{ascii-tree}{
+    literate={├}{|}1 {─}{--}1 {└}{+}1 
+  }
+\lstset{basicstyle=\ttfamily,
+  showstringspaces=false,
+  commentstyle=\color{red},
+  keywordstyle=\color{blue}
+}
+%\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{array}
+
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{N}{@{}m{0pt}@{}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\itemEmail}{vmamanian@unsa.edu.pe}
+\newcommand{\itemStudent}{Victor Mamani Anahua}
+\newcommand{\itemCourse}{Fundamentos de la Programación II}
+\newcommand{\itemCourseCode}{20230489}
+\newcommand{\itemSemester}{II}
+\newcommand{\itemUniversity}{Universidad Nacional de San Agustín de Arequipa}
+\newcommand{\itemFaculty}{Facultad de Ingeniería de Producción y Servicios}
+\newcommand{\itemDepartment}{Departamento Académico de Ingeniería de Sistemas e Informática}
+\newcommand{\itemSchool}{Escuela Profesional de Ingeniería de Sistemas}
+\newcommand{\itemAcademic}{2023 - B}
+\newcommand{\itemInput}{Del 10 Setiembre 2023}
+\newcommand{\itemOutput}{Al 17 Setiembre 2023}
+\newcommand{\itemPracticeNumber}{02}
+\newcommand{\itemTheme}{Laboratorio 02}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[english,spanish]{babel}
+\usepackage[utf8]{inputenc}
+\AtBeginDocument{\selectlanguage{spanish}}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\refname}{Referencias}
+\renewcommand{\tablename}{Tabla} %esto no funciona cuando se usa babel
+\AtBeginDocument{%
+	\renewcommand\tablename{Tabla}
+}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{30pt}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+\fancyhead[L]{\raisebox{-0.2\height}{\includegraphics[width=3cm]{img/logo_episunsa.png}}}
+\fancyhead[C]{\fontsize{7}{7}\selectfont	\itemUniversity \\ \itemFaculty \\ \itemDepartment \\ \itemSchool \\ \textbf{\itemCourse}}
+\fancyhead[R]{\raisebox{-0.2\height}{\includegraphics[width=1.2cm]{img/logo_abet}}}
+\fancyfoot[L]{Estudiante Victor Mamani A.}
+\fancyfoot[C]{\itemCourse}
+\fancyfoot[R]{Página \thepage}
+
+% para el codigo fuente
+\usepackage{listings}
+\usepackage{color, colortbl}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{codebackground}{rgb}{0.95, 0.95, 0.92}
+\definecolor{tablebackground}{rgb}{0.8, 0, 0}
+\definecolor[codebackgroundCode]{RGB}{10, 10 , 20}
+
+
+\lstdefinestyle{java}{frame=tb,
+	language=Java,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\footnotesize\ttfamily\color[RGB]{255,255,255}},
+	numberstyle=\color{mygray},
+	numbers=left, 
+	keywordstyle=\color{myblue},
+	morekeywords={String, System},
+	commentstyle=\color{mygray},
+	stringstyle=\color{mygreen},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=2,
+	backgroundcolor= \color{codebackgroundCode},
+	showspaces=false,
+	showtabs=false,
+	showlines=false,
+}
+
+\lstset{frame=tb,
+	language=bash,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=none,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=3,
+	backgroundcolor= \color{codebackground},
+}
+
+\begin{document}
+	
+	\vspace*{10px}
+	
+	\begin{center}	
+		\fontsize{17}{17} \textbf{ Informe de Laboratorio \itemPracticeNumber}
+	\end{center}
+	\centerline{\textbf{\Large Tema: \itemTheme}}
+	%\vspace*{0.5cm}	
+
+	\begin{flushright}
+		\begin{tabular}{|M{2.5cm}|N|}
+			\hline 
+			\rowcolor{tablebackground}
+			\color{white} \textbf{Nota}  \\
+			\hline 
+			     \\[30pt]
+			\hline 			
+		\end{tabular}
+	\end{flushright}	
+
+	\begin{table}[H]
+		\begin{tabular}{|x{4.7cm}|x{4.8cm}|x{4.8cm}|}
+			\hline 
+			\rowcolor{tablebackground}
+			\color{white} \textbf{Estudiante} & \color{white}\textbf{Escuela}  & \color{white}\textbf{Asignatura}   \\
+			\hline 
+			{\itemStudent \par \itemEmail} & \itemSchool & {\itemCourse \par Semestre: \itemSemester \par Código: \itemCourseCode}     \\
+			\hline 			
+		\end{tabular}
+	\end{table}		
+	
+	\begin{table}[H]
+		\begin{tabular}{|x{4.7cm}|x{4.8cm}|x{4.8cm}|}
+			\hline 
+			\rowcolor{tablebackground}
+			\color{white}\textbf{Laboratorio} & \color{white}\textbf{Tema}  & \color{white}\textbf{Duración}   \\
+			\hline 
+			\itemPracticeNumber & \itemTheme & 04 horas   \\
+			\hline 
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[H]
+		\begin{tabular}{|x{4.7cm}|x{4.8cm}|x{4.8cm}|}
+			\hline 
+			\rowcolor{tablebackground}
+			\color{white}\textbf{Semestre académico} & \color{white}\textbf{Fecha de inicio}  & \color{white}\textbf{Fecha de entrega}   \\
+			\hline 
+			\itemAcademic & \itemInput &  \itemOutput  \\
+			\hline 
+		\end{tabular}
+	\end{table}
+	
+	\section{Tarea}
+	\begin{itemize}		
+        \item En este ejercicio se le solicita a usted implementar el juego del ahorcado utilizando el código parcial que se le entrega.
+        \item Deberá considerar que:
+        \item El juego valida el ingreso de letras solamente. En caso el usuario ingrese un carácter equivocado le dará el mensaje de error y volverá a solicitar el ingreso
+        \item El juego supone que el usuario no ingresa una letra ingresada previamente
+        \item El método ingreseLetra() debe ser modificado para incluir las consideraciones de validación
+        \item Puede crear métodos adicionales
+	\end{itemize}
+		
+	\section{Equipos, materiales y temas utilizados}
+	\begin{itemize}
+		\item Sistema Operativo Ubuntu GNU Linux 23 lunar 64 bits Kernell 6.2.v
+		\item Sistema Operativo Windows 11.
+		\item Visual Studio Code.
+		\item OpenJDK 64-Bits 19.0.7.
+		\item Git 2.39.2.
+		\item Cuenta en GitHub con el correo institucional.
+		\item Programación Orientada a Objetos.
+		\item Actividades del Laboratorio 01	
+	\end{itemize}
+	
+	\section{URL de Repositorio Github}
+	\begin{itemize}
+		\item URL del Repositorio GitHub para clonar o recuperar.
+		\item \url{https://github.com/VictorMA18/fp2-23b.git}
+		\item URL para el laboratorio 01 en el Repositorio GitHub.
+		\item \url{https://github.com/VictorMA18/fp2-23b/tree/main/Fase01/Lab02}
+	\end{itemize}
+	
+	\section{Actividades del Laboratorio 02}
+	
+	\subsection{Ejercicio Ahorcado}
+	\begin{itemize}	
+		\item En el primer commit en el metodo mostrarBlancosActualizados lo modificamos para el uso de que se compare cada letra ingresada con cada caracter de la palabra secreta y al final de esta "guardarla en el array fill para su posterior uso".
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m " Modificamos el metodo mostrarBlancosActualizados y completamos el metodo letraEnPalabraSecreta y agregamos un Mensaje de perdio y cuantos intentos uso"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo modificado:}][H]
+    public static void mostrarBlancosActualizados(String letra, String palSecreta, String[] fill){ // Agregamos al dominio un string y un string[] para su funcionamiento del metodo
+        //COMPLETAR 
+        for(int z = 0; z < palSecreta.length(); z++){
+            if(letra.charAt(0) == palSecreta.charAt(z)){
+                    fill[z] = letra.substring(0,1);
+            }else{
+                if(fill[z] == null){
+                    fill[z] = "_ ";
+                }
+            }
+        }
+        for(int a = 0; a < fill.length; a++){
+            if(a == fill.length - 1){
+                System.out.print(fill[a] + "\n");
+            }else{
+                System.out.print(fill[a]);
+            }
+        }
+    }
+	\end{lstlisting}
+	\subsection{Ejercicio Ahorcado}
+	\begin{itemize}	
+		\item En el primer commit tambien completamos el metodo letraEnPalabraSecreta el cual nos da retorna un valor booleano el cual funciona como un indicador su la palbra ingresada es igual al caracter de la palabra secreta
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m " Modificamos el metodo mostrarBlancosActualizados y completamos el metodo letraEnPalabraSecreta y agregamos un Mensaje de perdio y cuantos intentos uso"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigo del metodo completado;}][H]
+        public static boolean letraEnPalabraSecreta(String letra, String palSecreta){
+            //COMPLETAR
+            int count = 0;
+            for(int x = 0; x < palSecreta.length(); x++){
+                if(letra.charAt(0) == palSecreta.charAt(x)){
+                    count++;    
+                }
+            }
+            return count > 0; // Agregamos el contador para sacar un valor booleano de la letra ingresada
+        }
+	\end{lstlisting}
+	\subsection{Ejercicio Ahorcado}
+	\begin{itemize}	
+		\item En el primer commit tambien completamos añadimos un if que se va a dar cuando el usuario llego a la ultima imagen y se imprime un mensaje de error y cuantos intentos uso en el ciclo
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m " Modificamos el metodo mostrarBlancosActualizados y completamos el metodo letraEnPalabraSecreta y agregamos un Mensaje de perdio y cuantos intentos uso"
+	\end{lstlisting}
+	\begin{lstlisting}[language=java,caption={Las lineas de codigo de lo añadido:}][H]
+        while(contador <= 6){
+            letra = ingreseLetra();
+                if (letraEnPalabraSecreta(letra, palSecreta)){
+                    mostrarBlancosActualizados(letra,palSecreta,fill);
+                    if(finish(fill, palSecreta,contador)){ // ESTRUCTURA DE CONTROL USADA  Y TAMBIEN EL METODO CREADO QUE ES FINISH
+                        break;
+                    }
+                }else{
+                    System.out.println(figuras[contador]);
+                    if(figuras[contador] == ahor7){
+                        System.out.println("Usted a perdido y el numero de intentos es : " + contador); // MENSAJE DE PERDIO Y CUANTOS INTENTOS USO 
+                    }
+                    contador = contador +1;
+                }
+        }
+    }
+	\end{lstlisting}
+	\subsection{Ejercicio Ahorcado}
+	\begin{itemize}	
+		\item En el segundo commit creamos el metodo arraynew que nos serviria para crear un array de tipo string que hace una comparacion con el array fill debido que en este metodo te retornara un array con la palabra secreta y este se comparara con el array fill para su comparacion   
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creamos los metodos arraynew y finish y tambien ponemos una estructura de control en el ciclo while"
+	\end{lstlisting}
+	\begin{lstlisting}[language=java,caption={Las lineas de codigo de lo creado:}][H]
+	public static String[] arraynew(String palSecreta){ // Creamos un metodo que cree un array para poder usarlo como un comparador que se ve en el metodo finalizar
+        String[] arraysecret = new String[palSecreta.length()];
+        for(int x = 0; x < palSecreta.length(); x++){
+            arraysecret[x] = palSecreta.charAt(x) + "";
+        }
+        return arraysecret;
+    }
+	\end{lstlisting}
+	\subsection{Ahorcado}
+	\begin{itemize}	
+		\item En el segundo commit creamos el metodo finish en la que usamos el metodo arraynew y tambien verifcamos que en fill no tenga un string (-)
+		\item Tambien agregamos el mensaje de haber ganado con el numero de intentos que se dio 
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creamos los metodos arraynew y finish y tambien ponemos una estructura de control en el ciclo while"
+	\end{lstlisting}
+	\begin{lstlisting}[language=java,caption={Las lineas de codigo de lo creado:}][H]
+	public static boolean finish(String[] fill,String palSecreta, int intentos){//METODO CREADO PARA SABER SI GANO Y CUANTOS INTENTOS USO
+        String[] arraysecret = arraynew(palSecreta);
+        int count = 0;
+        for (int i = 0; i < fill.length; i++) { //VERIFICAMO LA EXISTENCIA DE UN "_ "
+            if (fill[i].equals("_ ")){
+                count++;
+            }
+        }
+        System.out.println("------------------------------");
+        if (Arrays.equals(fill, arraysecret) && count == 0) { // COMPARAMOS LOS ARRAY Y VERIFICAMOS SI SON IGUALES Y QUE NO EXISTA UN "_ "
+            System.out.println("Usted a ganado");
+            System.out.println("El numero de intentos : "+ intentos);
+            return true;
+        }else {
+            return false;
+        }
+    }
+	\end{lstlisting}	
+	\subsection{Ahorcado}
+	\begin{itemize}	
+		\item En el segundo commit creamos un if dentro del while con el metodo finish para que este ciclo while se finalize
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creamos los metodos arraynew y finish y tambien ponemos una estructura de control en el ciclo while que nos servira como un indicador que si se esta llegando a igualar estas 2 arrays para su posterior finalizacion con un break"
+	\end{lstlisting}
+	\begin{lstlisting}[language=java,caption={Las lineas de codigo de lo creado:}][H]
+        while(contador <= 6){
+            letra = ingreseLetra();
+                if (letraEnPalabraSecreta(letra, palSecreta)){
+                    mostrarBlancosActualizados(letra,palSecreta,fill);
+                    if(finish(fill, palSecreta,contador)){ // ESTRUCTURA DE CONTROL USADA Y TAMBIEN EL METODO CREADO QUE ES FINISH
+                        break;
+                    }
+                }else{
+                    System.out.println(figuras[contador]);
+                    if(figuras[contador] == ahor7){
+                        System.out.println("Usted a perdido y el numero de intentos es : " + contador); // MENSAJE DE PERDIO Y CUANTOS INTENTOS USO 
+                    }
+                    contador = contador +1;
+                }
+        }
+	\end{lstlisting}
+	\subsection{Ahorcado}
+	\begin{itemize}	
+		\item En el tercer commit creamos un metodo validateletter que nos permita saber si la letra ingresada no sea un numero y si lo es este nos retornara true y sera usado en un ciclo para que se ingrese una letra adecuada
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Cambiamos el nombre del archivo al adecuado que es Ahorcado y tambien anadimos un metodo validateletter y completamos el metodo ingreseletra"
+	\end{lstlisting}
+	\begin{lstlisting}[language=java,caption={Las lineas de codigo de lo creado:}][H]
+		public static boolean validateletter(String letra){ // METODO CREADO PARA EL INGRESO DE UNA LETRA PARA SU COMPROBACION SI ES UN NUMERO NOS DARA TRUE Y SI NO FALSE
+			try {
+				Integer.parseInt(letra);
+				return true;
+			} catch (NumberFormatException e) {
+				return false;
+			}
+		}
+	\end{lstlisting}
+	\subsection{Ahorcado}
+	\begin{itemize}	
+		\item En el tercer commit completamos el metodo ingresarletra que seria poner un ciclo while que se daria cuando la letra ingresada es mayor a 1 o esta letra sea un numero y se le pidira que ponga una letra adecuada
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Cambiamos el nombre del archivo al adecuado que es Ahorcado y tamien anadimos un metodo validateletter y completamos el metodo ingreseletra"
+	\end{lstlisting}
+	\begin{lstlisting}[language=java,caption={Las lineas de codigo del completado:}][H]
+		public static String ingreseLetra(){// COMPLETANDO EL METODO
+			String laLetra;
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Ingrese letra: ");
+			laLetra = sc.next();
+			while(laLetra.length() != 1 || validateletter(laLetra)){
+				System.out.println("No ingreso una letra especifica vuelva a ingresar una letra");
+				System.out.println("Ingrese letra: "); //COMPLETAR PARA VALIDAR 
+				laLetra = sc.next();
+			}
+			return laLetra;
+		}
+	\end{lstlisting}
+	\subsection{Estructura de laboratorio 02}
+	\begin{itemize}	
+		\item El contenido que se entrega en este laboratorio es el siguiente:
+	\end{itemize}
+	\subsection{Ahorcado}
+	\begin{itemize}	
+		\item El Ejecucion seria la siguiente::
+	\end{itemize}
+	\begin{lstlisting}[language=bash,caption={Las lineas de codigo del completado:}][H]
+		+ - - - + 
+		|     | 
+			  | 
+			  | 
+			  | 
+			  | 
+	 ========= 
+	 _ _ _ _ 
+	 
+	 java
+	 Ingrese letra: 
+	 j
+	 j_ _ _ 
+	 ------------------------------
+	 Ingrese letra: 
+	 w
+	  + - - - + 
+		|     | 
+		O     | 
+			  | 
+			  | 
+			  | 
+	 ========= 
+	 Ingrese letra: 
+	 q
+	  + - - - + 
+		|       | 
+		O       | 
+		|       | 
+				| 
+				| 
+	 ========= 
+	 Ingrese letra: 
+	 w
+	  + - - - + 
+		|       | 
+		O       | 
+	   /|       | 
+				| 
+				| 
+	 ========= 
+	 Ingrese letra: 
+	 q
+	  + - - - + 
+		|       | 
+		O       | 
+	   /|\     | 
+				| 
+				| 
+	 ========= 
+	 Ingrese letra: 
+	 w
+	  + - - - + 
+		|       | 
+		O       | 
+	   /|\     | 
+	   /        | 
+				| 
+	 ========= 
+	 Ingrese letra: 
+	 a
+	 ja_ a
+	 ------------------------------
+	 Ingrese letra: 
+	 v
+	 java
+	 ------------------------------
+	 Usted a ganado
+	 El numero de intentos : 6	 
+	\end{lstlisting}
+	\subsection{Estructura de laboratorio 02}
+	\begin{itemize}	
+		\item El contenido que se entrega en este laboratorio es el siguiente:
+	\end{itemize}
+\begin{lstlisting}[style=ascii-tree]
+/Lab02
+├── Ahorcado.class
+├── Ahorcado.java
+└── Latex
+    ├── img
+    │   ├── logo_abet.png
+    │   ├── logo_episunsa.png
+    │   ├── logo_unsa.jpg
+    │   └── pseudocodigo_insercion.png
+    ├── InformeLab02.aux
+    ├── InformeLab02.fdb_latexmk
+    ├── InformeLab02.fls
+    ├── InformeLab02.log
+    ├── InformeLab02.out
+    ├── InformeLab02.pdf
+    ├── InformeLab02.synctex.gz
+    ├── InformeLab02.tex
+    └── src
+        └── Ahorcado01.java
+
+\end{lstlisting}    
+	\section{\textcolor{red}{Rúbricas}}
+	
+	\subsection{\textcolor{red}{Entregable Informe}}
+	\begin{table}[H]
+		\caption{Tipo de Informe}
+		\setlength{\tabcolsep}{0.5em} % for the horizontal padding
+		{\renewcommand{\arraystretch}{1.5}% for the vertical padding
+		\begin{tabular}{|p{3cm}|p{12cm}|}
+			\hline
+			\multicolumn{2}{|c|}{\textbf{\textcolor{red}{Informe}}}  \\
+			\hline 
+			\textbf{\textcolor{red}{Latex}} & \textcolor{blue}{El informe está en formato PDF desde Latex,  con un formato limpio (buena presentación) y facil de leer.}   \\ 
+			\hline 
+			
+			
+		\end{tabular}
+	}
+	\end{table}
+	
+	\clearpage
+	
+	\subsection{\textcolor{red}{Rúbrica para el contenido del Informe y demostración}}
+	\begin{itemize}			
+		\item El alumno debe marcar o dejar en blanco en celdas de la columna \textbf{Checklist} si cumplio con el ítem correspondiente.
+		\item Si un alumno supera la fecha de entrega,  su calificación será sobre la nota mínima aprobada, siempre y cuando cumpla con todos lo items.
+		\item El alumno debe autocalificarse en la columna \textbf{Estudiante} de acuerdo a la siguiente tabla:
+	
+		\begin{table}[ht]
+			\caption{Niveles de desempeño}
+			\begin{center}
+			\begin{tabular}{ccccc}
+    			\hline
+    			 & \multicolumn{4}{c}{Nivel}\\
+    			\cline{1-5}
+    			\textbf{Puntos} & Insatisfactorio 25\%& En Proceso 50\% & Satisfactorio 75\% & Sobresaliente 100\%\\
+    			\textbf{2.0}&0.5&1.0&1.5&2.0\\
+    			\textbf{4.0}&1.0&2.0&3.0&4.0\\
+    		\hline
+			\end{tabular}
+		\end{center}
+	\end{table}	
+	
+	\end{itemize}
+	
+	\begin{table}[H]
+		\caption{Rúbrica para contenido del Informe y demostración}
+		\setlength{\tabcolsep}{0.5em} % for the horizontal padding
+		{\renewcommand{\arraystretch}{1.5}% for the vertical padding
+		%\begin{center}
+		\begin{tabular}{|p{2.7cm}|p{7cm}|x{1.3cm}|p{1.2cm}|p{1.5cm}|p{1.1cm}|}
+			\hline
+    		\multicolumn{2}{|c|}{Contenido y demostración} & Puntos & Checklist & Estudiante & Profesor\\
+			\hline
+			\textbf{1. GitHub} & Hay enlace URL activo del directorio para el  laboratorio hacia su repositorio GitHub con código fuente terminado y fácil de revisar. &2 &X &2 & \\ 
+			\hline
+			\textbf{2. Commits} &  Hay capturas de pantalla de los commits más importantes con sus explicaciones detalladas. (El profesor puede preguntar para refrendar calificación). &4 &X &1 & \\ 
+			\hline 
+			\textbf{3. Código fuente} &  Hay porciones de código fuente importantes con numeración y explicaciones detalladas de sus funciones. &2 &X &1 & \\ 
+			\hline 
+			\textbf{4. Ejecución} & Se incluyen ejecuciones/pruebas del código fuente  explicadas gradualmente. &2 &X &2 & \\ 
+			\hline			
+			\textbf{5. Pregunta} & Se responde con completitud a la pregunta formulada en la tarea.  (El profesor puede preguntar para refrendar calificación).  &2 &X &2 & \\ 
+			\hline	
+			\textbf{6. Fechas} & Las fechas de modificación del código fuente estan dentro de los plazos de fecha de entrega establecidos. &2 &X &0.5 & \\ 
+			\hline 
+			\textbf{7. Ortografía} & El documento no muestra errores ortográficos. &2 &X &2 & \\ 
+			\hline 
+			\textbf{8. Madurez} & El Informe muestra de manera general una evolución de la madurez del código fuente,  explicaciones puntuales pero precisas y un acabado impecable.   (El profesor puede preguntar para refrendar calificación).  &4 &X &2 & \\ 
+			\hline
+			\multicolumn{2}{|c|}{\textbf{Total}} &20 & &12.5 & \\ 
+			\hline
+		\end{tabular}
+		%\end{center}
+		%\label{tab:multicol}
+		}
+	\end{table}
+	
+\clearpage
+
+\section{Referencias}
+\begin{itemize}			
+	\item \url{https://drive.google.com/file/d/19hjCsMtViypEj3cOPRF_cflH1r8r9vBn/view}
+\end{itemize}	
+	
+%\clearpage
+%\bibliographystyle{apalike}
+%\bibliographystyle{IEEEtranN}
+%\bibliography{bibliography}
+			
+\end{document}
