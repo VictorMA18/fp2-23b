@@ -1,3 +1,7 @@
+// Laboratorio Nro 3 - DemoBatalla
+// Autor: Mamani Anahua Victor Narciso
+// Colaboro:
+// Tiempo:
 import java.util.*;
 public class DemoBatalla {
     public static void main(String [] args){
@@ -33,7 +37,11 @@ public class DemoBatalla {
         System.out.println("--------------------------------------");        
         mostrarPorPuntos(misNaves);
         System.out.println("--------------------------------------");
-        System.out.println("\nNave con mayor numero de puntos: \n" + mostrarMayorPuntos(misNaves));
+        System.out.println("Nave con mayor numero de puntos: \n" + mostrarMayorPuntos(misNaves));
+        System.out.println("***********************");
+        System.out.println("--------------------------------------");
+        System.out.println("Naves ordenadas Aleatoriamente: ");
+        positionsNew(misNaves);
         System.out.println("--------------------------------------");
     }
     //Método para mostrar todas las naves
@@ -84,4 +92,15 @@ public class DemoBatalla {
     }
     //Crear un método que devuelva un nuevo arreglo de objetos con todos los objetos previamente ingresados
     //pero aleatoriamente desordenados
+    public static void positionsNew(Nave [] fleet){ //CREAMOS ESTE METODO positionsNew DONDE PONEMOS EN UBICACIONES ALEATORIAS NUESTRAS NAVES QUE YA HABIAN SIDO INGRESADAS NOS AYUDAMOS CON LA CLASE RANDOM DONDE ESTA NOS PERMITE INTERCAMBIAR POSICIONES Y TAMBIEN CREAMOS UN ARRAY DE STRINGS DONDE SERIAN LAS POSICIONES DE LAS COLUMNAS Y ESTAS TAMBIEN PUEDAN CAMBIAR DESPUES MOSTRAMOS LOS RESULTADOS 
+        Random rdm = new Random();
+        String[] posCol = {"A" , "B", "C" , "D" , "E" , "F" , "G" , "H" , "I" , "J"};
+        for(int i = 0; i < fleet.length; i++){
+            int randomfil = rdm.nextInt(10) + 1;
+            int randomcol = rdm.nextInt(10) + 1;
+            fleet[i].setFila(randomfil);
+            fleet[i].setColumna(posCol[randomcol]);
+        }
+        mostrarNaves(fleet);
+    }
 }
