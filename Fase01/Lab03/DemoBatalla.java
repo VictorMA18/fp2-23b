@@ -97,7 +97,7 @@ public class DemoBatalla {
         String[] posCol = {"A" , "B", "C" , "D" , "E" , "F" , "G" , "H" , "I" , "J"};
         for(int i = 0; i < fleet.length; i++){
             int randomfil = rdm.nextInt(10) + 1;
-            int randomcol = rdm.nextInt(10) + 1;
+            int randomcol = rdm.nextInt(10);
             fleet[i].setFila(randomfil);
             fleet[i].setColumna(posCol[randomcol]);
         }
