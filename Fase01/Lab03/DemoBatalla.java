@@ -33,7 +33,7 @@ public class DemoBatalla {
         System.out.println("--------------------------------------");        
         mostrarPorPuntos(misNaves);
         System.out.println("--------------------------------------");
-        System.out.println("\nNave con mayor numero de puntos: " + mostrarMayorPuntos(misNaves));
+        System.out.println("\nNave con mayor numero de puntos: \n" + mostrarMayorPuntos(misNaves));
         System.out.println("--------------------------------------");
     }
     //Método para mostrar todas las naves
@@ -58,7 +58,7 @@ public class DemoBatalla {
     }
     //Método para mostrar todas las naves con un número de puntos inferior o igual
     //al número de puntos que se pide por teclado
-    public static void mostrarPorPuntos(Nave [] flota){
+    public static void mostrarPorPuntos(Nave [] flota){ // Completamos el metodo mostrarPorPuntos donde ingresamos un numero de puntos en esta usamos un for each que pase por todos los elementos donde si su numero de puntos es menor o igual a este numero ingresado se imprimira sus datos
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese un número puntos para buscar a las naves que son menor o igual a esta: ");
         int point = sc.nextInt();
@@ -71,8 +71,16 @@ public class DemoBatalla {
         }
     }
     //Método que devuelve la Nave con mayor número de Puntos
-    public static Nave mostrarMayorPuntos(Nave [] flota){
-        return null;
+    public static Nave mostrarMayorPuntos(Nave [] flota){ //COMPLETAMOS ESTE METODO mostrarMayorPuntos DONDE CREAMOS UN OBJETO DE LA CLASE NAVE QUE ES SHIP EN ESTE PODREMOS GUARDAR LOS DATOS DE LA NAVE CON LA MAYOR CANTIDAD DE PUNTOS Y DESPUES RETONARNLO
+        Nave ship = new Nave();
+        for(int i = 0; i < flota.length - 1; i++){
+            if(flota[i].getPuntos() < flota[i + 1].getPuntos()){
+                ship = flota[i + 1];
+            }else{
+                ship = flota[i];
+            }
+        }
+        return ship;
     }
     //Crear un método que devuelva un nuevo arreglo de objetos con todos los objetos previamente ingresados
     //pero aleatoriamente desordenados
