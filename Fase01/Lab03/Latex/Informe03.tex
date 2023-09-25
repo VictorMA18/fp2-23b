@@ -1,0 +1,942 @@
+%package list
+\documentclass{article}
+\usepackage[top=3cm, bottom=3cm, outer=3cm, inner=3cm]{geometry}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{url}
+%\usepackage{cite}
+\usepackage{hyperref}
+\usepackage{array}
+%\usepackage{multicol}
+\newcolumntype{x}[1]{>{\centering\arraybackslash\hspace{0pt}}p{#1}}
+\usepackage{natbib}
+\usepackage{pdfpages}
+\usepackage{multirow}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+\usepackage{svg}
+\usepackage{xcolor}
+\usepackage{listings}
+\lstdefinestyle{ascii-tree}{
+    literate={├}{|}1 {─}{--}1 {└}{+}1 
+  }
+\lstset{basicstyle=\ttfamily,
+  showstringspaces=false,
+  commentstyle=\color{red},
+  keywordstyle=\color{blue}
+}
+%\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{array}
+
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{N}{@{}m{0pt}@{}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\itemEmail}{vmamanian@unsa.edu.pe}
+\newcommand{\itemStudent}{Victor Mamani Anahua}
+\newcommand{\itemCourse}{Fundamentos de la Programación II}
+\newcommand{\itemCourseCode}{20230489}
+\newcommand{\itemSemester}{II}
+\newcommand{\itemUniversity}{Universidad Nacional de San Agustín de Arequipa}
+\newcommand{\itemFaculty}{Facultad de Ingeniería de Producción y Servicios}
+\newcommand{\itemDepartment}{Departamento Académico de Ingeniería de Sistemas e Informática}
+\newcommand{\itemSchool}{Escuela Profesional de Ingeniería de Sistemas}
+\newcommand{\itemAcademic}{2023 - B}
+\newcommand{\itemInput}{Del 17 Setiembre 2023}
+\newcommand{\itemOutput}{Al 24 Setiembre 2023}
+\newcommand{\itemPracticeNumber}{03}
+\newcommand{\itemTheme}{Laboratorio 03}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[english,spanish]{babel}
+\usepackage[utf8]{inputenc}
+\AtBeginDocument{\selectlanguage{spanish}}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\refname}{Referencias}
+\renewcommand{\tablename}{Tabla} %esto no funciona cuando se usa babel
+\AtBeginDocument{%
+	\renewcommand\tablename{Tabla}
+}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{30pt}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+\fancyhead[L]{\raisebox{-0.2\height}{\includegraphics[width=3cm]{img/logo_episunsa.png}}}
+\fancyhead[C]{\fontsize{7}{7}\selectfont	\itemUniversity \\ \itemFaculty \\ \itemDepartment \\ \itemSchool \\ \textbf{\itemCourse}}
+\fancyhead[R]{\raisebox{-0.2\height}{\includegraphics[width=1.2cm]{img/logo_abet}}}
+\fancyfoot[L]{Estudiante Victor Mamani A.}
+\fancyfoot[C]{\itemCourse}
+\fancyfoot[R]{Página \thepage}
+
+% para el codigo fuente
+\usepackage{listings}
+\usepackage{color, colortbl}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{codebackground}{rgb}{0.95, 0.95, 0.92}
+\definecolor{tablebackground}{rgb}{0.8, 0, 0}
+\definecolor[codebackgroundCode]{RGB}{10, 10 , 20}
+
+
+\lstdefinestyle{java}{frame=tb,
+	language=Java,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\footnotesize\ttfamily\color[RGB]{255,255,255}},
+	numberstyle=\color{mygray},
+	numbers=left, 
+	keywordstyle=\color{myblue},
+	morekeywords={String, System},
+	commentstyle=\color{mygray},
+	stringstyle=\color{mygreen},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=2,
+	backgroundcolor= \color{codebackgroundCode},
+	showspaces=false,
+	showtabs=false,
+	showlines=false,
+}
+
+\lstset{frame=tb,
+	language=bash,
+	aboveskip=3mm,
+	belowskip=3mm,
+	showstringspaces=false,
+	columns=flexible,
+	basicstyle={\small\ttfamily},
+	numbers=none,
+	numberstyle=\tiny\color{gray},
+	keywordstyle=\color{blue},
+	commentstyle=\color{dkgreen},
+	stringstyle=\color{mauve},
+	breaklines=true,
+	breakatwhitespace=true,
+	tabsize=3,
+	backgroundcolor= \color{codebackground},
+}
+
+\begin{document}
+	
+	\vspace*{10px}
+	
+	\begin{center}	
+		\fontsize{17}{17} \textbf{ Informe de Laboratorio \itemPracticeNumber}
+	\end{center}
+	\centerline{\textbf{\Large Tema: \itemTheme}}
+	%\vspace*{0.5cm}	
+
+	\begin{flushright}
+		\begin{tabular}{|M{2.5cm}|N|}
+			\hline 
+			\rowcolor{tablebackground}
+			\color{white} \textbf{Nota}  \\
+			\hline 
+			     \\[30pt]
+			\hline 			
+		\end{tabular}
+	\end{flushright}	
+
+	\begin{table}[H]
+		\begin{tabular}{|x{4.7cm}|x{4.8cm}|x{4.8cm}|}
+			\hline 
+			\rowcolor{tablebackground}
+			\color{white} \textbf{Estudiante} & \color{white}\textbf{Escuela}  & \color{white}\textbf{Asignatura}   \\
+			\hline 
+			{\itemStudent \par \itemEmail} & \itemSchool & {\itemCourse \par Semestre: \itemSemester \par Código: \itemCourseCode}     \\
+			\hline 			
+		\end{tabular}
+	\end{table}		
+	
+	\begin{table}[H]
+		\begin{tabular}{|x{4.7cm}|x{4.8cm}|x{4.8cm}|}
+			\hline 
+			\rowcolor{tablebackground}
+			\color{white}\textbf{Laboratorio} & \color{white}\textbf{Tema}  & \color{white}\textbf{Duración}   \\
+			\hline 
+			\itemPracticeNumber & \itemTheme & 04 horas   \\
+			\hline 
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[H]
+		\begin{tabular}{|x{4.7cm}|x{4.8cm}|x{4.8cm}|}
+			\hline 
+			\rowcolor{tablebackground}
+			\color{white}\textbf{Semestre académico} & \color{white}\textbf{Fecha de inicio}  & \color{white}\textbf{Fecha de entrega}   \\
+			\hline 
+			\itemAcademic & \itemInput &  \itemOutput  \\
+			\hline 
+		\end{tabular}
+	\end{table}
+	
+	\section{Tarea}
+	\begin{itemize}		
+        \item Cree un Proyecto llamado Laboratorio3
+        \item Usted deberá agregar las clases Nave.java y DemoBatalla.java.
+        \item Analice, complete y pruebe el Código de la clase DemoBatalla.
+        \item Solucionar la Actividad 4 de la Práctica 1 pero usando arreglo de objetos.
+        \item Solucionar la Actividad 5 de la Práctica 1 pero usando arreglos de objetos.
+	\end{itemize}
+		
+	\section{Equipos, materiales y temas utilizados}
+	\begin{itemize}
+		\item Sistema Operativo Ubuntu GNU Linux 23 lunar 64 bits Kernell 6.2.v
+		\item Visual Studio Code.
+		\item OpenJDK 64-Bits 19.0.7.
+		\item Git 2.39.2.
+		\item Cuenta en GitHub con el correo institucional.
+		\item Programación Orientada a Objetos.
+		\item Actividades del Laboratorio 03.	
+	\end{itemize}
+	
+	\section{URL de Repositorio Github}
+	\begin{itemize}
+		\item URL del Repositorio GitHub para clonar o recuperar.
+		\item \url{https://github.com/VictorMA18/fp2-23b.git}
+		\item URL para el laboratorio 01 en el Repositorio GitHub.
+		\item \url{https://github.com/VictorMA18/fp2-23b/tree/main/Fase01/Lab03}
+	\end{itemize}
+	
+	\section{Actividades del Laboratorio 03}
+	
+	\subsection{Ejercicio Nave}
+	\begin{itemize}	
+		\item En el primer commit agregamos un metodo a la clase Nave llamada toString() con tal que que nos retornara un string con la informacion total del objeto. 
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Agregamos un metodo toString() que nos retorne un string para que despues podamos imprimir este string que serian los datos del objeto"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+        public String toString(){ //CREAMOS ESTE METODO PARA IMPRIMIR LOS DATOS DEl OBJETO
+            String join = "Nombre: " + getNombre() + "\nColumna: " + getColumna() + "\nFila: " + getFila() + "\nEstado: " + getEstado() + "\nPuntos: " + getPuntos();
+            return join;
+        }
+	\end{lstlisting}
+	\subsection{Ejercicio DemoBatalla}
+	\begin{itemize}	
+		\item En el segundo commit tambien completamos el metodo mostrarNaves en la cual aplicamos un for each para que cada objeto de este arreglo se imprima sus datos con el metodo toString().
+		\item El codigo , el commit y la ejecucion seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Completamos el metodo mostrarNaves y en esta usamos un for each y el metodo toString() para mostrar datos de cada objeto y tambien le ponemos un tamano al arreglo de 2 para hacer pruebas"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigo del metodo completado:}][H]
+        public static void mostrarNaves(Nave [] flota){ //COMPLETAMOS EL METODO mostrarNaves Y NOS AYUDAMOS DE UN FOR EACH PARA EL MUESTREO DE LOS DATOS DE CADA OBJETO Y TAMBIEN USAMOS EL METODO toString()
+            for(Nave ship: flota){
+                System.out.println(ship.toString());
+                System.out.println("***********************");
+            }
+        }
+	\end{lstlisting}
+    \begin{lstlisting}[language=bash,caption={La ejecucion dada:}][H]
+        Nave 1 : 
+        Nombre: Hector
+        Fila: 3
+        Columna: A
+        Estado: true
+        Puntos: 132
+        Nave 2 : 
+        Nombre: Hernan
+        Fila: 2
+        Columna: B
+        Estado: true
+        Puntos: 248
+
+        Naves creadas:
+        --------------------------------------
+        Nombre: Hector
+        Columna: A
+        Fila: 3
+        Estado: true
+        Puntos: 132
+        ***********************
+        Nombre: Hernan
+        Columna: B
+        Fila: 2
+        Estado: true
+        Puntos: 248
+        ***********************
+
+    \end{lstlisting}
+	\subsection{Ejercicio DemoBatalla}
+	\begin{itemize}	
+		\item En el tercer commit completamos este metodo mostrarPorNombre donde aplicamos un for each para pasar por todos los elementos y ver cuales son iguales al nombre ingresado y mostrar sus datos ala vez con el metodo toString()
+		\item El codigo , el commit , la ejecucion seria el siguiente:
+	\end{itemize}
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Completamos el metodo mostrarPorNombre con un for each este nos permite comparar el nombre con cada elemento del array y en caso de ser iguales imprimira sus datos"
+	\end{lstlisting}
+	\begin{lstlisting}[language=java,caption={Las lineas de codigo del metodo completado:}][H]
+        public static void mostrarPorNombre(Nave [] flota){ //COMPLETAMOS EL METODO mostrarPorNombre Y NOS AYUDAMOS DE UN FOR EACH CON TAL QUE SI EL NOMBRE INGRESADO ERA IGUAL AL OBJETO CREADO MOSTRABA LOS DATOS DEL OBJETO Y TAMBIEN USAMOS EL METODO toString()
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Ingrese el nombre para buscar a las naves: ");
+            String nombre = sc.next();
+            System.out.println("***********************");
+            for(Nave ship: flota){
+                if(ship.getNombre().equals(nombre)){
+                    System.out.println(ship.toString());
+                    System.out.println("***********************");
+                }
+            }
+        }
+	\end{lstlisting}
+    \begin{lstlisting}[language=bash,caption={La ejecucion dada:}][H]
+        Nave 1 : 
+        Nombre: Victor
+        Fila: 3
+        Columna: A
+        Estado: true
+        Puntos: 167
+        Nave 2 : 
+        Nombre: Victor
+        Fila: 6
+        Columna: B
+        Estado: true
+        Puntos: 167
+            
+        Ingrese el nombre para buscar a las naves: 
+        Victor
+        ***********************
+        Nombre: Victor
+        Columna: A
+        Fila: 3
+        Estado: true
+        Puntos: 167
+        ***********************
+        Nombre: Victor
+        Columna: B
+        Fila: 6
+        Estado: true
+        Puntos: 167
+        ***********************
+
+    \end{lstlisting}
+	\subsection{Ejercicio DemoBatalla}
+	\begin{itemize}	
+		\item En el cuarto commit completamos el metodo mostrarPorPuntos donde usamos un for each donde si el numero de puntos de cada nave es menor o igual al numero ingresado se imprimira sus datos.
+		\item El codigo , el commit y la ejecucion seria el siguiente:
+	\end{itemize}
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Completamos el metodo mostrarPorPuntos donde ingresamos un numero de puntos en esta usamos un for each que pase por todos los elementos donde si su numero de puntos es menor o igual a este numero ingresado se imprimira sus datos"
+	\end{lstlisting}
+	\begin{lstlisting}[language=java,caption={Las lineas de codigo del metodo completado:}][H]
+        public static void mostrarPorPuntos(Nave [] flota){ // Completamos el metodo mostrarPorPuntos donde ingresamos un numero de puntos en esta usamos un for each que pase por todos los elementos donde si su numero de puntos es menor o igual a este numero ingresado se imprimira sus datos
+            Scanner sc = new Scanner(System.in);
+            System.out.println("Ingrese un numero puntos para buscar a las naves que son menor o igual a esta: ");
+            int point = sc.nextInt();
+            System.out.println("***********************");
+            for(Nave ship: flota){
+                if(ship.getPuntos() <= point){
+                    System.out.println(ship.toString());
+                    System.out.println("***********************");
+                }
+            }
+        }
+	\end{lstlisting}
+    \begin{lstlisting}[language=bash,caption={La ejecucion dada:}][H]
+        Nave 1 : 
+        Nombre: Victor
+        Fila: 2
+        Columna: A
+        Estado: true
+        Puntos: 34
+        Nave 2 : 
+        Nombre: Hector
+        Fila: 3
+        Columna: B
+        Estado: true
+        Puntos: 56
+            
+        Ingrese un numero puntos para buscar a las naves que son menor o igual a esta: 
+        56
+        ***********************
+        Nombre: Victor
+        Columna: A
+        Fila: 2
+        Estado: true
+        Puntos: 34
+        ***********************
+        Nombre: Hector
+        Columna: B
+        Fila: 3
+        Estado: true
+        Puntos: 56
+        ***********************
+
+    \end{lstlisting}
+	\subsection{Ejercicio DemoBatalla}
+	\begin{itemize}	
+		\item En el quinto commit completamos el metodo mostarMayorPuntos donde creamos un objeto Nave que es ship donde este se va rellenar con la nave que tenga la mayor cantidad de puntos 
+		\item El codigo , el commit y la ejecucion seria el siguiente:
+	\end{itemize}
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Completamos el metodo mostarMayorPuntos donde creamos a ship que es un objeto en el cual se llenara con el nave que tenga la mayor cantidad de puntos y despues se retornara"
+	\end{lstlisting}
+	\begin{lstlisting}[language=java,caption={Las lineas de codigo del metodo completado:}][H]
+        public static Nave mostrarMayorPuntos(Nave [] flota){ //COMPLETAMOS ESTE METODO mostrarMayorPuntos DONDE CREAMOS UN OBJETO DE LA CLASE NAVE QUE ES SHIP EN ESTE PODREMOS GUARDAR LOS DATOS DE LA NAVE CON LA MAYOR CANTIDAD DE PUNTOS Y DESPUES RETONARNLO
+            Nave ship = new Nave();
+            for(int i = 0; i < flota.length - 1; i++){
+                if(flota[i].getPuntos() < flota[i + 1].getPuntos()){
+                    ship = flota[i + 1];
+                }else{
+                    ship = flota[i];
+                }
+            }
+            return ship;
+        }
+	\end{lstlisting}
+    \begin{lstlisting}[language=bash,caption={La ejecucion dada:}][H]
+        Nave 1 : 
+        Nombre: Victor
+        Fila: 2
+        Columna: A
+        Estado: true
+        Puntos: 45
+        Nave 2 : 
+        Nombre: Hector
+        Fila: 3
+        Columna: B
+        Estado: true
+        Puntos: 89
+            
+        Nave con mayor numero de puntos: 
+        Nombre: Hector
+        Columna: B
+        Fila: 3
+        Estado: true
+        Puntos: 89
+        --------------------------------------
+
+    \end{lstlisting}	
+	\subsection{Ejercicio DemoBatalla}
+	\begin{itemize}	
+		\item En el sexto commit CREAMOS ESTE METODO positionsNew DONDE PONEMOS EN UBICACIONES ALEATORIAS NUESTRAS NAVES QUE YA HABIAN SIDO INGRESADAS NOS AYUDAMOS CON LA CLASE RANDOM DONDE ESTA NOS PERMITE INTERCAMBIAR POSICIONES Y TAMBIEN CREAMOS UN ARRAY DE STRINGS DONDE SERIAN LAS POSICIONES DE LAS COLUMNAS Y ESTAS TAMBIEN PUEDAN CAMBIAR DESPUES DE TODO ESTO IMPRIMIMOS LOS DATOS DE LAS NAVES
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creamos este metodo que nos ayuda a intercambiar aleatoriamente las posiciones en columna y fila de las naves y despues mostrar los datos de cada nave"
+	\end{lstlisting}
+	\begin{lstlisting}[language=java,caption={Las lineas de codigo del metodo creado:}][H]
+        public static void positionsNew(Nave [] fleet){ //CREAMOS ESTE METODO positionsNew DONDE PONEMOS EN UBICACIONES ALEATORIAS NUESTRAS NAVES QUE YA HABIAN SIDO INGRESADAS NOS AYUDAMOS CON LA CLASE RANDOM DONDE ESTA NOS PERMITE INTERCAMBIAR POSICIONES Y TAMBIEN CREAMOS UN ARRAY DE STRINGS DONDE SERIAN LAS POSICIONES DE LAS COLUMNAS Y ESTAS TAMBIEN PUEDAN CAMBIAR DESPUES MOSTRAMOS LOS RESULTADOS 
+            Random rdm = new Random();
+            String[] posCol = {"A" , "B", "C" , "D" , "E" , "F" , "G" , "H" , "I" , "J"};
+            for(int i = 0; i < fleet.length; i++){
+                int randomfil = rdm.nextInt(10) + 1;
+                int randomcol = rdm.nextInt(10) + 1;
+                fleet[i].setFila(randomfil);
+                fleet[i].setColumna(posCol[randomcol]);
+            }
+            mostrarNaves(fleet);
+        }
+	\end{lstlisting}
+    \subsection{Ejercicio DemoBatalla}
+	\begin{itemize}	
+		\item En el septimo commit \textcolor{red}{Corregimos un error que cometi en el numero aleatorio randomcol ya que este pasaba del tamaño del arreglo poscol}
+		\item El codigo , el commit y \textcolor{red}{La ejecucion completa del codigo} seria el siguiente:
+	\end{itemize}
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Arreglando valor de randomcolpara su funcionamiento ya que pasaba del numero de elementos del arreglo poscol"
+	\end{lstlisting}
+	\begin{lstlisting}[language=java,caption={Las lineas de codigo del metodo creado:}][H]
+        public static void positionsNew(Nave [] fleet){ //CREAMOS ESTE METODO positionsNew DONDE PONEMOS EN UBICACIONES ALEATORIAS NUESTRAS NAVES QUE YA HABIAN SIDO INGRESADAS NOS AYUDAMOS CON LA CLASE RANDOM DONDE ESTA NOS PERMITE INTERCAMBIAR POSICIONES Y TAMBIEN CREAMOS UN ARRAY DE STRINGS DONDE SERIAN LAS POSICIONES DE LAS COLUMNAS Y ESTAS TAMBIEN PUEDAN CAMBIAR DESPUES MOSTRAMOS LOS RESULTADOS 
+            Random rdm = new Random();
+            String[] posCol = {"A" , "B", "C" , "D" , "E" , "F" , "G" , "H" , "I" , "J"};
+            for(int i = 0; i < fleet.length; i++){
+                int randomfil = rdm.nextInt(10) + 1;
+                int randomcol = rdm.nextInt(10);
+                fleet[i].setFila(randomfil);
+                fleet[i].setColumna(posCol[randomcol]);
+            }
+            mostrarNaves(fleet);
+        }
+	\end{lstlisting}
+    \begin{lstlisting}[language=bash,caption={La ejecucion del codigo completo:}][H]
+        Nave 1 : 
+        Nombre: Victor
+        Fila: 3
+        Columna: A
+        Estado: true
+        Puntos: 65
+        Nave 2 : 
+        Nombre: Pepe
+        Fila: 4
+        Columna: B
+        Estado: true
+        Puntos: 87
+        
+        Naves creadas:
+        --------------------------------------
+        Nombre: Victor
+        Columna: A
+        Fila: 3
+        Estado: true
+        Puntos: 65
+        ***********************
+        Nombre: Pepe
+        Columna: B
+        Fila: 4
+        Estado: true
+        Puntos: 87
+        ***********************
+        --------------------------------------
+        Ingrese el nombre para buscar a las naves: 
+        Victor
+        ***********************
+        Nombre: Victor
+        Columna: A
+        Fila: 3
+        Estado: true
+        Puntos: 65
+        ***********************
+        --------------------------------------
+        Ingrese un numero puntos para buscar a las naves que son menor o igual a esta: 
+        98
+        ***********************
+        Nombre: Victor
+        Columna: A
+        Fila: 3
+        Estado: true
+        Puntos: 65
+        ***********************
+        Nombre: Pepe
+        Columna: B
+        Fila: 4
+        Estado: true
+        Puntos: 87
+        ***********************
+        --------------------------------------
+        Nave con mayor numero de puntos: 
+        Nombre: Pepe
+        Columna: B
+        Fila: 4
+        Estado: true
+        Puntos: 87
+        ***********************
+        --------------------------------------
+        Naves ordenadas Aleatoriamente: 
+        Nombre: Victor
+        Columna: G
+        Fila: 5
+        Estado: true
+        Puntos: 65
+        ***********************
+        Nombre: Pepe
+        Columna: J
+        Fila: 6
+        Estado: true
+        Puntos: 87
+        ***********************
+        --------------------------------------
+
+    \end{lstlisting}
+	\subsection{Ejercico02 del Lab03}
+	\begin{itemize}	
+		\item En el octavo commit creamos una CREAMOS LA CLASE SOLDIER PARA PODER USAR ARREGLO DE OBJETOS EN LA ACTIVDAD 04 DONDE SE NOS PIDE EL NOMBRE Y LA VIDA DEL SOLDADO
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creamos una clase soldier en Ejercicio02 para poder usarla en la actividad04 del lab01 ya que nos pide usar arreglo de objetos donde cada soldado se le pide su nombre y su vida , tambien movimos los archivos DemoBatalla.java y Nave.java a una nueva carpeta"
+	\end{lstlisting}
+	\begin{lstlisting}[language=java,caption={Las lineas de codigo de lo creado:}][H]
+		// Laboratorio Nro 3 - Activdad 4 - Practica 1
+		// Autor: Mamani Anahua Victor Narciso
+		// Colaboro:
+		// Tiempo:
+		public class Soldier { //CREAMOS LA CLASE SOLDIER PARA PODER USAR ARREGLO DE OBJETOS EN LA ACTIVDAD 04 DONDE SE NOS PIDE EL NOMBRE Y LA VIDA DEL SOLDADO  
+		
+			private String name;
+			private int heatlh;
+		
+			// Metodos mutadores
+			public void setName(String n){
+				name = n;
+			}
+			public void setHealth(int p){
+				heatlh = p;
+			}
+		
+			// Metodos accesores
+			public String getName(){
+				return name;
+			}
+			public int getHealth(){
+				return heatlh;
+		
+			}
+			// Completar con otros metodos necesarios
+			public String toString(){ //CREAMOS ESTE METODO PARA IMPRIMIR LOS DATOS DEl OBJETO
+				String join = "Nombre: " + getName() + "\nVida: " + getHealth();
+				return join;
+			}
+		}
+	\end{lstlisting}
+	\subsection{Ejercico02 del Lab03}
+	\begin{itemize}	
+		\item En el noveno commit EN ESTE EJERCICIO USAMOS ARREGLO DE OBJETOS CON LA CALSE SOLDIER DONDE INGRESAMOS UN NOMBRE Y VIDA PARA CADA SOLDADO Y DESPUES IMPRIMIMOS SUS DATOS CON LA AYUDA DE LA ESTRUCTURA FOR 
+		\item El codigo , el commit y la ejecucion seria el siguiente:
+	\end{itemize}
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "En el archivo Soldier.java modificamos un barra espaciadora y en el otro archivo creamos el arreglo de objetos donde pedimos un nombre y una vida para cada soldado , le anadimos y imprimimos sus datos de cada soldado esto usando la estructura for"
+	\end{lstlisting}
+	\begin{lstlisting}[language=java,caption={Las lineas de codigo de lo creado:}][H]
+		import java.util.*;
+		public class Ejercicio02_lab03 {
+			public static void main(String args[]){ //EN ESTE EJERCICIO USAMOS ARREGLO DE OBJETOS CON LA CALSE SOLDIER DONDE INGRESAMOS UN NOMBRE Y VIDA PARA CADA SOLDADO Y DESPUES IMPRIMIMOS SUS DATOS CON LA AYUDA DE LA ESTRUCTURA FOR 
+				Scanner sc = new Scanner(System.in);
+				Soldier[] soldiers = new Soldier[5];
+				for(int i = 0; i < soldiers.length; i++){
+					System.out.println("Soldado " + (i + 1) + " : ");
+					System.out.print("Ingrese su nombre: ");
+					String name = sc.next();
+					System.out.print("Ingrese su vida: ");
+					int heatlh = sc.nextInt();
+					soldiers[i] = new Soldier();
+					soldiers[i].setName(name);
+					soldiers[i].setHealth(heatlh);
+				}
+				for(int i = 0; i < soldiers.length;i++){
+					System.out.print("\nLos datos del soldado " + (i + 1) + " : ");
+					System.out.println(soldiers[i].toString());
+					System.out.println("*************************************");
+				}
+			}        
+		}
+	\end{lstlisting}
+    \begin{lstlisting}[language=bash,caption={La ejecucion del codigo completo:}][H]
+		Soldado 1 : 
+		Ingrese su nombre: Victor
+		Ingrese su vida: 34
+		Soldado 2 : 
+		Ingrese su nombre: Tato
+		Ingrese su vida: 56
+		Soldado 3 : 
+		Ingrese su nombre: Pepe
+		Ingrese su vida: 54
+		Soldado 4 : 
+		Ingrese su nombre: Pablo
+		Ingrese su vida: 23
+		Soldado 5 : 
+		Ingrese su nombre: Tasha
+		Ingrese su vida: 12
+		
+		Los datos del soldado 1 : 
+		Nombre: Victor
+		Vida: 34
+		*************************************
+		
+		Los datos del soldado 2 : 
+		Nombre: Tato
+		Vida: 56
+		*************************************
+		
+		Los datos del soldado 3 : 
+		Nombre: Pepe
+		Vida: 54
+		*************************************
+		
+		Los datos del soldado 4 : 
+		Nombre: Pablo
+		Vida: 23
+		*************************************
+		
+		Los datos del soldado 5 : 
+		Nombre: Tasha
+		Vida: 12
+		*************************************
+
+    \end{lstlisting}
+	\subsection{Ejercico03 del Lab03}
+	\begin{itemize}	
+		\item En el decimo commit creamos una CREAMOS LA CLASE SOLDIER PARA PODER USAR ARREGLO DE OBJETOS EN LA ACTIVDAD 04 DONDE SE NOS PIDE EL NOMBRE Y LA VIDA DEL SOLDADO
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creamos una clase soldier en Ejercicio02 para poder usarla en la actividad04 del lab01 ya que nos pide usar arreglo de objetos donde cada soldado se le pide su nombre y su vida , tambien movimos los archivos DemoBatalla.java y Nave.java a una nueva carpeta"
+	\end{lstlisting}
+	\begin{lstlisting}[language=java,caption={Las lineas de codigo de lo creado:}][H]
+		// Laboratorio Nro 3 - Activdad 4 - Practica 1
+		// Autor: Mamani Anahua Victor Narciso
+		// Colaboro:
+		// Tiempo:
+		public class Soldier { //CREAMOS LA CLASE SOLDIER PARA PODER USAR ARREGLO DE OBJETOS EN LA ACTIVDAD 04 DONDE SE NOS PIDE EL NOMBRE Y LA VIDA DEL SOLDADO  
+		
+			private String name;
+			private int heatlh;
+		
+			// Metodos mutadores
+			public void setName(String n){
+				name = n;
+			}
+			public void setHealth(int p){
+				heatlh = p;
+			}
+		
+			// Metodos accesores
+			public String getName(){
+				return name;
+			}
+			public int getHealth(){
+				return heatlh;
+		
+			}
+			// Completar con otros metodos necesarios
+			public String toString(){ //CREAMOS ESTE METODO PARA IMPRIMIR LOS DATOS DEl OBJETO
+				String join = "Nombre: " + getName() + "\nVida: " + getHealth();
+				return join;
+			}
+		}
+	\end{lstlisting}
+	\subsection{Ejercico03 del Lab03}
+	\begin{itemize}	
+		\item En el undecimo commit creamos la clase Soldier01 y tambien en el otro archivo creamos 2 ejercitos conun arreglo de objeto de la calse Soldier01 donde solo necesitamos el nombre de cada soldado para esto creamos un metodo fillinName() que nos retornara un arreglo ya relleno con un numero de soldados que es aleatorio y sus nombres y otro metodo showSoldiers() que nos muestra los datos de cada soldado de cada ejercito y el metodo battleResult() que nos da el resultado de la batalla dependiendo del numero de soldados en cada ejercito.
+		\item El codigo , el commit  y la ejecucion seria el siguiente:
+	\end{itemize}
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m " Creamos la clase Soldier01 y tambien en el otro archivo creamos 2 ejercitos conun arreglo de objeto de la calse Soldier01 donde solo necesitamos el nombre de cada soldado para esto creamos un metodo fillinName() que nos retornara un arreglo ya relleno con un numero de soldados que es aleatorio y sus nombres y otro metodo showSoldiers() que nos muestra los datos de cada soldado de cada ejercito y el metodo battleResult() que nos da el resultado de la batalla dependiendo del numero de soldados en cada jercito"
+	\end{lstlisting}
+	\begin{lstlisting}[language=java,caption={Las lineas del codigo Soldier01 de lo creado:}][H]
+		// Laboratorio Nro 3 - Ejercico03 - Lab03
+		// Autor: Mamani Anahua Victor Narciso
+		// Colaboro:
+		// Tiempo:
+		public class Soldier01{ //CREAMOS LA CLASE SOLDIER PARA PODER USAR ARREGLO DE OBJETOS EN LA ACTIVDAD 04 DONDE SE NOS PIDE EL NOMBRE Y LA VIDA DEL SOLDADO  
+		
+			private String name;
+		
+			// Metodos mutadores
+			public void setName(String n){
+				name = n;
+			}
+		
+			// Metodos accesores
+			public String getName(){
+				return name;
+			}
+		
+			// Completar con otros metodos necesarios
+			public String toString(){ //CREAMOS ESTE METODO PARA IMPRIMIR LOS DATOS DEl OBJETO
+				String join = "\nNombre: " + getName();
+				return join;
+			}
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=java,caption={Las lineas del codigo Ejercico03-lab03 de lo creado:}][H]
+		import java.util.*;
+		public class Ejercicio03_lab03 {
+			public static void battleResult(Soldier01[] army1, Soldier01[] army2){
+				if(army1.length < army2.length){
+					System.out.println("El ganador de la batalla es el Ejercito 02 con " + (army2.length) + " soldados");
+					System.out.println("********************************");
+				}else if(army1.length > army2.length){
+					System.out.println("El ganador de la batalla es el Ejercito 01 con " + (army1.length) + " soldados");
+					System.out.println("********************************");
+				}else{
+					System.out.println("El resultado de la batalla es un EMPATE");
+					System.out.println("********************************");
+				}
+			}
+			public static void showSoldiers(Soldier01[] army){
+				for(int i = 0; i < army.length; i++){
+					System.out.print("Los datos del Soldado" + (i + 1));
+					System.out.println(army[i].toString());
+					System.out.println("********************************");
+				}
+			} 
+			public static Soldier01[] fillinName(){
+				Random rdm = new Random();
+				Soldier01[] army = new Soldier01[rdm.nextInt(5) + 1];
+				for(int i = 0; i < army.length; i++){
+					army[i] = new Soldier01();
+					army[i].setName("Soldado" + (i + 1));
+				}
+				return army;
+			}
+			public static void main(String args[]){
+				Soldier01[] army1 = fillinName();
+				Soldier01[] army2 = fillinName();
+				System.out.println("-------------------------------------");
+				System.out.println("Los soldados del Ejercito 01: ");
+				showSoldiers(army1);
+				System.out.println("////////////////////////////////");
+				System.out.println("Los soldados del Ejercito 02: ");
+				showSoldiers(army2);  
+				System.out.println("-------------------------------------");
+				battleResult(army1, army2);
+			}
+		}
+	\end{lstlisting}
+    \begin{lstlisting}[language=bash,caption={La ejecucion del codigo completo:}][H]
+		-------------------------------------
+		Los soldados del Ejercito 01: 
+		Los datos del Soldado1
+		Nombre: Soldado1
+		********************************
+		Los datos del Soldado2
+		Nombre: Soldado2
+		********************************
+		Los datos del Soldado3
+		Nombre: Soldado3
+		********************************
+		Los datos del Soldado4
+		Nombre: Soldado4
+		********************************
+		Los datos del Soldado5
+		Nombre: Soldado5
+		********************************
+		////////////////////////////////
+		Los soldados del Ejercito 02: 
+		Los datos del Soldado1
+		Nombre: Soldado1
+		********************************
+		Los datos del Soldado2
+		Nombre: Soldado2
+		********************************
+		Los datos del Soldado3
+		Nombre: Soldado3
+		********************************
+		Los datos del Soldado4
+		Nombre: Soldado4
+		********************************
+		Los datos del Soldado5
+		Nombre: Soldado5
+		********************************
+		-------------------------------------
+		El resultado de la batalla es un EMPATE
+		********************************
+
+    \end{lstlisting}
+	\subsection{Estructura de laboratorio 03}
+	\begin{itemize}	
+		\item El contenido que se entrega en este laboratorio es el siguiente:
+	\end{itemize}
+\begin{lstlisting}[style=ascii-tree]
+/Lab03
+├── Ejercicio02
+│   ├── Ejercicio02_lab03.java
+│   └── Soldier.java
+├── Ejercicio03
+│   ├── Ejercicio03_lab03.java
+│   └── Soldier01.java
+├── Latex
+│   ├── img
+│   │   ├── logo_abet.png
+│   │   ├── logo_episunsa.png
+│   │   ├── logo_unsa.jpg
+│   │   └── pseudocodigo_insercion.png
+│   ├── Informe03.aux
+│   ├── Informe03.fdb_latexmk
+│   ├── Informe03.fls
+│   ├── Informe03.log
+│   ├── Informe03.out
+│   ├── Informe03.pdf
+│   ├── Informe03.synctex.gz
+│   ├── Informe03.tex
+│   └── src
+│       └── Nave01.java
+└── NaveyDemoBatalla
+    ├── DemoBatalla.java
+    └── Nave.java
+
+\end{lstlisting}    
+	\section{\textcolor{red}{Rúbricas}}
+	
+	\subsection{\textcolor{red}{Entregable Informe}}
+	\begin{table}[H]
+		\caption{Tipo de Informe}
+		\setlength{\tabcolsep}{0.5em} % for the horizontal padding
+		{\renewcommand{\arraystretch}{1.5}% for the vertical padding
+		\begin{tabular}{|p{3cm}|p{12cm}|}
+			\hline
+			\multicolumn{2}{|c|}{\textbf{\textcolor{red}{Informe}}}  \\
+			\hline 
+			\textbf{\textcolor{red}{Latex}} & \textcolor{blue}{El informe está en formato PDF desde Latex,  con un formato limpio (buena presentación) y facil de leer.}   \\ 
+			\hline 
+			
+			
+		\end{tabular}
+	}
+	\end{table}
+	
+	\clearpage
+	
+	\subsection{\textcolor{red}{Rúbrica para el contenido del Informe y demostración}}
+	\begin{itemize}			
+		\item El alumno debe marcar o dejar en blanco en celdas de la columna \textbf{Checklist} si cumplio con el ítem correspondiente.
+		\item Si un alumno supera la fecha de entrega,  su calificación será sobre la nota mínima aprobada, siempre y cuando cumpla con todos lo items.
+		\item El alumno debe autocalificarse en la columna \textbf{Estudiante} de acuerdo a la siguiente tabla:
+	
+		\begin{table}[ht]
+			\caption{Niveles de desempeño}
+			\begin{center}
+			\begin{tabular}{ccccc}
+    			\hline
+    			 & \multicolumn{4}{c}{Nivel}\\
+    			\cline{1-5}
+    			\textbf{Puntos} & Insatisfactorio 25\%& En Proceso 50\% & Satisfactorio 75\% & Sobresaliente 100\%\\
+    			\textbf{2.0}&0.5&1.0&1.5&2.0\\
+    			\textbf{4.0}&1.0&2.0&3.0&4.0\\
+    		\hline
+			\end{tabular}
+		\end{center}
+	\end{table}	
+	
+	\end{itemize}
+	
+	\begin{table}[H]
+		\caption{Rúbrica para contenido del Informe y demostración}
+		\setlength{\tabcolsep}{0.5em} % for the horizontal padding
+		{\renewcommand{\arraystretch}{1.5}% for the vertical padding
+		%\begin{center}
+		\begin{tabular}{|p{2.7cm}|p{7cm}|x{1.3cm}|p{1.2cm}|p{1.5cm}|p{1.1cm}|}
+			\hline
+    		\multicolumn{2}{|c|}{Contenido y demostración} & Puntos & Checklist & Estudiante & Profesor\\
+			\hline
+			\textbf{1. GitHub} & Hay enlace URL activo del directorio para el  laboratorio hacia su repositorio GitHub con código fuente terminado y fácil de revisar. &2 &X &2 & \\ 
+			\hline
+			\textbf{2. Commits} &  Hay capturas de pantalla de los commits más importantes con sus explicaciones detalladas. (El profesor puede preguntar para refrendar calificación). &4 &X &1 & \\ 
+			\hline 
+			\textbf{3. Código fuente} &  Hay porciones de código fuente importantes con numeración y explicaciones detalladas de sus funciones. &2 &X &1 & \\ 
+			\hline 
+			\textbf{4. Ejecución} & Se incluyen ejecuciones/pruebas del código fuente  explicadas gradualmente. &2 &X &2 & \\ 
+			\hline			
+			\textbf{5. Pregunta} & Se responde con completitud a la pregunta formulada en la tarea.  (El profesor puede preguntar para refrendar calificación).  &2 &X &2 & \\ 
+			\hline	
+			\textbf{6. Fechas} & Las fechas de modificación del código fuente estan dentro de los plazos de fecha de entrega establecidos. &2 &X &2 & \\ 
+			\hline 
+			\textbf{7. Ortografía} & El documento no muestra errores ortográficos. &2 &X &2 & \\ 
+			\hline 
+			\textbf{8. Madurez} & El Informe muestra de manera general una evolución de la madurez del código fuente,  explicaciones puntuales pero precisas y un acabado impecable.   (El profesor puede preguntar para refrendar calificación).  &4 &X &2 & \\ 
+			\hline
+			\multicolumn{2}{|c|}{\textbf{Total}} &20 & &14 & \\ 
+			\hline
+		\end{tabular}
+		%\end{center}
+		%\label{tab:multicol}
+		}
+	\end{table}
+	
+\clearpage
+
+\section{Referencias}
+\begin{itemize}			
+	\item \url{https://drive.google.com/file/d/1gF5iR4EpCOfMuwdQCGPfbErUFeA3cp_U/view}
+\end{itemize}	
+	
+%\clearpage
+%\bibliographystyle{apalike}
+%\bibliographystyle{IEEEtranN}
+%\bibliography{bibliography}
+			
+\end{document}
