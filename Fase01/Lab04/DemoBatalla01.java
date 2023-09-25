@@ -1,8 +1,10 @@
-// Laboratorio Nro 3 - DemoBatalla
+// Laboratorio Nro 4 - DemoBatalla01
 // Autor: Mamani Anahua Victor Narciso
 // Colaboro:
 // Tiempo:
 import java.util.*;
+
+import javax.print.attribute.standard.MediaSize.NA;
 public class DemoBatalla01{
     public static void main(String [] args){
         Nave [] misNaves = new Nave [2]; // LE PONEMOS AL ARREGLO UN TAMAÑO DE 2 PARA SU POSTERIOR PRUEBA 
@@ -127,7 +129,14 @@ public class DemoBatalla01{
         return -1;
     }
     //Método que ordena por número de puntos de menor a mayor
-    public static void ordenarPorPuntosBurbuja(Nave[] flota){
+    public static void ordenarPorPuntosBurbuja(Nave[] flota){ //COMPLETAMOS ESTE METODO QUE NOS PERMITE ORDENAR DE MENOR A MAYOR DE LA MANERA DE ORDENAR BURBUJA QUE SERIA CAMBIAR POSCIONES SI TU ELEMENTO DE ADELANTE ES MENOR AL ACTUAL
+        for(int i = 0; i < flota.length - 1;i++){
+            if(flota[i].getPuntos() > flota[i + 1].getPuntos()){
+                Nave temp = flota[i];
+                flota[i] = flota[i + 1];
+                flota[i + 1] = temp;
+            }
+        }
     }
     //Método que ordena por nombre de A a Z
     public static void ordenarPorNombreBurbuja(Nave[] flota){

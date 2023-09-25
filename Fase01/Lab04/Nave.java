@@ -1,4 +1,4 @@
-// Laboratorio Nro 3 - Nave
+// Laboratorio Nro 4 - Nave
 // Autor: Mamani Anahua Victor Narciso
 // Colaboro:
 // Tiempo:
