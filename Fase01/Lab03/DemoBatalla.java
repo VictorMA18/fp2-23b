@@ -33,7 +33,7 @@ public class DemoBatalla {
         System.out.println("--------------------------------------");        
         mostrarPorPuntos(misNaves);
         System.out.println("--------------------------------------");
-        System.out.println("\nNave con mayor número de puntos: " + mostrarMayorPuntos(misNaves));
+        System.out.println("\nNave con mayor numero de puntos: " + mostrarMayorPuntos(misNaves));
         System.out.println("--------------------------------------");
     }
     //Método para mostrar todas las naves
@@ -44,7 +44,17 @@ public class DemoBatalla {
         }
     }
     //Método para mostrar todas las naves de un nombre que se pide por teclado
-    public static void mostrarPorNombre(Nave [] flota){
+    public static void mostrarPorNombre(Nave [] flota){ //COMPLETAMOS EL METODO mostrarPorNombre Y NOS AYUDAMOS DE UN FOR EACH CON TAL QUE SI EL NOMBRE INGRESADO ERA IGUAL AL OBJETO CREADO MOSTRABA LOS DATOS DEL OBJETO Y TAMBIEN USAMOS EL METODO toString()
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Ingrese el nombre para buscar a las naves: ");
+        String nombre = sc.next();
+        System.out.println("***********************");
+        for(Nave ship: flota){
+            if(ship.getNombre().equals(nombre)){
+                System.out.println(ship.toString());
+                System.out.println("***********************");
+            }
+        }
     }
     //Método para mostrar todas las naves con un número de puntos inferior o igual
     //al número de puntos que se pide por teclado
