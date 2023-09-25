@@ -25,7 +25,7 @@ public class Soldier { //CREAMOS LA CLASE SOLDIER PARA PODER USAR ARREGLO DE OBJ
     }
     // Completar con otros métodos necesarios
     public String toString(){ //CREAMOS ESTE METODO PARA IMPRIMIR LOS DATOS DEl OBJETO
-        String join = "Nombre: " + getName() + "\nVida: " + getHealth();
+        String join = "\nNombre: " + getName() + "\nVida: " + getHealth(); //Agregamos un espaciador para poder separar
         return join;
     }
 }
