@@ -48,10 +48,14 @@ public class DemoBatalla01{
         String searchedname = sc.next();
         int pos = busquedaLinealNombre(misNaves, searchedname);
         System.out.println("--------------------------------------");
+        System.out.println("Ordenado por la cantidad de puntos del menor al mayor mediante el metodo burbuja: ");
         ordenarPorPuntosBurbuja(misNaves);
         mostrarNaves(misNaves);
-        /*ordenarPorNombreBurbuja(misNaves);
+        System.out.println("--------------------------------------");
+        System.out.println("Ordenado por las iniciales de cada nombre de A a la Z del menor al mayor mediante el metodo burbuja: ");
+        ordenarPorNombreBurbuja(misNaves);
         mostrarNaves(misNaves);
+        /* 
         //mostrar los datos de la nave con dicho nombre, mensaje de “no encontrado” en caso contrario
         pos=busquedaBinariaNombre(misNaves,"");
         ordenarPorPuntosSeleccion(misNaves);
@@ -139,7 +143,14 @@ public class DemoBatalla01{
         }
     }
     //Método que ordena por nombre de A a Z
-    public static void ordenarPorNombreBurbuja(Nave[] flota){
+    public static void ordenarPorNombreBurbuja(Nave[] flota){ //COMPLETAMOS ESTE METODO QUE NOS PERMITE ORDENAR DE A HASTA Z PARA ESTO COMPARAMOS EL PRIMER CARACTER DE CADA UNA Y SI ESTA ACTUAL ES MAYOR A LA SIGUIENTE ESTA CAMBIARA DE POSICION
+        for(int i = 0; i < flota.length - 1;i++){
+            if(flota[i].getNombre().charAt(0) > flota[i + 1].getNombre().charAt(0)){
+                Nave temp = flota[i];
+                flota[i] = flota[i + 1];
+                flota[i + 1] = temp;
+            }
+        }
     }
     //Método para buscar la primera nave con un nombre que se pidió por teclado
     public static int busquedaBinariaNombre(Nave[] flota, String s){
