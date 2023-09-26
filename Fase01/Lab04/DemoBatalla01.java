@@ -7,7 +7,7 @@ import java.util.*;
 import javax.print.attribute.standard.MediaSize.NA;
 public class DemoBatalla01{
     public static void main(String [] args){
-        Nave [] misNaves = new Nave [2]; // LE PONEMOS AL ARREGLO UN TAMAÑO DE 2 PARA SU POSTERIOR PRUEBA 
+        Nave [] misNaves = new Nave [3]; // LE PONEMOS AL ARREGLO UN TAMAÑO DE 2 PARA SU POSTERIOR PRUEBA 
         Scanner sc = new Scanner(System.in);
         String nomb, col;
         int fil, punt;
@@ -52,14 +52,19 @@ public class DemoBatalla01{
         ordenarPorPuntosBurbuja(misNaves);
         mostrarNaves(misNaves);
         System.out.println("--------------------------------------");
-        System.out.println("Ordenado por las iniciales de cada nombre de A a la Z del menor al mayor mediante el metodo burbuja: ");
+        System.out.println("Ordenado por las iniciales de cada nombre de A a la Z mediante el metodo burbuja: ");
         ordenarPorNombreBurbuja(misNaves);
         mostrarNaves(misNaves);
+        System.out.println("--------------------------------------");
         /* 
         //mostrar los datos de la nave con dicho nombre, mensaje de “no encontrado” en caso contrario
         pos=busquedaBinariaNombre(misNaves,"");
+        */
+        System.out.println("Ordenado por la cantidad de puntos del menor al mayor mediante el metodo seleccion: ");
         ordenarPorPuntosSeleccion(misNaves);
         mostrarNaves(misNaves);
+        System.out.println("--------------------------------------");
+        /* 
         ordenarPorPuntosInsercion(misNaves);
         mostrarNaves(misNaves);
         ordenarPorNombreSeleccion(misNaves);
@@ -157,7 +162,22 @@ public class DemoBatalla01{
         return 0;
     }
     //Método que ordena por número de puntos de menor a mayor
-    public static void ordenarPorPuntosSeleccion(Nave[] flota){
+    public static void ordenarPorPuntosSeleccion(Nave[] flota){ //METODO COMPLETADO QUE NOS PERMITE CAMBIAR LAS POSICIONES DE CADA ARREGLO DEPENDIENDO DE LO QUE RETORNE EL METODO indProxMin que sera el indice cual debemos cambiar con el actual
+        for(int i = 0; i < flota.length - 1; i++){
+            int j = indProxMin(flota, i);
+            Nave temp = flota[i];
+            flota[i] = flota[j];
+            flota[j] = temp;
+        }
+    }
+    public static int indProxMin(Nave[] flota, int index){ //METODO CREADO QUE NOS AYUDA A BUSCAR EL INDICE DEL OBJETO Y NOS DICE CUAL ES EL PROXIMO MENOR  APARTIR DEL QUE ESTAMOS Y VA PASANDO POR TODOS LOS ELEMENTOS ASI QUE VA ACTUALIZANDOSE LA VARIABLE MINDEX
+        int minindex = index;
+        for(int i = index + 1; i < flota.length; i++){
+            if(flota[i].getPuntos() < flota[minindex].getPuntos()){
+                minindex = i;
+            }
+        }
+        return minindex;
     }
     //Método que ordena por nombre de A a Z
     public static void ordenarPorNombreSeleccion(Nave[] flota){
