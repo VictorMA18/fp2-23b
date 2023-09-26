@@ -45,6 +45,9 @@ public class DemoBatalla01{
         System.out.println("Ingrese el nombre para buscar a la primera nave: ");
         String searchedname = sc.next();
         int pos = busquedaLinealNombre(misNaves, searchedname);
+        if(pos == -1){ //Estructura de control creado para mostrar el mensaje de "Nave no encontrada" debido a que esta comparando con los demas nombres de las otras naves
+            System.out.println("Nave no encontrada");
+        }
         System.out.println("--------------------------------------");
         System.out.println("Ordenado por la cantidad de puntos del menor al mayor mediante el metodo burbuja: ");
         ordenarPorPuntosBurbuja(misNaves);
