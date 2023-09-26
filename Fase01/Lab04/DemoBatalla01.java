@@ -70,10 +70,9 @@ public class DemoBatalla01{
         ordenarPorNombreSeleccion(misNaves);
         mostrarNaves(misNaves);
         System.out.println("--------------------------------------");
-        /* 
+        System.out.println("Ordenado por las iniciales de cada nombre de Z a la A mediante el metodo seleccion: ");
         ordenarPorNombreInsercion(misNaves);
         mostrarNaves(misNaves);
-        */
     }
     //Método para mostrar todas las naves
     public static void mostrarNaves(Nave [] flota){ //COMPLETAMOS EL METODO mostrarNaves Y NOS AYUDAMOS DE UN FOR EACH PARA EL MUESTREO DE LOS DATOS DE CADA OBJETO Y TAMBIEN USAMOS EL METODO toString()
@@ -212,6 +211,15 @@ public class DemoBatalla01{
         }
     }
     //Método que muestra las naves ordenadas por nombre de Z a A
-    public static void ordenarPorNombreInsercion(Nave[] flota){
+    public static void ordenarPorNombreInsercion(Nave[] flota){ //Este metodo ordenarPorNombreInsercion() consiste en recorrer todo el array comenzando desde el segundo elemento hasta el final. Para cada elemento, se trata de colocarlo en el lugar correcto entre todos los elementos con que sean menores a z anteriores a él y asi por cada uno completando por cada incial de cada nombre de la Z hasta A
+        for(int i = 1; i < flota.length; i++){
+            Nave temp = flota[i];
+            int j = i - 1;
+            while(j >= 0 && (temp.getNombre().charAt(0) > flota[j].getNombre().charAt(0))){
+                flota[j + 1] = flota[j];
+                j--;
+            }
+            flota[j + 1] = temp;
+        }  
     }
 }
