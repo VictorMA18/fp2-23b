@@ -57,10 +57,18 @@ public class DemoBatalla01{
         ordenarPorNombreBurbuja(misNaves);
         mostrarNaves(misNaves);
         System.out.println("--------------------------------------");
-        /* 
         //mostrar los datos de la nave con dicho nombre, mensaje de “no encontrado” en caso contrario
-        pos=busquedaBinariaNombre(misNaves,"");
-        */
+        System.out.println("Ingrese el nombre para buscar a la nave: ");
+        String searchedname01 = sc.next();
+        System.out.println("***********************");
+        ordenarPorNombreSeleccion(misNaves);
+        pos=busquedaBinariaNombre(misNaves,searchedname01);
+        if(pos == -1){ //Estructura de control creado para mostrar el mensaje de "Nave no encontrada" debido a que esta buscando y comparando con los demas nombres de las otras naves
+            System.out.println("Nave no encontrada");
+        }else{
+            System.out.println(misNaves[pos].toString());
+        }
+        System.out.println("--------------------------------------");
         System.out.println("Ordenado por la cantidad de puntos del menor al mayor mediante el metodo seleccion: ");
         ordenarPorPuntosSeleccion(misNaves);
         mostrarNaves(misNaves);
@@ -163,7 +171,19 @@ public class DemoBatalla01{
     }
     //Método para buscar la primera nave con un nombre que se pidió por teclado
     public static int busquedaBinariaNombre(Nave[] flota, String s){
-        return 0;
+        int left = 0;
+        int right = flota.length - 1;
+        while(left <= right) {
+            int mid = left + (right - left) / 2;
+            if(s.equals(flota[mid].getNombre())){
+                return mid;
+            }else if(s.charAt(0) > flota[mid].getNombre().charAt(0)){
+                left = mid + 1;
+            }else{
+                right = mid - 1;
+            }
+        }
+        return -1;
     }
     //Método que ordena por número de puntos de menor a mayor
     public static void ordenarPorPuntosSeleccion(Nave[] flota){ //METODO COMPLETADO QUE NOS PERMITE CAMBIAR LAS POSICIONES DE CADA ARREGLO DEPENDIENDO DE LO QUE RETORNE EL METODO indProxMin que sera el indice cual debemos cambiar con el actual
