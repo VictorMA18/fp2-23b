@@ -65,10 +65,16 @@ public class DemoBatalla01{
         mostrarNaves(misNaves);
         System.out.println("--------------------------------------");
         /* 
+        System.out.println("Ordenado por las iniciales de cada nombre de A a la Z mediante el metodo seleccion: ");
         ordenarPorPuntosInsercion(misNaves);
         mostrarNaves(misNaves);
+        System.out.println("--------------------------------------");
+        */
+        System.out.println("Ordenado por las iniciales de cada nombre de A a la Z mediante el metodo seleccion: ");
         ordenarPorNombreSeleccion(misNaves);
         mostrarNaves(misNaves);
+        System.out.println("--------------------------------------");
+        /* 
         ordenarPorNombreInsercion(misNaves);
         mostrarNaves(misNaves);
         */
@@ -180,7 +186,22 @@ public class DemoBatalla01{
         return minindex;
     }
     //Método que ordena por nombre de A a Z
-    public static void ordenarPorNombreSeleccion(Nave[] flota){
+    public static void ordenarPorNombreSeleccion(Nave[] flota){ //METODO COMPLETADO QUE NOS PERMITE CAMBIAR LAS POSICIONES DE CADA ARREGLO DEPENDIENDO DE LO QUE RETORNE EL METODO indProxMin que sera el indice cual debemos cambiar con el actual
+        for(int i = 0; i < flota.length - 1; i++){
+            int j = indProxMin02(flota, i);
+            Nave temp = flota[i];
+            flota[i] = flota[j];
+            flota[j] = temp;
+        }
+    }
+    public static int indProxMin02(Nave[] flota, int index){ //METODO CREADO QUE NOS AYUDA A BUSCAR EL INDICE DEL OBJETO Y NOS DICE CUAL ES EL PROXIMO MENOR EN TERMINOS DE A HASTA Z APARTIR DEL QUE ESTAMOS Y VA PASANDO POR TODOS LOS ELEMENTOS ASI QUE VA ACTUALIZANDOSE LA VARIABLE MINDEX
+        int minindex = index;
+        for(int i = index + 1; i < flota.length; i++){
+            if(flota[i].getNombre().charAt(0) < flota[minindex].getNombre().charAt(0)){
+                minindex = i;
+            }
+        }
+        return minindex;
     }
     //Método que muestra las naves ordenadas por número de puntos de mayor a menor
     public static void ordenarPorPuntosInsercion(Nave[] flota){
