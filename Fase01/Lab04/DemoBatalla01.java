@@ -3,8 +3,6 @@
 // Colaboro:
 // Tiempo:
 import java.util.*;
-
-import javax.print.attribute.standard.MediaSize.NA;
 public class DemoBatalla01{
     public static void main(String [] args){
         Nave [] misNaves = new Nave [3]; // LE PONEMOS AL ARREGLO UN TAMAÑO DE 2 PARA SU POSTERIOR PRUEBA 
@@ -64,12 +62,10 @@ public class DemoBatalla01{
         ordenarPorPuntosSeleccion(misNaves);
         mostrarNaves(misNaves);
         System.out.println("--------------------------------------");
-        /* 
-        System.out.println("Ordenado por las iniciales de cada nombre de A a la Z mediante el metodo seleccion: ");
+        System.out.println("Ordenado por la cantidad de puntos del mayor al menor mediante el metodo insercion: ");
         ordenarPorPuntosInsercion(misNaves);
         mostrarNaves(misNaves);
         System.out.println("--------------------------------------");
-        */
         System.out.println("Ordenado por las iniciales de cada nombre de A a la Z mediante el metodo seleccion: ");
         ordenarPorNombreSeleccion(misNaves);
         mostrarNaves(misNaves);
@@ -204,7 +200,16 @@ public class DemoBatalla01{
         return minindex;
     }
     //Método que muestra las naves ordenadas por número de puntos de mayor a menor
-    public static void ordenarPorPuntosInsercion(Nave[] flota){
+    public static void ordenarPorPuntosInsercion(Nave[] flota){ //Este metodo ordenarPorPuntosInsercion() consiste en recorrer todo el array comenzando desde el segundo elemento hasta el final. Para cada elemento, se trata de colocarlo en el lugar correcto entre todos los elementos con menor punto anteriores a él y asi por cada uno completando del mayor al menor 
+        for(int i = 1; i < flota.length; i++){
+            Nave temp = flota[i];
+            int j = i - 1;
+            while(j >= 0 && (temp.getPuntos() > flota[j].getPuntos())){
+                flota[j + 1] = flota[j];
+                j--;
+            }
+            flota[j + 1] = temp;
+        }
     }
     //Método que muestra las naves ordenadas por nombre de Z a A
     public static void ordenarPorNombreInsercion(Nave[] flota){
