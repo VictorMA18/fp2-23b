@@ -47,6 +47,8 @@ public class DemoBatalla01{
         int pos = busquedaLinealNombre(misNaves, searchedname);
         if(pos == -1){ //Estructura de control creado para mostrar el mensaje de "Nave no encontrada" debido a que esta comparando con los demas nombres de las otras naves
             System.out.println("Nave no encontrada");
+        }else{
+            System.out.println(misNaves[pos].toString());// En caso de encontrarlo imprimira sus datos de esta nave en caso de no dara mensaja de (Nave no encontrada)
         }
         System.out.println("--------------------------------------");
         System.out.println("Ordenado por la cantidad de puntos del menor al mayor mediante el metodo burbuja: ");
@@ -61,12 +63,12 @@ public class DemoBatalla01{
         System.out.println("Ingrese el nombre para buscar a la nave: ");
         String searchedname01 = sc.next();
         System.out.println("***********************");
-        ordenarPorNombreSeleccion(misNaves);
+        ordenarPorNombreSeleccion(misNaves); //Metodo usado para poder ordenar las palabras y asi que esta pueda ser buscada por la busqueda binaria ya para que esta sirva todos los nombres deben estar ordenados de la A hasta la Z 
         pos=busquedaBinariaNombre(misNaves,searchedname01);
         if(pos == -1){ //Estructura de control creado para mostrar el mensaje de "Nave no encontrada" debido a que esta buscando y comparando con los demas nombres de las otras naves
             System.out.println("Nave no encontrada");
         }else{
-            System.out.println(misNaves[pos].toString());
+            System.out.println(misNaves[pos].toString());// En caso de encontrarlo imprimira sus datos de esta nave en caso de no dara mensaja de (Nave no encontrada)
         }
         System.out.println("--------------------------------------");
         System.out.println("Ordenado por la cantidad de puntos del menor al mayor mediante el metodo seleccion: ");
@@ -81,7 +83,7 @@ public class DemoBatalla01{
         ordenarPorNombreSeleccion(misNaves);
         mostrarNaves(misNaves);
         System.out.println("--------------------------------------");
-        System.out.println("Ordenado por las iniciales de cada nombre de Z a la A mediante el metodo seleccion: ");
+        System.out.println("Ordenado por las iniciales de cada nombre de Z a la A mediante el metodo insercion: ");
         ordenarPorNombreInsercion(misNaves);
         mostrarNaves(misNaves);
     }
@@ -134,16 +136,8 @@ public class DemoBatalla01{
     //Método para buscar la primera nave con un nombre que se pidió por teclado
     public static int busquedaLinealNombre(Nave[] flota, String s){ //METODO CREADO PARA LA BUSQUEDA DE LA PRIMERA NAVE QUE ES IGUAL AL NOMBRE QUE ESCRIBIMOS
         System.out.println("***********************");
-        int count = 0;
         for(int i = 0; i < flota.length; i++){
             if(flota[i].getNombre().equals(s)){
-                count++;
-                if(count > 0){
-                    System.out.println(flota[i].toString());
-                    break;
-                }else{
-                    System.out.println("Nave no encontrada");
-                }
                 return i;
             }
         }
@@ -170,7 +164,7 @@ public class DemoBatalla01{
         }
     }
     //Método para buscar la primera nave con un nombre que se pidió por teclado
-    public static int busquedaBinariaNombre(Nave[] flota, String s){
+    public static int busquedaBinariaNombre(Nave[] flota, String s){ // Metodo completado que nos permite buscar la nave con el nombre ingresado  este funciona en la que ponemos de limites una izquierda y una derecha que son los limites del arreglo y despues este se va reduciendo su limte dependiendo en donde se encuentre nuestra nave desada capaz si esta atras de nuestra mitad esta va reducir su derecha poniendo a esta como la mitad - 1 y si esta adelante de la mitad esta reducira su izquierda poniendo a esta como la mitad + 1 y asi sucesivamente y va a parar cuando si la derecha sea menor a la izquierda y nos dara como resultado que la nave no fue encontrada
         int left = 0;
         int right = flota.length - 1;
         while(left <= right) {
