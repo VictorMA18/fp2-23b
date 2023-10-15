@@ -327,6 +327,23 @@
 			at VideoJuego2.viewboard(VideoJuego2.java:12)
 			at VideoJuego2.main(VideoJuego2.java:27)
 	\end{lstlisting}
+	\subsection{Ejercicio Soldado}
+	\begin{itemize}	
+		\item En el cuarto commit creamos este metodo que nos puede ayudar a identificar casillas nulas para nuestro ejercicio con Videojuego2.java y asi poder imprimirlas 
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Arreglando el nombre de la variable health en la clase soldado "
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		//Anadiendo metodo que nos permita que un arreglo tenga datos nulos si este esta vacio
+		public Soldado(){
+			this.name = "";
+			this.health = 0;
+			this.row = 0;
+			this.column  = "";
+		}
+	\end{lstlisting}
 	\subsection{Estructura de laboratorio 05}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio05 es el siguiente:
