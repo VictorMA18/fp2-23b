@@ -344,6 +344,58 @@
 			this.column  = "";
 		}
 	\end{lstlisting}
+	\subsection{Ejercicio VideoJuego2}
+	\begin{itemize}	
+		\item En el quinto commit modificamos el metodo viewboard() el cual seria de lo que imprime y modificamos la sentencia del if para que cuando un soldado de las casillas no esta vacia el cual dice que tiene datos que verifican esto entonces este retornara un X pero si esta vacia este no imprimira nada y lo dejara vacio la casilla 
+		\item El codigo , el commit y la ejecucion seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Arreglando cosas para que se de la grafica del tableroen esto esta cambiar la condicion para que cuando esta sea null 65265206"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void viewboard(Soldado[][] army){
+			System.out.println("Mostrando tabla de posicion ... --");
+			System.out.println("_________________________________________________________________________________");
+			for(int i = 0; i < army.length; i++ ){
+				   for(int j = 0; j < army[i].length; j++){
+						  if(army[i][j] != null){
+								 System.out.print("|  " + "X" + "  ");
+						  }else{
+								 System.out.print("|\t");
+						  }
+				   }
+				   System.out.println("|");
+				   System.out.println("|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|");
+			}
+	   }
+	\end{lstlisting}
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado: \textcolor{red}{VER EL TEXTO EN LATEX EN LA IMAGEN SE DEFORMA O EJECUTARLO}}][H]
+		Cuantos soldados? 
+		Mostrando tabla de posicion ... -- 
+		_________________________________________________________________________________
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		
+	\end{lstlisting}
+	
 	\subsection{Estructura de laboratorio 05}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio05 es el siguiente:
