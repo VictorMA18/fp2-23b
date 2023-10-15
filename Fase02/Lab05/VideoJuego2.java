@@ -24,7 +24,7 @@ class VideoJuego2 {
        Soldado[][] army= new Soldado[10][10];
        System.out.println("Registrando soldados .......");
        for(int i = 0; i < number; i++){
-              String name = "Soldado" + (i + 1);
+              String name = "Soldado" + (i); //CORREGIMOS EN EL NOMBRE YA QUE ESTE COMNEZABA DESDE EL 0
               int health = rdm.nextInt(5) + 1;
               int row = rdm.nextInt(10) + 1;
               String column = String.valueOf((char)(rdm.nextInt(10) + 65));  
@@ -38,6 +38,24 @@ class VideoJuego2 {
        }
        return army;
   }
+  public static void longerLife(Soldado[][] army){
+       int mayor = 0;
+       Soldado soldier = null;
+       for(int i = 0; i < army.length; i++){
+              for(int j = 0; j < army[i].length; j++){
+                     if(army[i][j] != null){
+                            if(mayor < army[i][j].getHealth()){
+                                   mayor = army[i][j].getHealth();
+                                   soldier = army[i][j];
+                            }
+                     }
+              }
+       }
+       System.out.println("");
+       System.out.print("El primer soldado con mayor vida es: ");
+       System.out.println(soldier.toString());
+       System.out.println("*********************************");
+  }
   public static void main (String args[]){
        Random rdm = new Random();
        System.out.println("Cuantos soldados? ");
@@ -45,5 +63,6 @@ class VideoJuego2 {
        System.out.println(numsoldiers);
        Soldado[][] army = fillarray(numsoldiers);
        viewboard(army);
+       longerLife(army);
   }
 }
