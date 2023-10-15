@@ -6,16 +6,16 @@ import java.util.*;
 class VideoJuego2 {
   public static void viewboard(Soldado[][] army){
        System.out.println("Mostrando tabla de posicion ... --");
-       System.out.println("_____________________________________________________");
+       System.out.println("_________________________________________________________________________________");
        for(int i = 0; i < army.length; i++ ){
               for(int j = 0; j < army[i].length; j++){
-                     if(army[i][j].getHealth() == 0){
+                     if(army[i][j] != null){
                             System.out.print("|  " + "X" + "  ");
                      }else{
                             System.out.print("|\t");
                      }
               }
-              System.out.println("");
+              System.out.println("|");
               System.out.println("|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|");
        }
   }
