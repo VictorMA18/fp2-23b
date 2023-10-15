@@ -444,6 +444,103 @@
 		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
 		F
 	\end{lstlisting}
+	\subsection{Ejercicio VideoJuego2}
+	\begin{itemize}	
+		\item En el septimo commit completamos el metodo fillarray() el cual ya usamos el constructor soldado ya que tendriamos los datos despues de esto comprobariamos si este casillero usado seria algo vacio y se podria llenarlo y si no este retrocederia una iteracion del ciclo ya que se estaria usando uno para preguntar a la ves tambien imprimimos los datos del soldado creado 
+		\item El codigo , el commit y la ejecucion seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Completando el metodo fillarray() para que este pueda imprmir los datos de los soldados que estan en el tablero este te devuelve el array lleno con la cantidad de soldados y texto que dice su informacion de cada soldado Y tambien cumplimos con el cual no se repita un soldado en el mismo casillero ya que al ver que este lleno este retrocedera una repeticion ya que estaria tomando la repeticion en un casillero lleno"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static Soldado[][] fillarray(int number){
+			Random rdm = new Random();
+			Soldado[][] army= new Soldado[10][10];
+			System.out.println("Registrando soldados .......");
+			for(int i = 0; i < number; i++){
+				   String name = "Soldado" + (i); //CORREGIMOS EN EL NOMBRE YA QUE ESTE COMNEZABA DESDE EL 0
+				   int health = rdm.nextInt(5) + 1;
+				   int row = rdm.nextInt(10) + 1;
+				   String column = String.valueOf((char)(rdm.nextInt(10) + 65));  
+				   if(army[row - 1][(int)column.charAt(0) - 65] == null){
+						  System.out.print("*********************************");
+						  army[row - 1][(int)column.charAt(0) - 65] = new Soldado(name, health, row, column);
+						  System.out.println(army[row - 1][(int)column.charAt(0) - 65].toString());
+				   }else{
+						  i -= 1;
+				   }
+			}
+			return army;
+	   }
+	\end{lstlisting}
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado: \textcolor{red}{VER EL TEXTO EN LATEX EN LA IMAGEN SE DEFORMA O EJECUTARLO}}][H]
+		Cuantos soldados? 
+		8
+		Registrando soldados .......
+		*********************************
+		Nombre: Soldado1
+		Vida: 2
+		Fila: 10
+		Columna: D
+		*********************************
+		Nombre: Soldado2
+		Vida: 2
+		Fila: 6
+		Columna: E
+		*********************************
+		Nombre: Soldado3
+		Vida: 5
+		Fila: 5
+		Columna: F
+		*********************************
+		Nombre: Soldado4
+		Vida: 1
+		Fila: 9
+		Columna: I
+		*********************************
+		Nombre: Soldado5
+		Vida: 2
+		Fila: 9
+		Columna: E
+		*********************************
+		Nombre: Soldado6
+		Vida: 4
+		Fila: 2
+		Columna: F
+		*********************************
+		Nombre: Soldado7
+		Vida: 1
+		Fila: 4
+		Columna: H
+		*********************************
+		Nombre: Soldado8
+		Vida: 4
+		Fila: 3
+		Columna: E
+		Mostrando tabla de posicion ... --
+		_________________________________________________________________________________
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |   X   |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |   X   |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |   X   |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |   X   |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |   X   |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |   X   |       |       |       |   X   |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |   X   |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		
+	\end{lstlisting}
 	
 	\subsection{Estructura de laboratorio 05}
 	\begin{itemize}	
