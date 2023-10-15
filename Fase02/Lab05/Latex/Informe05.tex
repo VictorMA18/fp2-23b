@@ -744,7 +744,7 @@
 		El promedio de vida del ejercito es : 2.9
 
 	\end{lstlisting}
-		\subsection{Ejercicio VideoJuego2}
+	\subsection{Ejercicio VideoJuego2}
 	\begin{itemize}	
 		\item En el decimo commit creamos el metodo rankingBurbujaHealth() el cual aplicamos que en un arreglo unidimensional ponemos todos los soldados del arreglo bidimensional para asi poderaplicar efectivamente el metodo burbuja el cual aplicariamos con el atributo health el cual nos dara un ranking que despues se imprimira los resultados del ranking del mayor vida al menor que se imprimiran 
 		\item El codigo , el commit y la ejecucion seria el siguiente:
@@ -894,6 +894,262 @@
 		Vida: 1
 		Fila: 10
 		Columna: E
+		------------------
+		*********************************
+		
+	\end{lstlisting}
+	\subsection{Ejercicio VideoJuego2}
+	\begin{itemize}	
+		\item En el decimoprimer commit creamos el metodo rankingInsercionHealth() el cual aplicamos que en un arreglo unidimensional ponemos todos los soldados del arreglo bidimensional para asi poderaplicar efectivamente el metodo insercion el cual aplicariamos con el atributo health el cual nos dara un ranking debido a la logica usada en este metodo para poder ordenarlo y que despues se imprimira los resultados del ranking del mayor vida al menor que se imprimiran 
+		\item El codigo , el commit y la ejecucion seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creando el metodo rankingInsercionHealth() el cual tambien ordenaria nuestros soldados pero esto ya seria de manera de la forma insercion ya que el anterior fue burbuja en este aplicamos la logica para la insercion al igual que el otro tuvimos que poner a los soldados en un arreglo unidimensional para poder despues ordenarlos y imprimirlos en el debido puesto que deberian estar por su ranking de puntos"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void rankingInsercionHealth(Soldado[][] army, int numsoldiers){
+			Soldado[] soldiers = new Soldado[numsoldiers];
+			int count = 0;
+			for(int i = 0; i < army.length; i++){ //CREAMOS ARREGLO PARA QUE LOS SOLDADOS SE TRASLADEN DE UN ARREGLO BIDIMENSIONAL A UNO DIMENSIONAL PARA APLICAR EL METODO INSERCION
+				   for(int j = 0; j < army[i].length; j++){
+						  if(army[i][j] != null){
+								 soldiers[count] = army[i][j];
+								 count++;
+						  }
+				   }
+			}
+			System.out.println("Ordenando a los soldados por el metodo insercion: "); //APLICAMOS EL METODO INSERCION CON LOS PUNTOS DE VIDA
+			for(int i = 1; i < soldiers.length; i++){
+				   Soldado temp = soldiers[i];
+				   int j = i - 1;
+				   while(j >= 0 && (temp.getHealth() > soldiers[j].getHealth())){
+					   soldiers[j + 1] = soldiers[j];
+					   j--;
+				   }
+				   soldiers[j + 1] = temp;
+			}
+			System.out.println("------------------------------------------");
+			System.out.println("Mostrando Ranking...");
+			for(int i = 0; i < soldiers.length; i++){
+				   System.out.print("\n" + "Puesto " + (i + 1));
+				   System.out.println(soldiers[i].toString());
+				   System.out.println("------------------");
+			}
+			System.out.println("*********************************");
+	   	}
+	\end{lstlisting}
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado: \textcolor{red}{VER EL TEXTO EN LATEX EN LA IMAGEN SE DEFORMA O EJECUTARLO}}][H]
+		Cuantos soldados? 
+		9
+		Registrando soldados .......
+		*********************************
+		Nombre: Soldado0
+		Vida: 3
+		Fila: 1
+		Columna: D
+		*********************************
+		Nombre: Soldado1
+		Vida: 3
+		Fila: 1
+		Columna: B
+		*********************************
+		Nombre: Soldado2
+		Vida: 5
+		Fila: 7
+		Columna: H
+		*********************************
+		Nombre: Soldado3
+		Vida: 3
+		Fila: 6
+		Columna: D
+		*********************************
+		Nombre: Soldado4
+		Vida: 1
+		Fila: 8
+		Columna: H
+		*********************************
+		Nombre: Soldado5
+		Vida: 3
+		Fila: 5
+		Columna: E
+		*********************************
+		Nombre: Soldado6
+		Vida: 1
+		Fila: 1
+		Columna: E
+		*********************************
+		Nombre: Soldado7
+		Vida: 1
+		Fila: 8
+		Columna: G
+		*********************************
+		Nombre: Soldado8
+		Vida: 2
+		Fila: 2
+		Columna: H
+		Mostrando tabla de posicion ... --
+		_________________________________________________________________________________
+		|       |   X   |       |   X   |   X   |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |   X   |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |   X   |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |   X   |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |   X   |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |   X   |   X   |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+
+		El primer soldado con mayor vida es: 
+		Nombre: Soldado2
+		Vida: 5
+		Fila: 7
+		Columna: H
+		*********************************
+		El promedio de vida del ejercito es : 2.4444444444444446
+		*********************************
+		Ordenando a los soldados por el metodo burbuja: 
+		------------------------------------------
+		Mostrando Ranking...
+
+		Puesto 1
+		Nombre: Soldado2
+		Vida: 5
+		Fila: 7
+		Columna: H
+		------------------
+
+		Puesto 2
+		Nombre: Soldado1
+		Vida: 3
+		Fila: 1
+		Columna: B
+		------------------
+
+		Puesto 3
+		Nombre: Soldado0
+		Vida: 3
+		Fila: 1
+		Columna: D
+		------------------
+
+		Puesto 4
+		Nombre: Soldado5
+		Vida: 3
+		Fila: 5
+		Columna: E
+		------------------
+
+		Puesto 5
+		Nombre: Soldado3
+		Vida: 3
+		Fila: 6
+		Columna: D
+		------------------
+
+		Puesto 6
+		Nombre: Soldado8
+		Vida: 2
+		Fila: 2
+		Columna: H
+		------------------
+
+		Puesto 7
+		Nombre: Soldado6
+		Vida: 1
+		Fila: 1
+		Columna: E
+		------------------
+
+		Puesto 8
+		Nombre: Soldado7
+		Vida: 1
+		Fila: 8
+		Columna: G
+		------------------
+
+		Puesto 9
+		Nombre: Soldado4
+		Vida: 1
+		Fila: 8
+		Columna: H
+		------------------
+		*********************************
+		Ordenando a los soldados por el metodo insercion: 
+		------------------------------------------
+		Mostrando Ranking...
+
+		Puesto 1
+		Nombre: Soldado2
+		Vida: 5
+		Fila: 7
+		Columna: H
+		------------------
+
+		Puesto 2
+		Nombre: Soldado1
+		Vida: 3
+		Fila: 1
+		Columna: B
+		------------------
+
+		Puesto 3
+		Nombre: Soldado0
+		Vida: 3
+		Fila: 1
+		Columna: D
+		------------------
+
+		Puesto 4
+		Nombre: Soldado5
+		Vida: 3
+		Fila: 5
+		Columna: E
+		------------------
+
+		Puesto 5
+		Nombre: Soldado3
+		Vida: 3
+		Fila: 6
+		Columna: D
+		------------------
+
+		Puesto 6
+		Nombre: Soldado8
+		Vida: 2
+		Fila: 2
+		Columna: H
+		------------------
+
+		Puesto 7
+		Nombre: Soldado6
+		Vida: 1
+		Fila: 1
+		Columna: E
+		------------------
+
+		Puesto 8
+		Nombre: Soldado7
+		Vida: 1
+		Fila: 8
+		Columna: G
+		------------------
+
+		Puesto 9
+		Nombre: Soldado4
+		Vida: 1
+		Fila: 8
+		Columna: H
 		------------------
 		*********************************
 		
