@@ -539,6 +539,99 @@
 		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
 		|       |       |       |   X   |       |       |       |       |       |       |
 		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+
+	\end{lstlisting}
+	\subsection{Ejercicio VideoJuego2}
+	\begin{itemize}	
+		\item En el octavo commit creamos el metodo longerLife() el cual este nos permite a dar la informacion del soldado con mayor vida del ejercito el cual comparamos con otros soldados que esten en este ejercito y dependiendo de eso va a recoger informacion del soldado con mayor vida y lo guarda en soldier el cual sera imprimido despues.
+		\item El codigo , el commit y la ejecucion seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creamos el metodo longerLife() el cual nos imprimira el dato del soldado con mayor vida dependiendo de los que esten en el ejercito que va comparando con los demas para ver quien es el mayor de todos"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void longerLife(Soldado[][] army){
+			int mayor = 0;
+			Soldado soldier = null;
+			for(int i = 0; i < army.length; i++){
+				   for(int j = 0; j < army[i].length; j++){
+						  if(army[i][j] != null){
+								 if(mayor < army[i][j].getHealth()){
+										mayor = army[i][j].getHealth();
+										soldier = army[i][j];
+								 }
+						  }
+				   }
+			}
+			System.out.println("");
+			System.out.print("El primer soldado con mayor vida es: ");
+			System.out.println(soldier.toString());
+			System.out.println("*********************************");
+	   	}
+	\end{lstlisting}
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado: \textcolor{red}{VER EL TEXTO EN LATEX EN LA IMAGEN SE DEFORMA O EJECUTARLO}}][H]
+		Cuantos soldados? 
+		6
+		Registrando soldados .......
+		*********************************
+		Nombre: Soldado0
+		Vida: 1
+		Fila: 9
+		Columna: C
+		*********************************
+		Nombre: Soldado1
+		Vida: 3
+		Fila: 10
+		Columna: E
+		*********************************
+		Nombre: Soldado2
+		Vida: 2
+		Fila: 4
+		Columna: I
+		*********************************
+		Nombre: Soldado3
+		Vida: 3
+		Fila: 7
+		Columna: F
+		*********************************
+		Nombre: Soldado4
+		Vida: 3
+		Fila: 8
+		Columna: H
+		*********************************
+		Nombre: Soldado5
+		Vida: 2
+		Fila: 1
+		Columna: G
+		Mostrando tabla de posicion ... --
+		_________________________________________________________________________________
+		|       |       |       |       |       |       |   X   |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |   X   |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |   X   |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |   X   |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |   X   |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |   X   |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		
+		El primer soldado con mayor vida es: 
+		Nombre: Soldado3
+		Vida: 3
+		Fila: 7
+		Columna: F
+		*********************************
 		
 	\end{lstlisting}
 	
