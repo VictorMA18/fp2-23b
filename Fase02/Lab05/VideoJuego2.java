@@ -102,6 +102,36 @@ class VideoJuego2 {
        }
        System.out.println("*********************************");
   } 
+  public static void rankingInsercionHealth(Soldado[][] army, int numsoldiers){
+       Soldado[] soldiers = new Soldado[numsoldiers];
+       int count = 0;
+       for(int i = 0; i < army.length; i++){ //CREAMOS ARREGLO PARA QUE LOS SOLDADOS SE TRASLADEN DE UN ARREGLO BIDIMENSIONAL A UNO DIMENSIONAL PARA APLICAR EL METODO INSERCION
+              for(int j = 0; j < army[i].length; j++){
+                     if(army[i][j] != null){
+                            soldiers[count] = army[i][j];
+                            count++;
+                     }
+              }
+       }
+       System.out.println("Ordenando a los soldados por el metodo insercion: "); //APLICAMOS EL METODO INSERCION CON LOS PUNTOS DE VIDA
+       for(int i = 1; i < soldiers.length; i++){
+              Soldado temp = soldiers[i];
+              int j = i - 1;
+              while(j >= 0 && (temp.getHealth() > soldiers[j].getHealth())){
+                  soldiers[j + 1] = soldiers[j];
+                  j--;
+              }
+              soldiers[j + 1] = temp;
+       }
+       System.out.println("------------------------------------------");
+       System.out.println("Mostrando Ranking...");
+       for(int i = 0; i < soldiers.length; i++){
+              System.out.print("\n" + "Puesto " + (i + 1));
+              System.out.println(soldiers[i].toString());
+              System.out.println("------------------");
+       }
+       System.out.println("*********************************");
+  }
   public static void main (String args[]){
        Random rdm = new Random();
        System.out.println("Cuantos soldados? ");
@@ -112,6 +142,7 @@ class VideoJuego2 {
        viewboard(army);
        longerLife(army);
        averageLife(army);
-       rankingBurbujaHealth(armyfortheRanking, numsoldiers);
+       rankingBurbujaHealth(army, numsoldiers);
+       rankingInsercionHealth(armyfortheRanking, numsoldiers);
   }
 }
