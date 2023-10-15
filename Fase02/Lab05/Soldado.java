@@ -5,7 +5,7 @@
 public class Soldado { //CREAMOS LA CLASE SOLDODADO PARA PODER USAR UN ARREGLO BIDIMENSIONAL DONDE NECESITAMOS LA VIDA , EL NOMBRE DEL SOLDADO Y TAMBIEN SU POSICION COMO LA FILA Y LA COLUMNA   
 
     private String name;
-    private int heatlh; 
+    private int health;
     private int row;
     private String column;
 
@@ -22,7 +22,7 @@ public class Soldado { //CREAMOS LA CLASE SOLDODADO PARA PODER USAR UN ARREGLO B
         name = n;
     }
     public void setHealth(int p){
-        heatlh = p;
+        health = p;
     }
     public void setRow(int b){
         row = b;
@@ -36,7 +36,7 @@ public class Soldado { //CREAMOS LA CLASE SOLDODADO PARA PODER USAR UN ARREGLO B
         return name;
     }
     public int getHealth(){
-        return heatlh;
+        return health;
 
     }
     public int getRow(){
