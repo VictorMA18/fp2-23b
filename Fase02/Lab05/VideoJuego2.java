@@ -56,6 +56,20 @@ class VideoJuego2 {
        System.out.println(soldier.toString());
        System.out.println("*********************************");
   }
+  public static void averageLife(Soldado[][] army){
+       int sum = 0;
+       int cont = 0;
+       for(int i = 0; i < army.length; i++){
+              for(int j = 0; j < army.length; j++){
+                     if(army[i][j] != null){
+                            sum += army[i][j].getHealth();
+                            cont++;
+                     }
+              }
+       }
+       double avg = sum / (cont * 1.0);
+       System.out.println("El promedio de vida del ejercito es : " + avg);
+  }
   public static void main (String args[]){
        Random rdm = new Random();
        System.out.println("Cuantos soldados? ");
@@ -64,5 +78,6 @@ class VideoJuego2 {
        Soldado[][] army = fillarray(numsoldiers);
        viewboard(army);
        longerLife(army);
+       averageLife(army);
   }
 }
