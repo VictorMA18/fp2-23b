@@ -9,6 +9,14 @@ public class Soldado { //CREAMOS LA CLASE SOLDODADO PARA PODER USAR UN ARREGLO B
     private int row;
     private String column;
 
+    //Añadiendo metodo que nos permita que un arreglo tenga datos nulos si este esta vacio
+    public Soldado(){
+        this.name = "";
+        this.health = 0;
+        this.row = 0;
+        this.column  = "";
+    }
+
     //Constructor
     public Soldado(String name, int health, int row, String column){
       this.name = name;
