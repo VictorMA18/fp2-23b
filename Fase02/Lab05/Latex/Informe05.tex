@@ -281,6 +281,52 @@
 	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
 		private int health;
 	\end{lstlisting}
+	\subsection{Ejercicio VideoJuego2}
+	\begin{itemize}	
+		\item En el tercer commit creamos el metodo viewboard el cual nos permite dar con el tablero de manera grafica y si habria un soldado dentro de una de estas casillas se marcara con una X y si no dejara vacio 
+		\item El codigo , el commit y la ejecucion seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Probando Metodo creado para poder ver el tablero para los soldados el cual si habria un soldado este se marcara con una X"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		// Laboratorio Nro 5  - Ejercicio Videojuego2
+		// Autor: Mamani Anahua Victor Narciso
+		// Colaboro:
+		// Tiempo:
+		import java.util.*;
+		class VideoJuego2 {
+			public static void viewboard(Soldado[][] army){
+				System.out.println("Mostrando tabla de posicion ... --");
+				System.out.println("_____________________________________________________");
+				for(int i = 0; i < army.length; i++ ){
+						for(int j = 0; j < army[i].length; j++){
+								if(army[i][j].getHealth() == 0){
+										System.out.print("|  " + "X" + "  ");
+								}else{
+										System.out.print("|\t");
+								}
+						}
+						System.out.println("");
+						System.out.println("|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|");
+				}
+			}
+			public static void main (String args[]){
+				Random rdm = new Random();
+				System.out.println("Cuantos soldados? ");
+				int numsoldiers = rdm.nextInt(10) + 1;
+				Soldado[][] army = new Soldado[10][10];
+				viewboard(army);
+			}
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		Mostrando tabla de posicion ... --
+		_____________________________________________________
+		Exception in thread "main" java.lang.NullPointerException: Cannot invoke "Soldado.getHealth()" because "<parameter1>[<local1>][<local2>]" is null
+			at VideoJuego2.viewboard(VideoJuego2.java:12)
+			at VideoJuego2.main(VideoJuego2.java:27)
+	\end{lstlisting}
 	\subsection{Estructura de laboratorio 05}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio05 es el siguiente:
