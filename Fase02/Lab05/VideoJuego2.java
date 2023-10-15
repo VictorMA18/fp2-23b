@@ -69,15 +69,49 @@ class VideoJuego2 {
        }
        double avg = sum / (cont * 1.0);
        System.out.println("El promedio de vida del ejercito es : " + avg);
+       System.out.println("*********************************"); // AGREGANDOLO PARA HACER EL SIGUIENTE METODO Y SEPARARLOS
   }
+  public static void rankingBurbujaHealth(Soldado[][] army, int numsoldiers){
+       Soldado[] soldiers = new Soldado[numsoldiers];
+       int count = 0;
+       Soldado soldier = null;
+       for(int i = 0; i < army.length; i++){ //CREAMOS ARREGLO PARA QUE LOS SOLDADOS SE TRASLADEN DE UN ARREGLO BIDIMENSIONAL A UNO DIMENSIONAL PARA APLICAR EL METODO BURBUJA
+              for(int j = 0; j < army[i].length; j++){
+                     if(army[i][j] != null){
+                            soldiers[count] = army[i][j];
+                            count++;
+                     }
+              }
+       }
+       System.out.println("Ordenando a los soldados por el metodo burbuja: "); //APLICAMOS EL METODO BURBUJA CON LOS PUNTOS DE VIDA
+       for(int i = 0; i < numsoldiers - 1; i++){
+              for(int j = 0; j < numsoldiers - i - 1; j++){
+                     if(soldiers[j].getHealth() < soldiers[j + 1].getHealth()){
+                            soldier = soldiers[j];
+                            soldiers[j] = soldiers[j + 1];
+                            soldiers[j + 1] = soldier;
+                     }
+              }      
+       }
+       System.out.println("------------------------------------------");
+       System.out.println("Mostrando Ranking...");
+       for(int i = 0; i < soldiers.length; i++){
+              System.out.print("\n" + "Puesto " + (i + 1));
+              System.out.println(soldiers[i].toString());
+              System.out.println("------------------");
+       }
+       System.out.println("*********************************");
+  } 
   public static void main (String args[]){
        Random rdm = new Random();
        System.out.println("Cuantos soldados? ");
        int numsoldiers = rdm.nextInt(10) + 1;
        System.out.println(numsoldiers);
        Soldado[][] army = fillarray(numsoldiers);
+       Soldado[][] armyfortheRanking = army;
        viewboard(army);
        longerLife(army);
        averageLife(army);
+       rankingBurbujaHealth(armyfortheRanking, numsoldiers);
   }
 }
