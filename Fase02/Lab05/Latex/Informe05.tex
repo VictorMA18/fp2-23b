@@ -395,6 +395,55 @@
 		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
 		
 	\end{lstlisting}
+	\subsection{Ejercicio VideoJuego2}
+	\begin{itemize}	
+		\item En el SEXTO commit creamos el metodo fillarray() el cual queremos rellenar el array de soldados para poder verlos en el tablero a la ves su informacion en este commit se prodro un resultado el cual seria de la columna y el resultado de esta con una imprimicion ya que no estaria seguro de su resultado
+		\item El codigo , el commit y la ejecucion seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Anadiendo el metodo fillarray() el cual va a llenar nuestro arreglo de soldados para eso necesitabamos su nombre su vida su fila y su columna la cual yo quiero probar la cilumna lo que imprime para que compruebe que este saliendo lo esperado un letra la cual nos de su posicion"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static Soldado[][] fillarray(int number){
+			Random rdm = new Random();
+			Soldado[][] army= new Soldado[10][10];
+			for(int i = 0; i < number; i++){
+				   String name = "Soldado" + (i + 1);
+				   int health = rdm.nextInt(5) + 1;
+				   int row = rdm.nextInt(10) + 1;
+				   String column = String.valueOf((char)(rdm.nextInt(10) + 65));  
+				   System.out.println(column);    
+			}
+			return null;
+	   }
+	\end{lstlisting}
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado: \textcolor{red}{VER EL TEXTO EN LATEX EN LA IMAGEN SE DEFORMA O EJECUTARLO}}][H]
+		Cuantos soldados? 
+		1
+		Mostrando tabla de posicion ... --
+		_________________________________________________________________________________
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		|       |       |       |       |       |       |       |       |       |       |
+		|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		F
+	\end{lstlisting}
 	
 	\subsection{Estructura de laboratorio 05}
 	\begin{itemize}	
