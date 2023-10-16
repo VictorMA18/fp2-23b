@@ -488,6 +488,131 @@
 		*********************************
 	\end{lstlisting}
 	\subsection{Estructura de laboratorio 06}
+	\subsection{Ejercicio VideoJuego3}
+	\begin{itemize}	
+		\item En el cuarto commit realizamos el metodo longerLife() el cual nos permitira conocer del soldado de cada ejercito con mayor puntos de vida para esto hacemos una comprobacion con cada uno de estos para poder despues compararlos eny despues de tener el soldado con mayor puntos de vida se imprimira sus datos para ver de quien se trata y a que ejercito
+		\item El codigo , el commit  y la ejecución seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m " Creamos el metodo longerLife() el cual nos permitira conocer del soldado de cada ejercito con mayor puntos de vida para esto hacemos una comprobacion con cada uno de estos para poder despues compararlos eny despues de tener el soldado con mayor puntos de vida se imprimira sus datos para ver de quien se trata y a que ejercito
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void longerLife(ArrayList<ArrayList<Soldado>> army, int num){
+			System.out.println("El soldado con mayor vida del Ejercito " + num + " es: "); //METODO CREADO PARA PODER PERMITIRNOS A CONOCER EL SOLDADO CON MAYOR VIDA DE CADA EJERCITO 
+			int mayor = 0;
+			Soldado soldier = null;
+			for(int i = 0; i < army.size(); i++){
+				for(int j = 0; j < army.get(i).size(); j++){
+					if(army.get(i).get(j) != null){ //COMPROBACION QUE HACEMOS PARA PODER DECIR QUE EL CASILLERO DONDE ESTAMOS ES UN SOLDADO QUE EXISTE
+						if(army.get(i).get(j).getHealth() > mayor){ //COMPARAMOS PUNTOS DE VIDA DE CADA SOLDADO PARA VER QUIEN ES EL MAYOR 
+							mayor = army.get(i).get(j).getHealth();
+							soldier = army.get(i).get(j);
+						}
+					}
+				}
+			}
+			System.out.println(soldier.toString());//IMPRIMIMOS SUS DATOS PARA PODER VER DE QUE SOLDADO SE TRATA 
+			System.out.println("*********************************");
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={La ejecución: \textcolor{red}{PARA PODER VER LA TABLA COMPLETAMENTE MIRAR LA PLANTILLA DE LATEX O EJECUTARLO: }}][H]
+		El Ejercito 1 tiene 4 soldados : 
+
+		Registrando al 1 soldado del Ejercito 1
+		Nombre: Soldado0X1
+		Vida: 5
+		Fila: 1
+		Columna: I
+		---------------------------------
+		Registrando al 2 soldado del Ejercito 1
+		Nombre: Soldado1X1
+		Vida: 1
+		Fila: 7
+		Columna: A
+		---------------------------------
+		Registrando al 3 soldado del Ejercito 1
+		Nombre: Soldado2X1
+		Vida: 4
+		Fila: 1
+		Columna: E
+		---------------------------------
+		Registrando al 4 soldado del Ejercito 1
+		Nombre: Soldado3X1
+		Vida: 5
+		Fila: 6
+		Columna: H
+		---------------------------------
+		*********************************
+		El Ejercito 2 tiene 4 soldados : 
+		
+		Registrando al 1 soldado del Ejercito 2
+		Nombre: Soldado0X2
+		Vida: 4
+		Fila: 5
+		Columna: A
+		---------------------------------
+		Registrando al 2 soldado del Ejercito 2
+		Nombre: Soldado1X2
+		Vida: 2
+		Fila: 5
+		Columna: G
+		---------------------------------
+		Registrando al 3 soldado del Ejercito 2
+		Nombre: Soldado2X2
+		Vida: 3
+		Fila: 1
+		Columna: A
+		---------------------------------
+		Registrando al 4 soldado del Ejercito 2
+		Nombre: Soldado3X2
+		Vida: 3
+		Fila: 10
+		Columna: J
+		---------------------------------
+		*********************************
+		Mostrando tabla de posicion ... --
+		Leyenda: Ejercito1 --> X | Ejercito2 --> Y
+		
+				   A       B       C       D       E       F       G       H       I       J
+				_________________________________________________________________________________
+		1       |   Y   |       |       |       |   X   |       |       |       |   X   |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		2       |       |       |       |       |       |       |       |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		3       |       |       |       |       |       |       |       |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		4       |       |       |       |       |       |       |       |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		5       |   Y   |       |       |       |       |       |   Y   |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		6       |       |       |       |       |       |       |       |   X   |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		7       |   X   |       |       |       |       |       |       |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		8       |       |       |       |       |       |       |       |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		9       |       |       |       |       |       |       |       |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		10      |       |       |       |       |       |       |       |       |       |   Y   |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		
+		*********************************
+		El soldado con mayor vida del Ejercito 1 es: 
+		
+		Nombre: Soldado0X1
+		Vida: 5
+		Fila: 1
+		Columna: I
+		*********************************
+		El soldado con mayor vida del Ejercito 2 es: 
+		
+		Nombre: Soldado0X2
+		Vida: 4
+		Fila: 5
+		Columna: A
+		*********************************
+	\end{lstlisting}
+	\subsection{Estructura de laboratorio 06}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio06 es el siguiente:
 	\end{itemize}
