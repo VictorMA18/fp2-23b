@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1697354332 "/home/user/fp2-23b/Fase02/Lab05/Latex/Informe05.tex" "Informe05.pdf" "Informe05" 1697354332
+["pdflatex"] 1697492835 "/home/user/fp2-23b/Fase02/Lab05/Latex/Informe05.tex" "Informe05.pdf" "Informe05" 1697492835
   "/etc/texmf/web2c/texmf.cnf" 1695244730 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/user/fp2-23b/Fase02/Lab05/Latex/Informe05.tex" 1697354330 61770 a88a6f13e4e4ff9b09855b1d3a265fc5 ""
+  "/home/user/fp2-23b/Fase02/Lab05/Latex/Informe05.tex" 1697492833 61770 b8488fdb0ec46ed6101d8234267a9791 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tctt0900.tfm" 1136768653 1536 bda3e6bf9784a4cc572c754e0c3eeb00 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
@@ -123,9 +123,9 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1695244742 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1695244760 2802157 836bcf8882c264bca8c914dc83bfb65d ""
-  "Informe05.aux" 1697354332 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "Informe05.aux" 1697492835 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
   "Informe05.out" 0 -1 0 "pdflatex"
-  "Informe05.tex" 1697354330 61770 a88a6f13e4e4ff9b09855b1d3a265fc5 ""
+  "Informe05.tex" 1697492833 61770 b8488fdb0ec46ed6101d8234267a9791 ""
   "img/logo_abet.png" 1697322427 6307 66ff7f82180b3b29c348bdae974447b6 ""
   "img/logo_episunsa.png" 1697322427 6815 7da1fe7727dad63b523d0fbca337594d ""
   (generated)
