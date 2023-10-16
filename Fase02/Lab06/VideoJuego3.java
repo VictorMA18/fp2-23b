@@ -34,8 +34,30 @@ class VideoJuego3{
         System.out.println("*********************************");
         return army;
     }
+    public static void viewBoard(ArrayList<ArrayList<Soldado>> army1, ArrayList<ArrayList<Soldado>> army2){ //EN ESTE METODO NOS AYUDAMOS DEL ANTERIOR ARCHIVO YA QUE TENDRIAMOS UNA BASE PARA PODER CREARLO
+        System.out.println("Mostrando tabla de posicion ... --");
+        System.out.println("Leyenda: Ejercito1 --> X | Ejercito2 --> Y"); //RECONOCIMIENTO PARA LOS EJERCITOS Y POSICION DE SUS SOLDADOS
+        System.out.println("\n \t   A\t   B\t   C\t   D\t   E\t   F\t   G\t   H\t   I\t   J"); // RECONOCIMIENTO PARA CADA UBICACION DE CADA SOLDADO EN EL TABLERO POR PARTE DE LAS COLUMNAS
+        System.out.println("\t_________________________________________________________________________________");
+        for(int i = 0; i < army1.size(); i++ ){
+            System.out.print((i + 1) + "\t"); // RECONOCIMIENTO PARA CADA UBICACION DE CADA SOLDADO EN EL TABLERO POR PARTE DE LAS FILAS
+                for(int j = 0; j < army1.get(i).size(); j++){
+                        if(army1.get(i).get(j) != null){
+                            System.out.print("|   " + "X" + "   "); //VERIFICANDOLA POSICIONES DE CADA SOLDADO DE CADA EJERCITO CON SU RESPECTIVO INDICADOR PARA PODER UBICARLOS
+                        }else if(army2.get(i).get(j) != null){
+                            System.out.print("|   " + "Y" + "   ");
+                        }else{
+                            System.out.print("|       ");
+                        }
+                }
+                System.out.println("|");
+                System.out.println("\t|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|");
+        }
+        System.out.println("\n*********************************");
+    }
     public static void main(String args[]){
         ArrayList<ArrayList<Soldado>> army1 = fillregisterSoldiers(1);
         ArrayList<ArrayList<Soldado>> army2 = fillregisterSoldiers(2);
+        viewBoard(army1, army2);
     }
 }
