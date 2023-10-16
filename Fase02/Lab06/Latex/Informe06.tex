@@ -612,6 +612,183 @@
 		Columna: A
 		*********************************
 	\end{lstlisting}
+	\subsection{Ejercicio VideoJuego3}
+	\begin{itemize}	
+		\item En el quinto commit realizamos el metodo averageLife() el cual nos permite dar a conocer el promedio de vida de cada ejercito para esto debemos contar la cantidad de soldados de cada ejercito y juntar la vida de cada soldado para despues poder dividirlo con la cantidad de soldados el cual seria el promedio de vida para eso vemos la verificacion de cada casilla sea un soldado no nulo para poder recolectando sus puntos de vida y la cantidad de soldados que hay en cada ejercito
+		\item El codigo , el commit  y la ejecución seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creamos el metodo averageLife() el cual nos permite dar a conocer el promedio de vida de cada ejercito para esto debemos contar la cantidad de soldados de cada ejercito y juntar la vida de cada soldado para despues poder dividirlo con la cantidad de soldados el cual seria el promedio de vida para eso vemos la verificacion de cada casilla sea un soldado no nulo para poder recolectando sus puntos de vida y la cantidad de soldados que hay en cada ejercito
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void averageLife(ArrayList<ArrayList<Soldado>> army, int num){
+			int sum = 0;
+			int count = 0;
+			System.out.println("El promedio de puntos de vida del Ejercito " + num + " es: "); //METODO CREADO QUE NOS PERMITE DAR A CONOCER EL PROMEDIO DE VIDA DE CADA EJERCITO
+			for(int i = 0; i < army.size(); i++){
+				for(int j = 0; j < army.get(i).size(); j++){
+					if(army.get(i).get(j) != null){ //VERIFICAMOS QUE EL SOLDADO DE CADA CASILLA SEA NO NULO 
+						sum += army.get(i).get(j).getHealth(); //JUNTAMOS LOS VALORES DE VIDA DE CADA SOLDADO DE CADA EJERCITO 
+						count++; //CONTAMOS CANTIDAD DE SOLDADOS DE CADA EJERCITO PARA DESPUES PODER DIVIDIRLO CON LA SUMA DE VIDA DE CADA EJERCITO
+					}
+				}
+			}
+			double avg = sum / (count * 1.0);
+			System.out.println(avg); // DAMOS A CONOCER EL PROMEDIO DE VIDA DE CADA EJERCITO 
+			System.out.println("*********************************");
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={La ejecución: \textcolor{red}{PARA PODER VER LA TABLA COMPLETAMENTE MIRAR LA PLANTILLA DE LATEX O EJECUTARLO: }}][H]
+		El Ejercito 1 tiene 6 soldados : 
+
+		Registrando al 1 soldado del Ejercito 1
+		Nombre: Soldado0X1
+		Vida: 3
+		Fila: 5
+		Columna: E
+		---------------------------------
+		Registrando al 2 soldado del Ejercito 1
+		Nombre: Soldado1X1
+		Vida: 3
+		Fila: 4
+		Columna: A
+		---------------------------------
+		Registrando al 3 soldado del Ejercito 1
+		Nombre: Soldado2X1
+		Vida: 2
+		Fila: 1
+		Columna: H
+		---------------------------------
+		Registrando al 4 soldado del Ejercito 1
+		Nombre: Soldado3X1
+		Vida: 2
+		Fila: 7
+		Columna: J
+		---------------------------------
+		Registrando al 5 soldado del Ejercito 1
+		Nombre: Soldado4X1
+		Vida: 4
+		Fila: 1
+		Columna: E
+		---------------------------------
+		Registrando al 6 soldado del Ejercito 1
+		Nombre: Soldado5X1
+		Vida: 1
+		Fila: 1
+		Columna: A
+		---------------------------------
+		*********************************
+		El Ejercito 2 tiene 10 soldados : 
+		
+		Registrando al 1 soldado del Ejercito 2
+		Nombre: Soldado0X2
+		Vida: 2
+		Fila: 7
+		Columna: A
+		---------------------------------
+		Registrando al 2 soldado del Ejercito 2
+		Nombre: Soldado1X2
+		Vida: 2
+		Fila: 6
+		Columna: B
+		---------------------------------
+		Registrando al 3 soldado del Ejercito 2
+		Nombre: Soldado2X2
+		Vida: 3
+		Fila: 2
+		Columna: D
+		---------------------------------
+		Registrando al 4 soldado del Ejercito 2
+		Nombre: Soldado3X2
+		Vida: 5
+		Fila: 6
+		Columna: E
+		---------------------------------
+		Registrando al 5 soldado del Ejercito 2
+		Nombre: Soldado4X2
+		Vida: 3
+		Fila: 10
+		Columna: H
+		---------------------------------
+		Registrando al 6 soldado del Ejercito 2
+		Nombre: Soldado5X2
+		Vida: 3
+		Fila: 8
+		Columna: G
+		---------------------------------
+		Registrando al 7 soldado del Ejercito 2
+		Nombre: Soldado6X2
+		Vida: 3
+		Fila: 10
+		Columna: E
+		---------------------------------
+		Registrando al 8 soldado del Ejercito 2
+		Nombre: Soldado7X2
+		Vida: 3
+		Fila: 10
+		Columna: A
+		---------------------------------
+		Registrando al 9 soldado del Ejercito 2
+		Nombre: Soldado8X2
+		Vida: 5
+		Fila: 3
+		Columna: J
+		---------------------------------
+		Registrando al 10 soldado del Ejercito 2
+		Nombre: Soldado9X2
+		Vida: 3
+		Fila: 4
+		Columna: F
+		---------------------------------
+		*********************************
+		Mostrando tabla de posicion ... --
+		Leyenda: Ejercito1 --> X | Ejercito2 --> Y
+		
+				   A       B       C       D       E       F       G       H       I       J
+				_________________________________________________________________________________
+		1       |   X   |       |       |       |   X   |       |       |   X   |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		2       |       |       |       |   Y   |       |       |       |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		3       |       |       |       |       |       |       |       |       |       |   Y   |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		4       |   X   |       |       |       |       |   Y   |       |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		5       |       |       |       |       |   X   |       |       |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		6       |       |   Y   |       |       |   Y   |       |       |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		7       |   Y   |       |       |       |       |       |       |       |       |   X   |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		8       |       |       |       |       |       |       |   Y   |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		9       |       |       |       |       |       |       |       |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		10      |   Y   |       |       |       |   Y   |       |       |   Y   |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		
+		*********************************
+		El soldado con mayor vida del Ejercito 1 es: 
+		
+		Nombre: Soldado4X1
+		Vida: 4
+		Fila: 1
+		Columna: E
+		*********************************
+		El soldado con mayor vida del Ejercito 2 es: 
+		
+		Nombre: Soldado8X2
+		Vida: 5
+		Fila: 3
+		Columna: J
+		*********************************
+		El promedio de puntos de vida del Ejercito 1 es: 
+		2.5
+		*********************************
+		El promedio de puntos de vida del Ejercito 2 es: 
+		3.2
+		*********************************
+	\end{lstlisting}
 	\subsection{Estructura de laboratorio 06}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio06 es el siguiente:
