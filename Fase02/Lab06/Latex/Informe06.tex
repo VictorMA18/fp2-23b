@@ -385,6 +385,108 @@
 		---------------------------------
 		*********************************
 	\end{lstlisting}
+	\subsection{Ejercicio VideoJuego3}
+	\begin{itemize}	
+		\item En el tercer commit realizamos el metodo viewBoard() el cual nos dejaria permitir visualizar la tabla junto a su leyenda , con los soldados de cada ejercito su posicion la cual del ejercito 1 seria una x y el ejercito 2 seria una y en este tambien aplicamos para cada casilla la cual no sea nula poner una x para el ejercito 1 y en caso contrario debria ser del ejercito 2 el cual seria una y y si tambien seria en caso contrario seria nulo
+		\item El codigo , el commit  y la ejecución seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creamos el metodo viewBoard() el cual nos dejaria permitir visualizar la tabla con los soldados de cada ejercito su posicion la cual del ejercito 1 seria una x y el ejercito 2 seria una y en este tambien aplicamos para cada casilla la cual no sea nula poner una x para el ejercito 1 y en caso contrario debria ser del ejercito 2 el cual seria una y y si tambien seria en caso contrario seria nulo
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void viewBoard(ArrayList<ArrayList<Soldado>> army1, ArrayList<ArrayList<Soldado>> army2){ //EN ESTE METODO NOS AYUDAMOS DEL ANTERIOR ARCHIVO YA QUE TENDRIAMOS UNA BASE PARA PODER CREARLO
+			System.out.println("Mostrando tabla de posicion ... --");
+			System.out.println("Leyenda: Ejercito1 --> X | Ejercito2 --> Y"); //RECONOCIMIENTO PARA LOS EJERCITOS Y POSICION DE SUS SOLDADOS
+			System.out.println("\n \t   A\t   B\t   C\t   D\t   E\t   F\t   G\t   H\t   I\t   J"); // RECONOCIMIENTO PARA CADA UBICACION DE CADA SOLDADO EN EL TABLERO POR PARTE DE LAS COLUMNAS
+			System.out.println("\t_________________________________________________________________________________");
+			for(int i = 0; i < army1.size(); i++ ){
+				System.out.print((i + 1) + "\t"); // RECONOCIMIENTO PARA CADA UBICACION DE CADA SOLDADO EN EL TABLERO POR PARTE DE LAS FILAS
+					for(int j = 0; j < army1.get(i).size(); j++){
+							if(army1.get(i).get(j) != null){
+								System.out.print("|   " + "X" + "   "); //VERIFICANDOLA POSICIONES DE CADA SOLDADO DE CADA EJERCITO CON SU RESPECTIVO INDICADOR PARA PODER UBICARLOS
+							}else if(army2.get(i).get(j) != null){
+								System.out.print("|   " + "Y" + "   ");
+							}else{
+								System.out.print("|       ");
+							}
+					}
+					System.out.println("|");
+					System.out.println("\t|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|");
+			}
+			System.out.println("\n*********************************");
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={La ejecución: \textcolor{red}{PARA PODER VER LA TABLA COMPLETAMENTE MIRAR LA PLANTILLA DE LATEX O EJECUTARLO: }}][H]
+		El Ejercito 1 tiene 2 soldados : 
+
+		Registrando al 1 soldado del Ejercito 1
+		Nombre: Soldado0X1
+		Vida: 2
+		Fila: 4
+		Columna: A
+		---------------------------------
+		Registrando al 2 soldado del Ejercito 1
+		Nombre: Soldado1X1
+		Vida: 1
+		Fila: 2
+		Columna: D
+		---------------------------------
+		*********************************
+		El Ejercito 2 tiene 4 soldados : 
+		
+		Registrando al 1 soldado del Ejercito 2
+		Nombre: Soldado0X2
+		Vida: 5
+		Fila: 10
+		Columna: A
+		---------------------------------
+		Registrando al 2 soldado del Ejercito 2
+		Nombre: Soldado1X2
+		Vida: 2
+		Fila: 10
+		Columna: H
+		---------------------------------
+		Registrando al 3 soldado del Ejercito 2Registrando al 3 soldado del Ejercito 2
+		Nombre: Soldado2X2
+		Vida: 1
+		Fila: 4
+		Columna: B
+		---------------------------------
+		Registrando al 4 soldado del Ejercito 2
+		Nombre: Soldado3X2
+		Vida: 2
+		Fila: 6
+		Columna: F
+		---------------------------------
+		*********************************
+		Mostrando tabla de posicion ... --
+		Leyenda: Ejercito1 --> X | Ejercito2 --> Y
+		
+				   A       B       C       D       E       F       G       H       I       J
+				_________________________________________________________________________________
+		1       |       |       |       |       |       |       |       |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		2       |       |       |       |   X   |       |       |       |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		3       |       |       |       |       |       |       |       |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		4       |   X   |   Y   |       |       |       |       |       |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		5       |       |       |       |       |       |       |       |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		6       |       |       |       |       |       |   Y   |       |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		7       |       |       |       |       |       |       |       |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		8       |       |       |       |       |       |       |       |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		9       |       |       |       |       |       |       |       |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		10      |   Y   |       |       |       |       |       |       |   Y   |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		
+		*********************************
+	\end{lstlisting}
 	\subsection{Estructura de laboratorio 06}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio06 es el siguiente:
