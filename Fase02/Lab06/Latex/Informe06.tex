@@ -968,6 +968,312 @@
 		------------------
 		*********************************
 	\end{lstlisting}
+	\subsection{Ejercicio VideoJuego3}
+	\begin{itemize}	
+		\item En el septimo commit realizamos el metodo rankingInsercionHealth() el cual aplicariamos la logica del ordenamiento en insercion de soldados debida para aplicar efectivamente este metodo
+		\item El codigo , el commit  y la ejecución seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m " Creamos el metodo rankingInsercionHealth() el cual aplicariamos la misma logica con burbuja pero en esta ves solo tendriamos que cambiar cosas para aplicar efectivamente este metodo"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void rankingInsercionHealth(ArrayList<ArrayList<Soldado>> army, int num){
+			ArrayList<Soldado> fillList = new ArrayList<Soldado>(); //CREAMOS ESTE ARRAYLIST PARA PODER GUARDAR A LOS SOLDADOS EN UN SOLO ARRAYLIST EL CUAL SEA EFECTIVO EL METODO INSERCION 
+			for(int i = 0; i < army.size(); i++){ //CREAMOS ESTAS SENTENCIAS PARA PODER VERIFICAR EL NUMERO DE SOLDADOS Y TAMBIEN ANADIRLO EN EL ARRAYLIST CREADO PARA DESPUES PONER EL RANKING DE PUESTOS DE CADA UNO DE ESTOS SOLDADOS
+				   for(int j = 0; j < army.get(i).size(); j++){
+						  if(army.get(i).get(j) != null){
+								fillList.add(army.get(i).get(j));
+						  }
+				   }
+			}
+			System.out.println("Ordenando a los soldados del Ejercito " + num + " por el insercion: "); //APLICAMOS EL METODO INSERCION CON LOS PUNTOS DE VIDA
+			for(int i = 1; i < fillList.size(); i++){
+				Soldado soldier = fillList.get(i);
+				int j = i - 1;
+				while(j >= 0 && (soldier.getHealth() > fillList.get(j).getHealth())){ //APLICAMOS EL METODO INSERCION
+					fillList.set(j + 1, fillList.get(j));
+					j--;
+				}
+				fillList.set(j + 1, soldier);
+			}
+			System.out.println("Mostrando Ranking del Ejercito " + num + "....."); //MOSTRADOR DE RANKING DE LOS SOLDADOS
+			for(int i = 0; i < fillList.size(); i++){
+				   System.out.print("\n" + "Puesto " + (i + 1));
+				   System.out.println(fillList.get(i).toString()); //DAMOS A CONOCER SUS DATOS Y EL PUESTO EN EL RANKING
+				   System.out.println("------------------");
+			}
+			System.out.println("*********************************");
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={La ejecución: \textcolor{red}{PARA PODER VER LA TABLA COMPLETAMENTE MIRAR LA PLANTILLA DE LATEX O EJECUTARLO: }}][H]
+		El Ejercito 1 tiene 7 soldados : 
+
+		Registrando al 1 soldado del Ejercito 1
+		Nombre: Soldado0X1
+		Vida: 5
+		Fila: 10
+		Columna: C
+		---------------------------------
+		Registrando al 2 soldado del Ejercito 1
+		Nombre: Soldado1X1
+		Vida: 3
+		Fila: 5
+		Columna: F
+		---------------------------------
+		Registrando al 3 soldado del Ejercito 1
+		Nombre: Soldado2X1
+		Vida: 5
+		Fila: 6
+		Columna: F
+		---------------------------------
+		Registrando al 4 soldado del Ejercito 1
+		Nombre: Soldado3X1
+		Vida: 1
+		Fila: 4
+		Columna: G
+		---------------------------------
+		Registrando al 5 soldado del Ejercito 1
+		Nombre: Soldado4X1
+		Vida: 2
+		Fila: 9
+		Columna: H
+		---------------------------------
+		Registrando al 6 soldado del Ejercito 1
+		Nombre: Soldado5X1
+		Vida: 3
+		Fila: 9
+		Columna: B
+		---------------------------------
+		Registrando al 7 soldado del Ejercito 1
+		Nombre: Soldado6X1
+		Vida: 1
+		Fila: 7
+		Columna: J
+		---------------------------------
+		*********************************
+		El Ejercito 2 tiene 3 soldados : 
+		
+		Registrando al 1 soldado del Ejercito 2
+		Nombre: Soldado0X2
+		Vida: 2
+		Fila: 1
+		Columna: J
+		---------------------------------
+		Registrando al 2 soldado del Ejercito 2
+		Nombre: Soldado1X2
+		Vida: 1
+		Fila: 3
+		Columna: F
+		---------------------------------
+		Registrando al 3 soldado del Ejercito 2
+		Nombre: Soldado2X2
+		Vida: 1
+		Fila: 4
+		Columna: B
+		---------------------------------
+		*********************************
+		Mostrando tabla de posicion ... --
+		Leyenda: Ejercito1 --> X | Ejercito2 --> Y
+		
+				   A       B       C       D       E       F       G       H       I       J
+				_________________________________________________________________________________
+		1       |       |       |       |       |       |       |       |       |       |   Y   |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		2       |       |       |       |       |       |       |       |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		3       |       |       |       |       |       |   Y   |       |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		4       |       |   Y   |       |       |       |       |   X   |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		5       |       |       |       |       |       |   X   |       |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		6       |       |       |       |       |       |   X   |       |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		7       |       |       |       |       |       |       |       |       |       |   X   |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		8       |       |       |       |       |       |       |       |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		9       |       |   X   |       |       |       |       |       |   X   |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		10      |       |       |   X   |       |       |       |       |       |       |       |
+				|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|
+		
+		*********************************
+		El soldado con mayor vida del Ejercito 1 es: 
+		
+		Nombre: Soldado2X1
+		Vida: 5
+		Fila: 6
+		Columna: F
+		*********************************
+		El soldado con mayor vida del Ejercito 2 es: 
+		
+		Nombre: Soldado0X2
+		Vida: 2
+		Fila: 1
+		Columna: J
+		*********************************
+		El promedio de puntos de vida del Ejercito 1 es: 
+		2.857142857142857
+		*********************************
+		El promedio de puntos de vida del Ejercito 2 es: 
+		1.3333333333333333
+		*********************************
+		Ordenando a los soldados del Ejercito 1 por el metodo burbuja: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 1.....
+		
+		Puesto 1
+		Nombre: Soldado2X1
+		Vida: 5
+		Fila: 6
+		Columna: F
+		------------------
+		
+		Puesto 2
+		Nombre: Soldado0X1
+		Vida: 5
+		Fila: 10
+		Columna: C
+		------------------
+		
+		Puesto 3
+		Nombre: Soldado1X1
+		Vida: 3
+		Fila: 5
+		Columna: F
+		------------------
+		
+		Puesto 4
+		Nombre: Soldado5X1
+		Vida: 3
+		Fila: 9
+		Columna: B
+		------------------
+		
+		Puesto 5
+		Nombre: Soldado4X1
+		Vida: 2
+		Fila: 9
+		Columna: H
+		------------------
+		
+		Puesto 6
+		Nombre: Soldado3X1
+		Vida: 1
+		Fila: 4
+		Columna: G
+		------------------
+		
+		Puesto 7
+		Nombre: Soldado6X1
+		Vida: 1
+		Fila: 7
+		Columna: J
+		------------------
+		*********************************
+		Ordenando a los soldados del Ejercito 2 por el metodo burbuja: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 2.....
+		
+		Puesto 1
+		Nombre: Soldado0X2
+		Vida: 2
+		Fila: 1
+		Columna: J
+		------------------
+		
+		Puesto 2
+		Nombre: Soldado1X2
+		Vida: 1
+		Fila: 3
+		Columna: F
+		------------------
+		
+		Puesto 3
+		Nombre: Soldado2X2
+		Vida: 1
+		Fila: 4
+		Columna: B
+		------------------
+		*********************************
+		Ordenando a los soldados del Ejercito 1 por el insercion: 
+		Mostrando Ranking del Ejercito 1.....
+		
+		Puesto 1
+		Nombre: Soldado2X1
+		Vida: 5
+		Fila: 6
+		Columna: F
+		------------------
+		
+		Puesto 2
+		Nombre: Soldado0X1
+		Vida: 5
+		Fila: 10
+		Columna: C
+		------------------
+		
+		Puesto 3
+		Nombre: Soldado1X1
+		Vida: 3
+		Fila: 5
+		Columna: F
+		------------------
+		
+		Puesto 4
+		Nombre: Soldado5X1
+		Vida: 3
+		Fila: 9
+		Columna: B
+		------------------
+		
+		Puesto 5
+		Nombre: Soldado4X1
+		Vida: 2
+		Fila: 9
+		Columna: H
+		------------------
+		
+		Puesto 6
+		Nombre: Soldado3X1
+		Vida: 1
+		Fila: 4
+		Columna: G
+		------------------
+		
+		Puesto 7
+		Nombre: Soldado6X1
+		Vida: 1
+		Fila: 7
+		Columna: J
+		------------------
+		*********************************
+		Ordenando a los soldados del Ejercito 2 por el insercion: 
+		Mostrando Ranking del Ejercito 2.....
+		
+		Puesto 1
+		Nombre: Soldado0X2
+		Vida: 2
+		Fila: 1
+		Columna: J
+		------------------
+		
+		Puesto 2
+		Nombre: Soldado1X2
+		Vida: 1
+		Fila: 3
+		Columna: F
+		------------------
+		
+		Puesto 3
+		Nombre: Soldado2X2
+		Vida: 1
+		Fila: 4
+		Columna: B
+		------------------
+		*********************************
+	\end{lstlisting}
 	\subsection{Estructura de laboratorio 06}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio06 es el siguiente:
