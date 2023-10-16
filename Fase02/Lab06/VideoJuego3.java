@@ -88,6 +88,35 @@ class VideoJuego3{
         System.out.println(avg); // DAMOS A CONOCER EL PROMEDIO DE VIDA DE CADA EJERCITO 
         System.out.println("*********************************");
     }
+    public static void rankingBurbujaHealth(ArrayList<ArrayList<Soldado>> army, int num){
+        ArrayList<Soldado> fillList = new ArrayList<Soldado>(); //CREAMOS ESTE ARRAYLIST PARA PODER GUARDAR A LOS SOLDADOS EN UN SOLO ARRAYLIST EL CUAL SEA EFECTIVO EL METODO BURBUJA 
+        Soldado soldier = null; //SOLDADO CREADO PARA PODER CONTENER EL INTERCAMBIO ENTRE SOLDADOS EN EL METODO BURBUJA
+        for(int i = 0; i < army.size(); i++){ //CREAMOS ESTAS SENTENCIAS PARA PODER VERIFICAR EL NUMERO DE SOLDADOS PARA DESPUES PONER EL RANKING DE PUESTOS DE CADA UNO DE ESTOS SOLDADOS
+               for(int j = 0; j < army.get(i).size(); j++){
+                      if(army.get(i).get(j) != null){
+                            fillList.add(army.get(i).get(j));
+                      }
+               }
+        }
+        System.out.println("Ordenando a los soldados del Ejercito " + num + " por el metodo burbuja: "); //APLICAMOS EL METODO BURBUJA CON LOS PUNTOS DE VIDA
+        for(int i = 0; i < fillList.size() - 1; i++){
+            for(int j = 0; j < fillList.size() - i - 1; j++){
+                   if(fillList.get(j).getHealth() < fillList.get(j + 1).getHealth()){
+                        soldier = fillList.get(j); //INTERCAMBIO
+                        fillList.set(j , fillList.get(j + 1));
+                        fillList.set(j + 1, soldier);
+                   }
+            }      
+        }
+        System.out.println("------------------------------------------");
+        System.out.println("Mostrando Ranking del Ejercito " + num + "....."); //MOSTRADOR DE RANKING DE LOS SOLDADOS
+        for(int i = 0; i < fillList.size(); i++){
+               System.out.print("\n" + "Puesto " + (i + 1));
+               System.out.println(fillList.get(i).toString());
+               System.out.println("------------------");
+        }
+        System.out.println("*********************************");
+    }
     public static void main(String args[]){
         ArrayList<ArrayList<Soldado>> army1 = fillregisterSoldiers(1);
         ArrayList<ArrayList<Soldado>> army2 = fillregisterSoldiers(2);
@@ -96,5 +125,7 @@ class VideoJuego3{
         longerLife(army2, 2);
         averageLife(army1, 1);
         averageLife(army2, 2);
+        rankingBurbujaHealth(army1 , 1);
+        rankingBurbujaHealth(army2 , 2);    
     }
 }
