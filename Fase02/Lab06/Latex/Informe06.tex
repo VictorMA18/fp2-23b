@@ -271,67 +271,120 @@
 			}
 		}
 	\end{lstlisting}
-		\subsection{Ejercicio Soldado}
+	\subsection{Ejercicio VideoJuego3}
 	\begin{itemize}	
-		\item En el primer commit bueno reutilizamos el archivo que seria nuestra clase Soldado el cual la utilizaremos para poder avanzar.
-		\item El codigo y el commit seria el siguiente:
+		\item En el segundo commit creamos el metodo fillregisterSoldiers() para que este pueda llenar los ArrayList que creamos para cada ejercito en este se creara un arraylist con casillas de soldados con datos nulos el cual se va ir llenando aleatoriamente con soldados y a la vez de esto nos mostrara por orden de creacion la informacion de los soldados a la vez tambien permitiriamos que cada casilla no se repita un mismo soldado ya que este sera verificado mediante si este casilla sea diferente a un soldado nulo
+		\item El codigo , el commit  y la ejecución seria el siguiente:
 	\end{itemize}	
 	\begin{lstlisting}[language=bash,caption={Commit}][H]
-		$ git commit -m "Anadimos la clase para poder avanzar con el siguiente ejercicio reutilizamos el archivo del laboratorio 5 ya que serian los mismos atributos solo que esta vez lo usaremos con un ArrayList bidimensional"
+		$ git commit -m "Hacemos el metodo fillregisterSoldiers() para que este pueda llenar los ArrayList que creamos para cada ejercito en este se creara un arraylist con casillas de soldados con datos nulos el cual se va ir llenando aleatoriamente con soldados y a la vez de esto nos mostrara por orden de creacion la informacion de los soldados a la vez tambien permitiriamos que cada casilla no se repita un mismo soldado ya que este sera verificado mediante si este casilla sea diferente a un soldado nulo"
 	\end{lstlisting}	
 	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
-		public class Soldado { //CREAMOS LA CLASE SOLDODADO PARA PODER USAR UN ARREGLO BIDIMENSIONAL DONDE NECESITAMOS LA VIDA , EL NOMBRE DEL SOLDADO Y TAMBIEN SU POSICION COMO LA FILA Y LA COLUMNA   
-
-			private String name;
-			private int heatlh; 
-			private int row;
-			private String column;
-
-			//Constructor
-			public Soldado(String name, int health, int row, String column){
-			this.name = name;
-			this.health = health;
-			this.row = row;
-			this.column = column;
+		// Laboratorio Nro 6  - Ejercicio Videojuego3
+		// Autor: Mamani Anahua Victor Narciso
+		// Colaboro:
+		// Tiempo:
+		import java.util.*;
+		class VideoJuego3{
+			public static ArrayList<ArrayList<Soldado>> fillregisterSoldiers(int num){
+				Random rdm = new Random();
+				ArrayList<ArrayList<Soldado>> army = new ArrayList<ArrayList<Soldado>>();
+				int numbersoldiers = rdm.nextInt(10) + 1;
+				for(int i = 0; i < 10; i++){
+					army.add(new ArrayList<Soldado>()); //LLENAMOS NUESTROS ARRAYLIST BIDIMENSIONAL CON CADA FILA PARA QUE CUMPLAN CON ESTRUCTURA DEL TABLERO
+					for(int j = 0; j < 10 ; j++){
+						army.get(i).add(null); // LLENAMOS CADA FILA DEL ARRAYLIST CON UN OBJETO SOLDADO CON TAL QUE ESTE SEA NULL PARA QUE SEPA QUE ESTE TIENE UNA CASILLA PERO NO HAY NADIE TODAVIA SE PUEDE LLENAR 
+					}
+				}
+				System.out.println("El Ejercito " + num + " tiene " + numbersoldiers + " soldados : " ); 
+				System.out.println("");
+				for(int i = 0; i < numbersoldiers; i++){ //LLENAMOS CASILLAS CON CADA SOLDADO CREADO ALEATORIAMENTE
+					System.out.print("Registrando al " + (i + 1) + " soldado del Ejercito " + num + "");
+					String name = "Soldado" + i + "X" + num;
+					//System.out.println(name); PRUEBA QUE SE HIZO PARA VER LOS NOMBRES
+					int health = rdm.nextInt(5) + 1;
+					int row = rdm.nextInt(10) + 1;
+					String column = String.valueOf((char)(rdm.nextInt(10) + 65)); //REUTILIZAMOS CODIGO DEL ANTERIOR ARCHIVO VIDEOJUEGO2.JAVA YA QUE TENDRIAN LA MISMA FUNCIONALIDAD
+					if(army.get(row - 1).get((int)column.charAt(0) - 65) == null){
+						army.get(row - 1).set((int)column.charAt(0) - 65, new Soldado(name, health, row, column));
+						System.out.println(army.get(row - 1).get((int)column.charAt(0) - 65).toString());
+						System.out.println("---------------------------------");
+					}else{
+						i -= 1; //NOS AYUDARIA CON LOS SOLDADOS QUE SE REPITEN EN EL MISMO CASILLERO CON TAL QUE NO DEBERIA CONTAR 
+					}
+				}
+				System.out.println("*********************************");
+				return army;
 			}
-
-			// Metodos mutadores
-			public void setName(String n){
-				name = n;
-			}
-			public void setHealth(int p){
-				heatlh = p;
-			}
-			public void setRow(int b){
-				row = b;
-			}
-			public void setColumn(String c){
-				column = c; 
-			}
-
-			// Metodos accesores
-			public String getName(){
-				return name;
-			}
-			public int getHealth(){
-				return heatlh;
-
-			}
-			public int getRow(){
-				return row;
-			}
-			public String getColumn(){
-				return column;
-			}
-
-			// Completar con otros metodos necesarios
-			public String toString(){ //CREAMOS ESTE METODO PARA IMPRIMIR LOS DATOS DEl OBJETO
-				String join = "\nNombre: " + getName() + "\nVida: " + getHealth() + "\nFila: " + getRow() + "\nColumna: " + getColumn(); //Agregamos un espaciador para poder separar
-				return join;
+			public static void main(String args[]){
+				ArrayList<ArrayList<Soldado>> army1 = fillregisterSoldiers(1);
+				ArrayList<ArrayList<Soldado>> army2 = fillregisterSoldiers(2);
 			}
 		}
+		
 	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={La ejecución:}][H]
+		El Ejercito 1 tiene 3 soldados : 
 
+		Registrando al 1 soldado del Ejercito 1
+		Nombre: Soldado0X1
+		Vida: 4
+		Fila: 10
+		Columna: H
+		---------------------------------
+		Registrando al 2 soldado del Ejercito 1
+		Nombre: Soldado1X1
+		Vida: 1
+		Fila: 5
+		Columna: I
+		---------------------------------
+		Registrando al 3 soldado del Ejercito 1
+		Nombre: Soldado2X1
+		Vida: 5
+		Fila: 5
+		Columna: G
+		---------------------------------
+		*********************************
+		El Ejercito 2 tiene 6 soldados : 
+
+		Registrando al 1 soldado del Ejercito 2
+		Nombre: Soldado0X2
+		Vida: 3
+		Fila: 1
+		Columna: F
+		---------------------------------
+		Registrando al 2 soldado del Ejercito 2
+		Nombre: Soldado1X2
+		Vida: 5
+		Fila: 3
+		Columna: G
+		---------------------------------
+		Registrando al 3 soldado del Ejercito 2
+		Nombre: Soldado2X2
+		Vida: 5
+		Fila: 6
+		Columna: D
+		---------------------------------
+		Registrando al 4 soldado del Ejercito 2
+		Nombre: Soldado3X2
+		Vida: 4
+		Fila: 4
+		Columna: I
+		---------------------------------
+		Registrando al 5 soldado del Ejercito 2
+		Nombre: Soldado4X2
+		Vida: 1
+		Fila: 9
+		Columna: B
+		---------------------------------
+		Registrando al 6 soldado del Ejercito 2
+		Nombre: Soldado5X2
+		Vida: 5
+		Fila: 3
+		Columna: J
+		---------------------------------
+		*********************************
+	\end{lstlisting}
 	\subsection{Estructura de laboratorio 06}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio06 es el siguiente:
