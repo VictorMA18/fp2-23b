@@ -968,6 +968,106 @@
 		*********************************
 		
 	\end{lstlisting}
+	\subsection{Ejercicio VideoJuego4}
+	\begin{itemize}	
+		\item En el octavo commit creamos el metodo arrayAverageLife() el cual nos retorna la imprimicion del promedio de vida de todos los soldados del ejercito el cual se va recolectando para despues dividirlo por la cantidad de soldados el cual va a ser decimal para eso necesitamos hacerlo double.
+		\item El codigo , el commit y la ejecucion seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Agregamos el metodo arrayAverageLife() el cual nos dara el promedio de vida del ejercito el cual recolecteria la vida de todos y despues se dividiria en la cantidad de soldados el cual lo multiplicamos por 1.0 para que este sea double decimal y sea mas especifico y despues se imprimiria este resultadon"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void arrayAverageLife(Soldado[][] army, int num){
+			int sum = 0;
+			int cont = 0;
+			for(int i = 0; i < army.length; i++){
+				   for(int j = 0; j < army.length; j++){
+						  if(army[i][j] != null){
+								 sum += army[i][j].getHealth(); //SUMAMOS LA VIDA DE LOS SOLDADOS DEL EJERCITO 2 
+								 cont++;//CONTADOR PARA VER CUANTOS SOLDADOS EXISTEN EN ESTE EJERCITO PARA DESPUES PODER DIVIDIRLO CON SU SUMA
+						  }
+				   }
+			}
+			double avg = sum / (cont * 1.0);
+			System.out.println("El promedio de puntos de vida del Ejercito " + num + " es: " + "\n" + avg);
+			System.out.println("*********************************"); // AGREGANDOLO PARA HACER EL SIGUIENTE METODO Y SEPARARLOS
+	   	}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		El Ejercito 1 tiene 2 soldados : 
+		*********************************
+		Registrando al 1 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado0X1
+		Vida: 1
+		Fila: 7
+		Columna: D
+		Registrando al 2 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado1X1
+		Vida: 5
+		Fila: 7
+		Columna: F
+		*********************************
+		
+		El Ejercito 2 tiene 3 soldados:
+		*********************************
+		Registrando al 1 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado0X2
+		Vida: 5
+		Fila: 9
+		Columna: F
+		Registrando al 2 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado1X2
+		Vida: 5
+		Fila: 8
+		Columna: G
+		Registrando al 3 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado2X2
+		Vida: 2
+		Fila: 6
+		Columna: C
+		*********************************
+		
+		Mostrando tabla de posicion ... --
+		Leyenda: Ejercito1 --> X | Ejercito2 --> Y
+				
+
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit8.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		El soldado con mayor vida del Ejercito 1 es: 
+		
+		Nombre: Soldado1X1
+		Vida: 5
+		Fila: 7
+		Columna: F
+		*********************************
+		El soldado con mayor vida del Ejercito 2 es: 
+		
+		Nombre: Soldado1X2
+		Vida: 5
+		Fila: 8
+		Columna: G
+		*********************************
+		El promedio de puntos de vida del Ejercito 1 es: 
+		3.0
+		*********************************
+		El promedio de puntos de vida del Ejercito 2 es: 
+		4.0
+		*********************************
+		
+	\end{lstlisting}
 	\subsection{Estructura de laboratorio 07}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio07 es el siguiente:
