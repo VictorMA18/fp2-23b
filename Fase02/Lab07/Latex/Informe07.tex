@@ -1068,6 +1068,270 @@
 		*********************************
 		
 	\end{lstlisting}
+	\subsection{Ejercicio VideoJuego4}
+	\begin{itemize}	
+		\item En el noveno commit creamos el metodo arrayListRankingLife() el cual nos ayudara para poder rankear a nuestros soldados con mas vida con los de menor vida para esto aplicamos el uso de crear un nuevo arraylist para guardar a los soldados el cual recolectara del ejercito 1 y despues intercambiarlos en el metodo burbuja y despues mostrar los resultados de este intercambio con los mensajes de su ranking .
+		\item El codigo , el commit y la ejecucion seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creamos el metodo arrayListRankingLife() el cual nos ayudara para poder rankear a nuestros soldados con mas vida con los de menor vida para esto aplicamos el uso de crear un nuevo arraylist para guardar a los soldados el cual recolectara del ejercito 1 y despues intercambiarlos en el metodo burbuja y despues mostrar los resultados de este intercambio con los mensajes de su ranking"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void arrayListRankingBurbujaLife(ArrayList<ArrayList<Soldado>> army, int num){
+			ArrayList<Soldado> fillList = new ArrayList<Soldado>(); //CREAMOS ESTE ARRAYLIST PARA PODER GUARDAR A LOS SOLDADOS EN UN SOLO ARRAYLIST EL CUAL SEA EFECTIVO EL METODO BURBUJA 
+			Soldado soldier = null; //SOLDADO CREADO PARA PODER CONTENER EL INTERCAMBIO ENTRE SOLDADOS EN EL METODO BURBUJA
+			for(int i = 0; i < army.size(); i++){ //CREAMOS ESTAS SENTENCIAS PARA PODER VERIFICAR EL NUMERO DE SOLDADOS PARA DESPUES PONER EL RANKING DE PUESTOS DE CADA UNO DE ESTOS SOLDADOS
+				for(int j = 0; j < army.get(i).size(); j++){
+						if(army.get(i).get(j) != null){
+								fillList.add(army.get(i).get(j));
+						}
+				}
+			}
+			System.out.println("Ordenando a los soldados del Ejercito " + num + " por el metodo burbuja: "); //APLICAMOS EL METODO BURBUJA CON LOS PUNTOS DE VIDA
+			for(int i = 0; i < fillList.size() - 1; i++){
+				for(int j = 0; j < fillList.size() - i - 1; j++){
+					if(fillList.get(j).getHealth() < fillList.get(j + 1).getHealth()){
+							soldier = fillList.get(j); //INTERCAMBIO
+							fillList.set(j , fillList.get(j + 1));
+							fillList.set(j + 1, soldier);
+					}
+				}      
+			}
+			System.out.println("------------------------------------------");
+			System.out.println("Mostrando Ranking del Ejercito " + num + " ..... ////// --->"); //MOSTRADOR DE RANKING DE LOS SOLDADOS
+			for(int i = 0; i < fillList.size(); i++){
+				System.out.print("\n" + "Puesto " + (i + 1));
+				System.out.println(fillList.get(i).toString());
+				System.out.println("------------------");
+			}
+			System.out.println("*********************************");
+	   	}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		El Ejercito 1 tiene 9 soldados : 
+		*********************************
+		Registrando al 1 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado0X1
+		Vida: 1
+		Fila: 4
+		Columna: F
+		Registrando al 2 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado1X1
+		Vida: 5
+		Fila: 8
+		Columna: E
+		Registrando al 3 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado2X1
+		Vida: 3
+		Fila: 10
+		Columna: G
+		Registrando al 4 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado3X1
+		Vida: 2
+		Fila: 5
+		Columna: J
+		Registrando al 5 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado4X1
+		Vida: 3
+		Fila: 3
+		Columna: I
+		Registrando al 6 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado5X1
+		Vida: 4
+		Fila: 4
+		Columna: A
+		Registrando al 7 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado6X1
+		Vida: 1
+		Fila: 4
+		Columna: B
+		Registrando al 8 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado7X1
+		Vida: 5
+		Fila: 1
+		Columna: J
+		Registrando al 9 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado8X1
+		Vida: 2
+		Fila: 3
+		Columna: H
+		*********************************
+
+		El Ejercito 2 tiene 10 soldados:
+		*********************************
+		Registrando al 1 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado0X2
+		Vida: 3
+		Fila: 7
+		Columna: F
+		Registrando al 2 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado1X2
+		Vida: 5
+		Fila: 1
+		Columna: I
+		Registrando al 3 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado2X2
+		Vida: 5
+		Fila: 1
+		Columna: E
+		Registrando al 4 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado3X2
+		Vida: 5
+		Fila: 10
+		Columna: F
+		Registrando al 5 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado4X2
+		Vida: 1
+		Fila: 1
+		Columna: G
+		Registrando al 6 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado5X2
+		Vida: 4
+		Fila: 9
+		Columna: H
+		Registrando al 7 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado6X2
+		Vida: 4
+		Fila: 4
+		Columna: C
+		Registrando al 8 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado7X2
+		Vida: 5
+		Fila: 7
+		Columna: H
+		Registrando al 9 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado8X2
+		Vida: 2
+		Fila: 3
+		Columna: B
+		Registrando al 10 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado9X2
+		Vida: 4
+		Fila: 3
+		Columna: E
+		*********************************
+
+		Mostrando tabla de posicion ... --
+		Leyenda: Ejercito1 --> X | Ejercito2 --> Y
+
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit9.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		El soldado con mayor vida del Ejercito 1 es: 
+		
+		Nombre: Soldado7X1
+		Vida: 5
+		Fila: 1
+		Columna: J
+		*********************************
+		El soldado con mayor vida del Ejercito 2 es: 
+		
+		Nombre: Soldado2X2
+		Vida: 5
+		Fila: 1
+		Columna: E
+		*********************************
+		El promedio de puntos de vida del Ejercito 1 es: 
+		2.888888888888889
+		*********************************
+		El promedio de puntos de vida del Ejercito 2 es: 
+		3.8
+		*********************************
+		Ordenando a los soldados del Ejercito 1 por el metodo burbuja: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 1 ..... ////// --->
+		
+		Puesto 1
+		Nombre: Soldado7X1
+		Vida: 5
+		Fila: 1
+		Columna: J
+		------------------
+		
+		Puesto 2
+		Nombre: Soldado1X1
+		Vida: 5
+		Fila: 8
+		Columna: E
+		------------------
+		
+		Puesto 3
+		Nombre: Soldado5X1
+		Vida: 4
+		Fila: 4
+		Columna: A
+		------------------
+		
+		Puesto 4
+		Nombre: Soldado4X1
+		Vida: 3
+		Fila: 3
+		Columna: I
+		------------------
+		
+		Puesto 5
+		Nombre: Soldado2X1
+		Vida: 3
+		Fila: 10
+		Columna: G
+		------------------
+		
+		Puesto 6
+		Nombre: Soldado8X1
+		Vida: 2
+		Fila: 3
+		Columna: H
+		------------------
+		
+		Puesto 7
+		Nombre: Soldado3X1
+		Vida: 2
+		Fila: 5
+		Columna: J
+		------------------
+		
+		Puesto 8
+		Nombre: Soldado6X1
+		Vida: 1
+		Fila: 4
+		Columna: B
+		------------------
+		
+		Puesto 9
+		Nombre: Soldado0X1
+		Vida: 1
+		Fila: 4
+		Columna: F
+		------------------
+		*********************************		
+		
+	\end{lstlisting}
 	\subsection{Estructura de laboratorio 07}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio07 es el siguiente:
