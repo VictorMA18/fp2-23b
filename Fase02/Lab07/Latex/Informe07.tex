@@ -1070,11 +1070,11 @@
 	\end{lstlisting}
 	\subsection{Ejercicio VideoJuego4}
 	\begin{itemize}	
-		\item En el noveno commit creamos el metodo arrayListRankingLife() el cual nos ayudara para poder rankear a nuestros soldados con mas vida con los de menor vida para esto aplicamos el uso de crear un nuevo arraylist para guardar a los soldados el cual recolectara del ejercito 1 y despues intercambiarlos en el metodo burbuja y despues mostrar los resultados de este intercambio con los mensajes de su ranking .
+		\item En el noveno commit creamos el metodo arrayListRankingBurbujaLife() el cual nos ayudara para poder rankear a nuestros soldados con mas vida con los de menor vida para esto aplicamos el uso de crear un nuevo arraylist para guardar a los soldados el cual recolectara del ejercito 1 y despues intercambiarlos en el metodo burbuja y despues mostrar los resultados de este intercambio con los mensajes de su ranking .
 		\item El codigo , el commit y la ejecucion seria el siguiente:
 	\end{itemize}	
 	\begin{lstlisting}[language=bash,caption={Commit}][H]
-		$ git commit -m "Creamos el metodo arrayListRankingLife() el cual nos ayudara para poder rankear a nuestros soldados con mas vida con los de menor vida para esto aplicamos el uso de crear un nuevo arraylist para guardar a los soldados el cual recolectara del ejercito 1 y despues intercambiarlos en el metodo burbuja y despues mostrar los resultados de este intercambio con los mensajes de su ranking"
+		$ git commit -m "Creamos el metodo arrayListRankingBurbujaLife() el cual nos ayudara para poder rankear a nuestros soldados con mas vida con los de menor vida para esto aplicamos el uso de crear un nuevo arraylist para guardar a los soldados el cual recolectara del ejercito 1 y despues intercambiarlos en el metodo burbuja y despues mostrar los resultados de este intercambio con los mensajes de su ranking"
 	\end{lstlisting}	
 	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
 		public static void arrayListRankingBurbujaLife(ArrayList<ArrayList<Soldado>> army, int num){
@@ -1330,6 +1330,225 @@
 		Columna: F
 		------------------
 		*********************************		
+		
+	\end{lstlisting}
+	\subsection{Ejercicio VideoJuego4}
+	\begin{itemize}	
+		\item En el decimo commit creamos el metodo arrayRankingBurbujaLife() el cual aplicamos que en un arreglo unidimensional ponemos todos los soldados del arreglo bidimensional para asi poderaplicar efectivamente el metodo burbuja el cual aplicariamos con el atributo health el cual nos dara un ranking que despues se imprimira los resultados del ranking del mayor vida al menor que se imprimiran .
+		\item El codigo , el commit y la ejecucion seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creamos el metodo arrayRankingBurbujaLife() el cual aplicamos que en un arreglo unidimensional ponemos todos los soldados del arreglo bidimensional para asi poder aplicar efectivamente el metodo burbuja el cual aplicariamos con el atributo health el cual nos dara un ranking que despues se imprimira los resultados del ranking del mayor vida al menor que se imprimiran"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void arrayRankingBurbujaLife(Soldado[][] army, int num){
+			int numsoldiers = 0;
+			int count = 0;
+			Soldado soldier = null;
+			for(int i = 0; i < army.length; i++){ //CREAMOS UN CONTADOR PARA SABER EL NUMERO DE SOLDADOS DE ESTE EJERCITO Y DESPUES CREAR UN ARREGLO EL CUAL PODEAMOS DARLE ESTE TAMANO Y LO PODAMOS USAR PARA EL METODO BURBUJA
+				for(int j = 0; j < army[i].length; j++){
+						if(army[i][j] != null){
+							numsoldiers++;
+						}
+				}
+			}
+			Soldado[] soldiers = new Soldado[numsoldiers];
+			for(int i = 0; i < army.length; i++){ //CREAMOS ARREGLO PARA QUE LOS SOLDADOS SE TRASLADEN DE UN ARREGLO BIDIMENSIONAL A UNO UNIDIMENSIONAL PARA APLICAR EL METODO BURBUJA
+				for(int j = 0; j < army[i].length; j++){
+						if(army[i][j] != null){
+							soldiers[count] = army[i][j];
+							count++;
+						}
+				}
+			}
+			System.out.println("Ordenando a los soldados del Ejercito " + num + " por el metodo burbuja: ");//APLICAMOS EL METODO BURBUJA CON LOS PUNTOS DE VIDA
+			for(int i = 0; i < numsoldiers - 1; i++){
+				for(int j = 0; j < numsoldiers - i - 1; j++){
+						if(soldiers[j].getHealth() < soldiers[j + 1].getHealth()){
+								soldier = soldiers[j];
+								soldiers[j] = soldiers[j + 1];
+								soldiers[j + 1] = soldier;
+						}
+				}      
+			}
+			System.out.println("------------------------------------------");
+			System.out.println("Mostrando Ranking del Ejercito " + num + " ..... ////// --->"); //DAMOS A CONOCER EL RANKING DE ESTE EJERCITO  EL CUAL LO PUBLICAMOS MEDIANTE PUESTOS 
+			for(int i = 0; i < soldiers.length; i++){
+				System.out.print("\n" + "Puesto " + (i + 1));
+				System.out.println(soldiers[i].toString()); //PUBLICAMOS INFORMACION DE CADA SOLDADO
+				System.out.println("------------------");
+			}
+			System.out.println("*********************************");
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		El Ejercito 1 tiene 6 soldados : 
+		*********************************
+		Registrando al 1 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado0X1
+		Vida: 5
+		Fila: 3
+		Columna: B
+		Registrando al 2 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado1X1
+		Vida: 4
+		Fila: 7
+		Columna: A
+		Registrando al 3 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado2X1
+		Vida: 5
+		Fila: 8
+		Columna: D
+		Registrando al 4 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado3X1
+		Vida: 1
+		Fila: 9
+		Columna: B
+		Registrando al 5 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado4X1
+		Vida: 2
+		Fila: 8
+		Columna: G
+		Registrando al 6 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado5X1
+		Vida: 4
+		Fila: 2
+		Columna: A
+		*********************************
+		
+		El Ejercito 2 tiene 3 soldados:
+		*********************************
+		Registrando al 1 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado0X2
+		Vida: 3
+		Fila: 1
+		Columna: E
+		Registrando al 2 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado1X2
+		Vida: 4
+		Fila: 10
+		Columna: B
+		Registrando al 3 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado2X2
+		Vida: 1
+		Fila: 9
+		Columna: H
+		*********************************
+		
+		Mostrando tabla de posicion ... --
+		Leyenda: Ejercito1 --> X | Ejercito2 --> Y
+		
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit10.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		El soldado con mayor vida del Ejercito 1 es: 
+		
+		Nombre: Soldado0X1
+		Vida: 5
+		Fila: 3
+		Columna: B
+		*********************************
+		El soldado con mayor vida del Ejercito 2 es: 
+		
+		Nombre: Soldado1X2
+		Vida: 4
+		Fila: 10
+		Columna: B
+		*********************************
+		El promedio de puntos de vida del Ejercito 1 es: 
+		3.5
+		*********************************
+		El promedio de puntos de vida del Ejercito 2 es: 
+		2.6666666666666665
+		*********************************
+		Ordenando a los soldados del Ejercito 1 por el metodo burbuja: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 1 ..... ////// --->
+		
+		Puesto 1
+		Nombre: Soldado0X1
+		Vida: 5
+		Fila: 3
+		Columna: B
+		------------------
+		
+		Puesto 2
+		Nombre: Soldado2X1
+		Vida: 5
+		Fila: 8
+		Columna: D
+		------------------
+		
+		Puesto 3
+		Nombre: Soldado5X1
+		Vida: 4
+		Fila: 2
+		Columna: A
+		------------------
+		
+		Puesto 4
+		Nombre: Soldado1X1
+		Vida: 4
+		Fila: 7
+		Columna: A
+		------------------
+		
+		Puesto 5
+		Nombre: Soldado4X1
+		Vida: 2
+		Fila: 8
+		Columna: G
+		------------------
+		
+		Puesto 6
+		Nombre: Soldado3X1
+		Vida: 1
+		Fila: 9
+		Columna: B
+		------------------
+		*********************************
+		Ordenando a los soldados del Ejercito 2 por el metodo burbuja: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 2 ..... ////// --->
+		
+		Puesto 1
+		Nombre: Soldado1X2
+		Vida: 4
+		Fila: 10
+		Columna: B
+		------------------
+		
+		Puesto 2
+		Nombre: Soldado0X2
+		Vida: 3
+		Fila: 1
+		Columna: E
+		------------------
+		
+		Puesto 3
+		Nombre: Soldado2X2
+		Vida: 1
+		Fila: 9
+		Columna: H
+		------------------
+		*********************************
+		
 		
 	\end{lstlisting}
 	\subsection{Estructura de laboratorio 07}
