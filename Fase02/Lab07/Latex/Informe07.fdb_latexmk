@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1697964480 "/home/user/fp2-23b/Fase02/Lab07/Latex/Informe07.tex" "Informe07.pdf" "Informe07" 1697964482
+["pdflatex"] 1697965006 "/home/user/fp2-23b/Fase02/Lab07/Latex/Informe07.tex" "Informe07.pdf" "Informe07" 1697965008
   "/etc/texmf/web2c/texmf.cnf" 1695244730 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/user/fp2-23b/Fase02/Lab07/Latex/Informe07.tex" 1697964480 68877 089c6e389296b7c3f914cf33af668737 ""
+  "/home/user/fp2-23b/Fase02/Lab07/Latex/Informe07.tex" 1697965005 75771 51dd47f3755a7ec3c366f1ddaa982082 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tctt0900.tfm" 1136768653 1536 bda3e6bf9784a4cc572c754e0c3eeb00 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
@@ -123,12 +123,13 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1695244742 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1695244760 2802157 836bcf8882c264bca8c914dc83bfb65d ""
-  "Informe07.aux" 1697964481 4294 06784738a4b430b6396b12dcc09e3d9e "pdflatex"
-  "Informe07.out" 1697964481 3552 5bb5c4f35e08c6efcdeeaddd18ec6cf3 "pdflatex"
-  "Informe07.tex" 1697964480 68877 089c6e389296b7c3f914cf33af668737 ""
+  "Informe07.aux" 1697965008 4425 b707e65680b51114443a82f63c279b57 "pdflatex"
+  "Informe07.out" 1697965008 3719 5a68bfafc2fd5336acbf0a89d23b3303 "pdflatex"
+  "Informe07.tex" 1697965005 75771 51dd47f3755a7ec3c366f1ddaa982082 ""
   "img/Commit10.png" 1697962478 14419 9c5817b7d4dd5ceff9c294285d1c7fca ""
   "img/Commit11.png" 1697963628 12626 c2bcabffa578e2d976d53c55ec64c851 ""
   "img/Commit12.png" 1697964402 13458 22cce81ed0dd990330fd36c5239d8f96 ""
+  "img/Commit13.png" 1697964892 14365 0e43f1ae9aeb233fc4f720b692a588c2 ""
   "img/Commit4.png" 1697953625 23295 1205e43d0ac3d03483b5e6c49a6fc939 ""
   "img/Commit5.png" 1697958083 12259 ad92a67be0f0a200f20baf7117cfbc22 ""
   "img/Commit6.png" 1697958854 14821 1163d4402973c5f40acdafb89e2aacde ""

@@ -2000,6 +2000,283 @@
 		*********************************
 		
 	\end{lstlisting}
+	\subsection{Ejercicio VideoJuego4}
+	\begin{itemize}	
+		\item En el decimotercero commit creamos el metodo resultBattle() el cual nos dara el resultado de la batalla entre estos 2 ejercitos por lo que nuestra decision fue poner a comparacion el nivel de fuerza de cada ejercito el cual se va sumando para despues dar el resultado de la batalla
+		\item El codigo , el commit y la ejecucion seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "el metodo resultBattle() el cual nos dara el resultado de la batalla entre estos 2 ejercitos por lo que nuestra decision fue poner a comparacion el nivel de fuerza de cada ejercito el cual se va sumando para despues dar el resultado de la batalla"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void resultBattle(ArrayList<ArrayList<Soldado>> army1, Soldado[][] army2, int num, int num2){
+			int sumarmy1 = 0;
+			int sumarmy2 = 0;
+			System.out.println("El resultado de esta Batalla se decidio por el nivel de fuerza de cada ejercito por lo que el resultado es: ...");
+			for(int i = 0; i < army1.size(); i++){ //METODO CREADO QUE NOS PERMITE DAR CON UN GANADOR ESTO GRACIAS AL NIVEL DE PUNTOS DE VIDA O FUERZA DE CADA EJERCITO EL CUAL VAMOS SUMANDO DE CADA EJERCITO PARA DESPUES COMPARARLOS Y DECIDIR EL RESULTADO DE ESTA BATALLA
+				for(int j = 0 ; j < army1.get(i).size(); j++){
+					if(army1.get(i).get(j) != null){
+						sumarmy1 += army1.get(i).get(j).getHealth(); //SUMA DE PUNTOS DEL EJERCITO 1
+					}
+				}
+			}
+			for(int i = 0; i < army2.length; i++){
+				for(int j = 0 ; j < army2[i].length; j++){
+					if(army2[i][j] != null){
+						sumarmy2 += army2[i][j].getHealth(); //SUMA DE PUNTOS DEL EJERCITO 2
+					}
+				}
+			}
+			if(sumarmy1 > sumarmy2){ //PUBLICACION DE LOS RESULTADOS
+				System.out.println("El Ejercito " + num + " es el GANADOR con " + sumarmy1 + " puntos");
+			}else if(sumarmy2 > sumarmy1){
+				System.out.println("El Ejercito " + num2 + " es el GANADOR con " + sumarmy2 + " puntos");
+			}else{
+				System.out.println("EMPATE con " + sumarmy1 + " puntos");
+			}
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		El Ejercito 1 tiene 8 soldados : 
+		*********************************
+		Registrando al 1 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado0X1
+		Vida: 3
+		Fila: 8
+		Columna: B
+		Registrando al 2 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado1X1
+		Vida: 5
+		Fila: 1
+		Columna: C
+		Registrando al 3 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado2X1
+		Vida: 1
+		Fila: 3
+		Columna: E
+		Registrando al 4 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado3X1
+		Vida: 3
+		Fila: 8
+		Columna: G
+		Registrando al 5 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado4X1
+		Vida: 1
+		Fila: 7
+		Columna: I
+		Registrando al 6 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado5X1
+		Vida: 4
+		Fila: 6
+		Columna: F
+		Registrando al 7 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado6X1
+		Vida: 1
+		Fila: 4
+		Columna: C
+		Registrando al 8 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado7X1
+		Vida: 3
+		Fila: 3
+		Columna: F
+		*********************************
+		
+		El Ejercito 2 tiene 1 soldados:
+		*********************************
+		Registrando al 1 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado0X2
+		Vida: 5
+		Fila: 6
+		Columna: A
+		*********************************
+		
+		Mostrando tabla de posicion ... --
+		Leyenda: Ejercito1 --> X | Ejercito2 --> Y		
+
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit13.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		El soldado con mayor vida del Ejercito 1 es: 
+		
+		Nombre: Soldado1X1
+		Vida: 5
+		Fila: 1
+		Columna: C
+		*********************************
+		El soldado con mayor vida del Ejercito 2 es: 
+		
+		Nombre: Soldado0X2
+		Vida: 5
+		Fila: 6
+		Columna: A
+		*********************************
+		El promedio de puntos de vida del Ejercito 1 es: 
+		2.625
+		*********************************
+		El promedio de puntos de vida del Ejercito 2 es: 
+		5.0
+		*********************************
+		Ordenando a los soldados del Ejercito 1 por el metodo burbuja: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 1 ..... ////// --->
+		
+		Puesto 1
+		Nombre: Soldado1X1
+		Vida: 5
+		Fila: 1
+		Columna: C
+		------------------
+		
+		Puesto 2
+		Nombre: Soldado5X1
+		Vida: 4
+		Fila: 6
+		Columna: F
+		------------------
+		
+		Puesto 3
+		Nombre: Soldado7X1
+		Vida: 3
+		Fila: 3
+		Columna: F
+		------------------
+		
+		Puesto 4
+		Nombre: Soldado0X1
+		Vida: 3
+		Fila: 8
+		Columna: B
+		------------------
+		
+		Puesto 5
+		Nombre: Soldado3X1
+		Vida: 3
+		Fila: 8
+		Columna: G
+		------------------
+		
+		Puesto 6
+		Nombre: Soldado2X1
+		Vida: 1
+		Fila: 3
+		Columna: E
+		------------------
+		
+		Puesto 7
+		Nombre: Soldado6X1
+		Vida: 1
+		Fila: 4
+		Columna: C
+		------------------
+		
+		Puesto 8
+		Nombre: Soldado4X1
+		Vida: 1
+		Fila: 7
+		Columna: I
+		------------------
+		*********************************
+		Ordenando a los soldados del Ejercito 2 por el metodo burbuja: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 2 ..... ////// --->
+		
+		Puesto 1
+		Nombre: Soldado0X2
+		Vida: 5
+		Fila: 6
+		Columna: A
+		------------------
+		*********************************
+		Ordenando a los soldados del Ejercito 1 por el insercion: 
+		Mostrando Ranking del Ejercito 1.....
+		
+		Puesto 1
+		Nombre: Soldado1X1
+		Vida: 5
+		Fila: 1
+		Columna: C
+		------------------
+		
+		Puesto 2
+		Nombre: Soldado5X1
+		Vida: 4
+		Fila: 6
+		Columna: F
+		------------------
+		
+		Puesto 3
+		Nombre: Soldado7X1
+		Vida: 3
+		Fila: 3
+		Columna: F
+		------------------
+		
+		Puesto 4
+		Nombre: Soldado0X1
+		Vida: 3
+		Fila: 8
+		Columna: B
+		------------------
+		
+		Puesto 5
+		Nombre: Soldado3X1
+		Vida: 3
+		Fila: 8
+		Columna: G
+		------------------
+		
+		Puesto 6
+		Nombre: Soldado2X1
+		Vida: 1
+		Fila: 3
+		Columna: E
+		------------------
+		
+		Puesto 7
+		Nombre: Soldado6X1
+		Vida: 1
+		Fila: 4
+		Columna: C
+		------------------
+		
+		Puesto 8
+		Nombre: Soldado4X1
+		Vida: 1
+		Fila: 7
+		Columna: I
+		------------------
+		*********************************
+		Ordenando a los soldados del Ejercito 2 por el insercion: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 2.....
+		
+		Puesto 1
+		Nombre: Soldado0X2
+		Vida: 5
+		Fila: 6
+		Columna: A
+		------------------
+		*********************************
+		El resultado de esta Batalla se decidio por el nivel de fuerza de cada ejercito por lo que el resultado es: ...
+		El Ejercito 1 es el GANADOR con 21 puntos
+		
+	\end{lstlisting}
 	\subsection{Estructura de laboratorio 07}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio07 es el siguiente:
