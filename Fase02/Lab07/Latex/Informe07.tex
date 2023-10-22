@@ -578,6 +578,100 @@
 		%\label{img:mot2}
 		%\caption{Product backlog.}
 	\end{figure}
+	\subsection{Ejercicio VideoJuego4}
+	\begin{itemize}	
+		\item En el quinto commit creamos el metodo arrayListLongerLife() el cual nos permitira conocer del soldado con mayor puntos de vida para esto hacemos una comprobacion con cada uno de estos para poder despues compararlos gracias a una iteracion sobre todos los soldados de este ejercito y despues de tener el soldado con mayor puntos de vida se imprimira sus datos para ver de quien se trata 
+		\item El codigo , el commit y la ejecucion seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creamos el metodo arrayListLongerLife() el cual nos permitira conocer del soldado con mas vida del ejercito 1 para esto hacemos una comprobacion con cada uno de estos soldados el cual vamos iterando por cada uno de estos para poder despues compararlos y despues de tener el soldado con mayor puntos de vida se imprimira sus datos para ver de quien se trata"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void arrayListLongerLife(ArrayList<ArrayList<Soldado>> army, int num){
+			System.out.println("El soldado con mayor vida del Ejercito " + num + " es: "); //METODO CREADO PARA PODER PERMITIRNOS A CONOCER EL SOLDADO CON MAYOR VIDA DE CADA EJERCITO 
+			int mayor = 0;
+			Soldado soldier = null;
+			for(int i = 0; i < army.size(); i++){
+				for(int j = 0; j < army.get(i).size(); j++){
+					if(army.get(i).get(j) != null){ //COMPROBACION QUE HACEMOS PARA PODER DECIR QUE EL CASILLERO DONDE ESTAMOS ES UN SOLDADO QUE EXISTE
+						if(army.get(i).get(j).getHealth() > mayor){ //COMPARAMOS PUNTOS DE VIDA DE CADA SOLDADO PARA VER QUIEN ES EL MAYOR 
+							mayor = army.get(i).get(j).getHealth();
+							soldier = army.get(i).get(j);
+						}
+					}
+				}
+			}
+			System.out.println(soldier.toString());//IMPRIMIMOS SUS DATOS PARA PODER VER DE QUE SOLDADO SE TRATA 
+			System.out.println("*********************************");
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		El Ejercito 1 tiene 1 soldados : 
+		*********************************
+		Registrando al 1 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado0X1
+		Vida: 1
+		Fila: 10
+		Columna: F
+		*********************************
+
+		El Ejercito 2 tiene 5 soldados:
+		*********************************
+		Registrando al 1 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado0X2
+		Vida: 4
+		Fila: 2
+		Columna: E
+		Registrando al 2 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado1X2
+		Vida: 1
+		Fila: 1
+		Columna: H
+		Registrando al 3 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado2X2
+		Vida: 1
+		Fila: 9
+		Columna: B
+		Registrando al 4 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado3X2
+		Vida: 3
+		Fila: 9
+		Columna: D
+		Registrando al 5 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado4X2
+		Vida: 5
+		Fila: 4
+		Columna: I
+		*********************************
+
+		Mostrando tabla de posicion ... --
+		Leyenda: Ejercito1 --> X | Ejercito2 --> Y
+
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit5.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		El soldado con mayor vida del Ejercito 1 es: 
+		
+		Nombre: Soldado0X1
+		Vida: 1
+		Fila: 10
+		Columna: F
+		*********************************
+		
+	\end{lstlisting}
 	\subsection{Estructura de laboratorio 07}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio07 es el siguiente:
