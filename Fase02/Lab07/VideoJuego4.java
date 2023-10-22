@@ -211,6 +211,33 @@ class VideoJuego4{
         }
         System.out.println("*********************************");
     }
+    public static void arrayListRankingInsercionLife(ArrayList<ArrayList<Soldado>> army, int num){
+        ArrayList<Soldado> fillList = new ArrayList<Soldado>(); //CREAMOS ESTE ARRAYLIST PARA PODER GUARDAR A LOS SOLDADOS EN UN SOLO ARRAYLIST EL CUAL SEA EFECTIVO EL METODO INSERCION 
+        for(int i = 0; i < army.size(); i++){ //CREAMOS ESTAS SENTENCIAS PARA PODER VERIFICAR EL NUMERO DE SOLDADOS Y TAMBIEN AÑADIRLO EN EL ARRAYLIST CREADO PARA DESPUES PONER EL RANKING DE PUESTOS DE CADA UNO DE ESTOS SOLDADOS
+               for(int j = 0; j < army.get(i).size(); j++){
+                      if(army.get(i).get(j) != null){
+                            fillList.add(army.get(i).get(j));
+                      }
+               }
+        }
+        System.out.println("Ordenando a los soldados del Ejercito " + num + " por el insercion: "); //APLICAMOS EL METODO INSERCION CON LOS PUNTOS DE VIDA
+        for(int i = 1; i < fillList.size(); i++){
+            Soldado soldier = fillList.get(i);
+            int j = i - 1;
+            while(j >= 0 && (soldier.getHealth() > fillList.get(j).getHealth())){ //APLICAMOS EL METODO INSERCION
+                fillList.set(j + 1, fillList.get(j));
+                j--;
+            }
+            fillList.set(j + 1, soldier);
+        }
+        System.out.println("Mostrando Ranking del Ejercito " + num + "....."); //MOSTRADOR DE RANKING DE LOS SOLDADOS
+        for(int i = 0; i < fillList.size(); i++){
+               System.out.print("\n" + "Puesto " + (i + 1));
+               System.out.println(fillList.get(i).toString()); //DAMOS A CONOCER SUS DATOS Y EL PUESTO EN EL RANKING
+               System.out.println("------------------");
+        }
+        System.out.println("*********************************");
+    }
     public static void main(String args[]){
         ArrayList<ArrayList<Soldado>> army1 = arrayListFillRegister(1);
         Soldado[][] army2 = arrayfillregister(2);
@@ -221,5 +248,6 @@ class VideoJuego4{
         arrayAverageLife(army2, 2);
         arrayListRankingBurbujaLife(army1, 1);
         arrayRankingBurbujaLife(army2, 2);
+        arrayListRankingInsercionLife(army1, 1);
     }
 }
