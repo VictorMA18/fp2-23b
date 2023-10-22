@@ -276,6 +276,32 @@ class VideoJuego4{
         }
         System.out.println("*********************************");
    }
+    public static void resultBattle(ArrayList<ArrayList<Soldado>> army1, Soldado[][] army2, int num, int num2){
+        int sumarmy1 = 0;
+        int sumarmy2 = 0;
+        System.out.println("El resultado de esta Batalla se decidio por el nivel de fuerza de cada ejercito por lo que el resultado es: ...");
+        for(int i = 0; i < army1.size(); i++){ //METODO CREADO QUE NOS PERMITE DAR CON UN GANADOR ESTO GRACIAS AL NIVEL DE PUNTOS DE VIDA O FUERZA DE CADA EJERCITO EL CUAL VAMOS SUMANDO DE CADA EJERCITO PARA DESPUES COMPARARLOS Y DECIDIR EL RESULTADO DE ESTA BATALLA
+            for(int j = 0 ; j < army1.get(i).size(); j++){
+                if(army1.get(i).get(j) != null){
+                    sumarmy1 += army1.get(i).get(j).getHealth(); //SUMA DE PUNTOS DEL EJERCITO 1
+                }
+            }
+        }
+        for(int i = 0; i < army2.length; i++){
+            for(int j = 0 ; j < army2[i].length; j++){
+                if(army2[i][j] != null){
+                    sumarmy2 += army2[i][j].getHealth(); //SUMA DE PUNTOS DEL EJERCITO 2
+                }
+            }
+        }
+        if(sumarmy1 > sumarmy2){ //PUBLICACION DE LOS RESULTADOS
+            System.out.println("El Ejercito " + num + " es el GANADOR con " + sumarmy1 + " puntos");
+        }else if(sumarmy2 > sumarmy1){
+            System.out.println("El Ejercito " + num2 + " es el GANADOR con " + sumarmy2 + " puntos");
+        }else{
+            System.out.println("EMPATE con " + sumarmy1 + " puntos");
+        }
+    }
     public static void main(String args[]){
         ArrayList<ArrayList<Soldado>> army1 = arrayListFillRegister(1);
         Soldado[][] army2 = arrayfillregister(2);
@@ -288,5 +314,6 @@ class VideoJuego4{
         arrayRankingBurbujaLife(army2, 2);
         arrayListRankingInsercionLife(army1, 1);
         arrayRankingInsercionLife(army2, 2);
+        resultBattle(army1, army2 , 1 , 2);
     }
 }
