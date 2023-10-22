@@ -94,10 +94,29 @@ class VideoJuego4{
         System.out.println(soldier.toString());//IMPRIMIMOS SUS DATOS PARA PODER VER DE QUE SOLDADO SE TRATA 
         System.out.println("*********************************");
     }
+    public static void arrayLongerLife(Soldado[][] army, int num){
+        int mayor = 0;
+        Soldado soldier = null; //METODO CREADO QUE NOS VA AYUDAR A DECIRNOS SOBRE LA INFORMACION DEL SOLDADO CON MAYOR VIDAD DEL EJERCITO2 EL CUAL TENDREMOS QUE ITERAR
+        for(int i = 0; i < army.length; i++){
+               for(int j = 0; j < army[i].length; j++){//ITERAMOS SOBRE CADA SOLDADO EL CUAL COMPARAÑOS CON SI ESTE ES EL MAYOR EN CUESTION DE VIDA VAMOS PASANDO POR CADA SOLDADO
+                      if(army[i][j] != null){
+                             if(mayor < army[i][j].getHealth()){
+                                    mayor = army[i][j].getHealth();
+                                    soldier = army[i][j];//ACTUALIZAMOS A ESTE SOLDADO CON EL QUE TIENE MAS VIDA DESPUES LO IMPRIMIMOS PARA VER DE QUE SOLDADO SE TRATA 
+                             }
+                      }
+               }
+        }
+        System.out.println("");
+        System.out.println("El soldado con mayor vida del Ejercito " + num + " es: ");
+        System.out.println(soldier.toString());
+        System.out.println("*********************************");
+    }
     public static void main(String args[]){
         ArrayList<ArrayList<Soldado>> army1 = arrayListFillRegister(1);
         Soldado[][] army2 = arrayfillregister(2);
         viewBoard(army1, army2);
         arrayListLongerLife(army1, 1);
+        arrayLongerLife(army2, 2);
     }
 }
