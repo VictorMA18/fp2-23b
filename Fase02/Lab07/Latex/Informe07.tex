@@ -429,8 +429,155 @@
 		Vida: 2
 		Fila: 8
 		Columna: I
-		
 	\end{lstlisting}
+	\subsection{Ejercicio VideoJuego4}
+	\begin{itemize}	
+		\item En el cuarto commit creamos el metodo viewBoard() el cual nos dejaria permitir visualizar la tabla junto a su leyenda , con los soldados de cada ejercito su posicion la cual del ejercito 1 seria una x y el ejercito 2 seria una y en este tambien aplicamos para cada casilla la cual no sea nula poner una x para el ejercito 1 y en caso contrario debria ser del ejercito 2 el cual seria una y y si tambien seria en caso contrario seria nulo
+		\item El codigo , el commit y la ejecucion seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creamos el metodo arrayListFillRegister() para que este pueda llenar los ArrayList que creamos para el ejercito 1 en este se creara un arraylist con casillas de soldados con datos nulos el cual se va ir llenando aleatoriamente con soldados y a la vez de esto nos mostrara por orden de creacion la informacion de los soldados a la vez tambien permitiriamos que cada casilla no se repita un mismo soldado ya que este sera verificado mediante si este casilla sea diferente a un soldado nulo"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public  static ArrayList<ArrayList<Soldado>> arrayListFillRegister(int num){
+			Random rdm = new Random();
+			ArrayList<ArrayList<Soldado>> army = new ArrayList<ArrayList<Soldado>>();
+			int numbersoldiers = rdm.nextInt(10) + 1;
+			for(int i = 0; i < 10; i++){
+				army.add(new ArrayList<Soldado>()); //LLENAMOS NUESTROS ARRAYLIST BIDIMENSIONAL CON CADA FILA PARA QUE CUMPLAN CON ESTRUCTURA DEL TABLERO
+				for(int j = 0; j < 10 ; j++){
+					army.get(i).add(null); // LLENAMOS CADA FILA DEL ARRAYLIST CON UN OBJETO SOLDADO CON TAL QUE ESTE SEA NULL PARA QUE SEPA QUE ESTE TIENE UNA CASILLA PERO NO HAY NADIE TODAVIA SE PUEDE LLENAR 
+				}
+			}
+			System.out.println("El Ejercito " + num + " tiene " + numbersoldiers + " soldados : " ); 
+			System.out.println("*********************************");
+			for(int i = 0; i < numbersoldiers; i++){ //LLENAMOS CASILLAS CON CADA SOLDADO CREADO ALEATORIAMENTE
+				String name = "Soldado" + i + "X" + num;
+				int health = rdm.nextInt(5) + 1;
+				int row = rdm.nextInt(10) + 1;
+				String column = String.valueOf((char)(rdm.nextInt(10) + 65)); //REUTILIZAMOS CODIGO DEL ANTERIOR ARCHIVO VIDEOJUEGO3.JAVA YA QUE TENDRIAN LA MISMA FUNCIONALIDAD
+				if(army.get(row - 1).get((int)column.charAt(0) - 65) == null){
+					System.out.println("Registrando al " + (i + 1) + " soldado del Ejercito " + num + "");
+					System.out.print("------------------");
+					army.get(row - 1).set((int)column.charAt(0) - 65, new Soldado(name, health, row, column));
+					System.out.println(army.get(row - 1).get((int)column.charAt(0) - 65).toString());
+				}else{
+					i -= 1; //NOS AYUDARIA CON LOS SOLDADOS QUE SE REPITEN EN EL MISMO CASILLERO CON TAL QUE NO DEBERIA CONTAR 
+				}
+			}
+			System.out.println("*********************************");
+			return army;
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		El Ejercito 1 tiene 5 soldados : 
+		*********************************
+		Registrando al 1 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado0X1
+		Vida: 4
+		Fila: 9
+		Columna: C
+		Registrando al 2 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado1X1
+		Vida: 2
+		Fila: 2
+		Columna: E
+		Registrando al 3 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado2X1
+		Vida: 5
+		Fila: 8
+		Columna: I
+		Registrando al 4 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado3X1
+		Vida: 3
+		Fila: 6
+		Columna: G
+		Registrando al 5 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado4X1
+		Vida: 1
+		Fila: 10
+		Columna: C
+		*********************************
+		
+		El Ejercito 2 tiene 10 soldados:
+		*********************************
+		Registrando al 1 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado0X2
+		Vida: 5
+		Fila: 6
+		Columna: E
+		Registrando al 2 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado1X2
+		Vida: 4
+		Fila: 7
+		Columna: H
+		Registrando al 3 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado2X2
+		Vida: 3
+		Fila: 10
+		Columna: D
+		Registrando al 4 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado3X2
+		Vida: 5
+		Fila: 9
+		Columna: A
+		Registrando al 5 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado4X2
+		Vida: 1
+		Fila: 2
+		Columna: G
+		Registrando al 6 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado5X2
+		Vida: 5
+		Fila: 8
+		Columna: F
+		Registrando al 7 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado6X2
+		Vida: 1
+		Fila: 5
+		Columna: D
+		Registrando al 8 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado7X2
+		Vida: 3
+		Fila: 9
+		Columna: B
+		Registrando al 9 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado8X2
+		Vida: 5
+		Fila: 7
+		Columna: G
+		Registrando al 10 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado9X2
+		Vida: 1
+		Fila: 9
+		Columna: E
+		*********************************
+		
+		Mostrando tabla de posicion ... --
+		Leyenda: Ejercito1 --> X | Ejercito2 --> Y
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit4.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
 	\subsection{Estructura de laboratorio 07}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio07 es el siguiente:
