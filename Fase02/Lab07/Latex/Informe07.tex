@@ -183,7 +183,7 @@
         \item Cree un Proyecto llamado Laboratorio7
 		\item Usted deberá crear las dos clases Soldado.java y VideoJuego4.java. Puede reutilizar lo desarrollado en Laboratorios anteriores.
 		\item Del Soldado nos importa el nombre, puntos de vida, fila y columna (posición en el tablero).
-		\item El juego se desarrollará en el mismo tablero de los laboratorios anteriores. Pero ahora el tablero debe ser un ArrayList bidimensional.
+		\item El juego se desarrollará en el mismo tablero de los laboratorios anteriores. Para el tablero utilizar la estructura de datos más adecuada.
 		\item Tendrá 2 Ejércitos. Inicializar el tablero con n soldados aleatorios entre 1 y 10 para cada Ejército. Cada soldado tendrá un nombre autogenerado: Soldado0X1, Soldado1X1, etc., un valor de puntos de vida autogenerado aleatoriamente [1..5], la fila y columna también autogenerados aleatoriamente (no puede haber 2 soldados en el mismo cuadrado). 
 		\item Además de los datos del Soldado con mayor vida de cada ejército, el promedio de puntos de vida de todos los soldados creados por ejército, los datos de todos los soldados porejército en el orden que fueron creados y un ranking de poder de todos los soldados creados por ejército (del que tiene más nivel de vida al que tiene menos) usando 2 diferentes algoritmos de ordenamiento.
 		\item Finalmente, que muestre qué ejército ganará la batalla (indicar la métrica usada para decidir al ganador de la batalla).
@@ -274,6 +274,78 @@
 				return join;
 			}
 		}
+	\end{lstlisting}
+	\subsection{Ejercicio VideoJuego4}
+	\begin{itemize}	
+		\item En el segundo commit completamos el metodo arrayfillregister() el cual queremos rellenar el array de soldados del ejercito 2 para poder verlos en el tablero a la ves su informacion de cada soldado el cual va hacer por orden de creacion
+		\item El codigo , el commit y la ejecucion seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creando el metodo arrayfillregister() para que este pueda imprimir los datos de los soldados que estan en el tablero este te devuelve el array lleno con la cantidad de soldados y texto que dice su informacion de cada soldado Y tambien cumplimos con el cual no se repita un soldado en el mismo casillero ya que al ver que este lleno este retrocedera una repeticion ya que estaria tomando la repeticion en un casillero lleno"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static Soldado[][] arrayfillregister(int num){ //METODO CREADO PARA PODER CREAR AL EJERCITO 2 EL CUAL USAREMOS LA ESTRUCTURA DE DATO QUE ES EL ARRAY CON TAL QUE TAMBIEN REGISTRAMOS 
+			Random rdm = new Random();
+			int numsoldiers = rdm.nextInt(10) + 1;
+			System.out.println("La Ejercito " + num + " tiene " + numsoldiers + " soldados:");  
+			System.out.println("*********************************");
+			Soldado[][] army = new Soldado[10][10];
+			for(int i = 0; i < numsoldiers; i++){ //LOS REGISTRAMOS A CADA UNO POR EL ORDEN DE CREACION QUE FUERON CREADOS EL CUAL TAMBIEN COMPLETAMOS SUS DATOS Y LOS PUBLICAMOS POR ORDEN 
+				System.out.println("Registrando al " + (i + 1) + " soldado del Ejercito " + num + "");            
+				String name = "Soldado" + i + "X" + num;            
+				int health = rdm.nextInt(5) + 1;
+				int row = rdm.nextInt(10) + 1;
+				String column = String.valueOf((char)(rdm.nextInt(10) + 65));  
+				if(army[row - 1][(int)column.charAt(0) - 65] == null){ //VERIFICAMOS QUE NO SE REPITAN MISMOS SOLDADOS DE UN EJERCITO EN EL MISMO CUADRADO 
+					System.out.print("------------------");
+					army[row - 1][(int)column.charAt(0) - 65] = new Soldado(name, health, row, column);
+					System.out.println(army[row - 1][(int)column.charAt(0) - 65].toString());
+				}else{
+					i -= 1;
+				}
+			}
+			return army;
+    	}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		La Ejercito 2 tiene 6 soldados:
+		*********************************
+		Registrando al 1 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado0X2
+		Vida: 5
+		Fila: 8
+		Columna: C
+		Registrando al 2 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado1X2
+		Vida: 5
+		Fila: 2
+		Columna: I
+		Registrando al 3 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado2X2
+		Vida: 5
+		Fila: 5
+		Columna: F
+		Registrando al 4 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado3X2
+		Vida: 5
+		Fila: 2
+		Columna: G
+		Registrando al 5 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado4X2
+		Vida: 2
+		Fila: 10
+		Columna: G
+		Registrando al 6 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado5X2
+		Vida: 4
+		Fila: 9
+		Columna: F
 	\end{lstlisting}
 	\subsection{Estructura de laboratorio 07}
 	\begin{itemize}	
