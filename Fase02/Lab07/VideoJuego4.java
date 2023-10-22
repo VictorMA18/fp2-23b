@@ -128,6 +128,21 @@ class VideoJuego4{
         System.out.println(avg); // DAMOS A CONOCER EL PROMEDIO DE VIDA DE CADA EJERCITO 
         System.out.println("*********************************");
     }
+    public static void arrayAverageLife(Soldado[][] army, int num){
+        int sum = 0;
+        int cont = 0;
+        for(int i = 0; i < army.length; i++){
+               for(int j = 0; j < army.length; j++){
+                      if(army[i][j] != null){
+                             sum += army[i][j].getHealth(); //SUMAMOS LA VIDA DE LOS SOLDADOS DEL EJERCITO 2 
+                             cont++;//CONTADOR PARA VER CUANTOS SOLDADOS EXISTEN EN ESTE EJERCITO PARA DESPUES PODER DIVIDIRLO CON SU SUMA
+                      }
+               }
+        }
+        double avg = sum / (cont * 1.0);
+        System.out.println("El promedio de puntos de vida del Ejercito " + num + " es: " + "\n" + avg);
+        System.out.println("*********************************"); // AGREGANDOLO PARA HACER EL SIGUIENTE METODO Y SEPARARLOS
+   }
     public static void main(String args[]){
         ArrayList<ArrayList<Soldado>> army1 = arrayListFillRegister(1);
         Soldado[][] army2 = arrayfillregister(2);
@@ -135,5 +150,6 @@ class VideoJuego4{
         arrayListLongerLife(army1, 1);
         arrayLongerLife(army2, 2);
         arrayListAverageLife(army1, 1);
+        arrayAverageLife(army2, 2);
     }
 }
