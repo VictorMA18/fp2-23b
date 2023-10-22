@@ -1792,6 +1792,214 @@
 		*********************************
 
 	\end{lstlisting}
+	\subsection{Ejercicio VideoJuego4}
+	\begin{itemize}	
+		\item En el decimosegundo commit Creamos el metodo arrayRankingInsercionLife() el cual aplicamos que en un arreglo unidimensional ponemos todos los soldados del arreglo bidimensional para asi poderaplicar efectivamente el metodo insercion el cual aplicariamos con el atributo health el cual nos dara un ranking debido a la logica usada en este metodo para poder ordenarlo y que despues se imprimira los resultados del ranking del mayor vida al menor que se imprimiran
+		\item El codigo , el commit y la ejecucion seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "creamos el metodo arrayRankingInsercionLife() el cual aplicamos que en un arreglo unidimensional ponemos todos los soldados del arreglo bidimensional para asi poderaplicar efectivamente el metodo insercion el cual aplicariamos con el atributo health el cual nos dara un ranking debido a la logica usada en este metodo para poder ordenarlo y que despues se imprimira los resultados del ranking del mayor vida al menor que se imprimiran"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void arrayRankingInsercionLife(Soldado[][] army, int num){
+			int numsoldiers = 0;
+			int count = 0;
+			for(int i = 0; i < army.length; i++){ //CREAMOS UN CONTADOR PARA SABER EL NUMERO DE SOLDADOS DE ESTE EJERCITO Y DESPUES CREAR UN ARREGLO EL CUAL PODEAMOS DARLE ESTE TAMANO Y LO PODAMOS USAR PARA EL METODO BURBUJA
+				for(int j = 0; j < army[i].length; j++){
+						if(army[i][j] != null){
+							numsoldiers++;
+						}
+				}
+			}
+			Soldado[] soldiers = new Soldado[numsoldiers];
+			for(int i = 0; i < army.length; i++){ //CREAMOS ARREGLO PARA QUE LOS SOLDADOS SE TRASLADEN DE UN ARREGLO BIDIMENSIONAL A UNO DIMENSIONAL PARA APLICAR EL METODO INSERCION
+				   for(int j = 0; j < army[i].length; j++){
+						  if(army[i][j] != null){
+								 soldiers[count] = army[i][j];
+								 count++;
+						  }
+				   }
+			}
+			System.out.println("Ordenando a los soldados del Ejercito " + num + " por el insercion: ");  //APLICAMOS EL METODO INSERCION CON LOS PUNTOS DE VIDA
+			for(int i = 1; i < soldiers.length; i++){
+				   Soldado temp = soldiers[i];
+				   int j = i - 1;
+				   while(j >= 0 && (temp.getHealth() > soldiers[j].getHealth())){
+					   soldiers[j + 1] = soldiers[j];
+					   j--;
+				   }
+				   soldiers[j + 1] = temp;
+			}
+			System.out.println("------------------------------------------");
+			System.out.println("Mostrando Ranking del Ejercito " + num + ".....");
+			for(int i = 0; i < soldiers.length; i++){
+				   System.out.print("\n" + "Puesto " + (i + 1));
+				   System.out.println(soldiers[i].toString());
+				   System.out.println("------------------");
+			}
+			System.out.println("*********************************");
+	   }
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		El Ejercito 1 tiene 1 soldados : 
+		*********************************
+		Registrando al 1 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado0X1
+		Vida: 1
+		Fila: 9
+		Columna: D
+		*********************************
+
+		El Ejercito 2 tiene 4 soldados:
+		*********************************
+		Registrando al 1 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado0X2
+		Vida: 2
+		Fila: 5
+		Columna: B
+		Registrando al 2 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado1X2
+		Vida: 2
+		Fila: 7
+		Columna: G
+		Registrando al 3 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado2X2
+		Vida: 2
+		Fila: 3
+		Columna: J
+		Registrando al 4 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado3X2
+		Vida: 1
+		Fila: 10
+		Columna: I
+		*********************************
+
+		Mostrando tabla de posicion ... --
+		Leyenda: Ejercito1 --> X | Ejercito2 --> Y
+
+
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit12.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		El soldado con mayor vida del Ejercito 1 es: 
+		
+		Nombre: Soldado0X1
+		Vida: 1
+		Fila: 9
+		Columna: D
+		*********************************
+		El soldado con mayor vida del Ejercito 2 es: 
+		
+		Nombre: Soldado2X2
+		Vida: 2
+		Fila: 3
+		Columna: J
+		*********************************
+		El promedio de puntos de vida del Ejercito 1 es: 
+		1.0
+		*********************************
+		El promedio de puntos de vida del Ejercito 2 es: 
+		1.75
+		*********************************
+		Ordenando a los soldados del Ejercito 1 por el metodo burbuja: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 1 ..... ////// --->
+		
+		Puesto 1
+		Nombre: Soldado0X1
+		Vida: 1
+		Fila: 9
+		Columna: D
+		------------------
+		*********************************
+		Ordenando a los soldados del Ejercito 2 por el metodo burbuja: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 2 ..... ////// --->
+		
+		Puesto 1
+		Nombre: Soldado2X2
+		Vida: 2
+		Fila: 3
+		Columna: J
+		------------------
+		
+		Puesto 2
+		Nombre: Soldado0X2
+		Vida: 2
+		Fila: 5
+		Columna: B
+		------------------
+		
+		Puesto 3
+		Nombre: Soldado1X2
+		Vida: 2
+		Fila: 7
+		Columna: G
+		------------------
+		
+		Puesto 4
+		Nombre: Soldado3X2
+		Vida: 1
+		Fila: 10
+		Columna: I
+		------------------
+		*********************************
+		Ordenando a los soldados del Ejercito 1 por el insercion: 
+		Mostrando Ranking del Ejercito 1.....
+		
+		Puesto 1
+		Nombre: Soldado0X1
+		Vida: 1
+		Fila: 9
+		Columna: D
+		------------------
+		*********************************
+		Ordenando a los soldados del Ejercito 2 por el insercion: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 2.....
+		
+		Puesto 1
+		Nombre: Soldado2X2
+		Vida: 2
+		Fila: 3
+		Columna: J
+		------------------
+		
+		Puesto 2
+		Nombre: Soldado0X2
+		Vida: 2
+		Fila: 5
+		Columna: B
+		------------------
+		
+		Puesto 3
+		Nombre: Soldado1X2
+		Vida: 2
+		Fila: 7
+		Columna: G
+		------------------
+		
+		Puesto 4
+		Nombre: Soldado3X2
+		Vida: 1
+		Fila: 10
+		Columna: I
+		------------------
+		*********************************
+		
+	\end{lstlisting}
 	\subsection{Estructura de laboratorio 07}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio07 es el siguiente:
