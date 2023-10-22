@@ -238,6 +238,44 @@ class VideoJuego4{
         }
         System.out.println("*********************************");
     }
+    public static void arrayRankingInsercionLife(Soldado[][] army, int num){
+        int numsoldiers = 0;
+        int count = 0;
+        for(int i = 0; i < army.length; i++){ //CREAMOS UN CONTADOR PARA SABER EL NUMERO DE SOLDADOS DE ESTE EJERCITO Y DESPUES CREAR UN ARREGLO EL CUAL PODEAMOS DARLE ESTE TAMAÑO Y LO PODAMOS USAR PARA EL METODO BURBUJA
+            for(int j = 0; j < army[i].length; j++){
+                    if(army[i][j] != null){
+                        numsoldiers++;
+                    }
+            }
+        }
+        Soldado[] soldiers = new Soldado[numsoldiers];
+        for(int i = 0; i < army.length; i++){ //CREAMOS ARREGLO PARA QUE LOS SOLDADOS SE TRASLADEN DE UN ARREGLO BIDIMENSIONAL A UNO DIMENSIONAL PARA APLICAR EL METODO INSERCION
+               for(int j = 0; j < army[i].length; j++){
+                      if(army[i][j] != null){
+                             soldiers[count] = army[i][j];
+                             count++;
+                      }
+               }
+        }
+        System.out.println("Ordenando a los soldados del Ejercito " + num + " por el insercion: ");  //APLICAMOS EL METODO INSERCION CON LOS PUNTOS DE VIDA
+        for(int i = 1; i < soldiers.length; i++){
+               Soldado temp = soldiers[i];
+               int j = i - 1;
+               while(j >= 0 && (temp.getHealth() > soldiers[j].getHealth())){
+                   soldiers[j + 1] = soldiers[j];
+                   j--;
+               }
+               soldiers[j + 1] = temp;
+        }
+        System.out.println("------------------------------------------");
+        System.out.println("Mostrando Ranking del Ejercito " + num + ".....");
+        for(int i = 0; i < soldiers.length; i++){
+               System.out.print("\n" + "Puesto " + (i + 1));
+               System.out.println(soldiers[i].toString());
+               System.out.println("------------------");
+        }
+        System.out.println("*********************************");
+   }
     public static void main(String args[]){
         ArrayList<ArrayList<Soldado>> army1 = arrayListFillRegister(1);
         Soldado[][] army2 = arrayfillregister(2);
@@ -249,5 +287,6 @@ class VideoJuego4{
         arrayListRankingBurbujaLife(army1, 1);
         arrayRankingBurbujaLife(army2, 2);
         arrayListRankingInsercionLife(army1, 1);
+        arrayRankingInsercionLife(army2, 2);
     }
 }
