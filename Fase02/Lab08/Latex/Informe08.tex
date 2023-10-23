@@ -275,6 +275,92 @@
 			}
 		}
 	\end{lstlisting}
+	\subsection{Ejercicio VideoJuego5}
+	\begin{itemize}	
+		\item En el segundo commit creamos el metodo mapHashFillRegister() el cual usamos el uso de HashMaps y tambien de ArrayList para poder añadirlos al hashmaps ya que en este hariamos la comprobacion de que cada Soldado gracias a una iteracion el cual este comprueba que estos si son nulos se añadiria al soldado en la cuadrilla correspondiente y si no no lo añadiria y retrocederia una iteracion ya que se contaria por lo que nos lleva a que en este no se repita en misma cuadrilla despues de esto imprimiriamos los datos del soldado en el orden que fueron creados
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creando el metodo mapHashFillRegister() el cual usamos el uso de HashMaps y tambien de ArrayList para poder anadirlos al hashmaps ya que en este hariamos la comprobacion de que cada Soldado en este no se repita en misma cuadrilla despues de esto imprimiriamos los datos del soldado en el orden que fueron creados"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		// Laboratorio Nro 8  - Ejercicio VideoJuego5
+		// Autor: Mamani Anahua Victor Narciso
+		// Colaboro:
+		// Tiempo:
+		import java.util.*;
+		class VideoJuego5{
+			public static HashMap<String, Soldado> mapHashFillRegister(int num){
+				Random rdm =new Random();
+				HashMap<String, Soldado> army1 = new HashMap<String, Soldado>();
+				ArrayList<ArrayList<Soldado>> army = new ArrayList<ArrayList<Soldado>>(); //NOS AYUDARIAMOS DE UN ARRAYLIST PARA PODER AYUDARNOS CON EL USO DE HASHMAPS PARA PODER REGISTAR A SOLDADOS EN LA QUE NINGUNO DE ESTOS SE REPITA 
+				int numsoldiers = rdm.nextInt(10) + 1; //NUMERO DE SOLDADOS QUE SE VAN A CREAR DE 1 AL 10 
+				for(int i = 0; i < 10; i++){
+					army.add(new ArrayList<Soldado>()); //LLENAMOS NUESTROS ARRAYLIST BIDIMENSIONAL CON CADA FILA PARA QUE CUMPLAN CON ESTRUCTURA DEL TABLERO
+					for(int j = 0; j < 10 ; j++){
+						army.get(i).add(null); // LLENAMOS CADA FILA DEL ARRAYLIST CON UN OBJETO SOLDADO CON TAL QUE ESTE SEA NULL PARA QUE SEPA QUE ESTE TIENE UNA CASILLA PERO NO HAY NADIE TODAVIA SE PUEDE LLENAR 
+					}
+				}
+				System.out.println("El Ejercito " + num + " tiene " + numsoldiers + " soldados : " ); 
+				System.out.println("*********************************");
+				for(int i = 0; i < numsoldiers; i++){ //ITERACION PARA PODER DARLES LOS DATOS A CADA SOLDADO CREADO 
+					String name = "Soldado" + i + "X" + num;
+					int health = rdm.nextInt(5) + 1;
+					int row = rdm.nextInt(10) + 1;
+					String column = String.valueOf((char)(rdm.nextInt(10) + 65)); //REUTILIZAMOS CODIGO DEL ANTERIOR ARCHIVO VIDEOJUEGO4.JAVA YA QUE TENDRIAN LA MISMA FUNCIONALIDAD
+					if(army.get(row - 1).get((int)column.charAt(0) - 65) == null){ 
+						System.out.println("Registrando al " + (i + 1) + " soldado del Ejercito " + num + "");
+						System.out.print("------------------");
+						army.get(row - 1).set((int)column.charAt(0) - 65, new Soldado(name, health, row, column));
+						army1.put("Soldado" + i, new Soldado(name, health, row, column)); //INTEGRAMOS AL HASHMAP AL SOLDADO CON SU RESPECTIVO NOMBRE Y VALOR 
+						System.out.println(army1.get("Soldado"+ i).toString()); //PUBLICAMOS AL SOLDADO CREADO POR ORDEN DE CREACION
+					}else{
+						i -= 1; //NOS AYUDARIA CON LOS SOLDADOS QUE SE REPITEN EN EL MISMO CASILLERO CON TAL QUE NO DEBERIA CONTAR 
+					}
+				}
+				return army1;
+			}
+			public static void main (String args []){
+				HashMap<String, Soldado> army1 = mapHashFillRegister(1);
+				HashMap<String, Soldado> army2 = mapHashFillRegister(2);
+			}
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		El Ejercito 1 tiene 4 soldados : 
+		*********************************
+		Registrando al 1 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado0X1
+		Vida: 5
+		Fila: 4
+		Columna: D
+		Registrando al 2 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado1X1
+		Vida: 3
+		Fila: 8
+		Columna: C
+		Registrando al 3 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado2X1
+		Vida: 5
+		Fila: 6
+		Columna: C
+		Registrando al 4 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado3X1
+		Vida: 5
+		Fila: 8
+		Columna: I
+		El Ejercito 2 tiene 1 soldados : 
+		*********************************
+		Registrando al 1 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado0X2
+		Vida: 5
+		Fila: 2
+		Columna: B
+	\end{lstlisting}
 	\subsection{Estructura de laboratorio 08}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio08 es el siguiente:
