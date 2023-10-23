@@ -283,6 +283,89 @@
 		$ git commit -m "Creando el metodo mapHashFillRegister() el cual usamos el uso de HashMaps y tambien de ArrayList para poder anadirlos al hashmaps ya que en este hariamos la comprobacion de que cada Soldado en este no se repita en misma cuadrilla despues de esto imprimiriamos los datos del soldado en el orden que fueron creados"
 	\end{lstlisting}	
 	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void viewBoard(HashMap<String, Soldado> army1, HashMap<String, Soldado> army2){ //EN ESTE METODO DEMOSTRAREMOS LA TABLA REUTILIZAREMOS CODIGOS DE ANTERIORES LABORATORIOS PARA PODER HACER LA BASE DE ESTE TABLERO
+			System.out.println("\nMostrando tabla de posicion ... --");
+			System.out.println("Leyenda: Ejercito1 --> X | Ejercito2 --> Y"); //RECONOCIMIENTO PARA LOS EJERCITOS Y POSICION DE SUS SOLDADOS
+			System.out.println("\n \t   A\t   B\t   C\t   D\t   E\t   F\t   G\t   H\t   I\t   J"); // RECONOCIMIENTO PARA CADA UBICACION DE CADA SOLDADO EN EL TABLERO POR PARTE DE LAS COLUMNAS
+			System.out.println("\t_________________________________________________________________________________");
+			for(int i = 0; i < 10; i++ ){
+				System.out.print((i + 1) + "\t"); // RECONOCIMIENTO PARA CADA UBICACION DE CADA SOLDADO EN EL TABLERO POR PARTE DE LAS FILAS
+					for(int j = 0; j < 10; j++){
+							if(army1.get("Soldado" + i + "X" + j) != null){
+								System.out.print("|   " + "X" + "   "); //VERIFICANDOLA POSICIONES DE CADA SOLDADO DE CADA EJERCITO CON SU RESPECTIVO INDICADOR PARA PODER UBICARLOS
+							}else if(army2.get("Soldado" + i + "X" + j) != null){
+								System.out.print("|   " + "Y" + "   ");
+								}else{
+								System.out.print("|       ");
+							}
+					}
+					System.out.println("|");
+					System.out.println("\t|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|");
+			}
+			System.out.println("\n*********************************");
+
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		El Ejercito 1 tiene 5 soldados : 
+		*********************************
+		Registrando al 1 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado0X1
+		Vida: 5
+		Fila: 9
+		Columna: C
+		Registrando al 2 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado1X1
+		Vida: 1
+		Fila: 10
+		Columna: H
+		Registrando al 3 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado2X1
+		Vida: 3
+		Fila: 1
+		Columna: F
+		Registrando al 4 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado3X1
+		Vida: 1
+		Fila: 1
+		Columna: I
+		Registrando al 5 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado4X1
+		Vida: 2
+		Fila: 8
+		Columna: I
+		El Ejercito 2 tiene 2 soldados : 
+		*********************************
+		Registrando al 1 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado0X2
+		Vida: 4
+		Fila: 8
+		Columna: B
+		Registrando al 2 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado1X2
+		Vida: 4
+		Fila: 9
+		Columna: F
+		
+		Mostrando tabla de posicion ... --
+		Leyenda: Ejercito1 --> X | Ejercito2 --> Y
+		
+	\end{lstlisting}
+	\subsection{Ejercicio VideoJuego5}
+	\begin{itemize}	
+		\item En el tercer commit creamos el metodo viewBoard() el cual nos va poder ayudar a visualizar el tablero el cual necesitamos saber que dento del Hashmap se encuentre un soldado que no sea nulo el cual respectivamente en el bando que se encuentre le dara su respectivo reconocimento para esto modifcamos tambien el nombre de la clave en el hashmap el cual este nos dice manera mas clara la posicion de este soldado
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creamos el metodo viewBoard() el cual nos va poder ayudar a visualizar el tablero el cual necesitamos saber que dento del Hashmap se encuentre un soldado que no sea nulo el cual respectivamente en el bando que se encuentre le dara su respectivo reconocimento para esto modifcamos tambien el nombre de la clave en el hashmap el cual este nos dice manera mas clara la posicion de este soldado"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
 		// Laboratorio Nro 8  - Ejercicio VideoJuego5
 		// Autor: Mamani Anahua Victor Narciso
 		// Colaboro:
@@ -361,6 +444,13 @@
 		Fila: 2
 		Columna: B
 	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit3.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
 	\subsection{Estructura de laboratorio 08}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio08 es el siguiente:
