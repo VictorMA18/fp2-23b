@@ -89,11 +89,38 @@ class VideoJuego5{
         System.out.println(soldier.toString());
         System.out.println("*********************************");
     }
+    public static double averageLife(HashMap<String, Soldado> army , int num){
+        int sum = 0;
+        int count = 0;
+        Soldado soldier = null;
+        System.out.println("El promedio de puntos de vida del Ejercito " + num + " es: ");
+        for(int i = 0; i < 10; i++){
+            for(int j = 0; j < 10; j++){ //ITERACION LA CUAL NOS AYUDA A PASAR POR TODOS LOS SOLDADOS DE CADA EJERCITO
+                if(army.get("Soldado" + i + "X" + j) != null){ 
+                    sum += army.get("Soldado" + i + "X" + j).getHealth();
+                    count++;
+                }
+            }
+        }
+        if(sum != 0){
+            double avg = sum / (count * 1.0);
+            System.out.println(avg); // DAMOS A CONOCER EL PROMEDIO DE VIDA DE CADA EJERCITO 
+            System.out.println("*********************************");
+            return avg;
+        }else{
+            double avg = 0;
+            System.out.println(avg); // DAMOS A CONOCER EL PROMEDIO DE VIDA DE CADA EJERCITO 
+            System.out.println("*********************************");
+            return avg;
+        }
+    }
     public static void main (String args []){
         HashMap<String, Soldado> army1 = mapHashFillRegister(1);
         HashMap<String, Soldado> army2 = mapHashFillRegister(2);
         viewBoard(army1, army2);
         longerLife(army1, 1);
         longerLife(army2, 2);
+        double avgarmy1 = averageLife(army1, 1);
+        double avgarmy2 = averageLife(army2, 2);
     }
 }
