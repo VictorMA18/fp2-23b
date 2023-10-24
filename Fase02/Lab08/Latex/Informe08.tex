@@ -360,7 +360,7 @@
 	\end{lstlisting}
 	\subsection{Ejercicio VideoJuego5}
 	\begin{itemize}	
-		\item En el tercer commit creamos el metodo viewBoard() el cual nos va poder ayudar a visualizar el tablero el cual necesitamos saber que dento del Hashmap se encuentre un soldado que no sea nulo el cual respectivamente en el bando que se encuentre le dara su respectivo reconocimento para esto modifcamos tambien el nombre de la clave en el hashmap el cual este nos dice manera mas clara la posicion de este soldado
+		\item En el tercer commit creamos el metodo viewBoard() el cual nos va poder ayudar a visualizar el tablero el cual necesitamos saber que dento del Hashmap se encuentre un soldado que no sea nulo el cual respectivamente en el bando que se encuentre le dara su respectivo reconocimento para esto modifcamos tambien el nombre de la clave en el hashmap el cual este nos dice manera mas clara la posicion de este soldado 
 	\end{itemize}	
 	\begin{lstlisting}[language=bash,caption={Commit}][H]
 		$ git commit -m "Creamos el metodo viewBoard() el cual nos va poder ayudar a visualizar el tablero el cual necesitamos saber que dento del Hashmap se encuentre un soldado que no sea nulo el cual respectivamente en el bando que se encuentre le dara su respectivo reconocimento para esto modifcamos tambien el nombre de la clave en el hashmap el cual este nos dice manera mas clara la posicion de este soldado"
@@ -443,10 +443,124 @@
 		Vida: 5
 		Fila: 2
 		Columna: B
+				
+		Mostrando tabla de posicion ... --
+		Leyenda: Ejercito1 --> X | Ejercito2 --> Y
+
 	\end{lstlisting}
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit3.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\subsection{Ejercicio VideoJuego5}
+	\begin{itemize}	
+		\item En el cuarto commit modificamos el metodo viewBoard() en este haremos comparaciones entre los 2 ejercitos debido que en este podemos ver que 1 soldado de cada ejercito se puede cruzar debido a esto haremos una comprobacion de estos soldado de quien tienie mas vida para que se que de con ese casillero para eso va a ver una batalla la cual el ganador saldra con menos vida debido a la batalla y ganara el casillero para esto usamos bastantes if para comprobar esta situacion y vamos iterando por cada casillero para ver cada caso
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Arreglando el tablero con las posiciones de cada bando de cada ejercito en caso de que soldados de diferente ejercito se encuentren en el mismo casillero estos van a tener una batalla como vemos en la que se compara su nivel de vida y el que tenga mas vida se posicionara donde esta siendo este el ganador pero su vida se reducira debido laa batalla tenida con el otro soldado el cual va a ser eliminado del campo"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void viewBoard(HashMap<String, Soldado> army1, HashMap<String, Soldado> army2){ //EN ESTE METODO DEMOSTRAREMOS LA TABLA REUTILIZAREMOS CODIGOS DE ANTERIORES LABORATORIOS PARA PODER HACER LA BASE DE ESTE TABLERO
+			System.out.println("\nMostrando tabla de posicion ... --");
+			System.out.println("Leyenda: Ejercito1 --> X | Ejercito2 --> Y"); //RECONOCIMIENTO PARA LOS EJERCITOS Y POSICION DE SUS SOLDADOS
+			System.out.println("\n \t   A\t   B\t   C\t   D\t   E\t   F\t   G\t   H\t   I\t   J"); // RECONOCIMIENTO PARA CADA UBICACION DE CADA SOLDADO EN EL TABLERO POR PARTE DE LAS COLUMNAS
+			System.out.println("\t_________________________________________________________________________________");
+			for(int i = 0; i < 10; i++ ){
+				System.out.print((i + 1) + "\t"); // RECONOCIMIENTO PARA CADA UBICACION DE CADA SOLDADO EN EL TABLERO POR PARTE DE LAS FILAS
+					for(int j = 0; j < 10; j++){
+							if(army1.get("Soldado" + i + "X" + j) != null && army2.get("Soldado" + i + "X" + j) != null){ //CREAMOS UN IF PARA QUE ESTE NOS AYUDE A SABER QUIEN DE ESTOS SOLDADOS SE OCUPARA DEL CASILLERO EL CUAL DONDE ESTAN PELEANDO
+								if(army1.get("Soldado" + i + "X" + j).getHealth() > army2.get("Soldado" + i + "X" + j).getHealth()){
+									army1.get("Soldado" + i + "X" + j).setHealth(army1.get("Soldado" + i + "X" + j).getHealth() - army2.get("Soldado" + i + "X" + j).getHealth());
+									army2.remove("Soldado" + i + "X" + j);
+									System.out.print("|   " + "X" + "   ");
+								}else if(army2.get("Soldado" + i + "X" + j) != null && army1.get("Soldado" + i + "X" + j) != null){
+									army2.get("Soldado" + i + "X" + j).setHealth(army2.get("Soldado" + i + "X" + j).getHealth() - army1.get("Soldado" + i + "X" + j).getHealth());
+									army1.remove("Soldado" + i + "X" + j);
+									System.out.print("|   " + "Y" + "   ");
+								}else{
+									army2.remove("Soldado" + i + "X" + j);
+									army1.remove("Soldado" + i + "X" + j);
+									System.out.print("|   " + " " + "   ");
+								}
+							}else if(army1.get("Soldado" + i + "X" + j) != null){
+								System.out.print("|   " + "X" + "   ");
+							}else if(army2.get("Soldado" + i + "X" + j) != null){
+								System.out.print("|   " + "Y" + "   ");
+							}else{
+								System.out.print("|   " + " " + "   ");
+							}
+					}
+					System.out.println("|");
+					System.out.println("\t|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|");
+			}
+			System.out.println("\n*********************************");
+		
+		}
+		\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		El Ejercito 1 tiene 4 soldados : 
+		*********************************
+		Registrando al 1 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado0X1
+		Vida: 5
+		Fila: 6
+		Columna: J
+		Registrando al 2 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado1X1
+		Vida: 4
+		Fila: 7
+		Columna: C
+		Registrando al 3 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado2X1
+		Vida: 1
+		Fila: 3
+		Columna: A
+		Registrando al 4 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado3X1
+		Vida: 5
+		Fila: 2
+		Columna: D
+		El Ejercito 2 tiene 4 soldados : 
+		*********************************
+		Registrando al 1 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado0X2
+		Vida: 5
+		Fila: 2
+		Columna: J
+		Registrando al 2 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado1X2
+		Vida: 1
+		Fila: 7
+		Columna: J
+		Registrando al 3 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado2X2
+		Vida: 1
+		Fila: 9
+		Columna: B
+		Registrando al 4 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado3X2
+		Vida: 2
+		Fila: 6
+		Columna: J
+		
+		Mostrando tabla de posicion ... --
+		Leyenda: Ejercito1 --> X | Ejercito2 --> Y
+
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit4.png}
 		%\includesvg{img/automata.svg}
 		%\label{img:mot2}
 		%\caption{Product backlog.}
