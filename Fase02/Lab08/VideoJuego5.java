@@ -158,6 +158,49 @@ class VideoJuego5{
         }
         System.out.println("*********************************");
     }
+    public static void rankingInsercionLife(HashMap<String, Soldado> army , int num){
+        System.out.println("El Ejercito " + num + " ordenando por metodo insercion: ");
+        int count = 0;
+        for(int i = 0; i < 10; i++){
+            for(int j = 0; j < 10; j++){ //ITERACION LA CUAL NOS AYUDA A PASAR POR TODOS LOS SOLDADOS DE CADA EJERCITO
+                if(army.get("Soldado" + i + "X" + j) != null){ 
+                   count++;
+                }
+            }
+        }
+        System.out.println("------------------------------------------");
+        System.out.println("Mostrando Ranking del Ejercito " + num + " ..... ////// --->");
+        Soldado[] soldados = new Soldado[count];
+        int x = 0;
+        for(int i = 0; i < 10; i++){
+            for(int j = 0; j < 10; j++){ //ITERACION LA CUAL NOS AYUDA A PASAR POR TODOS LOS SOLDADOS AL ARRAY SOLDADO PARA PODER USAR EL USO DEL METODO DE ORDENACION INSERCION
+                if(army.get("Soldado" + i + "X" + j) != null){ 
+                    if(count - count + x == count){
+                        break;
+                    }else{
+                        soldados[count - count + x] = army.get("Soldado" + i + "X" + j); //LA MISMA LOGICA QUE EL ANTERIOR METODO SOLO QUE EN ESTE LO USARIAMOS DE MANERA DIFERENTE YA QUE ESTE SERIA DE FORMA DE INSERCION
+                    }
+                    x++;   
+                }
+            }
+        }
+        int n = soldados.length;
+        for (int i = 1; i < n; i++) {
+            Soldado actual = soldados[i];
+            int j = i - 1;
+            while (j >= 0 && soldados[j].getHealth() < actual.getHealth()) { //ORDENAMOS EL EJERCITO RESPECTIVAMENTE MEDIANTE EL METODO QUE NOS OFRECE INSERCION EL CUAL ES ESTE CODIGO
+                soldados[j + 1] = soldados[j];
+                j--;
+            }
+            soldados[j + 1] = actual;
+        }
+        for(int i = 0; i < soldados.length; i++){
+            System.out.print("\n" + "Puesto " + (i + 1));
+            System.out.println(soldados[i].toString()); //PUBLICAMOS RESULTADOS
+            System.out.println("------------------");
+        }
+        System.out.println("*********************************");
+    }
     public static void main (String args []){
         HashMap<String, Soldado> army1 = mapHashFillRegister(1);
         HashMap<String, Soldado> army2 = mapHashFillRegister(2);
@@ -168,5 +211,7 @@ class VideoJuego5{
         double avgarmy2 = averageLife(army2, 2);
         rankingBurbujaLife(army1, 1);
         rankingBurbujaLife(army2, 2);
+        rankingInsercionLife(army1, 1);
+        rankingInsercionLife(army2, 2);
     }
 }
