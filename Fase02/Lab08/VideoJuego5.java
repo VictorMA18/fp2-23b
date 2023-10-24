@@ -43,12 +43,26 @@ class VideoJuego5{
         for(int i = 0; i < 10; i++ ){
             System.out.print((i + 1) + "\t"); // RECONOCIMIENTO PARA CADA UBICACION DE CADA SOLDADO EN EL TABLERO POR PARTE DE LAS FILAS
                 for(int j = 0; j < 10; j++){
-                        if(army1.get("Soldado" + i + "X" + j) != null){
-                            System.out.print("|   " + "X" + "   "); //VERIFICANDOLA POSICIONES DE CADA SOLDADO DE CADA EJERCITO CON SU RESPECTIVO INDICADOR PARA PODER UBICARLOS
+                        if(army1.get("Soldado" + i + "X" + j) != null && army2.get("Soldado" + i + "X" + j) != null){ //CREAMOS UN IF PARA QUE ESTE NOS AYUDE A SABER QUIEN DE ESTOS SOLDADOS SE OCUPARA DEL CASILLERO EL CUAL DONDE ESTAN PELEANDO
+                            if(army1.get("Soldado" + i + "X" + j).getHealth() > army2.get("Soldado" + i + "X" + j).getHealth()){
+                                army1.get("Soldado" + i + "X" + j).setHealth(army1.get("Soldado" + i + "X" + j).getHealth() - army2.get("Soldado" + i + "X" + j).getHealth());
+                                army2.remove("Soldado" + i + "X" + j);
+                                System.out.print("|   " + "X" + "   ");
+                            }else if(army2.get("Soldado" + i + "X" + j) != null && army1.get("Soldado" + i + "X" + j) != null){
+                                army2.get("Soldado" + i + "X" + j).setHealth(army2.get("Soldado" + i + "X" + j).getHealth() - army1.get("Soldado" + i + "X" + j).getHealth());
+                                army1.remove("Soldado" + i + "X" + j);
+                                System.out.print("|   " + "Y" + "   ");
+                            }else{
+                                army2.remove("Soldado" + i + "X" + j);
+                                army1.remove("Soldado" + i + "X" + j);
+                                System.out.print("|   " + " " + "   ");
+                            }
+                        }else if(army1.get("Soldado" + i + "X" + j) != null){
+                            System.out.print("|   " + "X" + "   ");
                         }else if(army2.get("Soldado" + i + "X" + j) != null){
                             System.out.print("|   " + "Y" + "   ");
-	                        }else{
-                            System.out.print("|       ");
+                        }else{
+                            System.out.print("|   " + " " + "   ");
                         }
                 }
                 System.out.println("|");
