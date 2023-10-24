@@ -114,6 +114,50 @@ class VideoJuego5{
             return avg;
         }
     }
+    public static void rankingBurbujaLife(HashMap<String, Soldado> army , int num){
+        System.out.println("El Ejercito " + num + " ordenando por metodo burbuja: ");
+        int count = 0;
+        for(int i = 0; i < 10; i++){
+            for(int j = 0; j < 10; j++){ //ITERACION LA CUAL NOS AYUDA A PASAR POR TODOS LOS SOLDADOS DE CADA EJERCITO
+                if(army.get("Soldado" + i + "X" + j) != null){ 
+                   count++;
+                }
+            }
+        }
+        System.out.println("------------------------------------------");
+        System.out.println("Mostrando Ranking del Ejercito " + num + " ..... ////// --->");
+        Soldado[] soldados = new Soldado[count];
+        int x = 0;
+        for(int i = 0; i < 10; i++){
+            for(int j = 0; j < 10; j++){ //ITERACION LA CUAL NOS AYUDA A PASAR POR TODOS LOS SOLDADOS AL ARRAY SOLDADO PARA PODER USAR EL USO DEL METODO DE ORDENACION BURBUJA
+                if(army.get("Soldado" + i + "X" + j) != null){ 
+                    if(count - count + x == count){
+                        break;
+                    }else{
+                        soldados[count - count + x] = army.get("Soldado" + i + "X" + j);
+                    }
+                    x++;   
+                }
+            }
+        }
+        int n = soldados.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - 1 - i; j++) {
+                if (soldados[j].getHealth() < soldados[j + 1].getHealth()) {
+                    // Intercambiar elementos si están en el orden incorrecto
+                    Soldado temp = soldados[j];
+                    soldados[j] = soldados[j + 1];
+                    soldados[j + 1] = temp;
+                }
+            }
+        }
+        for(int i = 0; i < soldados.length; i++){
+            System.out.print("\n" + "Puesto " + (i + 1));
+            System.out.println(soldados[i].toString());
+            System.out.println("------------------");
+        }
+        System.out.println("*********************************");
+    }
     public static void main (String args []){
         HashMap<String, Soldado> army1 = mapHashFillRegister(1);
         HashMap<String, Soldado> army2 = mapHashFillRegister(2);
@@ -122,5 +166,7 @@ class VideoJuego5{
         longerLife(army2, 2);
         double avgarmy1 = averageLife(army1, 1);
         double avgarmy2 = averageLife(army2, 2);
+        rankingBurbujaLife(army1, 1);
+        rankingBurbujaLife(army2, 2);
     }
 }
