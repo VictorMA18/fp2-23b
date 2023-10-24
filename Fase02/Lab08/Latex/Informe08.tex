@@ -1221,6 +1221,35 @@
 		}
 	\end{lstlisting}
 	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		El Ejercito 1 tiene 1 soldados : 
+		*********************************
+		Registrando al 1 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado0X1
+		Vida: 3
+		Fila: 5
+		Columna: D
+		El Ejercito 2 tiene 1 soldados : 
+		*********************************
+		Registrando al 1 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado0X2
+		Vida: 3
+		Fila: 4
+		Columna: C
+
+		Mostrando tabla de posicion ... --
+		Leyenda: Ejercito1 --> X | Ejercito2 --> Y
+
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit8.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
 		*********************************
 
 		El soldado con mayor vida del Ejercito 1 es: 
@@ -1290,6 +1319,325 @@
 		*********************************
 		
 	\end{lstlisting}
+	\subsection{Ejercicio VideoJuego5}
+	\begin{itemize}	
+		\item En el noveno commit creamos el metodo resultBattle() el cual nos dara el resultado de esta batalla dependiendo del promedio de estos 2 ejercitos debido a esto se va generar un ganador para esto se comparan estas 2 cantidades metodologia promedio de vida de cada ejercito
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creamos el metodo resultBattle() el cual nos dara el resultado de esta batalla dependiendo del promedio de estos 2 ejercitos debido a esto se va generar un ganador para esto se comparan estas 2 cantidades metodologia promedio de vida de cada ejercito"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void resultBattle(double avg1, double avg2,  int num, int num2){ //METODO CREADO PARA PODER SABER EL RESULTADO DE ESTA BATALLA ENTRE ESTOS 2 EJERCITOS
+			if(avg1 > avg2){ //PUBLICACION DE LOS RESULTADOS
+				System.out.println("El Ejercito " + num + " es el GANADOR con " + avg1+ " puntos");
+			}else if(avg2 > avg1){
+				System.out.println("El Ejercito " + num2 + " es el GANADOR con " + avg2 + " puntos");
+			}else{
+				System.out.println("EMPATE con " + avg1 + " puntos");
+			}
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		El Ejercito 1 tiene 6 soldados : 
+		*********************************
+		Registrando al 1 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado0X1
+		Vida: 3
+		Fila: 5
+		Columna: J
+		Registrando al 2 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado1X1
+		Vida: 5
+		Fila: 2
+		Columna: B
+		Registrando al 3 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado2X1
+		Vida: 3
+		Fila: 5
+		Columna: G
+		Registrando al 4 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado3X1
+		Vida: 2
+		Fila: 1
+		Columna: C
+		Registrando al 5 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado4X1
+		Vida: 3
+		Fila: 10
+		Columna: H
+		Registrando al 6 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado5X1
+		Vida: 4
+		Fila: 10
+		Columna: D
+		El Ejercito 2 tiene 6 soldados : 
+		*********************************
+		Registrando al 1 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado0X2
+		Vida: 1
+		Fila: 9
+		Columna: D
+		Registrando al 2 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado1X2
+		Vida: 3
+		Fila: 5
+		Columna: F
+		Registrando al 3 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado2X2
+		Vida: 5
+		Fila: 9
+		Columna: G
+		Registrando al 4 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado3X2
+		Vida: 3
+		Fila: 10
+		Columna: A
+		Registrando al 5 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado4X2
+		Vida: 2
+		Fila: 4
+		Columna: F
+		Registrando al 6 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado5X2
+		Vida: 4
+		Fila: 10
+		Columna: E
+		
+		Mostrando tabla de posicion ... --
+		Leyenda: Ejercito1 --> X | Ejercito2 --> Y
+		
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit9.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+
+		El soldado con mayor vida del Ejercito 1 es: 
+		
+		Nombre: Soldado1X1
+		Vida: 5
+		Fila: 2
+		Columna: B
+		*********************************
+		
+		El soldado con mayor vida del Ejercito 2 es: 
+		
+		Nombre: Soldado2X2
+		Vida: 5
+		Fila: 9
+		Columna: G
+		*********************************
+		El promedio de puntos de vida del Ejercito 1 es: 
+		3.3333333333333335
+		*********************************
+		El promedio de puntos de vida del Ejercito 2 es: 
+		3.0
+		*********************************
+		El Ejercito 1 ordenando por metodo burbuja: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 1 ..... ////// --->
+		
+		Puesto 1
+		Nombre: Soldado1X1
+		Vida: 5
+		Fila: 2
+		Columna: B
+		------------------
+		
+		Puesto 2
+		Nombre: Soldado5X1
+		Vida: 4
+		Fila: 10
+		Columna: D
+		------------------
+		
+		Puesto 3
+		Nombre: Soldado2X1
+		Vida: 3
+		Fila: 5
+		Columna: G
+		------------------
+		
+		Puesto 4
+		Nombre: Soldado0X1
+		Vida: 3
+		Fila: 5
+		Columna: J
+		------------------
+		
+		Puesto 5
+		Nombre: Soldado4X1
+		Vida: 3
+		Fila: 10
+		Columna: H
+		------------------
+		
+		Puesto 6
+		Nombre: Soldado3X1
+		Vida: 2
+		Fila: 1
+		Columna: C
+		------------------
+		*********************************
+		El Ejercito 2 ordenando por metodo burbuja: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 2 ..... ////// --->
+		
+		Puesto 1
+		Nombre: Soldado2X2
+		Vida: 5
+		Fila: 9
+		Columna: G
+		------------------
+		
+		Puesto 2
+		Nombre: Soldado5X2
+		Vida: 4
+		Fila: 10
+		Columna: E
+		------------------
+		
+		Puesto 3
+		Nombre: Soldado1X2
+		Vida: 3
+		Fila: 5
+		Columna: F
+		------------------
+		
+		Puesto 4
+		Nombre: Soldado3X2
+		Vida: 3
+		Fila: 10
+		Columna: A
+		------------------
+		
+		Puesto 5
+		Nombre: Soldado4X2
+		Vida: 2
+		Fila: 4
+		Columna: F
+		------------------
+		
+		Puesto 6
+		Nombre: Soldado0X2
+		Vida: 1
+		Fila: 9
+		Columna: D
+		------------------
+		*********************************
+		El Ejercito 1 ordenando por metodo insercion: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 1 ..... ////// --->
+		
+		Puesto 1
+		Nombre: Soldado1X1
+		Vida: 5
+		Fila: 2
+		Columna: B
+		------------------
+		
+		Puesto 2
+		Nombre: Soldado5X1
+		Vida: 4
+		Fila: 10
+		Columna: D
+		------------------
+		
+		Puesto 3
+		Nombre: Soldado2X1
+		Vida: 3
+		Fila: 5
+		Columna: G
+		------------------
+		
+		Puesto 4
+		Nombre: Soldado0X1
+		Vida: 3
+		Fila: 5
+		Columna: J
+		------------------
+		
+		Puesto 5
+		Nombre: Soldado4X1
+		Vida: 3
+		Fila: 10
+		Columna: H
+		------------------
+		
+		Puesto 6
+		Nombre: Soldado3X1
+		Vida: 2
+		Fila: 1
+		Columna: C
+		------------------
+		*********************************
+		El Ejercito 2 ordenando por metodo insercion: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 2 ..... ////// --->
+		
+		Puesto 1
+		Nombre: Soldado2X2
+		Vida: 5
+		Fila: 9
+		Columna: G
+		------------------
+		
+		Puesto 2
+		Nombre: Soldado5X2
+		Vida: 4
+		Fila: 10
+		Columna: E
+		------------------
+		
+		Puesto 3
+		Nombre: Soldado1X2
+		Vida: 3
+		Fila: 5
+		Columna: F
+		------------------
+		
+		Puesto 4
+		Nombre: Soldado3X2
+		Vida: 3
+		Fila: 10
+		Columna: A
+		------------------
+		
+		Puesto 5
+		Nombre: Soldado4X2
+		Vida: 2
+		Fila: 4
+		Columna: F
+		------------------
+		
+		Puesto 6
+		Nombre: Soldado0X2
+		Vida: 1
+		Fila: 9
+		Columna: D
+		------------------
+		*********************************
+		El Ejercito 1 es el GANADOR con 3.3333333333333335 puntos
+		
+	\end{lstlisting}
+	
 	\subsection{Estructura de laboratorio 08}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio08 es el siguiente:
