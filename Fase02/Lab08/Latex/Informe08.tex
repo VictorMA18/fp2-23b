@@ -1168,6 +1168,128 @@
 		*********************************
 		
 	\end{lstlisting}
+	\subsection{Ejercicio VideoJuego5}
+	\begin{itemize}	
+		\item En el octavo commit creamos el metodo rankingInsercionLife() el cual nos ayuda a ordenar a los soldados pero esta ves de forma inserciva la cual tendria la misma logica que el anterior metodo pero este se aplicaria diferente ya que este tendria su propia funcionalidad la cual la hace unica y despues de esto podemos publicar resultados de cada ejercito el cual va del mayor al menor
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creamos el metodo rankingInsercionLife() el cual nos ayuda a ordenar a los soldados pero esta ves de forma inserciva la cual tendria la misma logica que el anterior metodo pero este se aplicaria diferente ya que este tendria su propia funcionalidad la cual la hace unica y despues de esto podemos publicar resultados de cada ejercito el cual va del mayor al menor"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void rankingInsercionLife(HashMap<String, Soldado> army , int num){
+			System.out.println("El Ejercito " + num + " ordenando por metodo insercion: ");
+			int count = 0;
+			for(int i = 0; i < 10; i++){
+				for(int j = 0; j < 10; j++){ //ITERACION LA CUAL NOS AYUDA A PASAR POR TODOS LOS SOLDADOS DE CADA EJERCITO
+					if(army.get("Soldado" + i + "X" + j) != null){ 
+					   count++;
+					}
+				}
+			}
+			System.out.println("------------------------------------------");
+			System.out.println("Mostrando Ranking del Ejercito " + num + " ..... ////// --->");
+			Soldado[] soldados = new Soldado[count];
+			int x = 0;
+			for(int i = 0; i < 10; i++){
+				for(int j = 0; j < 10; j++){ //ITERACION LA CUAL NOS AYUDA A PASAR POR TODOS LOS SOLDADOS AL ARRAY SOLDADO PARA PODER USAR EL USO DEL METODO DE ORDENACION INSERCION
+					if(army.get("Soldado" + i + "X" + j) != null){ 
+						if(count - count + x == count){
+							break;
+						}else{
+							soldados[count - count + x] = army.get("Soldado" + i + "X" + j); //LA MISMA LOGICA QUE EL ANTERIOR METODO SOLO QUE EN ESTE LO USARIAMOS DE MANERA DIFERENTE YA QUE ESTE SERIA DE FORMA DE INSERCION
+						}
+						x++;   
+					}
+				}
+			}
+			int n = soldados.length;
+			for (int i = 1; i < n; i++) {
+				Soldado actual = soldados[i];
+				int j = i - 1;
+				while (j >= 0 && soldados[j].getHealth() < actual.getHealth()) { //ORDENAMOS EL EJERCITO RESPECTIVAMENTE MEDIANTE EL METODO QUE NOS OFRECE INSERCION EL CUAL ES ESTE CODIGO
+					soldados[j + 1] = soldados[j];
+					j--;
+				}
+				soldados[j + 1] = actual;
+			}
+			for(int i = 0; i < soldados.length; i++){
+				System.out.print("\n" + "Puesto " + (i + 1));
+				System.out.println(soldados[i].toString()); //PUBLICAMOS RESULTADOS
+				System.out.println("------------------");
+			}
+			System.out.println("*********************************");
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+
+		El soldado con mayor vida del Ejercito 1 es: 
+		
+		Nombre: Soldado0X1
+		Vida: 3
+		Fila: 5
+		Columna: D
+		*********************************
+		
+		El soldado con mayor vida del Ejercito 2 es: 
+		
+		Nombre: Soldado0X2
+		Vida: 3
+		Fila: 4
+		Columna: C
+		*********************************
+		El promedio de puntos de vida del Ejercito 1 es: 
+		3.0
+		*********************************
+		El promedio de puntos de vida del Ejercito 2 es: 
+		3.0
+		*********************************
+		El Ejercito 1 ordenando por metodo burbuja: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 1 ..... ////// --->
+		
+		Puesto 1
+		Nombre: Soldado0X1
+		Vida: 3
+		Fila: 5
+		Columna: D
+		------------------
+		*********************************
+		El Ejercito 2 ordenando por metodo burbuja: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 2 ..... ////// --->
+		
+		Puesto 1
+		Nombre: Soldado0X2
+		Vida: 3
+		Fila: 4
+		Columna: C
+		------------------
+		*********************************
+		El Ejercito 1 ordenando por metodo insercion: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 1 ..... ////// --->
+		
+		Puesto 1
+		Nombre: Soldado0X1
+		Vida: 3
+		Fila: 5
+		Columna: D
+		------------------
+		*********************************
+		El Ejercito 2 ordenando por metodo insercion: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 2 ..... ////// --->
+		
+		Puesto 1
+		Nombre: Soldado0X2
+		Vida: 3
+		Fila: 4
+		Columna: C
+		------------------
+		*********************************
+		
+	\end{lstlisting}
 	\subsection{Estructura de laboratorio 08}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio08 es el siguiente:
