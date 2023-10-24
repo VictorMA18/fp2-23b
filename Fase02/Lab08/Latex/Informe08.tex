@@ -565,6 +565,166 @@
 		%\label{img:mot2}
 		%\caption{Product backlog.}
 	\end{figure}
+	\subsection{Ejercicio VideoJuego5}
+	\begin{itemize}	
+		\item En el quinto commit creamos el metodo longerLife() el cual nos podra a dar la informacion del soldado el cual tenga la mayor vida este se va comparando con otros soldados el cual tendra que hacer una iteracion con cada soldado de cada ejercito a la vez con esto comprobamos que el soldado el cual estamos buscando no sea nulo
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creamos el metodo longerLife() el cual nos podra a dar la informacion del soldado el cual tenga la mayor vida este se va comparando con otros soldados el cual tendra que hacer una iteracion con cada soldado de cada ejercito a la vez con esto comprobamos que el soldado el cual estamos buscando no sea nulo"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void longerLife(HashMap<String, Soldado> army , int num){
+			int mayor = 0;
+			Soldado soldier = null;
+			for(int i = 0; i < 10; i++){
+				for(int j = 0; j < 10; j++){ //ITERACION LA CUAL NOS AYUDA A PASAR POR TODOS LOS SOLDADOS DE CADA EJERCITO
+					if(army.get("Soldado" + i + "X" + j) != null){ //VERIFICAMOS QUE EL SOLDADO EL CUAL ESTAMOS VERIFICANOD NO SEA UNO NULO
+						if(army.get("Soldado" + i + "X" + j).getHealth() > mayor){
+							mayor = army.get("Soldado" + i + "X" + j).getHealth(); //DETECTAMOS EL MAYOR EL CUAL VAMOS COMPRANDO CON LOS DEMAS SOLDADOS PARA TENER SOLO AL SOLDADO EL CUAL TENGA LA MAYOR VIDA
+							soldier = army.get("Soldado" + i + "X" + j); //SOLDIER CONTENDRA A ESTE SOLDADO EL CUAL DESPUES SE IMPRIMIRA SUS DATOS PARA VER DE QUE SOLDADO SE TRATA
+						}
+					}
+				}
+			}
+			System.out.println("");
+			System.out.println("El soldado con mayor vida del Ejercito " + num + " es: ");
+			System.out.println(soldier.toString());
+			System.out.println("*********************************");
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		El Ejercito 1 tiene 7 soldados : 
+		*********************************
+		Registrando al 1 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado0X1
+		Vida: 5
+		Fila: 9
+		Columna: I
+		Registrando al 2 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado1X1
+		Vida: 1
+		Fila: 3
+		Columna: D
+		Registrando al 3 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado2X1
+		Vida: 5
+		Fila: 9
+		Columna: E
+		Registrando al 4 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado3X1
+		Vida: 5
+		Fila: 4
+		Columna: G
+		Registrando al 5 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado4X1
+		Vida: 4
+		Fila: 3
+		Columna: C
+		Registrando al 6 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado5X1
+		Vida: 1
+		Fila: 2
+		Columna: C
+		Registrando al 7 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado6X1
+		Vida: 3
+		Fila: 10
+		Columna: J
+		El Ejercito 2 tiene 9 soldados : 
+		*********************************
+		Registrando al 1 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado0X2
+		Vida: 3
+		Fila: 1
+		Columna: H
+		Registrando al 2 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado1X2
+		Vida: 3
+		Fila: 2
+		Columna: A
+		Registrando al 3 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado2X2
+		Vida: 4
+		Fila: 10
+		Columna: G
+		Registrando al 4 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado3X2
+		Vida: 3
+		Fila: 9
+		Columna: H
+		Registrando al 5 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado4X2
+		Vida: 4
+		Fila: 6
+		Columna: H
+		Registrando al 6 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado5X2
+		Vida: 4
+		Fila: 9
+		Columna: F
+		Registrando al 7 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado6X2
+		Vida: 4
+		Fila: 4
+		Columna: A
+		Registrando al 8 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado7X2
+		Vida: 2
+		Fila: 9
+		Columna: E
+		Registrando al 9 soldado del Ejercito 2
+		------------------
+		Nombre: Soldado8X2
+		Vida: 5
+		Fila: 6
+		Columna: J
+		
+		Mostrando tabla de posicion ... --
+		Leyenda: Ejercito1 --> X | Ejercito2 --> Y		
+
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit5.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+
+		El soldado con mayor vida del Ejercito 1 es: 
+
+		Nombre: Soldado3X1
+		Vida: 5
+		Fila: 4
+		Columna: G
+		*********************************
+
+		El soldado con mayor vida del Ejercito 2 es: 
+
+		Nombre: Soldado8X2
+		Vida: 5
+		Fila: 6
+		Columna: J
+		*********************************
+		
+	\end{lstlisting}
 	\subsection{Estructura de laboratorio 08}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio08 es el siguiente:

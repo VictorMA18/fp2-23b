@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1698112538 "/home/user/fp2-23b/Fase02/Lab08/Latex/Informe08.tex" "Informe08.pdf" "Informe08" 1698112538
+["pdflatex"] 1698113535 "/home/user/fp2-23b/Fase02/Lab08/Latex/Informe08.tex" "Informe08.pdf" "Informe08" 1698113536
   "/etc/texmf/web2c/texmf.cnf" 1695244730 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/user/fp2-23b/Fase02/Lab08/Latex/Informe08.tex" 1698112537 27305 3ab90a13a98ecdbe7370111b43a77059 ""
+  "/home/user/fp2-23b/Fase02/Lab08/Latex/Informe08.tex" 1698113534 32036 6d1df0499351e0cc21f41b8e61b11c81 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tctt0900.tfm" 1136768653 1536 bda3e6bf9784a4cc572c754e0c3eeb00 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
@@ -123,11 +123,12 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1695244742 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1695244760 2802157 836bcf8882c264bca8c914dc83bfb65d ""
-  "Informe08.aux" 1698112538 3251 a6bd349f2cf8d3e7ffb64c8d0827a6ba "pdflatex"
-  "Informe08.out" 1698112538 2220 bd433f3c504523b6c7ff2e1fa8f9a32d "pdflatex"
-  "Informe08.tex" 1698112537 27305 3ab90a13a98ecdbe7370111b43a77059 ""
+  "Informe08.aux" 1698113536 3380 3ea4a47a27a39111159165e3cb5e19db "pdflatex"
+  "Informe08.out" 1698113536 2386 87268d4c7666bf2d8283241062d5b52f "pdflatex"
+  "Informe08.tex" 1698113534 32036 6d1df0499351e0cc21f41b8e61b11c81 ""
   "img/Commit3.png" 1698095421 59009 ff8bcc5bd167a25c680b5004c281e2b5 ""
   "img/Commit4.png" 1698111964 8734 1844ca2f616f3eb1c36ffd5b4ecf88a0 ""
+  "img/Commit5.png" 1698113347 69885 7de36ff4df9c18a54e5954d39d131718 ""
   "img/logo_abet.png" 1698081060 6307 66ff7f82180b3b29c348bdae974447b6 ""
   "img/logo_episunsa.png" 1698081060 6815 7da1fe7727dad63b523d0fbca337594d ""
   (generated)
