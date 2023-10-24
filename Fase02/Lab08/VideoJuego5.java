@@ -71,9 +71,29 @@ class VideoJuego5{
         System.out.println("\n*********************************");
     
     }
+    public static void longerLife(HashMap<String, Soldado> army , int num){
+        int mayor = 0;
+        Soldado soldier = null;
+        for(int i = 0; i < 10; i++){
+            for(int j = 0; j < 10; j++){ //ITERACION LA CUAL NOS AYUDA A PASAR POR TODOS LOS SOLDADOS DE CADA EJERCITO
+                if(army.get("Soldado" + i + "X" + j) != null){ //VERIFICAMOS QUE EL SOLDADO EL CUAL ESTAMOS VERIFICANOD NO SEA UNO NULO
+                    if(army.get("Soldado" + i + "X" + j).getHealth() > mayor){
+                        mayor = army.get("Soldado" + i + "X" + j).getHealth(); //DETECTAMOS EL MAYOR EL CUAL VAMOS COMPRANDO CON LOS DEMAS SOLDADOS PARA TENER SOLO AL SOLDADO EL CUAL TENGA LA MAYOR VIDA
+                        soldier = army.get("Soldado" + i + "X" + j); //SOLDIER CONTENDRA A ESTE SOLDADO EL CUAL DESPUES SE IMPRIMIRA SUS DATOS PARA VER DE QUE SOLDADO SE TRATA
+                    }
+                }
+            }
+        }
+        System.out.println("");
+        System.out.println("El soldado con mayor vida del Ejercito " + num + " es: ");
+        System.out.println(soldier.toString());
+        System.out.println("*********************************");
+    }
     public static void main (String args []){
         HashMap<String, Soldado> army1 = mapHashFillRegister(1);
         HashMap<String, Soldado> army2 = mapHashFillRegister(2);
         viewBoard(army1, army2);
+        longerLife(army1, 1);
+        longerLife(army2, 2);
     }
 }
