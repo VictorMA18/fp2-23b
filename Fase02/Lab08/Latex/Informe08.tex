@@ -864,99 +864,160 @@
 		$ git commit -m "Creamos el metodo rankingBurbujaLife() el cual nos ayuda a ordenar estos soldados de cada ejercito mediante su vida la cual para esto el HashMap su contenido lo pasamos a un array el cual este nos posibilita a que este metodo burubuja sea mas facil de intercambiar para despues imprimir al ejercito con sus respectivos puestos y soldados con su iformacion correspondiente para esto iterariamos cada elemento de este HashMap"
 	\end{lstlisting}	
 	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
-		public static double averageLife(HashMap<String, Soldado> army , int num){
-			int sum = 0;
+		public static void rankingBurbujaLife(HashMap<String, Soldado> army , int num){
+			System.out.println("El Ejercito " + num + " ordenando por metodo burbuja: ");
 			int count = 0;
-			Soldado soldier = null;
-			System.out.println("El promedio de puntos de vida del Ejercito " + num + " es: ");
 			for(int i = 0; i < 10; i++){
 				for(int j = 0; j < 10; j++){ //ITERACION LA CUAL NOS AYUDA A PASAR POR TODOS LOS SOLDADOS DE CADA EJERCITO
 					if(army.get("Soldado" + i + "X" + j) != null){ 
-						sum += army.get("Soldado" + i + "X" + j).getHealth();
-						count++;
+					   count++;
 					}
 				}
 			}
-			if(sum != 0){
-				double avg = sum / (count * 1.0);
-				System.out.println(avg); // DAMOS A CONOCER EL PROMEDIO DE VIDA DE CADA EJERCITO 
-				System.out.println("*********************************");
-				return avg;
-			}else{
-				double avg = 0;
-				System.out.println(avg); // DAMOS A CONOCER EL PROMEDIO DE VIDA DE CADA EJERCITO 
-				System.out.println("*********************************");
-				return avg;
+			System.out.println("------------------------------------------");
+			System.out.println("Mostrando Ranking del Ejercito " + num + " ..... ////// --->");
+			Soldado[] soldados = new Soldado[count];
+			int x = 0;
+			for(int i = 0; i < 10; i++){
+				for(int j = 0; j < 10; j++){ //ITERACION LA CUAL NOS AYUDA A PASAR POR TODOS LOS SOLDADOS AL ARRAY SOLDADO PARA PODER USAR EL USO DEL METODO DE ORDENACION BURBUJA
+					if(army.get("Soldado" + i + "X" + j) != null){ 
+						if(count - count + x == count){
+							break;
+						}else{
+							soldados[count - count + x] = army.get("Soldado" + i + "X" + j);
+						}
+						x++;   
+					}
+				}
 			}
+			int n = soldados.length;
+			for (int i = 0; i < n - 1; i++) {
+				for (int j = 0; j < n - 1 - i; j++) {
+					if (soldados[j].getHealth() < soldados[j + 1].getHealth()) {
+						// Intercambiar elementos si estan en el orden incorrecto
+						Soldado temp = soldados[j];
+						soldados[j] = soldados[j + 1];
+						soldados[j + 1] = temp;
+					}
+				}
+			}
+			for(int i = 0; i < soldados.length; i++){
+				System.out.print("\n" + "Puesto " + (i + 1));
+				System.out.println(soldados[i].toString());
+				System.out.println("------------------");
+			}
+			System.out.println("*********************************");
 		}
 	\end{lstlisting}
 	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
-		El Ejercito 1 tiene 2 soldados : 
+		El Ejercito 1 tiene 9 soldados : 
 		*********************************
 		Registrando al 1 soldado del Ejercito 1
 		------------------
 		Nombre: Soldado0X1
-		Vida: 3
-		Fila: 3
-		Columna: G
+		Vida: 1
+		Fila: 10
+		Columna: D
 		Registrando al 2 soldado del Ejercito 1
 		------------------
 		Nombre: Soldado1X1
-		Vida: 2
-		Fila: 9
-		Columna: A
+		Vida: 5
+		Fila: 10
+		Columna: E
+		Registrando al 3 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado2X1
+		Vida: 4
+		Fila: 10
+		Columna: F
+		Registrando al 4 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado3X1
+		Vida: 4
+		Fila: 7
+		Columna: B
+		Registrando al 5 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado4X1
+		Vida: 5
+		Fila: 8
+		Columna: D
+		Registrando al 6 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado5X1
+		Vida: 1
+		Fila: 3
+		Columna: E
+		Registrando al 7 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado6X1
+		Vida: 1
+		Fila: 6
+		Columna: G
+		Registrando al 8 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado7X1
+		Vida: 1
+		Fila: 3
+		Columna: D
+		Registrando al 9 soldado del Ejercito 1
+		------------------
+		Nombre: Soldado8X1
+		Vida: 3
+		Fila: 10
+		Columna: G
 		El Ejercito 2 tiene 7 soldados : 
 		*********************************
 		Registrando al 1 soldado del Ejercito 2
 		------------------
 		Nombre: Soldado0X2
-		Vida: 5
-		Fila: 10
-		Columna: D
+		Vida: 1
+		Fila: 3
+		Columna: I
 		Registrando al 2 soldado del Ejercito 2
 		------------------
 		Nombre: Soldado1X2
-		Vida: 4
+		Vida: 1
 		Fila: 6
-		Columna: E
+		Columna: I
 		Registrando al 3 soldado del Ejercito 2
 		------------------
 		Nombre: Soldado2X2
-		Vida: 3
-		Fila: 2
-		Columna: H
+		Vida: 4
+		Fila: 6
+		Columna: D
 		Registrando al 4 soldado del Ejercito 2
 		------------------
 		Nombre: Soldado3X2
-		Vida: 5
-		Fila: 8
-		Columna: G
+		Vida: 1
+		Fila: 9
+		Columna: D
 		Registrando al 5 soldado del Ejercito 2
 		------------------
 		Nombre: Soldado4X2
-		Vida: 1
-		Fila: 2
-		Columna: D
+		Vida: 4
+		Fila: 9
+		Columna: I
 		Registrando al 6 soldado del Ejercito 2
 		------------------
 		Nombre: Soldado5X2
-		Vida: 2
-		Fila: 2
-		Columna: C
+		Vida: 1
+		Fila: 1
+		Columna: A
 		Registrando al 7 soldado del Ejercito 2
 		------------------
 		Nombre: Soldado6X2
-		Vida: 4
-		Fila: 4
-		Columna: A
+		Vida: 3
+		Fila: 1
+		Columna: H
 		
 		Mostrando tabla de posicion ... --
 		Leyenda: Ejercito1 --> X | Ejercito2 --> Y
-		
+			
 	\end{lstlisting}
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit6.png}
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit7.png}
 		%\includesvg{img/automata.svg}
 		%\label{img:mot2}
 		%\caption{Product backlog.}
@@ -966,24 +1027,144 @@
 
 		El soldado con mayor vida del Ejercito 1 es: 
 		
-		Nombre: Soldado0X1
-		Vida: 3
-		Fila: 3
-		Columna: G
+		Nombre: Soldado4X1
+		Vida: 5
+		Fila: 8
+		Columna: D
 		*********************************
 		
 		El soldado con mayor vida del Ejercito 2 es: 
 		
-		Nombre: Soldado3X2
-		Vida: 5
-		Fila: 8
-		Columna: G
+		Nombre: Soldado2X2
+		Vida: 4
+		Fila: 6
+		Columna: D
 		*********************************
 		El promedio de puntos de vida del Ejercito 1 es: 
-		2.5
+		2.7777777777777777
 		*********************************
 		El promedio de puntos de vida del Ejercito 2 es: 
-		3.4285714285714284
+		2.142857142857143
+		*********************************
+		El Ejercito 1 ordenando por metodo burbuja: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 1 ..... ////// --->
+		
+		Puesto 1
+		Nombre: Soldado4X1
+		Vida: 5
+		Fila: 8
+		Columna: D
+		------------------
+		
+		Puesto 2
+		Nombre: Soldado1X1
+		Vida: 5
+		Fila: 10
+		Columna: E
+		------------------
+		
+		Puesto 3
+		Nombre: Soldado3X1
+		Vida: 4
+		Fila: 7
+		Columna: B
+		------------------
+		
+		Puesto 4
+		Nombre: Soldado2X1
+		Vida: 4
+		Fila: 10
+		Columna: F
+		------------------
+		
+		Puesto 5
+		Nombre: Soldado8X1
+		Vida: 3
+		Fila: 10
+		Columna: G
+		------------------
+		
+		Puesto 6
+		Nombre: Soldado7X1
+		Vida: 1
+		Fila: 3
+		Columna: D
+		------------------
+		
+		Puesto 7
+		Nombre: Soldado5X1
+		Vida: 1
+		Fila: 3
+		Columna: E
+		------------------
+		
+		Puesto 8
+		Nombre: Soldado6X1
+		Vida: 1
+		Fila: 6
+		Columna: G
+		------------------
+		
+		Puesto 9
+		Nombre: Soldado0X1
+		Vida: 1
+		Fila: 10
+		Columna: D
+		------------------
+		*********************************
+		El Ejercito 2 ordenando por metodo burbuja: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 2 ..... ////// --->
+		
+		Puesto 1
+		Nombre: Soldado2X2
+		Vida: 4
+		Fila: 6
+		Columna: D
+		------------------
+		
+		Puesto 2
+		Nombre: Soldado4X2
+		Vida: 4
+		Fila: 9
+		Columna: I
+		------------------
+		
+		Puesto 3
+		Nombre: Soldado6X2
+		Vida: 3
+		Fila: 1
+		Columna: H
+		------------------
+		
+		Puesto 4
+		Nombre: Soldado5X2
+		Vida: 1
+		Fila: 1
+		Columna: A
+		------------------
+		
+		Puesto 5
+		Nombre: Soldado0X2
+		Vida: 1
+		Fila: 3
+		Columna: I
+		------------------
+		
+		Puesto 6
+		Nombre: Soldado1X2
+		Vida: 1
+		Fila: 6
+		Columna: I
+		------------------
+		
+		Puesto 7
+		Nombre: Soldado3X2
+		Vida: 1
+		Fila: 9
+		Columna: D
+		------------------
 		*********************************
 		
 	\end{lstlisting}
