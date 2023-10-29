@@ -6,13 +6,12 @@ import java.util.*;
 public class Soldado { //CREAMOS LA CLASE SOLDODADO PARA PODER USAR UN ARREGLO BIDIMENSIONAL DONDE NECESITAMOS LA VIDA , EL NOMBRE DEL SOLDADO Y TAMBIEN SU POSICION COMO LA FILA Y LA COLUMNA   
 
     private String name;
-    private int health;
+    private int lifeactual;
     private int row;
     private String column;
     private int attacklevel;
     private int defenselevel;
     private int lifelevel;
-    private int lifeactual;
     private int speed;
     private String attitude;
     private boolean lives;
@@ -22,7 +21,6 @@ public class Soldado { //CREAMOS LA CLASE SOLDODADO PARA PODER USAR UN ARREGLO B
     //Añadiendo metodo que nos permita que un arreglo tenga datos nulos si este esta vacio
     public Soldado(){
         this.name = "";
-        this.health = 0;
         this.row = 0;
         this.column  = "";
         this.attacklevel = 0;
@@ -37,7 +35,8 @@ public class Soldado { //CREAMOS LA CLASE SOLDODADO PARA PODER USAR UN ARREGLO B
     //Constructor
     public Soldado(String name, int health, int row, String column){
         this.name = name;
-        this.health = health;
+        this.lifeactual = health;
+        this.lifelevel = health;
         this.lifeactual = health;
         this.row = row;
         this.column = column;
@@ -50,13 +49,23 @@ public class Soldado { //CREAMOS LA CLASE SOLDODADO PARA PODER USAR UN ARREGLO B
     }
     
     //Constructor para los diferentes niveles como de vidad defensa ataque velocidad
+    public Soldado(String name , int attacklevel, int defenselevel, int lifelevel, int speed, boolean lives, int row, String column) {
+        this.name = name;
+        this.attacklevel = attacklevel;
+        this.defenselevel = defenselevel;
+        this.lifelevel = lifelevel;
+        this.speed = speed;
+        this.lives = lives;
+        this.row = row;
+        this.column = column;
+    }
 
     // Metodos mutadores
     public void setName(String n){
         name = n;
     }
-    public void setHealth(int p){
-        health = p;
+    public void setLifeActual(int p){
+        lifeactual = p;
     }
     public void setRow(int b){
         row = b;
@@ -64,14 +73,31 @@ public class Soldado { //CREAMOS LA CLASE SOLDODADO PARA PODER USAR UN ARREGLO B
     public void setColumn(String c){
         column = c; 
     }
+    public void setAttackLevel(int attacklevel) {
+        this.attacklevel = attacklevel;
+    }
+    public void setDefenseLevel(int defenselevel) {
+        this.defenselevel = defenselevel;
+    }
+    public void setLifeLevel(int lifelevel){
+        this.lifelevel = lifelevel;
+    }
+    public void setSpeed(int speed) {
+        this.speed = speed;
+    }
+    public void setAttitude(String attitude) {
+        this.attitude = attitude;
+    }
+    public void setLives(boolean lives) {
+        this.lives = lives;
+    }
 
     // Metodos accesores
     public String getName(){
         return name;
     }
-    public int getHealth(){
-        return health;
-
+    public int getLifeActual(){
+        return lifeactual;
     }
     public int getRow(){
         return row;
@@ -79,10 +105,29 @@ public class Soldado { //CREAMOS LA CLASE SOLDODADO PARA PODER USAR UN ARREGLO B
     public String getColumn(){
         return column;
     }
+    public int getAttackLevel() {
+        return attacklevel;
+    }
+    public int getDefenseLevel() {
+        return defenselevel;
+    }
+    public int getLifeLevel(){
+        return lifelevel;
+    }
+    public int getSpeed() {
+        return speed;
+    }
+    public String getAttitude() {
+        return attitude;
+    }
+    public boolean getLives() {
+        return lives;
+    }
 
     // Completar con otros métodos necesarios
     public String toString(){ //CREAMOS ESTE METODO PARA IMPRIMIR LOS DATOS DEl OBJETO
-        String join = "\nNombre: " + getName() + "\nVida: " + getHealth() + "\nFila: " + getRow() + "\nColumna: " + getColumn(); //Agregamos un espaciador para poder separar
+        String join = "\nNombre: " + getName() + "\nVida: " + getLifeActual() + "\nFila: " + getRow() + "\nColumna: " + getColumn() + "\nNivel de ataque: " + getAttackLevel() + "\nNivel de Defensa: " + getDefenseLevel() + "\nNivel de vida: " + getLifeLevel() + "\nVelocidad: " + getSpeed() + "\nActitud: " + getAttitude() + "\nEstado: " + getLives(); //Agregamos un espaciador para poder separar
         return join;
     }
+    
 }
