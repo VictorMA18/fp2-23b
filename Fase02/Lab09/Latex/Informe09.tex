@@ -428,6 +428,210 @@
 		}
 
 	\end{lstlisting}
+	\subsection{Ejercicio Videojuego}
+	\begin{itemize}	
+		\item En el cuarto commit creamos el metodo fillRegister() el cual nos ayudara a poder registar a soldados los cuales van a ser creados el cual tambien en este comprobamos que 2 soldados del mismo ejercito no se repitan para esto creamos una condicional ala vez hicimos pruebas para poder saber si lo puesto como condiciones exista cuando lo imprimamos esto de final de este metodo nos retornara a los soldados creados de cada ejercito por orden de creacion el cual va a ser sus datos
+		\item El codigo , el commit y la ejecución seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creando el metodo fillRegister() el cual nos ayudara a poder registar a soldados los cuales van a ser creados el cual tambien en este comprobamos que 2 soldados del mismo ejercito no se repitan para esto creamos una condicional ala vez hicimos pruebas para poder saber si lo puesto como condiciones exista cuando lo imprimamos esto de final de este metodo nos retornara a los soldados creados de cada ejercito por orden de creacion el cual va a ser sus datos"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		import java.util.*;
+		class Videojuego { 
+			public static ArrayList<ArrayList<Soldado>> fillRegister(int num){
+				Random rdm = new Random();
+				ArrayList<ArrayList<Soldado>> army = new ArrayList<ArrayList<Soldado>>();
+				int numbersoldiers = rdm.nextInt(10) + 1; //NUMERO DE SOLDADOS ALEATORIOS ENTRE 1 A 10 SOLDADOS 
+				for(int i = 0; i < 10; i++){ //ITERACION
+					army.add(new ArrayList<Soldado>()); //LLENAMOS NUESTROS ARRAYLIST BIDIMENSIONAL CON CADA FILA PARA QUE CUMPLAN CON ESTRUCTURA DEL TABLERO
+					for(int j = 0; j < 10 ; j++){//ITERACION
+						army.get(i).add(null); // LLENAMOS CADA FILA DEL ARRAYLIST CON UN OBJETO SOLDADO CON TAL QUE ESTE SEA NULL PARA QUE SEPA QUE ESTE TIENE UNA CASILLA PERO NO HAY NADIE TODAVIA SE PUEDE LLENAR 
+					}
+				}
+				System.out.println("El Ejercito " + num + " tiene " + numbersoldiers + " soldados : " ); 
+				System.out.println("");
+				for(int i = 0; i < numbersoldiers; i++){ //LLENAMOS CASILLAS CON CADA SOLDADO CREADO ALEATORIAMENTE
+					String name = "Soldado" + i + "X" + num;
+					//System.out.println(name); PRUEBA QUE SE HIZO PARA VER LOS NOMBRES
+					int health = rdm.nextInt(5) + 1;
+					int row = rdm.nextInt(10) + 1;
+					int speed = rdm.nextInt(5) + 1;
+					String column = String.valueOf((char)(rdm.nextInt(10) + 65)); //REUTILIZAMOS CODIGO DEL ANTERIOR ARCHIVO VIDEOJUEGO2.JAVA YA QUE TENDRIAN LA MISMA FUNCIONALIDAD
+					//System.out.println(army.get(row - 1).get((int)column.charAt(0) - 65)); PRUEBA QUE SE HIZO PARA COMPROBAR SI EL OBJETO SE ESTABA DANDO O NO CAPAZ NI EXISTIA  
+					if(army.get(row - 1).get((int)column.charAt(0) - 65) == null){
+						System.out.print("Registrando al " + (i + 1) + " soldado del Ejercito " + num + "");
+						army.get(row - 1).set((int)column.charAt(0) - 65, new Soldado(name, health, row, column));
+						army.get(row - 1).get((int)column.charAt(0) - 65).setSpeed(speed);
+						System.out.println(army.get(row - 1).get((int)column.charAt(0) - 65).toString());
+						System.out.println("---------------------------------");
+					}else{
+						i -= 1; //NOS AYUDARIA CON LOS SOLDADOS QUE SE REPITEN EN EL MISMO CASILLERO CON TAL QUE NO DEBERIA CONTAR 
+					}
+				}
+				System.out.println("*********************************");
+				return army;
+			}
+			public static void main(String args[]){
+				ArrayList<ArrayList<Soldado>> army1 = fillRegister(1);
+				ArrayList<ArrayList<Soldado>> army2 = fillRegister(2);
+			}
+		}
+
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		El Ejercito 1 tiene 9 soldados : 
+
+		Registrando al 1 soldado del Ejercito 1
+		Nombre: Soldado0X1
+		Vida: 1
+		Fila: 5
+		Columna: C
+		Nivel de ataque: 2
+		Nivel de Defensa: 1
+		Nivel de vida: 1
+		Velocidad: 1
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito 1
+		Nombre: Soldado1X1
+		Vida: 2
+		Fila: 6
+		Columna: B
+		Nivel de ataque: 4
+		Nivel de Defensa: 4
+		Nivel de vida: 2
+		Velocidad: 2
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito 1
+		Nombre: Soldado2X1
+		Vida: 5
+		Fila: 3
+		Columna: J
+		Nivel de ataque: 1
+		Nivel de Defensa: 1
+		Nivel de vida: 5
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 4 soldado del Ejercito 1
+		Nombre: Soldado3X1
+		Vida: 2
+		Fila: 3
+		Columna: B
+		Nivel de ataque: 3
+		Nivel de Defensa: 4
+		Nivel de vida: 2
+		Velocidad: 2
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 5 soldado del Ejercito 1
+		Nombre: Soldado4X1
+		Vida: 3
+		Fila: 9
+		Columna: G
+		Nivel de ataque: 2
+		Nivel de Defensa: 4
+		Nivel de vida: 3
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 6 soldado del Ejercito 1
+		Nombre: Soldado5X1
+		Vida: 1
+		Fila: 9
+		Columna: J
+		Nivel de ataque: 5
+		Nivel de Defensa: 4
+		Nivel de vida: 1
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 7 soldado del Ejercito 1
+		Nombre: Soldado6X1
+		Vida: 5
+		Fila: 4
+		Columna: F
+		Nivel de ataque: 3
+		Nivel de Defensa: 4
+		Nivel de vida: 5
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 8 soldado del Ejercito 1
+		Nombre: Soldado7X1
+		Vida: 4
+		Fila: 4
+		Columna: H
+		Nivel de ataque: 3
+		Nivel de Defensa: 3
+		Nivel de vida: 4
+		Velocidad: 1
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 9 soldado del Ejercito 1
+		Nombre: Soldado8X1
+		Vida: 5
+		Fila: 3
+		Columna: H
+		Nivel de ataque: 3
+		Nivel de Defensa: 4
+		Nivel de vida: 5
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		---------------------------------
+		*********************************
+		El Ejercito 2 tiene 3 soldados : 
+		
+		Registrando al 1 soldado del Ejercito 2
+		Nombre: Soldado0X2
+		Vida: 3
+		Fila: 6
+		Columna: G
+		Nivel de ataque: 2
+		Nivel de Defensa: 2
+		Nivel de vida: 3
+		Velocidad: 2
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito 2
+		Nombre: Soldado1X2
+		Vida: 5
+		Fila: 3
+		Columna: E
+		Nivel de ataque: 5
+		Nivel de Defensa: 3
+		Nivel de vida: 5
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito 2
+		Nombre: Soldado2X2
+		Vida: 5
+		Fila: 1
+		Columna: B
+		Nivel de ataque: 5
+		Nivel de Defensa: 2
+		Nivel de vida: 5
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		---------------------------------
+		*********************************
+		
+	\end{lstlisting}	
 	\subsection{Estructura de laboratorio 09}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio09 es el siguiente:
