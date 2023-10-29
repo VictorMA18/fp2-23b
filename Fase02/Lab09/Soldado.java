@@ -60,6 +60,52 @@ public class Soldado { //CREAMOS LA CLASE SOLDODADO PARA PODER USAR UN ARREGLO B
         this.column = column;
     }
 
+    //Metodos necesarios como avanzar defender huir al seratacado al retroceder
+    public void advance(){
+        this.speed = getSpeed() + 1;
+        System.out.println("El soldado " + this.name + "avanzo");
+    }
+    public void defense(){
+        this.speed = 0;
+        this.attitude = "DEFENSIVA";
+        System.out.println("El soldado " + this.name + "esta defendiendo");
+    }
+    public void flee(){
+        this.speed = getSpeed() + 2;
+        this.attitude = "HUYE";
+        System.out.println("El soldado " + this.name + "esta huyendo");
+    }
+    public void back(){
+        System.out.println("El soldado " + this.name + "esta retrocediendo");
+        if(this.speed == 0){
+            this.speed = rdm.nextInt(5) - 5;
+        }else{
+            if(this.speed > 0){
+                this.speed = 0;
+                this.attitude = "DEFENSIVA";
+            }
+        }
+    }
+    public void attaack(Soldado soldier){
+        if(this.getLifeActual() > soldier.getLifeActual()){
+            int life = this.getLifeActual() - soldier.getLifeActual();
+            this.setLifeActual(life);
+            this.setLifeLevel(life);
+            soldier.lives = false;
+            System.out.println(this.name + " asesino al soldado " + soldier.name);
+        }else if(soldier.getLifeActual() > this.getLifeActual()){
+            int life = soldier.getLifeActual() - this.getLifeActual();
+            this.lives = false;
+            soldier.setLifeActual(life);
+            soldier.setLifeLevel(life);
+            System.out.println(soldier.name + " asesino al soldado " + this.name);
+        }else{
+            this.lives = false;
+            soldier.lives = false;
+            System.out.println("los 2 soldados se asesinaron");
+        }
+    }
+
     // Metodos mutadores
     public void setName(String n){
         name = n;
