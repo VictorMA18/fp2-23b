@@ -215,14 +215,14 @@
 	\end{itemize}
 	
 	\section{Actividades del Laboratorio 09}
-	
+
 	\subsection{Ejercicio Soldado}
 	\begin{itemize}	
 		\item En el primer commit reutilizamos la clase Soldado de los anteriores laboratorios el cual a este le quitamos el atributo health y lo cambiamos con lifealctual y tambien añadimos diferentes atributos y diferentes metodos añadimos el 2do constructor el cual este me da un objeto nulo el cual lo podremos utilizar para poder reemplazar las casillas en blanco y tambien en el otro constructor le ponemos ya sus atributos correspondientes el cual este soldado va a tener.
 		\item El codigo y el commit seria el siguiente:
 	\end{itemize}	
 	\begin{lstlisting}[language=bash,caption={Commit}][H]
-		$ git commit -m "Publicando la clase Soldado para su posterior uso en el siguiente ejercicio que es con Hashmaps"
+		$ git commit -m "Completando los atributos del constructor de la clase Soldado() el cual este va a ser para cuando el objeto sea nulo"
 	\end{lstlisting}	
 	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
 		// Laboratorio Nro 9  - Ejercicio Soldado
@@ -313,6 +313,68 @@
 				return join;
 			}
 		}
+
+	\end{lstlisting}
+	\subsection{Ejercicio Soldado}
+	\begin{itemize}	
+		\item En el segundo commit creamos el 3er constructor el cual tendremos los niveles la velocidad y su estado tambien añadimos sus getters y setters , tambien modificamos el metodo toString() el cual nos dara toda la informacion del soldado
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creamos el 3er constructor el cual tendremos los niveles la velocidad y su estado tambien anadimos sus getters y setters , tambien modificamos el metodo toString() el cual nos dara toda la informacion del soldado"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public Soldado(String name , int attacklevel, int defenselevel, int lifelevel, int speed, boolean lives, int row, String column) {
+			this.name = name;
+			this.attacklevel = attacklevel;
+			this.defenselevel = defenselevel;
+			this.lifelevel = lifelevel;
+			this.speed = speed;
+			this.lives = lives;
+			this.row = row;
+			this.column = column;
+		}
+		public void setAttackLevel(int attacklevel) {
+			this.attacklevel = attacklevel;
+		}
+		public void setDefenseLevel(int defenselevel) {
+			this.defenselevel = defenselevel;
+		}
+		public void setLifeLevel(int lifelevel){
+			this.lifelevel = lifelevel;
+		}
+		public void setSpeed(int speed) {
+			this.speed = speed;
+		}
+		public void setAttitude(String attitude) {
+			this.attitude = attitude;
+		}
+		public void setLives(boolean lives) {
+			this.lives = lives;
+		}
+
+		public int getAttackLevel() {
+			return attacklevel;
+		}
+		public int getDefenseLevel() {
+			return defenselevel;
+		}
+		public int getLifeLevel(){
+			return lifelevel;
+		}
+		public int getSpeed() {
+			return speed;
+		}
+		public String getAttitude() {
+			return attitude;
+		}
+		public boolean getLives() {
+			return lives;
+		}
+		public String toString(){ //CREAMOS ESTE METODO PARA IMPRIMIR LOS DATOS DEl OBJETO
+			String join = "\nNombre: " + getName() + "\nVida: " + getLifeActual() + "\nFila: " + getRow() + "\nColumna: " + getColumn() + "\nNivel de ataque: " + getAttackLevel() + "\nNivel de Defensa: " + getDefenseLevel() + "\nNivel de vida: " + getLifeLevel() + "\nVelocidad: " + getSpeed() + "\nActitud: " + getAttitude() + "\nEstado: " + getLives(); //Agregamos un espaciador para poder separar
+        	return join;
+    	}
 
 	\end{lstlisting}
 	\subsection{Estructura de laboratorio 09}
