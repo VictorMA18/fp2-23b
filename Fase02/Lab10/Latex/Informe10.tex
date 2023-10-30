@@ -412,7 +412,7 @@
 		}
 
 	\end{lstlisting}
-	\subsection{Ejercicio Soldado}
+	\subsection{Ejercicio Videojuego1}
 	\begin{itemize}	
 		\item En el segundo commit creamos el metodo fillRegister() se utiliza para simular la creación de un ejército de soldados en un tablero bidimensional. Comienza inicializando una matriz bidimensional llamada army que representará el ejército. Luego, se generan aleatoriamente entre 1 y 10 soldados y se los asigna a casillas en el tablero. El código evita que múltiples soldados ocupen la misma casilla. Cada soldado recibe un nombre único, puntos de salud, posición (fila y columna), y velocidad. La información de cada soldado se imprime en la consola, lo que permite rastrear su registro. Al final, la función devuelve la matriz army, que contiene la disposición aleatoria de los soldados en el tablero. Este código podría formar parte de un juego o simulación militar donde se requiere gestionar y rastrear un ejército de soldados.
 		\item El codigo , el commit y la ejecucion seria el siguiente:
@@ -580,7 +580,7 @@
 		*********************************
 		
 	\end{lstlisting}
-	\subsection{Ejercicio Soldado}
+	\subsection{Ejercicio Videojuego1}
 	\begin{itemize}	
 		\item En el tercer commit creamos el metodo viewBoard() crea un tablero para visualizar la posición de dos ejercitos, "Ejercito1" y "Ejercito2", en una cuadricula. Utiliza matrices bidimensionales, army1 y army2, para representar estos ejercitos y simular batallas. El tablero muestra las ubicaciones de los soldados de ambos ejercitos y simula combates entre ellos si ocupan la misma casilla. El codigo identifica a los soldados de cada ejercito con "X" y "Y". Durante los combates, se resta la salud del soldado perdedor y se elimina de la casilla correspondiente. Finalmente, se imprime el tablero completo, lo que permite visualizar la evolucion de la batalla entre los dos ejercitos en un formato facil de entender.
 		\item El codigo , el commit y la ejecucion seria el siguiente:
@@ -1057,6 +1057,278 @@
 		Velocidad: 5
 		Actitud: null
 		Estado: true
+		*********************************
+		
+	\end{lstlisting}
+	\subsection{Ejercicio Videojuego1}
+	\begin{itemize}	
+		\item En el quinto commit creamos el metodo  averageLife() calcula el promedio de los puntos de vida de los soldados en un ejercito representado por una matriz bidimensional llamada army. Comienzo inicializando las variables sum y count en cero. Luego, recorro todas las filas y columnas de la matriz, sumando los puntos de vida de cada soldado a sum y aumentando el contador count. Despues, verifico si el valor de sum es distinto de cero. Si lo es, calculo el promedio dividiendo sum entre count, asegurandome de que el resultado sea un numero decimal, y lo imprimo. Finalmente, devuelvo el valor del promedio. En caso de que sum sea cero (lo que significa que no hay soldados en el ejercito), simplemente imprimo un promedio de vida de 0 y retorno ese valor. Este metodo proporciona el promedio de vida de los soldados en el ejercito identificado por el numero num.
+		\item El codigo , el commit y la ejecucion seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creamos el metodo  averageLife() calcula el promedio de los puntos de vida de los soldados en un ejercito representado por una matriz bidimensional llamada army. Comienzo inicializando las variables sum y count en cero. Luego, recorro todas las filas y columnas de la matriz, sumando los puntos de vida de cada soldado a sum y aumentando el contador count. Despues, verifico si el valor de sum es distinto de cero. Si lo es, calculo el promedio dividiendo sum entre count, asegurandome de que el resultado sea un numero decimal, y lo imprimo. Finalmente, devuelvo el valor del promedio. En caso de que sum sea cero (lo que significa que no hay soldados en el ejercito), simplemente imprimo un promedio de vida de 0 y retorno ese valor. Este metodo proporciona el promedio de vida de los soldados en el ejercito identificado por el numero num"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static double averageLife(ArrayList<ArrayList<Soldado>> army , int num){
+			int sum = 0;
+			int count = 0;
+			System.out.println("El promedio de puntos de vida del Ejercito " + num + " es: ");
+			for(int i = 0; i < 10; i++){
+				for(int j = 0; j < 10; j++){ //ITERACION LA CUAL NOS AYUDA A PASAR POR TODOS LOS SOLDADOS DE CADA EJERCITO
+					if(army.get(i).get(j) != null){ 
+						sum += army.get(i).get(j).getLifeActual();
+						count++;
+					}
+				}
+			}
+			if(sum != 0){
+				double avg = sum / (count * 1.0);
+				System.out.println(avg); // DAMOS A CONOCER EL PROMEDIO DE VIDA DE CADA EJERCITO 
+				System.out.println("*********************************");
+				return avg;
+			}else{
+				double avg = 0;
+				System.out.println(avg); // DAMOS A CONOCER EL PROMEDIO DE VIDA DE CADA EJERCITO 
+				System.out.println("*********************************");
+				return avg;
+			}
+		}
+
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		El Ejercito 1 tiene 6 soldados : 
+
+		Registrando al 1 soldado del Ejercito 1
+		
+		Nombre: Soldado0X1
+		Vida: 3
+		Fila: 8
+		Columna: A
+		Nivel de ataque: 3
+		Nivel de Defensa: 2
+		Nivel de vida: 3
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito 1
+		
+		Nombre: Soldado1X1
+		Vida: 3
+		Fila: 9
+		Columna: G
+		Nivel de ataque: 5
+		Nivel de Defensa: 1
+		Nivel de vida: 3
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito 1
+		
+		Nombre: Soldado2X1
+		Vida: 3
+		Fila: 6
+		Columna: C
+		Nivel de ataque: 5
+		Nivel de Defensa: 3
+		Nivel de vida: 3
+		Velocidad: 2
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 4 soldado del Ejercito 1
+		
+		Nombre: Soldado3X1
+		Vida: 3
+		Fila: 9
+		Columna: E
+		Nivel de ataque: 5
+		Nivel de Defensa: 4
+		Nivel de vida: 3
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 5 soldado del Ejercito 1
+		
+		Nombre: Soldado4X1
+		Vida: 4
+		Fila: 3
+		Columna: E
+		Nivel de ataque: 3
+		Nivel de Defensa: 1
+		Nivel de vida: 4
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 6 soldado del Ejercito 1
+		
+		Nombre: Soldado5X1
+		Vida: 1
+		Fila: 5
+		Columna: J
+		Nivel de ataque: 1
+		Nivel de Defensa: 4
+		Nivel de vida: 1
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		---------------------------------
+		*********************************
+		El Ejercito 2 tiene 8 soldados : 
+		
+		Registrando al 1 soldado del Ejercito 2
+		
+		Nombre: Soldado0X2
+		Vida: 1
+		Fila: 4
+		Columna: H
+		Nivel de ataque: 2
+		Nivel de Defensa: 4
+		Nivel de vida: 1
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito 2
+		
+		Nombre: Soldado1X2
+		Vida: 4
+		Fila: 2
+		Columna: I
+		Nivel de ataque: 4
+		Nivel de Defensa: 5
+		Nivel de vida: 4
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito 2
+		
+		Nombre: Soldado2X2
+		Vida: 5
+		Fila: 5
+		Columna: C
+		Nivel de ataque: 4
+		Nivel de Defensa: 1
+		Nivel de vida: 5
+		Velocidad: 1
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 4 soldado del Ejercito 2
+		
+		Nombre: Soldado3X2
+		Vida: 4
+		Fila: 6
+		Columna: H
+		Nivel de ataque: 1
+		Nivel de Defensa: 4
+		Nivel de vida: 4
+		Velocidad: 1
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 5 soldado del Ejercito 2
+		
+		Nombre: Soldado4X2
+		Vida: 3
+		Fila: 4
+		Columna: J
+		Nivel de ataque: 3
+		Nivel de Defensa: 4
+		Nivel de vida: 3
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 6 soldado del Ejercito 2
+		
+		Nombre: Soldado5X2
+		Vida: 2
+		Fila: 10
+		Columna: F
+		Nivel de ataque: 2
+		Nivel de Defensa: 2
+		Nivel de vida: 2
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 7 soldado del Ejercito 2
+		
+		Nombre: Soldado6X2
+		Vida: 1
+		Fila: 9
+		Columna: J
+		Nivel de ataque: 4
+		Nivel de Defensa: 1
+		Nivel de vida: 1
+		Velocidad: 1
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 8 soldado del Ejercito 2
+		
+		Nombre: Soldado7X2
+		Vida: 5
+		Fila: 6
+		Columna: C
+		Nivel de ataque: 2
+		Nivel de Defensa: 5
+		Nivel de vida: 5
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		---------------------------------
+		*********************************
+		
+		Mostrando tabla de posicion ... --
+		Leyenda: Ejercito1 --> X | Ejercito2 --> Y
+		
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit5.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		El soldado con mayor vida del Ejercito 1 es: 
+		
+		Nombre: Soldado4X1
+		Vida: 4
+		Fila: 3
+		Columna: E
+		Nivel de ataque: 3
+		Nivel de Defensa: 1
+		Nivel de vida: 4
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		*********************************
+		El soldado con mayor vida del Ejercito 2 es: 
+		
+		Nombre: Soldado2X2
+		Vida: 5
+		Fila: 5
+		Columna: C
+		Nivel de ataque: 4
+		Nivel de Defensa: 1
+		Nivel de vida: 5
+		Velocidad: 1
+		Actitud: null
+		Estado: true
+		*********************************
+		El promedio de puntos de vida del Ejercito 1 es: 
+		2.8
+		*********************************
+		El promedio de puntos de vida del Ejercito 2 es: 
+		2.75
 		*********************************
 		
 	\end{lstlisting}
