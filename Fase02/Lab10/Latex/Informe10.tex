@@ -749,6 +749,317 @@
 		%\label{img:mot2}
 		%\caption{Product backlog.}
 	\end{figure}
+	\subsection{Ejercicio Soldado}
+	\begin{itemize}	
+		\item En el cuarto commit creamos el metodo longerLife () tiene la tarea de identificar y mostrar al soldado con la mayor cantidad de vida en un ejercito representado por la matriz bidimensional army. Para ello, inicializa las variables mayor en 0 y soldier como nula, que seran utilizadas para rastrear al soldado con la mayor vida. Luego, mediante bucles anidados, examina todas las casillas de la matriz y compara la vida de cada soldado. Si encuentra un soldado con más vida que el actual registrado en mayor, actualiza esta variable con la vida del soldado y guarda una referencia a ese soldado en soldier. Finalmente, se emite un mensaje que destaca al soldado con la mayor vida en el ejercito correspondiente, identificado por el numero num, y muestra todos los detalles del soldado, como su nombre, salud, posicion y velocidad, permitiendo asi identificar al soldado mas resistente en ese ejercito en particular.
+		\item El codigo , el commit y la ejecucion seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "El metodo longerLife () tiene la tarea de identificar y mostrar al soldado con la mayor cantidad de vida en un ejercito representado por la matriz bidimensional army. Para ello, inicializa las variables mayor en 0 y soldier como nula, que seran utilizadas para rastrear al soldado con la mayor vida. Luego, mediante bucles anidados, examina todas las casillas de la matriz y compara la vida de cada soldado. Si encuentra un soldado con mas vida que el actual registrado en mayor, actualiza esta variable con la vida del soldado y guarda una referencia a ese soldado en soldier. Finalmente, se emite un mensaje que destaca al soldado con la mayor vida en el ejercito correspondiente, identificado por el numero num, y muestra todos los detalles del soldado, como su nombre, salud, posicion y velocidad, permitiendo asi identificar al soldado mas resistente en ese ejercito en particular."
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void longerLife(ArrayList<ArrayList<Soldado>> army, int num){
+			int mayor = 0;//METODO CREADO PARA PODER PERMITIRNOS A CONOCER EL SOLDADO CON MAYOR VIDA DE CADA EJERCITO 
+			Soldado soldier = null;
+			for(int i = 0; i < army.size(); i++){
+				for(int j = 0; j < army.get(i).size(); j++){
+					if(army.get(i).get(j) != null){ //COMPROBACION QUE HACEMOS PARA PODER DECIR QUE EL CASILLERO DONDE ESTAMOS ES UN SOLDADO QUE EXISTE
+						if(army.get(i).get(j).getLifeActual() > mayor){ //COMPARAMOS PUNTOS DE VIDA DE CADA SOLDADO PARA VER QUIEN ES EL MAYOR 
+							mayor = army.get(i).get(j).getLifeActual();
+							soldier = army.get(i).get(j);
+						}
+					}
+				}
+			}
+			System.out.println("El soldado con mayor vida del Ejercito " + num + " es: ");
+			System.out.println(soldier.toString());//IMPRIMIMOS SUS DATOS PARA PODER VER DE QUE SOLDADO SE TRATA 
+			System.out.println("*********************************");
+		}
+
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		El Ejercito 1 tiene 8 soldados : 
+
+		Registrando al 1 soldado del Ejercito 1
+		
+		Nombre: Soldado0X1
+		Vida: 2
+		Fila: 3
+		Columna: J
+		Nivel de ataque: 1
+		Nivel de Defensa: 4
+		Nivel de vida: 2
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito 1
+		
+		Nombre: Soldado1X1
+		Vida: 1
+		Fila: 2
+		Columna: H
+		Nivel de ataque: 2
+		Nivel de Defensa: 2
+		Nivel de vida: 1
+		Velocidad: 1
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito 1
+		
+		Nombre: Soldado2X1
+		Vida: 5
+		Fila: 6
+		Columna: F
+		Nivel de ataque: 3
+		Nivel de Defensa: 3
+		Nivel de vida: 5
+		Velocidad: 2
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 4 soldado del Ejercito 1
+		
+		Nombre: Soldado3X1
+		Vida: 1
+		Fila: 3
+		Columna: B
+		Nivel de ataque: 3
+		Nivel de Defensa: 3
+		Nivel de vida: 1
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 5 soldado del Ejercito 1
+		
+		Nombre: Soldado4X1
+		Vida: 3
+		Fila: 5
+		Columna: I
+		Nivel de ataque: 2
+		Nivel de Defensa: 2
+		Nivel de vida: 3
+		Velocidad: 2
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 6 soldado del Ejercito 1
+		
+		Nombre: Soldado5X1
+		Vida: 4
+		Fila: 6
+		Columna: G
+		Nivel de ataque: 3
+		Nivel de Defensa: 5
+		Nivel de vida: 4
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 7 soldado del Ejercito 1
+		
+		Nombre: Soldado6X1
+		Vida: 1
+		Fila: 4
+		Columna: D
+		Nivel de ataque: 4
+		Nivel de Defensa: 2
+		Nivel de vida: 1
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 8 soldado del Ejercito 1
+		
+		Nombre: Soldado7X1
+		Vida: 4
+		Fila: 8
+		Columna: H
+		Nivel de ataque: 4
+		Nivel de Defensa: 4
+		Nivel de vida: 4
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		---------------------------------
+		*********************************
+		El Ejercito 2 tiene 10 soldados : 
+		
+		Registrando al 1 soldado del Ejercito 2
+		
+		Nombre: Soldado0X2
+		Vida: 3
+		Fila: 7
+		Columna: D
+		Nivel de ataque: 1
+		Nivel de Defensa: 2
+		Nivel de vida: 3
+		Velocidad: 1
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito 2
+		
+		Nombre: Soldado1X2
+		Vida: 2
+		Fila: 1
+		Columna: J
+		Nivel de ataque: 3
+		Nivel de Defensa: 4
+		Nivel de vida: 2
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito 2
+		
+		Nombre: Soldado2X2
+		Vida: 5
+		Fila: 2
+		Columna: E
+		Nivel de ataque: 4
+		Nivel de Defensa: 3
+		Nivel de vida: 5
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 4 soldado del Ejercito 2
+		
+		Nombre: Soldado3X2
+		Vida: 1
+		Fila: 4
+		Columna: I
+		Nivel de ataque: 5
+		Nivel de Defensa: 1
+		Nivel de vida: 1
+		Velocidad: 1
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 5 soldado del Ejercito 2
+		
+		Nombre: Soldado4X2
+		Vida: 5
+		Fila: 1
+		Columna: A
+		Nivel de ataque: 2
+		Nivel de Defensa: 2
+		Nivel de vida: 5
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 6 soldado del Ejercito 2
+		
+		Nombre: Soldado5X2
+		Vida: 3
+		Fila: 2
+		Columna: C
+		Nivel de ataque: 1
+		Nivel de Defensa: 1
+		Nivel de vida: 3
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 7 soldado del Ejercito 2
+		
+		Nombre: Soldado6X2
+		Vida: 4
+		Fila: 6
+		Columna: B
+		Nivel de ataque: 4
+		Nivel de Defensa: 4
+		Nivel de vida: 4
+		Velocidad: 2
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 8 soldado del Ejercito 2
+		
+		Nombre: Soldado7X2
+		Vida: 1
+		Fila: 4
+		Columna: D
+		Nivel de ataque: 5
+		Nivel de Defensa: 5
+		Nivel de vida: 1
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 9 soldado del Ejercito 2
+		
+		Nombre: Soldado8X2
+		Vida: 3
+		Fila: 2
+		Columna: G
+		Nivel de ataque: 4
+		Nivel de Defensa: 3
+		Nivel de vida: 3
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 10 soldado del Ejercito 2
+		
+		Nombre: Soldado9X2
+		Vida: 3
+		Fila: 6
+		Columna: I
+		Nivel de ataque: 4
+		Nivel de Defensa: 5
+		Nivel de vida: 3
+		Velocidad: 1
+		Actitud: null
+		Estado: true
+		---------------------------------
+		*********************************
+		
+		Mostrando tabla de posicion ... --
+		Leyenda: Ejercito1 --> X | Ejercito2 --> Y
+		
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit4.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		El soldado con mayor vida del Ejercito 1 es: 
+		
+		Nombre: Soldado2X1
+		Vida: 5
+		Fila: 6
+		Columna: F
+		Nivel de ataque: 3
+		Nivel de Defensa: 3
+		Nivel de vida: 5
+		Velocidad: 2
+		Actitud: null
+		Estado: true
+		*********************************
+		El soldado con mayor vida del Ejercito 2 es: 
+		
+		Nombre: Soldado4X2
+		Vida: 5
+		Fila: 1
+		Columna: A
+		Nivel de ataque: 2
+		Nivel de Defensa: 2
+		Nivel de vida: 5
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		*********************************
+		
+	\end{lstlisting}
 	\subsection{Estructura de laboratorio 10}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio10 es el siguiente:
