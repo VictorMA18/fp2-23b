@@ -90,11 +90,37 @@ class Videojuego {
         System.out.println(soldier.toString());//IMPRIMIMOS SUS DATOS PARA PODER VER DE QUE SOLDADO SE TRATA 
         System.out.println("*********************************");
     }
+    public static double averageLife(ArrayList<ArrayList<Soldado>> army , int num){
+        int sum = 0;
+        int count = 0;
+        System.out.println("El promedio de puntos de vida del Ejercito " + num + " es: ");
+        for(int i = 0; i < 10; i++){
+            for(int j = 0; j < 10; j++){ //ITERACION LA CUAL NOS AYUDA A PASAR POR TODOS LOS SOLDADOS DE CADA EJERCITO
+                if(army.get(i).get(j) != null){ 
+                    sum += army.get(i).get(j).getLifeActual();
+                    count++;
+                }
+            }
+        }
+        if(sum != 0){
+            double avg = sum / (count * 1.0);
+            System.out.println(avg); // DAMOS A CONOCER EL PROMEDIO DE VIDA DE CADA EJERCITO 
+            System.out.println("*********************************");
+            return avg;
+        }else{
+            double avg = 0;
+            System.out.println(avg); // DAMOS A CONOCER EL PROMEDIO DE VIDA DE CADA EJERCITO 
+            System.out.println("*********************************");
+            return avg;
+        }
+    }
     public static void main(String args[]){
         ArrayList<ArrayList<Soldado>> army1 = fillRegister(1);
         ArrayList<ArrayList<Soldado>> army2 = fillRegister(2);
         viewBoard(army1, army2);
         longerLife(army1, 1);
         longerLife(army2, 2);
+        double avg1 = averageLife(army1, 1);
+        double avg2 = averageLife(army2, 2);
     }
 }
