@@ -192,6 +192,8 @@
 		\item Además de los datos del Soldado con mayor vida de cada ejército, el promedio de puntos de vida de todos los soldados creados por ejército, los datos de todos los soldados porejército en el orden que fueron creados y un ranking de poder de todos los soldados creados por ejército (del que tiene más nivel de vida al que tiene menos) usando 2 diferentes algoritmos de ordenamiento (indicar conclusiones respecto a este ordenamiento de HashMaps).
 		\item Finalmente, que muestre qué ejército ganará la batalla (indicar la métrica usada para decidir al ganador de la batalla).
 		\item Crear el diagrama de clases UML.
+		\item El juego es humano contra humano y consistirá en mover un soldado por cada turno de cada jugador. Se puede mover en cualquier dirección, Ud. deberá darle la coordenada del soldado a mover y la dirección de movimiento, el programa deberá verificar que hay un soldado del ejército que corresponda en dicha posición y que el movimiento es válido (no puede haber 2 soldados del mismo ejército en el cuadrado y no se puede ordenar moverse a una posición fuera del tablero), pidiendo ingresar nuevos datos si no es así.
+		\item Cuando un soldado se mueve a una posición donde hay un soldado rival, se produce una batalla y gana el soldado que tenga mayor nivel de vida actual. Gana el juego quien deje al otro ejército vacío. Después de cada movida se deberá mostrar el tablero con su estado actual. Hacer un programa iterativo.
 	\end{itemize}
 
 	\section{Equipos, materiales y temas utilizados}
@@ -218,14 +220,14 @@
 
 	\subsection{Ejercicio Soldado}
 	\begin{itemize}	
-		\item En el primer commit reutilizamos la clase Soldado de los anteriores laboratorios el cual a este le quitamos el atributo health y lo cambiamos con lifealctual y tambien añadimos diferentes atributos y diferentes metodos añadimos el 2do constructor el cual este me da un objeto nulo el cual lo podremos utilizar para poder reemplazar las casillas en blanco y tambien en el otro constructor le ponemos ya sus atributos correspondientes el cual este soldado va a tener.
+		\item En el primer commit agregando la clase soldado que esta siendo reutilizada para podef reslizar el siguiente ejercicio.
 		\item El codigo y el commit seria el siguiente:
 	\end{itemize}	
 	\begin{lstlisting}[language=bash,caption={Commit}][H]
-		$ git commit -m "Completando los atributos del constructor de la clase Soldado() el cual este va a ser para cuando el objeto sea nulo"
+		$ git commit -m "Agregando la clase soldado para podef reslizar el siguiente ejercicio "
 	\end{lstlisting}	
 	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
-		// Laboratorio Nro 9  - Ejercicio Soldado
+		// Laboratorio Nro 10 - Ejercicio Soldado
 		// Autor: Mamani Anahua Victor Narciso
 		// Colaboro:
 		// Tiempo:
@@ -233,13 +235,12 @@
 		public class Soldado { //CREAMOS LA CLASE SOLDODADO PARA PODER USAR UN ARREGLO BIDIMENSIONAL DONDE NECESITAMOS LA VIDA , EL NOMBRE DEL SOLDADO Y TAMBIEN SU POSICION COMO LA FILA Y LA COLUMNA   
 		
 			private String name;
-			private int health;
+			private int lifeactual;
 			private int row;
 			private String column;
 			private int attacklevel;
 			private int defenselevel;
 			private int lifelevel;
-			private int lifeactual;
 			private int speed;
 			private String attitude;
 			private boolean lives;
@@ -249,12 +250,11 @@
 			//Anadiendo metodo que nos permita que un arreglo tenga datos nulos si este esta vacio
 			public Soldado(){
 				this.name = "";
-				this.health = 0;
 				this.row = 0;
 				this.column  = "";
 				this.attacklevel = 0;
 				this.defenselevel = 0;
-				this.lifelevel = 0;
+				this.lifelevel = 0
 				this.lifeactual = 0;
 				this.speed = 0;
 				this.attitude = "";
@@ -264,26 +264,87 @@
 			//Constructor
 			public Soldado(String name, int health, int row, String column){
 				this.name = name;
-				this.health = health;
+				this.lifeactual = health;
+				this.lifelevel = health;
 				this.lifeactual = health;
 				this.row = row;
 				this.column = column;
 				this.lives = true;
-		
+				
 				//YA QUE ESTOS DATOS SERIAN ALEATORIOS YA QUE SE ESTARIA CREANDO EL SOLDADO TENDRIAMOS DATOS QUE SERIAN COMO ATTACKLEVEL DEFENSELEVEL EL CUAL TENDRIAN QUE SER ALEATORIOS    
 				this.attacklevel = rdm.nextInt(5) + 1;
 				this.defenselevel = rdm.nextInt(5) + 1;
 		
 			}
-		
+			
 			//Constructor para los diferentes niveles como de vidad defensa ataque velocidad
+			public Soldado(String name , int attacklevel, int defenselevel, int lifelevel, int speed, boolean lives, int row, String column) {
+				this.name = name;
+				this.attacklevel = attacklevel;
+				this.defenselevel = defenselevel;
+				this.lifelevel = lifelevel;
+				this.speed = speed;
+				this.lives = lives;
+				this.row = row;
+				this.column = column;
+			}
+		
+			//Metodos necesarios como avanzar defender huir al seratacado al retroceder
+			public void advance(){
+				this.speed = getSpeed() + 1;
+				System.out.println("El soldado " + this.name + "avanzo");
+			}
+			public void defense(){
+				this.speed = 0;
+				this.attitude = "DEFENSIVA";
+				System.out.println("El soldado " + this.name + "esta defendiendo");
+			}
+			public void flee(){
+				this.speed = getSpeed() + 2;
+				this.attitude = "HUYE";
+				System.out.println("El soldado " + this.name + "esta huyendo");
+			}
+			public void back(){
+				System.out.println("El soldado " + this.name + "esta retrocediendo");
+				if(this.speed == 0){
+					this.speed = rdm.nextInt(5) - 5;
+				}else{
+					if(this.speed > 0){
+						this.speed = 0;
+						this.attitude = "DEFENSIVA";
+					}
+				}
+			}
+			public void attack(Soldado soldier){
+				if(this.getLifeActual() > soldier.getLifeActual()){
+					int life = this.getLifeActual() - soldier.getLifeActual();
+					this.setLifeActual(life);
+					this.setLifeLevel(life);
+					soldier.lives = false;
+					System.out.println(this.name + " asesino al soldado " + soldier.name);
+				}else if(soldier.getLifeActual() > this.getLifeActual()){
+					int life = soldier.getLifeActual() - this.getLifeActual();
+					this.lives = false;
+					soldier.setLifeActual(life);
+					soldier.setLifeLevel(life);
+					System.out.println(soldier.name + " asesino al soldado " + this.name);
+				}else{
+					this.lives = false;
+					soldier.lives = false;
+					System.out.println("los 2 soldados se asesinaron");
+				}
+			}
+			public void morir(){
+				this.lives = false;
+				this.attitude = "SOLDADO MUERTO";
+			}
 		
 			// Metodos mutadores
 			public void setName(String n){
 				name = n;
 			}
-			public void setHealth(int p){
-				health = p;
+			public void setLifeActual(int p){
+				lifeactual = p;
 			}
 			public void setRow(int b){
 				row = b;
@@ -291,14 +352,31 @@
 			public void setColumn(String c){
 				column = c; 
 			}
+			public void setAttackLevel(int attacklevel) {
+				this.attacklevel = attacklevel;
+			}
+			public void setDefenseLevel(int defenselevel) {
+				this.defenselevel = defenselevel;
+			}
+			public void setLifeLevel(int lifelevel){
+				this.lifelevel = lifelevel;
+			}
+			public void setSpeed(int speed) {
+				this.speed = speed;
+			}
+			public void setAttitude(String attitude) {
+				this.attitude = attitude;
+			}
+			public void setLives(boolean lives) {
+				this.lives = lives;
+			}
 		
 			// Metodos accesores
 			public String getName(){
 				return name;
 			}
-			public int getHealth(){
-				return health;
-		
+			public int getLifeActual(){
+				return lifeactual;
 			}
 			public int getRow(){
 				return row;
@@ -306,14 +384,88 @@
 			public String getColumn(){
 				return column;
 			}
+			public int getAttackLevel() {
+				return attacklevel;
+			}
+			public int getDefenseLevel() {
+				return defenselevel;
+			}
+			public int getLifeLevel(){
+				return lifelevel;
+			}
+			public int getSpeed() {
+				return speed;
+			}
+			public String getAttitude() {
+				return attitude;
+			}
+			public boolean getLives() {
+				return lives;
+			}
 		
 			// Completar con otros metodos necesarios
 			public String toString(){ //CREAMOS ESTE METODO PARA IMPRIMIR LOS DATOS DEl OBJETO
-				String join = "\nNombre: " + getName() + "\nVida: " + getHealth() + "\nFila: " + getRow() + "\nColumna: " + getColumn(); //Agregamos un espaciador para poder separar
+				String join = "\nNombre: " + getName() + "\nVida: " + getLifeActual() + "\nFila: " + getRow() + "\nColumna: " + getColumn() + "\nNivel de ataque: " + getAttackLevel() + "\nNivel de Defensa: " + getDefenseLevel() + "\nNivel de vida: " + getLifeLevel() + "\nVelocidad: " + getSpeed() + "\nActitud: " + getAttitude() + "\nEstado: " + getLives(); //Agregamos un espaciador para poder separar
 				return join;
 			}
+			
 		}
 
+	\end{lstlisting}
+	\subsection{Ejercicio Soldado}
+	\begin{itemize}	
+		\item En el segundo commit creamos el metodo fillRegister() se utiliza para simular la creación de un ejército de soldados en un tablero bidimensional. Comienza inicializando una matriz bidimensional llamada army que representará el ejército. Luego, se generan aleatoriamente entre 1 y 10 soldados y se los asigna a casillas en el tablero. El código evita que múltiples soldados ocupen la misma casilla. Cada soldado recibe un nombre único, puntos de salud, posición (fila y columna), y velocidad. La información de cada soldado se imprime en la consola, lo que permite rastrear su registro. Al final, la función devuelve la matriz army, que contiene la disposición aleatoria de los soldados en el tablero. Este código podría formar parte de un juego o simulación militar donde se requiere gestionar y rastrear un ejército de soldados.
+		\item El codigo , el commit y la ejecucion seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Este metodo fillRegister() se utiliza para simular la creacion de un ejercito de soldados en un tablero bidimensional Comienza inicializando una matriz bidimensional llamada army que representara el ejercito. Luego, se generan aleatoriamente entre 1 y 10 soldados y se los asigna a casillas en el tablero. El codigo evita que multiples soldados ocupen la misma casilla. Cada soldado recibe un nombre unico, puntos de salud, posicion (fila y columna), y velocidad. La informacion de cada soldado se imprime en la consola, lo que permite rastrear su registro. Al final, la funcion devuelve la matriz army, que contiene la disposicion aleatoria de los soldados en el tablero. Este codigo podria formar parte de un juego o simulacion militar donde se requiere gestionar y rastrear un ejercito de soldados."
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		// Laboratorio Nro 10 - Ejercicio Videojuego1
+		// Autor: Mamani Anahua Victor Narciso
+		// Colaboro:
+		// Tiempo:
+		import java.util.*;
+		class Videojuego1 {
+			public static ArrayList<ArrayList<Soldado>> fillRegister(int num){
+				Random rdm = new Random();
+				ArrayList<ArrayList<Soldado>> army = new ArrayList<ArrayList<Soldado>>();
+				int numbersoldiers = rdm.nextInt(10) + 1; //NUMERO DE SOLDADOS ALEATORIOS ENTRE 1 A 10 SOLDADOS 
+				for(int i = 0; i < 10; i++){ //ITERACION
+					army.add(new ArrayList<Soldado>()); //LLENAMOS NUESTROS ARRAYLIST BIDIMENSIONAL CON CADA FILA PARA QUE CUMPLAN CON ESTRUCTURA DEL TABLERO
+					for(int j = 0; j < 10 ; j++){//ITERACION
+						army.get(i).add(null); // LLENAMOS CADA FILA DEL ARRAYLIST CON UN OBJETO SOLDADO CON TAL QUE ESTE SEA NULL PARA QUE SEPA QUE ESTE TIENE UNA CASILLA PERO NO HAY NADIE TODAVIA SE PUEDE LLENAR 
+					}
+				}
+				System.out.println("El Ejercito " + num + " tiene " + numbersoldiers + " soldados : " ); 
+				System.out.println("");
+				for(int i = 0; i < numbersoldiers; i++){ //LLENAMOS CASILLAS CON CADA SOLDADO CREADO ALEATORIAMENTE
+					String name = "Soldado" + i + "X" + num;
+					//System.out.println(name); PRUEBA QUE SE HIZO PARA VER LOS NOMBRES
+					int health = rdm.nextInt(5) + 1;
+					int row = rdm.nextInt(10) + 1;
+					int speed = rdm.nextInt(5) + 1;
+					String column = String.valueOf((char)(rdm.nextInt(10) + 65)); //REUTILIZAMOS CODIGO DEL ANTERIOR ARCHIVO VIDEOJUEGO2.JAVA YA QUE TENDRIAN LA MISMA FUNCIONALIDAD
+					//System.out.println(army.get(row - 1).get((int)column.charAt(0) - 65)); PRUEBA QUE SE HIZO PARA COMPROBAR SI EL OBJETO SE ESTABA DANDO O NO CAPAZ NI EXISTIA  
+					if(army.get(row - 1).get((int)column.charAt(0) - 65) == null){
+						System.out.println("Registrando al " + (i + 1) + " soldado del Ejercito " + num + "");
+						army.get(row - 1).set((int)column.charAt(0) - 65, new Soldado(name, health, row, column));
+						army.get(row - 1).get((int)column.charAt(0) - 65).setSpeed(speed);
+						System.out.println(army.get(row - 1).get((int)column.charAt(0) - 65).toString());
+						System.out.println("---------------------------------");
+					}else{
+						i -= 1; //NOS AYUDARIA CON LOS SOLDADOS QUE SE REPITEN EN EL MISMO CASILLERO CON TAL QUE NO DEBERIA CONTAR 
+					}
+				}
+				System.out.println("*********************************");
+				return army;
+			}   
+			public static void main(String[] args) {
+				ArrayList<ArrayList<Soldado>> army1 = fillRegister(1);
+				ArrayList<ArrayList<Soldado>> army2 = fillRegister(2);
+		
+			}
+		}
 	\end{lstlisting}
 
 	\subsection{Estructura de laboratorio 10}
