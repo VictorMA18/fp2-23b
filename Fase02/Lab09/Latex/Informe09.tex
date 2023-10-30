@@ -1035,6 +1035,174 @@
 		*********************************
 
 	\end{lstlisting}
+	\subsection{Ejercicio Videojuego}
+	\begin{itemize}	
+		\item En el setimo commit creamos el metodo averageLife() el cual tendriamos que sumar las vidas actuales de los soldados el cual se van suman y despues se divide entre el numero de soldados en esto tendriamos que hacer unas condiciones las cuales serian como si esta suma fuera 0 la cual nos retornaria este numero pero si fuera diferente nos retornario su promedio
+		\item El codigo , el commit y la ejecución seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creamos el metodo averageLife() el cual tendriamos que sumar las vidas actuales de los soldados el cual se van suman y despues se divide entre el numero de soldados en esto tendriamos que hacer unas condiciones las cuales serian como si esta suma fuera 0 la cual nos retornaria este numero pero si fuera diferente nos retornario su promedio"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static double averageLife(ArrayList<ArrayList<Soldado>> army , int num){
+			int sum = 0;
+			int count = 0;
+			System.out.println("El promedio de puntos de vida del Ejercito " + num + " es: ");
+			for(int i = 0; i < 10; i++){
+				for(int j = 0; j < 10; j++){ //ITERACION LA CUAL NOS AYUDA A PASAR POR TODOS LOS SOLDADOS DE CADA EJERCITO
+					if(army.get(i).get(j) != null){ 
+						sum += army.get(i).get(j).getLifeActual();
+						count++;
+					}
+				}
+			}
+			if(sum != 0){
+				double avg = sum / (count * 1.0);
+				System.out.println(avg); // DAMOS A CONOCER EL PROMEDIO DE VIDA DE CADA EJERCITO 
+				System.out.println("*********************************");
+				return avg;
+			}else{
+				double avg = 0;
+				System.out.println(avg); // DAMOS A CONOCER EL PROMEDIO DE VIDA DE CADA EJERCITO 
+				System.out.println("*********************************");
+				return avg;
+			}
+		}
+
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		El Ejercito 1 tiene 3 soldados : 
+
+		Registrando al 1 soldado del Ejercito 1
+
+		Nombre: Soldado0X1
+		Vida: 1
+		Fila: 7
+		Columna: C
+		Nivel de ataque: 3
+		Nivel de Defensa: 1
+		Nivel de vida: 1
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito 1
+
+		Nombre: Soldado1X1
+		Vida: 1
+		Fila: 8
+		Columna: E
+		Nivel de ataque: 4
+		Nivel de Defensa: 2
+		Nivel de vida: 1
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito 1
+
+		Nombre: Soldado2X1
+		Vida: 2
+		Fila: 4
+		Columna: I
+		Nivel de ataque: 4
+		Nivel de Defensa: 2
+		Nivel de vida: 2
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		---------------------------------
+		*********************************
+		El Ejercito 2 tiene 3 soldados : 
+
+		Registrando al 1 soldado del Ejercito 2
+
+		Nombre: Soldado0X2
+		Vida: 5
+		Fila: 5
+		Columna: J
+		Nivel de ataque: 4
+		Nivel de Defensa: 2
+		Nivel de vida: 5
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito 2
+
+		Nombre: Soldado1X2
+		Vida: 3
+		Fila: 2
+		Columna: H
+		Nivel de ataque: 3
+		Nivel de Defensa: 1
+		Nivel de vida: 3
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito 2
+
+		Nombre: Soldado2X2
+		Vida: 2
+		Fila: 6
+		Columna: J
+		Nivel de ataque: 5
+		Nivel de Defensa: 4
+		Nivel de vida: 2
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		---------------------------------
+		*********************************
+
+		Mostrando tabla de posicion ... --
+		Leyenda: Ejercito1 --> X | Ejercito2 --> Y	
+		
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit7.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		El soldado con mayor vida del Ejercito 1 es: 
+		
+		Nombre: Soldado2X1
+		Vida: 2
+		Fila: 4
+		Columna: I
+		Nivel de ataque: 4
+		Nivel de Defensa: 2
+		Nivel de vida: 2
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		*********************************
+		El soldado con mayor vida del Ejercito 2 es: 
+		
+		Nombre: Soldado0X2
+		Vida: 5
+		Fila: 5
+		Columna: J
+		Nivel de ataque: 4
+		Nivel de Defensa: 2
+		Nivel de vida: 5
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		*********************************
+		El promedio de puntos de vida del Ejercito 1 es: 
+		1.3333333333333333
+		*********************************
+		El promedio de puntos de vida del Ejercito 2 es: 
+		3.3333333333333335
+		*********************************
+
+	\end{lstlisting}
 	\subsection{Estructura de laboratorio 09}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio09 es el siguiente:
