@@ -1,4 +1,4 @@
-// Laboratorio Nro 9  - Ejercicio Soldado
+// Laboratorio Nro 10 - Ejercicio Soldado
 // Autor: Mamani Anahua Victor Narciso
 // Colaboro:
 // Tiempo:
@@ -86,7 +86,7 @@ public class Soldado { //CREAMOS LA CLASE SOLDODADO PARA PODER USAR UN ARREGLO B
             }
         }
     }
-    public void attaack(Soldado soldier){
+    public void attack(Soldado soldier){
         if(this.getLifeActual() > soldier.getLifeActual()){
             int life = this.getLifeActual() - soldier.getLifeActual();
             this.setLifeActual(life);
@@ -104,6 +104,10 @@ public class Soldado { //CREAMOS LA CLASE SOLDODADO PARA PODER USAR UN ARREGLO B
             soldier.lives = false;
             System.out.println("los 2 soldados se asesinaron");
         }
+    }
+    public void morir(){
+        this.lives = false;
+        this.attitude = "SOLDADO MUERTO";
     }
 
     // Metodos mutadores
