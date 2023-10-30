@@ -1531,7 +1531,7 @@
 		*********************************
 		
 	\end{lstlisting}
-	\subsection{Ejercicio Videojuego}
+		\subsection{Ejercicio Videojuego}
 	\begin{itemize}	
 		\item En el noveno commit creamos el metodo rankingInsercionLife() el cual nos permite dar con el ranking de vidas actuales de los soldados de cada ejercito para esto etndriamos que aplcar casi la misma logica que aplicamos con burbuja pero en este caso seria aprte de esto tambien la logica que lleva el ordenamiento burbuja por lo que tendriamos que aplicar ciertas condiciones para que este tipo de ordenamiento se de
 		\item El codigo , el commit y la ejecución seria el siguiente:
@@ -1933,6 +1933,454 @@
 		*********************************
 		
 	\end{lstlisting}
+	\subsection{Ejercicio Videojuego}
+	\begin{itemize}	
+		\item En el decimo commit creamos el metodo resultBattle() el cual nos dice el ganador de esta batalla el cual tendria que calcularse mediante el promedio de vida de cada ejercito debido a esto hacemos condiciones las cuales cuando se cumplan te imprimiran un mensaje que sera el resultado de esta batalla
+		\item El codigo , el commit y la ejecución seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creamos el metodo resultBattle() el cual nos dice el ganador de esta batalla el cual tendria que calcularse mediante el promedio de vida de cada ejercito debido a esto hacemos condiciones las cuales cuando se cumplan te imprimiran un mensaje que sera el resultado de esta batalla"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void resultBattle(double avg1, double avg2,  int num, int num2){ //METODO CREADO PARA PODER SABER EL RESULTADO DE ESTA BATALLA ENTRE ESTOS 2 EJERCITOS
+			if(avg1 > avg2){ //PUBLICACION DE LOS RESULTADOS
+				System.out.println("El Ejercito " + num + " es el GANADOR con " + avg1+ " puntos");
+			}else if(avg2 > avg1){
+				System.out.println("El Ejercito " + num2 + " es el GANADOR con " + avg2 + " puntos");
+			}else{
+				System.out.println("EMPATE con " + avg1 + " puntos");
+			}
+		}
+		
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		El Ejercito 1 tiene 8 soldados : 
+
+		Registrando al 1 soldado del Ejercito 1
+
+		Nombre: Soldado0X1
+		Vida: 5
+		Fila: 9
+		Columna: B
+		Nivel de ataque: 1
+		Nivel de Defensa: 2
+		Nivel de vida: 5
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito 1
+
+		Nombre: Soldado1X1
+		Vida: 2
+		Fila: 3
+		Columna: H
+		Nivel de ataque: 2
+		Nivel de Defensa: 5
+		Nivel de vida: 2
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito 1
+
+		Nombre: Soldado2X1
+		Vida: 5
+		Fila: 8
+		Columna: F
+		Nivel de ataque: 3
+		Nivel de Defensa: 4
+		Nivel de vida: 5
+		Velocidad: 1
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 4 soldado del Ejercito 1
+
+		Nombre: Soldado3X1
+		Vida: 4
+		Fila: 3
+		Columna: I
+		Nivel de ataque: 3
+		Nivel de Defensa: 4
+		Nivel de vida: 4
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 5 soldado del Ejercito 1
+
+		Nombre: Soldado4X1
+		Vida: 3
+		Fila: 6
+		Columna: B
+		Nivel de ataque: 2
+		Nivel de Defensa: 4
+		Nivel de vida: 3
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 6 soldado del Ejercito 1
+
+		Nombre: Soldado5X1
+		Vida: 1
+		Fila: 4
+		Columna: B
+		Nivel de ataque: 2
+		Nivel de Defensa: 4
+		Nivel de vida: 1
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 7 soldado del Ejercito 1
+
+		Nombre: Soldado6X1
+		Vida: 5
+		Fila: 2
+		Columna: J
+		Nivel de ataque: 2
+		Nivel de Defensa: 3
+		Nivel de vida: 5
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 8 soldado del Ejercito 1
+
+		Nombre: Soldado7X1
+		Vida: 5
+		Fila: 5
+		Columna: C
+		Nivel de ataque: 3
+		Nivel de Defensa: 4
+		Nivel de vida: 5
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		---------------------------------
+		*********************************
+		El Ejercito 2 tiene 1 soldados : 
+
+		Registrando al 1 soldado del Ejercito 2
+
+		Nombre: Soldado0X2
+		Vida: 3
+		Fila: 9
+		Columna: J
+		Nivel de ataque: 3
+		Nivel de Defensa: 3
+		Nivel de vida: 3
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		---------------------------------
+		*********************************
+
+		Mostrando tabla de posicion ... --
+		Leyenda: Ejercito1 --> X | Ejercito2 --> Y
+		
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit10.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		El soldado con mayor vida del Ejercito 1 es: 
+
+		Nombre: Soldado6X1
+		Vida: 5
+		Fila: 2
+		Columna: J
+		Nivel de ataque: 2
+		Nivel de Defensa: 3
+		Nivel de vida: 5
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		*********************************
+		El soldado con mayor vida del Ejercito 2 es: 
+
+		Nombre: Soldado0X2
+		Vida: 3
+		Fila: 9
+		Columna: J
+		Nivel de ataque: 3
+		Nivel de Defensa: 3
+		Nivel de vida: 3
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		*********************************
+		El promedio de puntos de vida del Ejercito 1 es: 
+		3.75
+		*********************************
+		El promedio de puntos de vida del Ejercito 2 es: 
+		3.0
+		*********************************
+
+		El Ejercito 1 ordenando por metodo burbuja: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 1 ..... ////// --->
+
+		Puesto 1
+		Nombre: Soldado6X1
+		Vida: 5
+		Fila: 2
+		Columna: J
+		Nivel de ataque: 2
+		Nivel de Defensa: 3
+		Nivel de vida: 5
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		------------------
+
+		Puesto 2
+		Nombre: Soldado7X1
+		Vida: 5
+		Fila: 5
+		Columna: C
+		Nivel de ataque: 3
+		Nivel de Defensa: 4
+		Nivel de vida: 5
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		------------------
+
+		Puesto 3
+		Nombre: Soldado2X1
+		Vida: 5
+		Fila: 8
+		Columna: F
+		Nivel de ataque: 3
+		Nivel de Defensa: 4
+		Nivel de vida: 5
+		Velocidad: 1
+		Actitud: null
+		Estado: true
+		------------------
+
+		Puesto 4
+		Nombre: Soldado0X1
+		Vida: 5
+		Fila: 9
+		Columna: B
+		Nivel de ataque: 1
+		Nivel de Defensa: 2
+		Nivel de vida: 5
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		------------------
+
+		Puesto 5
+		Nombre: Soldado3X1
+		Vida: 4
+		Fila: 3
+		Columna: I
+		Nivel de ataque: 3
+		Nivel de Defensa: 4
+		Nivel de vida: 4
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		------------------
+
+		Puesto 6
+		Nombre: Soldado4X1
+		Vida: 3
+		Fila: 6
+		Columna: B
+		Nivel de ataque: 2
+		Nivel de Defensa: 4
+		Nivel de vida: 3
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		------------------
+
+		Puesto 7
+		Nombre: Soldado1X1
+		Vida: 2
+		Fila: 3
+		Columna: H
+		Nivel de ataque: 2
+		Nivel de Defensa: 5
+		Nivel de vida: 2
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		------------------
+
+		Puesto 8
+		Nombre: Soldado5X1
+		Vida: 1
+		Fila: 4
+		Columna: B
+		Nivel de ataque: 2
+		Nivel de Defensa: 4
+		Nivel de vida: 1
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		------------------
+		*********************************
+
+		El Ejercito 2 ordenando por metodo burbuja: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 2 ..... ////// --->
+
+		Puesto 1
+		Nombre: Soldado0X2
+		Vida: 3
+		Fila: 9
+		Columna: J
+		Nivel de ataque: 3
+		Nivel de Defensa: 3
+		Nivel de vida: 3
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		------------------
+		*********************************
+
+		El Ejercito 1 ordenando por metodo insercion: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 1 ..... ////// --->
+
+		Puesto 1
+		Nombre: Soldado6X1
+		Vida: 5
+		Fila: 2
+		Columna: J
+		Nivel de ataque: 2
+		Nivel de Defensa: 3
+		Nivel de vida: 5
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		------------------
+
+		Puesto 2
+		Nombre: Soldado7X1
+		Vida: 5
+		Fila: 5
+		Columna: C
+		Nivel de ataque: 3
+		Nivel de Defensa: 4
+		Nivel de vida: 5
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		------------------
+
+		Puesto 3
+		Nombre: Soldado2X1
+		Vida: 5
+		Fila: 8
+		Columna: F
+		Nivel de ataque: 3
+		Nivel de Defensa: 4
+		Nivel de vida: 5
+		Velocidad: 1
+		Actitud: null
+		Estado: true
+		------------------
+
+		Puesto 4
+		Nombre: Soldado0X1
+		Vida: 5
+		Fila: 9
+		Columna: B
+		Nivel de ataque: 1
+		Nivel de Defensa: 2
+		Nivel de vida: 5
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		------------------
+
+		Puesto 5
+		Nombre: Soldado3X1
+		Vida: 4
+		Fila: 3
+		Columna: I
+		Nivel de ataque: 3
+		Nivel de Defensa: 4
+		Nivel de vida: 4
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		------------------
+
+		Puesto 6
+		Nombre: Soldado4X1
+		Vida: 3
+		Fila: 6
+		Columna: B
+		Nivel de ataque: 2
+		Nivel de Defensa: 4
+		Nivel de vida: 3
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		------------------
+
+		Puesto 7
+		Nombre: Soldado1X1
+		Vida: 2
+		Fila: 3
+		Columna: H
+		Nivel de ataque: 2
+		Nivel de Defensa: 5
+		Nivel de vida: 2
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		------------------
+
+		Puesto 8
+		Nombre: Soldado5X1
+		Vida: 1
+		Fila: 4
+		Columna: B
+		Nivel de ataque: 2
+		Nivel de Defensa: 4
+		Nivel de vida: 1
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		------------------
+		*********************************
+
+		El Ejercito 2 ordenando por metodo insercion: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 2 ..... ////// --->
+
+		Puesto 1
+		Nombre: Soldado0X2
+		Vida: 3
+		Fila: 9
+		Columna: J
+		Nivel de ataque: 3
+		Nivel de Defensa: 3
+		Nivel de vida: 3
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		------------------
+		*********************************
+		El Ejercito 1 es el GANADOR con 3.75 puntos
+
+	\end{lstlisting}
+	
 	\subsection{Estructura de laboratorio 09}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio09 es el siguiente:
