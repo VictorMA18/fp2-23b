@@ -632,6 +632,254 @@
 		*********************************
 		
 	\end{lstlisting}	
+	\subsection{Ejercicio Videojuego}
+	\begin{itemize}	
+		\item En el quinto commit creamos el metodo viewBoard() el cual nos va a poder imprimir el tablero en donde se va a poder reconocer los soldados de cada ejercito para esto tendriamos que hacer una comparacion de que soldado esta mas fuerte por reclamar su casillero el cual si uno de estos es mas fuerto este se va poder quedar con el casillero en caso de que los 2 sean igual de fuertes en vida entonces los 2 moririan para esto se tuvo que hacer ciertas condiciones al final de esto nos dara la tabla la cual esta va a ser graficada
+		\item El codigo , el commit y la ejecución seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creamos el metodo viewBoard() el cual nos va a poder imprimir el tablero en donde se va a poder reconocer los soldados de cada ejercito para esto tendriamos que hacer una comparacion de que soldado esta mas fuerte por reclamar su casillero el cual si uno de estos es mas fuerto este se va poder quedar con el casillero en caso de que los 2 sean igual de fuertes en vida entonces los 2 moririan para esto se tuvo que hacer ciertas condiciones al final de esto nos dara la tabla la cual esta va a ser graficada"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void viewBoard(ArrayList<ArrayList<Soldado>> army1, ArrayList<ArrayList<Soldado>> army2){ //EN ESTE METODO DEMOSTRAREMOS LA TABLA REUTILIZAREMOS CODIGOS DE ANTERIORES LABORATORIOS PARA PODER HACER LA BASE DE ESTE TABLERO
+			System.out.println("\nMostrando tabla de posicion ... --");
+			System.out.println("Leyenda: Ejercito1 --> X | Ejercito2 --> Y"); //RECONOCIMIENTO PARA LOS EJERCITOS Y POSICION DE SUS SOLDADOS
+			System.out.println("\n \t   A\t   B\t   C\t   D\t   E\t   F\t   G\t   H\t   I\t   J"); // RECONOCIMIENTO PARA CADA UBICACION DE CADA SOLDADO EN EL TABLERO POR PARTE DE LAS COLUMNAS
+			System.out.println("\t_________________________________________________________________________________");
+			for(int i = 0; i < 10; i++ ){
+				System.out.print((i + 1) + "\t"); // RECONOCIMIENTO PARA CADA UBICACION DE CADA SOLDADO EN EL TABLERO POR PARTE DE LAS FILAS
+					for(int j = 0; j < 10; j++){
+							if(army1.get(i).get(j) != null && army2.get(i).get(j) != null){ //CREAMOS UN IF PARA QUE ESTE NOS AYUDE A SABER QUIEN DE ESTOS SOLDADOS SE OCUPARA DEL CASILLERO EL CUAL DONDE ESTAN PELEANDO
+								if(army1.get(i).get(j).getLifeActual() > army2.get(i).get(j).getLifeActual()){
+									army1.get(i).get(j).setLifeActual(army1.get(i).get(j).getLifeActual() - army2.get(i).get(j).getLifeActual()); //Cambiamos 
+									army2.get(i).set(j, null); 
+									System.out.print("|   " + "X" + "   ");
+								}else if(army2.get(i).get(j).getLifeActual() > army1.get(i).get(j).getLifeActual()){
+									army2.get(i).get(j).setLifeActual(army2.get(i).get(j).getLifeActual() - army1.get(i).get(j).getLifeActual());
+									army1.get(i).set(j, null);;
+									System.out.print("|   " + "Y" + "   ");
+								}else{
+									army2.get(i).set(j, null);
+									army1.get(i).set(j, null);
+									System.out.print("|   " + " " + "   ");
+								}
+							}else if(army1.get(i).get(j) != null){
+								System.out.print("|   " + "X" + "   ");
+							}else if(army2.get(i).get(j) != null){
+								System.out.print("|   " + "Y" + "   ");
+							}else{
+								System.out.print("|   " + " " + "   ");
+							}
+					}
+					System.out.println("|");
+					System.out.println("\t|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|");
+			}
+			System.out.println("\n*********************************");
+
+		}
+
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		El Ejercito 1 tiene 8 soldados : 
+
+		Registrando al 1 soldado del Ejercito 1
+		
+		Nombre: Soldado0X1
+		Vida: 4
+		Fila: 7
+		Columna: J
+		Nivel de ataque: 1
+		Nivel de Defensa: 5
+		Nivel de vida: 4
+		Velocidad: 2
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito 1
+		
+		Nombre: Soldado1X1
+		Vida: 4
+		Fila: 9
+		Columna: J
+		Nivel de ataque: 1
+		Nivel de Defensa: 4
+		Nivel de vida: 4
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito 1
+		
+		Nombre: Soldado2X1
+		Vida: 4
+		Fila: 7
+		Columna: F
+		Nivel de ataque: 5
+		Nivel de Defensa: 1
+		Nivel de vida: 4
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 4 soldado del Ejercito 1
+		
+		Nombre: Soldado3X1
+		Vida: 1
+		Fila: 9
+		Columna: B
+		Nivel de ataque: 2
+		Nivel de Defensa: 4
+		Nivel de vida: 1
+		Velocidad: 1
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 5 soldado del Ejercito 1
+		
+		Nombre: Soldado4X1
+		Vida: 2
+		Fila: 8
+		Columna: G
+		Nivel de ataque: 5
+		Nivel de Defensa: 5
+		Nivel de vida: 2
+		Velocidad: 1
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 6 soldado del Ejercito 1
+		
+		Nombre: Soldado5X1
+		Vida: 3
+		Fila: 2
+		Columna: C
+		Nivel de ataque: 5
+		Nivel de Defensa: 2
+		Nivel de vida: 3
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 7 soldado del Ejercito 1
+		
+		Nombre: Soldado6X1
+		Vida: 2
+		Fila: 6
+		Columna: E
+		Nivel de ataque: 3
+		Nivel de Defensa: 3
+		Nivel de vida: 2
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 8 soldado del Ejercito 1
+		
+		Nombre: Soldado7X1
+		Vida: 5
+		Fila: 7
+		Columna: I
+		Nivel de ataque: 4
+		Nivel de Defensa: 2
+		Nivel de vida: 5
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		---------------------------------
+		*********************************
+		El Ejercito 2 tiene 6 soldados : 
+		
+		Registrando al 1 soldado del Ejercito 2
+		
+		Nombre: Soldado0X2
+		Vida: 2
+		Fila: 8
+		Columna: I
+		Nivel de ataque: 4
+		Nivel de Defensa: 3
+		Nivel de vida: 2
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito 2
+		
+		Nombre: Soldado1X2
+		Vida: 3
+		Fila: 2
+		Columna: D
+		Nivel de ataque: 4
+		Nivel de Defensa: 1
+		Nivel de vida: 3
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito 2
+		
+		Nombre: Soldado2X2
+		Vida: 4
+		Fila: 5
+		Columna: G
+		Nivel de ataque: 5
+		Nivel de Defensa: 5
+		Nivel de vida: 4
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 4 soldado del Ejercito 2
+		
+		Nombre: Soldado3X2
+		Vida: 3
+		Fila: 10
+		Columna: A
+		Nivel de ataque: 3
+		Nivel de Defensa: 2
+		Nivel de vida: 3
+		Velocidad: 2
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 5 soldado del Ejercito 2
+		
+		Nombre: Soldado4X2
+		Vida: 5
+		Fila: 5
+		Columna: A
+		Nivel de ataque: 1
+		Nivel de Defensa: 5
+		Nivel de vida: 5
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 6 soldado del Ejercito 2
+		
+		Nombre: Soldado5X2
+		Vida: 4
+		Fila: 5
+		Columna: C
+		Nivel de ataque: 2
+		Nivel de Defensa: 5
+		Nivel de vida: 4
+		Velocidad: 2
+		Actitud: null
+		Estado: true
+		---------------------------------
+		*********************************
+		
+		Mostrando tabla de posicion ... --
+		Leyenda: Ejercito1 --> X | Ejercito2 --> Y
+		
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit5.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
 	\subsection{Estructura de laboratorio 09}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio09 es el siguiente:
