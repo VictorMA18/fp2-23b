@@ -201,6 +201,15 @@ class Videojuego {
         }
         System.out.println("*********************************");
     }
+    public static void resultBattle(double avg1, double avg2,  int num, int num2){ //METODO CREADO PARA PODER SABER EL RESULTADO DE ESTA BATALLA ENTRE ESTOS 2 EJERCITOS
+        if(avg1 > avg2){ //PUBLICACION DE LOS RESULTADOS
+            System.out.println("El Ejercito " + num + " es el GANADOR con " + avg1+ " puntos");
+        }else if(avg2 > avg1){
+            System.out.println("El Ejercito " + num2 + " es el GANADOR con " + avg2 + " puntos");
+        }else{
+            System.out.println("EMPATE con " + avg1 + " puntos");
+        }
+    }
     public static void main(String args[]){
         ArrayList<ArrayList<Soldado>> army1 = fillRegister(1);
         ArrayList<ArrayList<Soldado>> army2 = fillRegister(2);
@@ -213,5 +222,6 @@ class Videojuego {
         rankingBurbujaLife(army2, 2);
         rankingInsercionLife(army1, 1);
         rankingInsercionLife(army2, 2);
+        resultBattle(avg1, avg2, 1, 2);
     }
 }
