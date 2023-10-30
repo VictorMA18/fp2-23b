@@ -1531,6 +1531,408 @@
 		*********************************
 		
 	\end{lstlisting}
+	\subsection{Ejercicio Videojuego}
+	\begin{itemize}	
+		\item En el noveno commit creamos el metodo rankingInsercionLife() el cual nos permite dar con el ranking de vidas actuales de los soldados de cada ejercito para esto etndriamos que aplcar casi la misma logica que aplicamos con burbuja pero en este caso seria aprte de esto tambien la logica que lleva el ordenamiento burbuja por lo que tendriamos que aplicar ciertas condiciones para que este tipo de ordenamiento se de
+		\item El codigo , el commit y la ejecución seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creamos el metodo rankingInsercionLife() el cual nos permite dar con el ranking de vidas actuales de los soldados de cada ejercito para esto etndriamos que aplcar casi la misma logica que aplicamos con burbuja pero en este caso seria aprte de esto tambien la logica que lleva el ordenamiento burbuja por lo que tendriamos que aplicar ciertas condiciones para que este tipo de ordenamiento se de"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void rankingInsercionLife(ArrayList<ArrayList<Soldado>> army , int num){
+			System.out.println("\nEl Ejercito " + num + " ordenando por metodo insercion: ");
+			int count = 0;
+			for(int i = 0; i < 10; i++){
+				for(int j = 0; j < 10; j++){ //ITERACION LA CUAL NOS AYUDA A PASAR POR TODOS LOS SOLDADOS DE CADA EJERCITO
+					if(army.get(i).get(j) != null){ 
+					   count++;
+					}
+				}
+			}
+			System.out.println("------------------------------------------");
+			System.out.println("Mostrando Ranking del Ejercito " + num + " ..... ////// --->");
+			Soldado[] soldados = new Soldado[count];
+			int x = 0;
+			for(int i = 0; i < 10; i++){
+				for(int j = 0; j < 10; j++){ //ITERACION LA CUAL NOS AYUDA A PASAR POR TODOS LOS SOLDADOS AL ARRAY SOLDADO PARA PODER USAR EL USO DEL METODO DE ORDENACION INSERCION
+					if(army.get(i).get(j) != null){ 
+						if(count - count + x == count){
+							break;
+						}else{
+							soldados[count - count + x] = army.get(i).get(j); //LA MISMA LOGICA QUE EL ANTERIOR METODO SOLO QUE EN ESTE LO USARIAMOS DE MANERA DIFERENTE YA QUE ESTE SERIA DE FORMA DE INSERCION
+						}
+						x++;   
+					}
+				}
+			}
+			int n = soldados.length;
+			for (int i = 1; i < n; i++) {
+				Soldado actual = soldados[i];
+				int j = i - 1;
+				while (j >= 0 && soldados[j].getLifeActual() < actual.getLifeActual()) { //ORDENAMOS EL EJERCITO RESPECTIVAMENTE MEDIANTE EL METODO QUE NOS OFRECE INSERCION EL CUAL ES ESTE CODIGO
+					soldados[j + 1] = soldados[j];
+					j--;
+				}
+				soldados[j + 1] = actual;
+			}
+			for(int i = 0; i < soldados.length; i++){
+				System.out.print("\n" + "Puesto " + (i + 1));
+				System.out.println(soldados[i].toString()); //PUBLICAMOS RESULTADOS
+				System.out.println("------------------");
+			}
+			System.out.println("*********************************");
+		}
+
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		El Ejercito 1 tiene 2 soldados : 
+
+		Registrando al 1 soldado del Ejercito 1
+
+		Nombre: Soldado0X1
+		Vida: 1
+		Fila: 2
+		Columna: G
+		Nivel de ataque: 3
+		Nivel de Defensa: 1
+		Nivel de vida: 1
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito 1
+
+		Nombre: Soldado1X1
+		Vida: 1
+		Fila: 10
+		Columna: F
+		Nivel de ataque: 1
+		Nivel de Defensa: 1
+		Nivel de vida: 1
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		---------------------------------
+		*********************************
+		El Ejercito 2 tiene 5 soldados : 
+
+		Registrando al 1 soldado del Ejercito 2
+
+		Nombre: Soldado0X2
+		Vida: 2
+		Fila: 5
+		Columna: E
+		Nivel de ataque: 5
+		Nivel de Defensa: 4
+		Nivel de vida: 2
+		Velocidad: 1
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito 2
+
+		Nombre: Soldado1X2
+		Vida: 5
+		Fila: 2
+		Columna: H
+		Nivel de ataque: 2
+		Nivel de Defensa: 2
+		Nivel de vida: 5
+		Velocidad: 1
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito 2
+
+		Nombre: Soldado2X2
+		Vida: 4
+		Fila: 3
+		Columna: D
+		Nivel de ataque: 5
+		Nivel de Defensa: 1
+		Nivel de vida: 4
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 4 soldado del Ejercito 2
+
+		Nombre: Soldado3X2
+		Vida: 2
+		Fila: 4
+		Columna: D
+		Nivel de ataque: 2
+		Nivel de Defensa: 2
+		Nivel de vida: 2
+		Velocidad: 2
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 5 soldado del Ejercito 2
+
+		Nombre: Soldado4X2
+		Vida: 4
+		Fila: 7
+		Columna: A
+		Nivel de ataque: 2
+		Nivel de Defensa: 1
+		Nivel de vida: 4
+		Velocidad: 2
+		Actitud: null
+		Estado: true
+		---------------------------------
+		*********************************
+
+		Mostrando tabla de posicion ... --
+		Leyenda: Ejercito1 --> X | Ejercito2 --> Y
+		
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit9.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		El soldado con mayor vida del Ejercito 1 es: 
+		
+		Nombre: Soldado0X1
+		Vida: 1
+		Fila: 2
+		Columna: G
+		Nivel de ataque: 3
+		Nivel de Defensa: 1
+		Nivel de vida: 1
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		*********************************
+		El soldado con mayor vida del Ejercito 2 es: 
+		
+		Nombre: Soldado1X2
+		Vida: 5
+		Fila: 2
+		Columna: H
+		Nivel de ataque: 2
+		Nivel de Defensa: 2
+		Nivel de vida: 5
+		Velocidad: 1
+		Actitud: null
+		Estado: true
+		*********************************
+		El promedio de puntos de vida del Ejercito 1 es: 
+		1.0
+		*********************************
+		El promedio de puntos de vida del Ejercito 2 es: 
+		3.4
+		*********************************
+		
+		El Ejercito 1 ordenando por metodo burbuja: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 1 ..... ////// --->
+		
+		Puesto 1
+		Nombre: Soldado0X1
+		Vida: 1
+		Fila: 2
+		Columna: G
+		Nivel de ataque: 3
+		Nivel de Defensa: 1
+		Nivel de vida: 1
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		------------------
+		
+		Puesto 2
+		Nombre: Soldado1X1
+		Vida: 1
+		Fila: 10
+		Columna: F
+		Nivel de ataque: 1
+		Nivel de Defensa: 1
+		Nivel de vida: 1
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		------------------
+		*********************************
+		
+		El Ejercito 2 ordenando por metodo burbuja: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 2 ..... ////// --->
+		
+		Puesto 1
+		Nombre: Soldado1X2
+		Vida: 5
+		Fila: 2
+		Columna: H
+		Nivel de ataque: 2
+		Nivel de Defensa: 2
+		Nivel de vida: 5
+		Velocidad: 1
+		Actitud: null
+		Estado: true
+		------------------
+		
+		Puesto 2
+		Nombre: Soldado2X2
+		Vida: 4
+		Fila: 3
+		Columna: D
+		Nivel de ataque: 5
+		Nivel de Defensa: 1
+		Nivel de vida: 4
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		------------------
+		
+		Puesto 3
+		Nombre: Soldado4X2
+		Vida: 4
+		Fila: 7
+		Columna: A
+		Nivel de ataque: 2
+		Nivel de Defensa: 1
+		Nivel de vida: 4
+		Velocidad: 2
+		Actitud: null
+		Estado: true
+		------------------
+		
+		Puesto 4
+		Nombre: Soldado3X2
+		Vida: 2
+		Fila: 4
+		Columna: D
+		Nivel de ataque: 2
+		Nivel de Defensa: 2
+		Nivel de vida: 2
+		Velocidad: 2
+		Actitud: null
+		Estado: true
+		------------------
+		
+		Puesto 5
+		Nombre: Soldado0X2
+		Vida: 2
+		Fila: 5
+		Columna: E
+		Nivel de ataque: 5
+		Nivel de Defensa: 4
+		Nivel de vida: 2
+		Velocidad: 1
+		Actitud: null
+		Estado: true
+		------------------
+		*********************************
+		
+		El Ejercito 1 ordenando por metodo insercion: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 1 ..... ////// --->
+		
+		Puesto 1
+		Nombre: Soldado0X1
+		Vida: 1
+		Fila: 2
+		Columna: G
+		Nivel de ataque: 3
+		Nivel de Defensa: 1
+		Nivel de vida: 1
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		------------------
+		
+		Puesto 2
+		Nombre: Soldado1X1
+		Vida: 1
+		Fila: 10
+		Columna: F
+		Nivel de ataque: 1
+		Nivel de Defensa: 1
+		Nivel de vida: 1
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		------------------
+		*********************************
+		
+		El Ejercito 2 ordenando por metodo insercion: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 2 ..... ////// --->
+		
+		Puesto 1
+		Nombre: Soldado1X2
+		Vida: 5
+		Fila: 2
+		Columna: H
+		Nivel de ataque: 2
+		Nivel de Defensa: 2
+		Nivel de vida: 5
+		Velocidad: 1
+		Actitud: null
+		Estado: true
+		------------------
+		
+		Puesto 2
+		Nombre: Soldado2X2
+		Vida: 4
+		Fila: 3
+		Columna: D
+		Nivel de ataque: 5
+		Nivel de Defensa: 1
+		Nivel de vida: 4
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		------------------
+		
+		Puesto 3
+		Nombre: Soldado4X2
+		Vida: 4
+		Fila: 7
+		Columna: A
+		Nivel de ataque: 2
+		Nivel de Defensa: 1
+		Nivel de vida: 4
+		Velocidad: 2
+		Actitud: null
+		Estado: true
+		------------------
+		
+		Puesto 4
+		Nombre: Soldado3X2
+		Vida: 2
+		Fila: 4
+		Columna: D
+		Nivel de ataque: 2
+		Nivel de Defensa: 2
+		Nivel de vida: 2
+		Velocidad: 2
+		Actitud: null
+		Estado: true
+		------------------
+		
+		Puesto 5
+		Nombre: Soldado0X2
+		Vida: 2
+		Fila: 5
+		Columna: E
+		Nivel de ataque: 5
+		Nivel de Defensa: 4
+		Nivel de vida: 2
+		Velocidad: 1
+		Actitud: null
+		Estado: true
+		------------------
+		*********************************
+		
+	\end{lstlisting}
 	\subsection{Estructura de laboratorio 09}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio09 es el siguiente:
