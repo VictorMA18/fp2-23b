@@ -200,6 +200,109 @@ class Videojuego1 {
         }
         System.out.println("*********************************");
     }
+    public static void optionsPlayer(){
+        System.out.println(" TIENE QUE SELECCIONAR UNA OPCION");
+        System.out.println(" 1 : MOVER SOLDADO");
+        System.out.println(" 2 : SALTAR TURNO");
+    }
+    public static void battle(ArrayList<ArrayList<Soldado>> army1 , ArrayList<ArrayList<Soldado>> army2){
+        Scanner sc = new Scanner(System.in);
+        Soldado soldier = null;
+        int numberoption = 0;
+        int playeroption = 0;
+        int numbersoldiers = 0;
+        do { //CREAMOS UN DO WHILE EL CUAL NOS VA PODER PERMITIR INTERACTUAR CON LOS JUGADORES PARA EL EMPEZAR EL JUEGO EL CUAL TENDRA QUE HACER VUELTAS INFINITAS PARA PODER INTERACTUAR CON LOS JUGADORES
+            System.out.println("-------------------------------------------");
+            System.out.println("--                 MENU                  --"); 
+            System.out.println("-------------------------------------------");
+            System.out.println(" SELECCIONE UN NUMERO PARA PODER EMPEZAR O TERMINAR");
+            System.out.println(" 1 : JUGAR");
+            System.out.println(" 2 : NO JUGAR");
+            numberoption = sc.nextInt();
+            if(numberoption == 1){
+                viewBoard(army1, army2);
+                System.out.println(" EMPIEZA EL JUGADOR CON EL BANDO --X-- ");
+                optionsPlayer(); //METODO CREADO PARA PODER DARLE OPCIONES AL JUGADOR QUE JUGADA REALIZAR O RETIRARSE DEL JUEGO
+                playeroption = sc.nextInt();
+                for(int i = 0; i < 10; i++){  //ITERACION CREADA PARA PODER SABER QUE SI ESTE BANDO DEL EJERCITO TIENE SOLDADOS PARA PODER JUGAR EL CUAL VAMOS A TENER QUE CONTAR
+                    for(int j = 0; j < 10; j++){
+                        if(army1.get(i).get(j) != null){
+                            numbersoldiers++;
+                        }
+                    }
+                }
+                if(numbersoldiers == 0){
+                    System.out.println(" YA NO TIENE SOLDADOS USTED A PERDIDO ");
+                    break;
+                }
+                if(playeroption == 1){
+                    int row , rowbefore = 0;
+                    String column , columnbefore = "";
+                    System.out.println("\n-Seleccione el soldado: ");
+                    System.out.print("Fila: ");
+                    row = sc.nextInt();
+                    System.out.print("Columna: ");
+                    column = sc.next();
+                    int columnnumber = (int)column.charAt(0) - 65; 
+
+                    System.out.println("\n-Ingrese la casilla a mover");
+                    System.out.print("Fila: ");
+                    rowbefore = sc.nextInt();
+                    System.out.print("Columna: ");
+                    columnbefore = sc.next();
+                    int columnbeforenumber = (int)columnbefore.charAt(0) - 65; 
+                
+                    System.out.println(columnnumber + " " + columnbeforenumber);
+                    if(army1.get(rowbefore).get(columnbeforenumber) == null && army2.get(rowbefore).get(columnbeforenumber) == null){
+                        soldier = army1.get(row).get(columnnumber);
+                        army1.get(row).set(columnnumber, null);
+                        army1.get(rowbefore).set(columnbeforenumber,soldier);
+                        viewBoard(army1, army2);
+                    }else{
+                        while (army1.get(rowbefore).get(columnbeforenumber) != null){
+                            System.out.println("\n-JUGADA NO VALIDA");
+                            System.out.println("\n-INGRESE NUEVOS DATOS");
+                            System.out.println("\n-Seleccione el soldado: ");
+                            System.out.print("Fila: ");
+                            row = sc.nextInt();
+                            System.out.print("Columna: ");
+                            column = sc.next();
+                            columnnumber = (int)column.charAt(0) - 65; 
+
+                            System.out.println("\n-Ingrese la casilla a mover");    
+                            System.out.print("Fila: ");
+                            rowbefore = sc.nextInt();
+                            System.out.print("Columna: ");
+                            columnbefore = sc.next();
+                            columnbeforenumber = (int)columnbefore.charAt(0) - 65; 
+                            if(army1.get(rowbefore).get(columnbeforenumber) == null){
+                                break;
+                            }
+                        }
+                        if(army2.get(rowbefore).get(columnbeforenumber) != null){
+                            int health1 = army1.get(row).get(columnnumber).getLifeActual();
+                            int health2 = army2.get(rowbefore).get(columnbeforenumber).getLifeActual();
+                            if(health2 > health1){
+                                army1.get(row).set(columnnumber, null);
+                                army2.get(rowbefore).get(columnbeforenumber).setLifeActual(health2 - health1);
+                            }else if(health1 > health2){
+                                army2.get(rowbefore).set(columnbeforenumber, null); //ELIMINAMOS AL SOLDADO DEL OTRO BANDO DE ESA CASILLA
+                                army1.get(row).get(columnnumber).setLifeActual(health1 - health2); //CAMBIAMOS LA VIDA ANTES DE MANDARLO CON EL OBJETO SOLDADO QUE HICIMOS
+                                soldier = army1.get(row).get(columnnumber);
+                                army1.get(row).set(columnnumber, null); //ELIMINAMOS AL SOLDADO DE LA CASILLA DE DONDE ESTABA
+                                army1.get(rowbefore).set(columnbeforenumber, soldier); //PONEMOS AL SOLDADO EN LA NUEVA CASILLA
+                            }else{
+                                army1.get(row).set(columnnumber, null);
+                                army2.get(rowbefore).set(columnbeforenumber, null);
+                            }
+                        }
+                    }
+                }
+            }else{
+                break;   
+            }
+        } while (true);
+    }
     public static void main(String[] args) {
         ArrayList<ArrayList<Soldado>> army1 = fillRegister(1);
         ArrayList<ArrayList<Soldado>> army2 = fillRegister(2);
@@ -212,5 +315,6 @@ class Videojuego1 {
         rankingBurbujaLife(army2, 2);
         rankingInsercionLife(army1, 1);
         rankingInsercionLife(army2, 2);
+        battle(army1, army2);
     }
 }
