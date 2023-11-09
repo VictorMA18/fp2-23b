@@ -211,14 +211,14 @@ class Videojuego1 {
         int numberoption = 0;
         int playeroption = 0;
         int numbersoldiers = 0;
+        System.out.println("-------------------------------------------");
+        System.out.println("--                 MENU                  --"); 
+        System.out.println("-------------------------------------------");
+        System.out.println(" SELECCIONE UN NUMERO PARA PODER EMPEZAR O TERMINAR");
+        System.out.println(" 1 : JUGAR");
+        System.out.println(" 2 : NO JUGAR");
+        numberoption = sc.nextInt();
         do { //CREAMOS UN DO WHILE EL CUAL NOS VA PODER PERMITIR INTERACTUAR CON LOS JUGADORES PARA EL EMPEZAR EL JUEGO EL CUAL TENDRA QUE HACER VUELTAS INFINITAS PARA PODER INTERACTUAR CON LOS JUGADORES
-            System.out.println("-------------------------------------------");
-            System.out.println("--                 MENU                  --"); 
-            System.out.println("-------------------------------------------");
-            System.out.println(" SELECCIONE UN NUMERO PARA PODER EMPEZAR O TERMINAR");
-            System.out.println(" 1 : JUGAR");
-            System.out.println(" 2 : NO JUGAR");
-            numberoption = sc.nextInt();
             if(numberoption == 1){
                 viewBoard(army1, army2);
                 System.out.println(" EMPIEZA EL JUGADOR CON EL BANDO --X-- ");
@@ -240,14 +240,14 @@ class Videojuego1 {
                     String column , columnbefore = "";
                     System.out.println("\n-Seleccione el soldado: ");
                     System.out.print("Fila: ");
-                    row = sc.nextInt();
+                    row = sc.nextInt() - 1;
                     System.out.print("Columna: ");
                     column = sc.next();
                     int columnnumber = (int)column.charAt(0) - 65; 
 
                     System.out.println("\n-Ingrese la casilla a mover");
                     System.out.print("Fila: ");
-                    rowbefore = sc.nextInt();
+                    rowbefore = sc.nextInt() - 1;
                     System.out.print("Columna: ");
                     columnbefore = sc.next();
                     int columnbeforenumber = (int)columnbefore.charAt(0) - 65; 
@@ -257,29 +257,29 @@ class Videojuego1 {
                         soldier = army1.get(row).get(columnnumber);
                         army1.get(row).set(columnnumber, null);
                         army1.get(rowbefore).set(columnbeforenumber,soldier);
-                        viewBoard(army1, army2);
                     }else{
                         while (army1.get(rowbefore).get(columnbeforenumber) != null){
                             System.out.println("\n-JUGADA NO VALIDA");
                             System.out.println("\n-INGRESE NUEVOS DATOS");
                             System.out.println("\n-Seleccione el soldado: ");
                             System.out.print("Fila: ");
-                            row = sc.nextInt();
+                            row = sc.nextInt() - 1;
                             System.out.print("Columna: ");
                             column = sc.next();
                             columnnumber = (int)column.charAt(0) - 65; 
 
                             System.out.println("\n-Ingrese la casilla a mover");    
                             System.out.print("Fila: ");
-                            rowbefore = sc.nextInt();
+                            rowbefore = sc.nextInt() - 1;
                             System.out.print("Columna: ");
                             columnbefore = sc.next();
                             columnbeforenumber = (int)columnbefore.charAt(0) - 65; 
-                            if(army1.get(rowbefore).get(columnbeforenumber) == null){
-                                break;
-                            }
                         }
-                        if(army2.get(rowbefore).get(columnbeforenumber) != null){
+                        if(army1.get(rowbefore).get(columnbeforenumber) == null && army2.get(rowbefore).get(columnbeforenumber) == null){
+                            soldier = army1.get(row).get(columnnumber);
+                            army1.get(row).set(columnnumber, null);
+                            army1.get(rowbefore).set(columnbeforenumber,soldier);
+                        }else if(army2.get(rowbefore).get(columnbeforenumber) != null){
                             int health1 = army1.get(row).get(columnnumber).getLifeActual();
                             int health2 = army2.get(rowbefore).get(columnbeforenumber).getLifeActual();
                             if(health2 > health1){
