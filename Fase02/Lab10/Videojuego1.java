@@ -251,7 +251,7 @@ class Videojuego1 {
                     System.out.print("Columna: ");
                     columnafter = sc.next();
                     int columnafternumber = (int)columnafter.charAt(0) - 65;  
-                    while (row > 10 || columnnumber > 10 || rowafter > 10 || columnafternumber > 10) {
+                    while (row >= 10 || columnnumber >= 10 || rowafter >= 10 || columnafternumber >= 10) {
                         System.out.println("POSICIONES INCORRECTAS");
                         System.out.println("\n-Seleccione el soldado: ");
                         System.out.print("Fila: ");
@@ -343,7 +343,7 @@ class Videojuego1 {
                     System.out.print("Columna: ");
                     columnafter = sc.next();
                     int columnafternumber = (int)columnafter.charAt(0) - 65; 
-                    while (row > 10 || columnnumber > 10 || rowafter > 10 || columnafternumber > 10) {
+                    while (row >= 10 || columnnumber >= 10 || rowafter >= 10 || columnafternumber >= 10) {
                         System.out.println("POSICIONES INCORRECTAS");
                         System.out.println("\n-Seleccione el soldado: ");
                         System.out.print("Fila: ");
