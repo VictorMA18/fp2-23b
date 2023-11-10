@@ -382,9 +382,9 @@ class Videojuego1 {
                             columnafternumber = (int)columnafter.charAt(0) - 65; 
                         }
                         if(army1.get(rowafter).get(columnafternumber) == null && army2.get(rowafter).get(columnafternumber) == null){
-                            soldier = army1.get(row).get(columnnumber);
-                            army1.get(row).set(columnnumber, null);
-                            army1.get(rowafter).set(columnafternumber,soldier);
+                            soldier = army2.get(row).get(columnnumber);
+                            army2.get(row).set(columnnumber, null);
+                            army2.get(rowafter).set(columnafternumber,soldier);
                         }else if(army1.get(rowafter).get(columnafternumber) != null){
                             int health1 = army1.get(row).get(columnnumber).getLifeActual();
                             int health2 = army2.get(rowafter).get(columnafternumber).getLifeActual();
