@@ -231,7 +231,7 @@ class Videojuego1 {
                     }
                 }
                 if(numbersoldiers == 0){
-                    System.out.println(" YA NO TIENE SOLDADOS EL EJERCITO --X-- USTED HA PERDIDO ");
+                    System.out.println(" YA NO TIENE SOLDADOS EL EJERCITO --X-- USTED HA PERDIDO POR LO TANTO GANO EL EJERCITO --Y-- ");
                     break;
                 }
                 optionsPlayer(); //METODO CREADO PARA PODER DARLE OPCIONES AL JUGADOR QUE JUGADA REALIZAR O RETIRARSE DEL JUEGO
@@ -323,7 +323,7 @@ class Videojuego1 {
                     }
                 }
                 if(numbersoldiers == 0){
-                    System.out.println(" YA NO TIENE SOLDADOS EL EJERCITO --Y-- USTED A PERDIDO ");
+                    System.out.println(" YA NO TIENE SOLDADOS EL EJERCITO --Y-- USTED A PERDIDO POR LO TANTO GANO EL EJERCITO --X-- ");
                     break;
                 }
                 optionsPlayer();
@@ -386,17 +386,17 @@ class Videojuego1 {
                             army2.get(row).set(columnnumber, null);
                             army2.get(rowafter).set(columnafternumber,soldier);
                         }else if(army1.get(rowafter).get(columnafternumber) != null){
-                            int health1 = army1.get(row).get(columnnumber).getLifeActual();
-                            int health2 = army2.get(rowafter).get(columnafternumber).getLifeActual();
+                            int health1 = army2.get(row).get(columnnumber).getLifeActual();
+                            int health2 = army1.get(rowafter).get(columnafternumber).getLifeActual();
                             if(health2 > health1){
-                                army1.get(row).set(columnnumber, null);
-                                army2.get(rowafter).get(columnafternumber).setLifeActual(health2 - health1);
+                                army2.get(row).set(columnnumber, null);
+                                army1.get(rowafter).get(columnafternumber).setLifeActual(health2 - health1);
                             }else if(health1 > health2){
-                                army2.get(rowafter).set(columnafternumber, null); //ELIMINAMOS AL SOLDADO DEL OTRO BANDO DE ESA CASILLA
-                                army1.get(row).get(columnnumber).setLifeActual(health1 - health2); //CAMBIAMOS LA VIDA ANTES DE MANDARLO CON EL OBJETO SOLDADO QUE HICIMOS
+                                army1.get(rowafter).set(columnafternumber, null); //ELIMINAMOS AL SOLDADO DEL OTRO BANDO DE ESA CASILLA
+                                army2.get(row).get(columnnumber).setLifeActual(health1 - health2); //CAMBIAMOS LA VIDA ANTES DE MANDARLO CON EL OBJETO SOLDADO QUE HICIMOS
                                 soldier = army1.get(row).get(columnnumber);
-                                army1.get(row).set(columnnumber, null); //ELIMINAMOS AL SOLDADO DE LA CASILLA DE DONDE ESTABA
-                                army1.get(rowafter).set(columnafternumber, soldier); //PONEMOS AL SOLDADO EN LA NUEVA CASILLA
+                                army2.get(row).set(columnnumber, null); //ELIMINAMOS AL SOLDADO DE LA CASILLA DE DONDE ESTABA
+                                army2.get(rowafter).set(columnafternumber, soldier); //PONEMOS AL SOLDADO EN LA NUEVA CASILLA
                             }else{
                                 army1.get(row).set(columnnumber, null);
                                 army2.get(rowafter).set(columnafternumber, null);
