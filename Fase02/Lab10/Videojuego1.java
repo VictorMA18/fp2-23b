@@ -362,6 +362,7 @@ class Videojuego1 {
                         soldier = army2.get(row).get(columnnumber);
                         army2.get(row).set(columnnumber, null);
                         army2.get(rowafter).set(columnafternumber,soldier);
+                        viewBoard(army1, army2);
                     }else{
                         while (army2.get(rowafter).get(columnafternumber) != null){
                             System.out.println("\n-JUGADA NO VALIDA");
