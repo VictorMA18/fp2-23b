@@ -2179,13 +2179,683 @@
 		*********************************
 		
 	\end{lstlisting}
+	\subsection{Ejercicio Videojuego1}
+	\begin{itemize}	
+		\item En el octavo commit creamos el metodo battle() el cual nos permite jugar con el juego de guerras para esto hariamos comprobaciones el numero de soldados y si estos soldados no pueden estar con soldados en una misma cuadrilla con alguien de su mismo bando para esto tambien hacemos una condicion como tambien a los demas casos declaramos variables las cuales nos ayudaran en el desarrollo en el juego las cuales tambien las repetimos en los demas casos el fin del juego seria eliminar a todo un ejercito completo para esto tendriamos que mover a los soldados para que vayan cayendo uno por uno esto cuenta con la participacion de 2 jugadores 
+		\item El codigo , el commit y la ejecucion seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Arreglando aspectos como los nombres de las variable y tambien lo mas importante la restriccion de posiciones que no existan tendran que otra vez escogeruna nueva posicion para eso aplicariamos un while y tambien dariamos un mensaje como posiciones incorrectas y tambien en el aspecto de la tabla en que se reproducia cada vez en el do whie() para esto la sacamos afuera para que solo fuera una vez"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void battle(ArrayList<ArrayList<Soldado>> army1 , ArrayList<ArrayList<Soldado>> army2){
+			Scanner sc = new Scanner(System.in);
+			Soldado soldier = null;
+			int numberoption = 0;
+			int playeroption = 0;
+			int numbersoldiers = 0;
+			System.out.println("-------------------------------------------");
+			System.out.println("--                 MENU                  --"); 
+			System.out.println("-------------------------------------------");
+			System.out.println(" SELECCIONE UN NUMERO PARA PODER EMPEZAR O TERMINAR");
+			System.out.println(" 1 : JUGAR");
+			System.out.println(" 2 : NO JUGAR");
+			numberoption = sc.nextInt();
+			viewBoard(army1, army2);
+			do { //CREAMOS UN DO WHILE EL CUAL NOS VA PODER PERMITIR INTERACTUAR CON LOS JUGADORES PARA EL EMPEZAR EL JUEGO EL CUAL TENDRA QUE HACER VUELTAS INFINITAS PARA PODER INTERACTUAR CON LOS JUGADORES
+				numbersoldiers = 0;
+				if(numberoption == 1){
+					System.out.println(" EMPIEZA EL JUGADOR CON EL BANDO --X-- ");
+					for(int i = 0; i < 10; i++){  //ITERACION CREADA PARA PODER SABER QUE SI ESTE BANDO DEL EJERCITO TIENE SOLDADOS PARA PODER JUGAR EL CUAL VAMOS A TENER QUE CONTAR
+						for(int j = 0; j < 10; j++){
+							if(army1.get(i).get(j) != null){
+								numbersoldiers++;
+							}
+						}
+					}
+					if(numbersoldiers == 0){
+						System.out.println(" YA NO TIENE SOLDADOS EL EJERCITO --X-- USTED HA PERDIDO POR LO TANTO GANO EL EJERCITO --Y-- ");
+						break;
+					}
+					optionsPlayer(); //METODO CREADO PARA PODER DARLE OPCIONES AL JUGADOR QUE JUGADA REALIZAR O RETIRARSE DEL JUEGO
+					playeroption = sc.nextInt();
+					if(playeroption == 1){
+						int row , rowafter = 0;
+						String column , columnafter = "";
+						System.out.println("\n-Seleccione el soldado: ");
+						System.out.print("Fila: ");
+						row = sc.nextInt() - 1;
+						System.out.print("Columna: ");
+						column = sc.next();
+						int columnnumber = (int)column.charAt(0) - 65; 
+						System.out.println("\n-Ingrese la casilla a mover");
+						System.out.print("Fila: ");
+						rowafter = sc.nextInt() - 1;
+						System.out.print("Columna: ");
+						columnafter = sc.next();
+						int columnafternumber = (int)columnafter.charAt(0) - 65;  
+						while (row >= 10 || columnnumber >= 10 || rowafter >= 10 || columnafternumber >= 10) {
+							System.out.println("POSICIONES INCORRECTAS");
+							System.out.println("\n-Seleccione el soldado: ");
+							System.out.print("Fila: ");
+							row = sc.nextInt() - 1;
+							System.out.print("Columna: ");
+							column = sc.next();
+							columnnumber = (int)column.charAt(0) - 65; 
+							System.out.println("\n-Ingrese la casilla a mover");
+							System.out.print("Fila: ");
+							rowafter = sc.nextInt() - 1;
+							System.out.print("Columna: ");
+							columnafter = sc.next();
+							columnafternumber = (int)columnafter.charAt(0) - 65;  
+						}
+						if(army1.get(rowafter).get(columnafternumber) == null && army2.get(rowafter).get(columnafternumber) == null){
+							soldier = army1.get(row).get(columnnumber);
+							army1.get(row).set(columnnumber, null);
+							army1.get(rowafter).set(columnafternumber,soldier);
+							viewBoard(army1, army2);
+						}else{
+							while (army1.get(rowafter).get(columnafternumber) != null){
+								System.out.println("\n-JUGADA NO VALIDA");
+								System.out.println("\n-INGRESE NUEVOS DATOS");
+								System.out.println("\n-Seleccione el soldado: ");
+								System.out.print("Fila: ");
+								row = sc.nextInt() - 1;
+								System.out.print("Columna: ");
+								column = sc.next();
+								columnnumber = (int)column.charAt(0) - 65; 
+	
+								System.out.println("\n-Ingrese la casilla a mover");    
+								System.out.print("Fila: ");
+								rowafter = sc.nextInt() - 1;
+								System.out.print("Columna: ");
+								columnafter = sc.next();
+								columnafternumber = (int)columnafter.charAt(0) - 65; 
+							}
+							if(army1.get(rowafter).get(columnafternumber) == null && army2.get(rowafter).get(columnafternumber) == null){
+								soldier = army1.get(row).get(columnnumber);
+								army1.get(row).set(columnnumber, null);
+								army1.get(rowafter).set(columnafternumber,soldier);
+							}else if(army2.get(rowafter).get(columnafternumber) != null){
+								int health1 = army1.get(row).get(columnnumber).getLifeActual();
+								int health2 = army2.get(rowafter).get(columnafternumber).getLifeActual();
+								if(health2 > health1){
+									army1.get(row).set(columnnumber, null);
+									army2.get(rowafter).get(columnafternumber).setLifeActual(health2 - health1);
+								}else if(health1 > health2){
+									army2.get(rowafter).set(columnafternumber, null); //ELIMINAMOS AL SOLDADO DEL OTRO BANDO DE ESA CASILLA
+									army1.get(row).get(columnnumber).setLifeActual(health1 - health2); //CAMBIAMOS LA VIDA ANTES DE MANDARLO CON EL OBJETO SOLDADO QUE HICIMOS
+									soldier = army1.get(row).get(columnnumber);
+									army1.get(row).set(columnnumber, null); //ELIMINAMOS AL SOLDADO DE LA CASILLA DE DONDE ESTABA
+									army1.get(rowafter).set(columnafternumber, soldier); //PONEMOS AL SOLDADO EN LA NUEVA CASILLA
+								}else{
+									army1.get(row).set(columnnumber, null);
+									army2.get(rowafter).set(columnafternumber, null);
+								}
+							}
+							viewBoard(army1, army2);
+						}
+					}
+					numbersoldiers = 0;
+					System.out.println(" EMPIEZA EL JUGADOR CON EL BANDO --Y-- ");
+					for(int i = 0; i < 10; i++){  //ITERACION CREADA PARA PODER SABER QUE SI ESTE BANDO DEL EJERCITO TIENE SOLDADOS PARA PODER JUGAR EL CUAL VAMOS A TENER QUE CONTAR
+						for(int j = 0; j < 10; j++){
+							if(army2.get(i).get(j) != null){
+								numbersoldiers++;
+							}
+						}
+					}
+					if(numbersoldiers == 0){
+						System.out.println(" YA NO TIENE SOLDADOS EL EJERCITO --Y-- USTED A PERDIDO POR LO TANTO GANO EL EJERCITO --X-- ");
+						break;
+					}
+					optionsPlayer();
+					playeroption = sc.nextInt();
+					if(playeroption == 1){
+						int row , rowafter = 0;
+						String column , columnafter = "";
+						System.out.println("\n-Seleccione el soldado: ");
+						System.out.print("Fila: ");
+						row = sc.nextInt() - 1;
+						System.out.print("Columna: ");
+						column = sc.next();
+						int columnnumber = (int)column.charAt(0) - 65;  
+						System.out.println("\n-Ingrese la casilla a mover");
+						System.out.print("Fila: ");
+						rowafter = sc.nextInt() - 1;
+						System.out.print("Columna: ");
+						columnafter = sc.next();
+						int columnafternumber = (int)columnafter.charAt(0) - 65; 
+						while (row >= 10 || columnnumber >= 10 || rowafter >= 10 || columnafternumber >= 10) {
+							System.out.println("POSICIONES INCORRECTAS");
+							System.out.println("\n-Seleccione el soldado: ");
+							System.out.print("Fila: ");
+							row = sc.nextInt() - 1;
+							System.out.print("Columna: ");
+							column = sc.next();
+							columnnumber = (int)column.charAt(0) - 65; 
+							System.out.println("\n-Ingrese la casilla a mover");
+							System.out.print("Fila: ");
+							rowafter = sc.nextInt() - 1;
+							System.out.print("Columna: ");
+							columnafter = sc.next();
+							columnafternumber = (int)columnafter.charAt(0) - 65;  
+						}
+						if(army1.get(rowafter).get(columnafternumber) == null && army2.get(rowafter).get(columnafternumber) == null){
+							soldier = army2.get(row).get(columnnumber);
+							army2.get(row).set(columnnumber, null);
+							army2.get(rowafter).set(columnafternumber,soldier);
+							viewBoard(army1, army2);
+						}else{
+							while (army2.get(rowafter).get(columnafternumber) != null){
+								System.out.println("\n-JUGADA NO VALIDA");
+								System.out.println("\n-INGRESE NUEVOS DATOS");
+								System.out.println("\n-Seleccione el soldado: ");
+								System.out.print("Fila: ");
+								row = sc.nextInt() - 1;
+								System.out.print("Columna: ");
+								column = sc.next();
+								columnnumber = (int)column.charAt(0) - 65; 
+	
+								System.out.println("\n-Ingrese la casilla a mover");    
+								System.out.print("Fila: ");
+								rowafter = sc.nextInt() - 1;
+								System.out.print("Columna: ");
+								columnafter = sc.next();
+								columnafternumber = (int)columnafter.charAt(0) - 65; 
+							}
+							if(army1.get(rowafter).get(columnafternumber) == null && army2.get(rowafter).get(columnafternumber) == null){
+								soldier = army2.get(row).get(columnnumber);
+								army2.get(row).set(columnnumber, null);
+								army2.get(rowafter).set(columnafternumber,soldier);
+							}else if(army1.get(rowafter).get(columnafternumber) != null){
+								int health1 = army2.get(row).get(columnnumber).getLifeActual();
+								int health2 = army1.get(rowafter).get(columnafternumber).getLifeActual();
+								if(health2 > health1){
+									army2.get(row).set(columnnumber, null);
+									army1.get(rowafter).get(columnafternumber).setLifeActual(health2 - health1);
+								}else if(health1 > health2){
+									army1.get(rowafter).set(columnafternumber, null); //ELIMINAMOS AL SOLDADO DEL OTRO BANDO DE ESA CASILLA
+									army2.get(row).get(columnnumber).setLifeActual(health1 - health2); //CAMBIAMOS LA VIDA ANTES DE MANDARLO CON EL OBJETO SOLDADO QUE HICIMOS
+									soldier = army2.get(row).get(columnnumber);
+									army2.get(row).set(columnnumber, null); //ELIMINAMOS AL SOLDADO DE LA CASILLA DE DONDE ESTABA
+									army2.get(rowafter).set(columnafternumber, soldier); //PONEMOS AL SOLDADO EN LA NUEVA CASILLA
+								}else{
+									army1.get(row).set(columnnumber, null);
+									army2.get(rowafter).set(columnafternumber, null);
+								}
+							}
+							viewBoard(army1, army2);
+						}
+					}
+				}else{
+					break;   
+				}
+			} while (true);
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		El Ejercito 1 tiene 3 soldados : 
+
+		Registrando al 1 soldado del Ejercito 1
+		
+		Nombre: Soldado0X1
+		Vida: 1
+		Fila: 1
+		Columna: I
+		Nivel de ataque: 4
+		Nivel de Defensa: 5
+		Nivel de vida: 1
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito 1
+		
+		Nombre: Soldado1X1
+		Vida: 5
+		Fila: 8
+		Columna: G
+		Nivel de ataque: 2
+		Nivel de Defensa: 5
+		Nivel de vida: 5
+		Velocidad: 2
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito 1
+		
+		Nombre: Soldado2X1
+		Vida: 2
+		Fila: 10
+		Columna: F
+		Nivel de ataque: 1
+		Nivel de Defensa: 3
+		Nivel de vida: 2
+		Velocidad: 1
+		Actitud: null
+		Estado: true
+		---------------------------------
+		*********************************
+		El Ejercito 2 tiene 2 soldados : 
+		
+		Registrando al 1 soldado del Ejercito 2
+		
+		Nombre: Soldado0X2
+		Vida: 4
+		Fila: 8
+		Columna: B
+		Nivel de ataque: 2
+		Nivel de Defensa: 1
+		Nivel de vida: 4
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito 2
+		
+		Nombre: Soldado1X2
+		Vida: 3
+		Fila: 3
+		Columna: B
+		Nivel de ataque: 5
+		Nivel de Defensa: 2
+		Nivel de vida: 3
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		---------------------------------
+		*********************************
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit8.1.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		El soldado con mayor vida del Ejercito 1 es: 
+		
+		Nombre: Soldado1X1
+		Vida: 5
+		Fila: 8
+		Columna: G
+		Nivel de ataque: 2
+		Nivel de Defensa: 5
+		Nivel de vida: 5
+		Velocidad: 2
+		Actitud: null
+		Estado: true
+		*********************************
+		El soldado con mayor vida del Ejercito 2 es: 
+		
+		Nombre: Soldado0X2
+		Vida: 4
+		Fila: 8
+		Columna: B
+		Nivel de ataque: 2
+		Nivel de Defensa: 1
+		Nivel de vida: 4
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		*********************************
+		El promedio de puntos de vida del Ejercito 1 es: 
+		2.6666666666666665
+		*********************************
+		El promedio de puntos de vida del Ejercito 2 es: 
+		3.5
+		*********************************
+		
+		El Ejercito 1 ordenando por metodo burbuja: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 1 ..... ////// --->
+		
+		Puesto 1
+		Nombre: Soldado1X1
+		Vida: 5
+		Fila: 8
+		Columna: G
+		Nivel de ataque: 2
+		Nivel de Defensa: 5
+		Nivel de vida: 5
+		Velocidad: 2
+		Actitud: null
+		Estado: true
+		------------------
+		
+		Puesto 2
+		Nombre: Soldado2X1
+		Vida: 2
+		Fila: 10
+		Columna: F
+		Nivel de ataque: 1
+		Nivel de Defensa: 3
+		Nivel de vida: 2
+		Velocidad: 1
+		Actitud: null
+		Estado: true
+		------------------
+		
+		Puesto 3
+		Nombre: Soldado0X1
+		Vida: 1
+		Fila: 1
+		Columna: I
+		Nivel de ataque: 4
+		Nivel de Defensa: 5
+		Nivel de vida: 1
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		------------------
+		*********************************
+		
+		El Ejercito 2 ordenando por metodo burbuja: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 2 ..... ////// --->
+		
+		Puesto 1
+		Nombre: Soldado0X2
+		Vida: 4
+		Fila: 8
+		Columna: B
+		Nivel de ataque: 2
+		Nivel de Defensa: 1
+		Nivel de vida: 4
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		------------------
+		
+		Puesto 2
+		Nombre: Soldado1X2
+		Vida: 3
+		Fila: 3
+		Columna: B
+		Nivel de ataque: 5
+		Nivel de Defensa: 2
+		Nivel de vida: 3
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		------------------
+		*********************************
+		
+		El Ejercito 1 ordenando por metodo insercion: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 1 ..... ////// --->
+		
+		Puesto 1
+		Nombre: Soldado1X1
+		Vida: 5
+		Fila: 8
+		Columna: G
+		Nivel de ataque: 2
+		Nivel de Defensa: 5
+		Nivel de vida: 5
+		Velocidad: 2
+		Actitud: null
+		Estado: true
+		------------------
+		
+		Puesto 2
+		Nombre: Soldado2X1
+		Vida: 2
+		Fila: 10
+		Columna: F
+		Nivel de ataque: 1
+		Nivel de Defensa: 3
+		Nivel de vida: 2
+		Velocidad: 1
+		Actitud: null
+		Estado: true
+		------------------
+		
+		Puesto 3
+		Nombre: Soldado0X1
+		Vida: 1
+		Fila: 1
+		Columna: I
+		Nivel de ataque: 4
+		Nivel de Defensa: 5
+		Nivel de vida: 1
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		------------------
+		*********************************
+		
+		El Ejercito 2 ordenando por metodo insercion: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito 2 ..... ////// --->
+		
+		Puesto 1
+		Nombre: Soldado0X2
+		Vida: 4
+		Fila: 8
+		Columna: B
+		Nivel de ataque: 2
+		Nivel de Defensa: 1
+		Nivel de vida: 4
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		------------------
+		
+		Puesto 2
+		Nombre: Soldado1X2
+		Vida: 3
+		Fila: 3
+		Columna: B
+		Nivel de ataque: 5
+		Nivel de Defensa: 2
+		Nivel de vida: 3
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		------------------
+		*********************************
+		-------------------------------------------
+		--                 MENU                  --
+		-------------------------------------------
+		 SELECCIONE UN NUMERO PARA PODER EMPEZAR O TERMINAR
+		 1 : JUGAR
+		 2 : NO JUGAR
+		1
+		
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit8.1.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		EMPIEZA EL JUGADOR CON EL BANDO --X-- 
+		TIENE QUE SELECCIONAR UNA OPCION
+		1 : MOVER SOLDADO
+		2 : SALTAR TURNO
+	   1
+	   
+	   -Seleccione el soldado: 
+	   Fila: 8
+	   Columna: G
+	   
+	   -Ingrese la casilla a mover
+	   Fila: 2
+	   Columna: G
+	   
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit8.2.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		EMPIEZA EL JUGADOR CON EL BANDO --Y-- 
+		TIENE QUE SELECCIONAR UNA OPCION
+		1 : MOVER SOLDADO
+		2 : SALTAR TURNO
+	   1
+	   
+	   -Seleccione el soldado: 
+	   Fila: 8
+	   Columna: B
+	   
+	   -Ingrese la casilla a mover
+	   Fila: 11
+	   Columna: B
+	   POSICIONES INCORRECTAS
+	   
+	   -Seleccione el soldado: 
+	   Fila: 8
+	   Columna: B
+	   
+	   -Ingrese la casilla a mover
+	   Fila: 3
+	   Columna: B
+	   
+	   -JUGADA NO VALIDA
+	   
+	   -INGRESE NUEVOS DATOS
+	   
+	   -Seleccione el soldado: 
+	   Fila: 8
+	   Columna: B
+	   
+	   -Ingrese la casilla a mover
+	   Fila: 4
+	   Columna: B
+	   
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit8.3.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		EMPIEZA EL JUGADOR CON EL BANDO --X-- 
+		TIENE QUE SELECCIONAR UNA OPCION
+		1 : MOVER SOLDADO
+		2 : SALTAR TURNO
+	   1
+	   
+	   -Seleccione el soldado: 
+	   Fila: 2 
+	   Columna: G
+	   
+	   -Ingrese la casilla a mover
+	   Fila: 3
+	   Columna: B
+	   
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit8.4.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		EMPIEZA EL JUGADOR CON EL BANDO --Y-- 
+		TIENE QUE SELECCIONAR UNA OPCION
+		1 : MOVER SOLDADO
+		2 : SALTAR TURNO
+	   1
+	   
+	   -Seleccione el soldado: 
+	   Fila: 4
+	   Columna: 
+	   B
+	   
+	   -Ingrese la casilla a mover
+	   Fila: 3
+	   Columna: B
+	   
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit8.5.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		EMPIEZA EL JUGADOR CON EL BANDO --X-- 
+		TIENE QUE SELECCIONAR UNA OPCION
+		1 : MOVER SOLDADO
+		2 : SALTAR TURNO
+	   1
+	   
+	   -Seleccione el soldado: 
+	   Fila: 10
+	   Columna: F
+	   
+	   -Ingrese la casilla a mover
+	   Fila: 3
+	   Columna: B
+	   	   
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit8.6.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		EMPIEZA EL JUGADOR CON EL BANDO --Y-- 
+		YA NO TIENE SOLDADOS EL EJERCITO --Y-- USTED A PERDIDO POR LO TANTO GANO EL EJERCITO --X-- 
+	   
+	\end{lstlisting}	
 	\subsection{Estructura de laboratorio 10}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio10 es el siguiente:
 	\end{itemize}
 	\begin{lstlisting}[style=ascii-tree]
 	/Lab10	
-		"PONER RAMA"
+	├── Latex
+	│   ├── img
+	│   │   ├── Commit3.png
+	│   │   ├── Commit4.png
+	│   │   ├── Commit5.png
+	│   │   ├── Commit6.png
+	│   │   ├── Commit7.png
+	│   │   ├── Commit8.1.png
+	│   │   ├── Commit8.2.png
+	│   │   ├── Commit8.3.png
+	│   │   ├── Commit8.4.png
+	│   │   ├── Commit8.5.png
+	│   │   ├── Commit8.6.png
+	│   │   ├── logo_abet.png
+	│   │   ├── logo_episunsa.png
+	│   │   └── logo_unsa.jpg
+	│   ├── Informe10.aux
+	│   ├── Informe10.fdb_latexmk
+	│   ├── Informe10.fls
+	│   ├── Informe10.log
+	│   ├── Informe10.out
+	│   ├── Informe10.pdf
+	│   ├── Informe10.synctex.gz
+	│   └── Informe10.tex
+	├── Soldado.class
+	├── Soldado.java
+	├── Videojuego1.class
+	└── Videojuego1.java
 
 	\end{lstlisting}    
 	\section{\textcolor{red}{Rúbricas}}
