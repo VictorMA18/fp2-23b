@@ -401,6 +401,7 @@ class Videojuego1 {
                                 army2.get(rowafter).set(columnafternumber, null);
                             }
                         }
+                        viewBoard(army1, army2);
                     }
                 }
             }else{
