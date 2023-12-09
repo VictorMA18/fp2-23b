@@ -1,9 +1,9 @@
-// Laboratorio Nro 10 - Ejercicio Videojuego1
+// Laboratorio Nro 12 - Ejercicio Videojuego1
 // Autor: Mamani Anahua Victor Narciso
 // Colaboro:
 // Tiempo:
 import java.util.*;
-class Videojuego1 {
+class Videojuego2 {
     public static ArrayList<ArrayList<Soldado>> fillRegister(int num){
         Random rdm = new Random();
         ArrayList<ArrayList<Soldado>> army = new ArrayList<ArrayList<Soldado>>();
@@ -297,6 +297,8 @@ class Videojuego1 {
                             int health1 = army1.get(row).get(columnnumber).getLifeActual();
                             int health2 = army2.get(rowafter).get(columnafternumber).getLifeActual();
                             if(health2 > health1){
+                                double sumhealth = (health2 + health1) * 1.0;
+                                System.out.println("El soldado del bando Y es el ganador debido a que su probabilidad de ganar la batalla es --> " +  health2/sumhealth + " % " );
                                 army1.get(row).set(columnnumber, null);
                                 army2.get(rowafter).get(columnafternumber).setLifeActual(health2 - health1);
                             }else if(health1 > health2){
