@@ -603,6 +603,55 @@
 		%\label{img:mot2}
 		%\caption{Product backlog.}
 	\end{figure}
+	\subsection{Ejercicio Videojuego2}
+	\begin{itemize}	
+		\item En el sexto commit agregamos la opcion numero 3 la cual nos va poder permitir clonar a un soldado del ejercito para esto hacemos una comprobacion y clonamos al soldado requerido mediante su ubicacion con eso lo ponemos en su posicion donde queremos y tambien con esta opcion no permitimos que este ejercito se llene lo cual seria mas de 10 soldados en un ejercito.
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Agregando la opcion 3 al menu de juego personalizado el cual vamos a tener que comprobar que no sobrepase el numero de soldados que es 10 para poder clonar y ver en el tablero para esto hacemos condiciones y buscamos posiciones de los soldados"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		case 3:
+		numbersoldiers = 0;
+		for(int i = 0; i < 10; i++){  //ITERACION CREADA PARA PODER SABER QUE SI ESTE BANDO DEL EJERCITO TIENE SOLDADOS PARA PODER JUGAR SI TIENE 10 ESTA OPCION ESTA CANCELADA
+			for(int j = 0; j < 10; j++){
+				if(army1.get(i).get(j) != null){
+					numbersoldiers++;
+				}
+			}
+		}
+		if(numbersoldiers == 10){
+			System.out.println("*********************************");
+			System.out.println("USTED NO PUEDE CLONAR MAS SOLDADOS EL MAXIMO ES 10 SOLDADOS POR EJERCITO");
+		}else{
+			System.out.println("Escriba la fila donde esta el soldado que quiere clonar:");
+			int row = sc.nextInt() - 1;
+			System.out.println("Escriba la columna donde esta el soldado que quiere clonar:");
+			String column = sc.next();
+			Soldado soldado = army1.get(row).get((char)column.charAt(0) - 65);
+			System.out.println("Escriba la fila donde va a estar el soldado que quiere clonar:");
+			int rowafter = sc.nextInt() - 1;
+			System.out.println("Escriba la columna donde va a estar el soldado que quiere clonar:");
+			String columnafter = sc.next();
+			army1.get(rowafter).set((char)columnafter.charAt(0) - 65, soldado);
+		}
+		viewBoard(army1, army2);
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit6.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit6.1.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
 	\subsection{Estructura de laboratorio 12}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio12 es el siguiente:
