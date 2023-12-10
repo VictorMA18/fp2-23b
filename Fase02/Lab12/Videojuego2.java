@@ -272,7 +272,7 @@ class Videojuego2 {
                         army1.get(rowafter).set(columnafternumber,soldier);
                         viewBoard(army1, army2);
                     }else{
-                        while (army1.get(rowafter).get(columnafternumber) != null){
+                        while (army1.get(rowafter).get(columnafternumber) != null ){
                             System.out.println("\n-JUGADA NO VALIDA");
                             System.out.println("\n-INGRESE NUEVOS DATOS");
                             System.out.println("\n-Seleccione el soldado: ");
@@ -297,17 +297,25 @@ class Videojuego2 {
                             int health1 = army1.get(row).get(columnnumber).getLifeActual();
                             int health2 = army2.get(rowafter).get(columnafternumber).getLifeActual();
                             if(health2 > health1){
-                                double sumhealth = (health2 + health1) * 1.0;
-                                System.out.println("El soldado del bando Y es el ganador debido a que su probabilidad de ganar la batalla es --> " +  health2/sumhealth + " % " );
+                                double sumhealth = (health2 + health1);
+                                System.out.println(health1 + " " + health2 + " " + sumhealth);
+                                System.out.println("\n \t Resultado de la Batalla");
+                                System.out.println("El soldado del bando Y es el ganador ya que su probabilidad de ganar la batalla es --> " +  String.format( "%.1f" , ((health2/sumhealth) * 1000 ) / 10)  + "% y la probabilidad del soldado del bando X es ---> " +  String.format( "%.1f" , ((health1/sumhealth) * 1000) / 10) + "%" );
                                 army1.get(row).set(columnnumber, null);
-                                army2.get(rowafter).get(columnafternumber).setLifeActual(health2 - health1);
+                                army2.get(rowafter).get(columnafternumber).setLifeActual(health2 + 1);
                             }else if(health1 > health2){
+                                double sumhealth = (health2 + health1) * 1.0;
+                                System.out.println("\n \t Resultado de la Batalla");
+                                System.out.println(health1 + " " + health2 + " " + sumhealth);
+                                System.out.println("El soldado del bando X es el ganador ya que su probabilidad de ganar la batalla es --> " +  String.format( "%.1f" , ((health2/sumhealth) * 1000 ) / 10)  + "% y la probabilidad del soldado del bando Y es ---> " + String.format( "%.1f" , ((health1/sumhealth) * 1000) / 10) + "%" );
                                 army2.get(rowafter).set(columnafternumber, null); //ELIMINAMOS AL SOLDADO DEL OTRO BANDO DE ESA CASILLA
-                                army1.get(row).get(columnnumber).setLifeActual(health1 - health2); //CAMBIAMOS LA VIDA ANTES DE MANDARLO CON EL OBJETO SOLDADO QUE HICIMOS
+                                army1.get(row).get(columnnumber).setLifeActual(health1 + 1); //CAMBIAMOS LA VIDA ANTES DE MANDARLO CON EL OBJETO SOLDADO QUE HICIMOS
                                 soldier = army1.get(row).get(columnnumber);
                                 army1.get(row).set(columnnumber, null); //ELIMINAMOS AL SOLDADO DE LA CASILLA DE DONDE ESTABA
                                 army1.get(rowafter).set(columnafternumber, soldier); //PONEMOS AL SOLDADO EN LA NUEVA CASILLA
                             }else{
+                                System.out.println("\n \t Resultado de la Batalla");
+                                System.out.println("Los 2 soldados murieron por la batalla de la cuadrilla");
                                 army1.get(row).set(columnnumber, null);
                                 army2.get(rowafter).set(columnafternumber, null);
                             }
@@ -366,7 +374,7 @@ class Videojuego2 {
                         army2.get(rowafter).set(columnafternumber,soldier);
                         viewBoard(army1, army2);
                     }else{
-                        while (army2.get(rowafter).get(columnafternumber) != null){
+                        while (army2.get(rowafter).get(columnafternumber) != null || row >= 10 || columnnumber >= 10 || rowafter >= 10 || columnafternumber >= 10){
                             System.out.println("\n-JUGADA NO VALIDA");
                             System.out.println("\n-INGRESE NUEVOS DATOS");
                             System.out.println("\n-Seleccione el soldado: ");
@@ -383,7 +391,7 @@ class Videojuego2 {
                             columnafter = sc.next();
                             columnafternumber = (int)columnafter.charAt(0) - 65; 
                         }
-                        if(army1.get(rowafter).get(columnafternumber) == null && army2.get(rowafter).get(columnafternumber) == null){
+                        if(army1.get(rowafter).get(columnafternumber) == null ){
                             soldier = army2.get(row).get(columnnumber);
                             army2.get(row).set(columnnumber, null);
                             army2.get(rowafter).set(columnafternumber,soldier);
@@ -391,15 +399,25 @@ class Videojuego2 {
                             int health1 = army2.get(row).get(columnnumber).getLifeActual();
                             int health2 = army1.get(rowafter).get(columnafternumber).getLifeActual();
                             if(health2 > health1){
+                                double sumhealth = (health2 + health1) * 1.0;
+                                System.out.println(health1 + " " + health2 + " " + sumhealth);
+                                System.out.println("\n \t Resultado de la Batalla");
+                                System.out.println("El soldado del bando X es el ganador ya que su probabilidad de ganar la batalla es --> " +  String.format( "%.1f" , ((health2/sumhealth) * 1000 ) / 10)  + "% y la probabilidad del soldado del bando Y es ---> " + String.format( "%.1f" , ((health1/sumhealth) * 1000) / 10) + "%" );
                                 army2.get(row).set(columnnumber, null);
-                                army1.get(rowafter).get(columnafternumber).setLifeActual(health2 - health1);
+                                army1.get(rowafter).get(columnafternumber).setLifeActual(health2 + 1);
                             }else if(health1 > health2){
+                                double sumhealth = (health2 + health1) * 1.0; 
+                                System.out.println(health1 + " " + health2 + " " + sumhealth);
+                                System.out.println("\n \t Resultado de la Batalla");
+                                System.out.println("El soldado del bando Y es el ganador ya que su probabilidad de ganar la batalla es --> " +  String.format( "%.1f" , ((health2/sumhealth) * 1000 ) / 10)  + "% y la probabilidad del soldado del bando X es ---> " + String.format( "%.1f" , ((health1/sumhealth) * 1000) / 10) + "%" );
                                 army1.get(rowafter).set(columnafternumber, null); //ELIMINAMOS AL SOLDADO DEL OTRO BANDO DE ESA CASILLA
                                 army2.get(row).get(columnnumber).setLifeActual(health1 - health2); //CAMBIAMOS LA VIDA ANTES DE MANDARLO CON EL OBJETO SOLDADO QUE HICIMOS
                                 soldier = army2.get(row).get(columnnumber);
                                 army2.get(row).set(columnnumber, null); //ELIMINAMOS AL SOLDADO DE LA CASILLA DE DONDE ESTABA
                                 army2.get(rowafter).set(columnafternumber, soldier); //PONEMOS AL SOLDADO EN LA NUEVA CASILLA
                             }else{
+                                System.out.println("\n \t Resultado de la Batalla");
+                                System.out.println("Los 2 soldados murieron por la batalla de la cuadrilla");
                                 army1.get(row).set(columnnumber, null);
                                 army2.get(rowafter).set(columnafternumber, null);
                             }
