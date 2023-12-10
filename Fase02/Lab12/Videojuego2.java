@@ -205,6 +205,21 @@ class Videojuego2 {
         System.out.println(" 1 : MOVER SOLDADO");
         System.out.println(" 2 : SALTAR TURNO");
     }
+    public static void optionsbattle(ArrayList<ArrayList<Soldado>> army1 , ArrayList<ArrayList<Soldado>> army2){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("-------------------------------------------");
+        System.out.println("--          OPCIONES DE BATALLA          --"); 
+        System.out.println("-------------------------------------------");
+        System.out.println(" SELECCIONE UN NUMERO PARA PODER EMPEZAR O TERMINAR");
+        System.out.println(" 1 : JUEGO RAPIDO");
+        System.out.println(" 2 : JUEGO PERSONALIZADO");
+        int optbattle = sc.nextInt();
+        if(optbattle == 1){
+            battle(army1, army2);
+        }else{
+
+        }
+    }
     public static void battle(ArrayList<ArrayList<Soldado>> army1 , ArrayList<ArrayList<Soldado>> army2){
         Scanner sc = new Scanner(System.in);
         Soldado soldier = null;
@@ -212,7 +227,7 @@ class Videojuego2 {
         int playeroption = 0;
         int numbersoldiers = 0;
         System.out.println("-------------------------------------------");
-        System.out.println("--                 MENU                  --"); 
+        System.out.println("--             MENU PRINCIPAL            --"); 
         System.out.println("-------------------------------------------");
         System.out.println(" SELECCIONE UN NUMERO PARA PODER EMPEZAR O TERMINAR");
         System.out.println(" 1 : JUGAR");
@@ -231,7 +246,7 @@ class Videojuego2 {
                     }
                 }
                 if(numbersoldiers == 0){
-                    System.out.println(" YA NO TIENE SOLDADOS EL EJERCITO --X-- USTED HA PERDIDO POR LO TANTO GANO EL EJERCITO --Y-- ");
+                    System.out.println("(FELICITACIONES!!!!!!) TENEMOS UN GANADOR EL EJERCITO --Y--");
                     break;
                 }
                 optionsPlayer(); //METODO CREADO PARA PODER DARLE OPCIONES AL JUGADOR QUE JUGADA REALIZAR O RETIRARSE DEL JUEGO
@@ -271,7 +286,7 @@ class Videojuego2 {
                         army1.get(row).set(columnnumber, null);
                         army1.get(rowafter).set(columnafternumber,soldier);
                         viewBoard(army1, army2);
-                    }else{
+                    }else {
                         while (army1.get(rowafter).get(columnafternumber) != null ){
                             System.out.println("\n-JUGADA NO VALIDA");
                             System.out.println("\n-INGRESE NUEVOS DATOS");
@@ -331,7 +346,7 @@ class Videojuego2 {
                     }
                 }
                 if(numbersoldiers == 0){
-                    System.out.println(" YA NO TIENE SOLDADOS EL EJERCITO --Y-- USTED A PERDIDO POR LO TANTO GANO EL EJERCITO --X-- ");
+                    System.out.println("(FELICITACIONES!!!!!!) TENEMOS UN GANADOR EL EJERCITO --X--");
                     break;
                 }
                 optionsPlayer();
@@ -371,7 +386,7 @@ class Videojuego2 {
                         army2.get(row).set(columnnumber, null);
                         army2.get(rowafter).set(columnafternumber,soldier);
                         viewBoard(army1, army2);
-                    }else{
+                    }else {
                         while (army2.get(rowafter).get(columnafternumber) != null || row >= 10 || columnnumber >= 10 || rowafter >= 10 || columnafternumber >= 10){
                             System.out.println("\n-JUGADA NO VALIDA");
                             System.out.println("\n-INGRESE NUEVOS DATOS");
@@ -414,8 +429,8 @@ class Videojuego2 {
                             }else{
                                 System.out.println("\n \t Resultado de la Batalla");
                                 System.out.println("Los 2 soldados murieron por la batalla de la cuadrilla");
-                                army1.get(row).set(columnnumber, null);
-                                army2.get(rowafter).set(columnafternumber, null);
+                                army2.get(row).set(columnnumber, null);
+                                army1.get(rowafter).set(columnafternumber, null);
                             }
                         }
                         viewBoard(army1, army2);
@@ -426,19 +441,23 @@ class Videojuego2 {
             }
         } while (true);
     }
+    public static void battlePersonalized(ArrayList<ArrayList<Soldado>> army1 , ArrayList<ArrayList<Soldado>> army2){
+    }
     public static void main(String[] args) {
         ArrayList<ArrayList<Soldado>> army1 = fillRegister(1);
         ArrayList<ArrayList<Soldado>> army2 = fillRegister(2);
         viewBoard(army1, army2);
-        longerLife(army1, 1);
-        longerLife(army2, 2);
-        double avg1 = averageLife(army1, 1);
-        double avg2 = averageLife(army2, 2);
-        rankingBurbujaLife(army1, 1);
-        rankingBurbujaLife(army2, 2);
-        rankingInsercionLife(army1, 1);
-        rankingInsercionLife(army2, 2);
+        //longerLife(army1, 1);
+        //longerLife(army2, 2);
+        //double avg1 = averageLife(army1, 1);
+        //double avg2 = averageLife(army2, 2);
+        //rankingBurbujaLife(army1, 1);
+        //rankingBurbujaLife(army2, 2);
+        //rankingInsercionLife(army1, 1);
+        //rankingInsercionLife(army2, 2);
+        //optionsbattle(army1, army2);
         battle(army1, army2);
+        battlePersonalized(army1 , army2);
     }
 }
 
