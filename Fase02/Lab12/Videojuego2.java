@@ -298,7 +298,6 @@ class Videojuego2 {
                             int health2 = army2.get(rowafter).get(columnafternumber).getLifeActual();
                             if(health2 > health1){
                                 double sumhealth = (health2 + health1);
-                                System.out.println(health1 + " " + health2 + " " + sumhealth);
                                 System.out.println("\n \t Resultado de la Batalla");
                                 System.out.println("El soldado del bando Y es el ganador ya que su probabilidad de ganar la batalla es --> " +  String.format( "%.1f" , ((health2/sumhealth) * 1000 ) / 10)  + "% y la probabilidad del soldado del bando X es ---> " +  String.format( "%.1f" , ((health1/sumhealth) * 1000) / 10) + "%" );
                                 army1.get(row).set(columnnumber, null);
@@ -306,8 +305,7 @@ class Videojuego2 {
                             }else if(health1 > health2){
                                 double sumhealth = (health2 + health1) * 1.0;
                                 System.out.println("\n \t Resultado de la Batalla");
-                                System.out.println(health1 + " " + health2 + " " + sumhealth);
-                                System.out.println("El soldado del bando X es el ganador ya que su probabilidad de ganar la batalla es --> " +  String.format( "%.1f" , ((health2/sumhealth) * 1000 ) / 10)  + "% y la probabilidad del soldado del bando Y es ---> " + String.format( "%.1f" , ((health1/sumhealth) * 1000) / 10) + "%" );
+                                System.out.println("El soldado del bando X es el ganador ya que su probabilidad de ganar la batalla es --> " +  String.format( "%.1f" , ((health1/sumhealth) * 1000 ) / 10)  + "% y la probabilidad del soldado del bando Y es ---> " + String.format( "%.1f" , ((health2/sumhealth) * 1000) / 10) + "%" );
                                 army2.get(rowafter).set(columnafternumber, null); //ELIMINAMOS AL SOLDADO DEL OTRO BANDO DE ESA CASILLA
                                 army1.get(row).get(columnnumber).setLifeActual(health1 + 1); //CAMBIAMOS LA VIDA ANTES DE MANDARLO CON EL OBJETO SOLDADO QUE HICIMOS
                                 soldier = army1.get(row).get(columnnumber);
@@ -400,18 +398,16 @@ class Videojuego2 {
                             int health2 = army1.get(rowafter).get(columnafternumber).getLifeActual();
                             if(health2 > health1){
                                 double sumhealth = (health2 + health1) * 1.0;
-                                System.out.println(health1 + " " + health2 + " " + sumhealth);
                                 System.out.println("\n \t Resultado de la Batalla");
                                 System.out.println("El soldado del bando X es el ganador ya que su probabilidad de ganar la batalla es --> " +  String.format( "%.1f" , ((health2/sumhealth) * 1000 ) / 10)  + "% y la probabilidad del soldado del bando Y es ---> " + String.format( "%.1f" , ((health1/sumhealth) * 1000) / 10) + "%" );
                                 army2.get(row).set(columnnumber, null);
                                 army1.get(rowafter).get(columnafternumber).setLifeActual(health2 + 1);
                             }else if(health1 > health2){
                                 double sumhealth = (health2 + health1) * 1.0; 
-                                System.out.println(health1 + " " + health2 + " " + sumhealth);
                                 System.out.println("\n \t Resultado de la Batalla");
-                                System.out.println("El soldado del bando Y es el ganador ya que su probabilidad de ganar la batalla es --> " +  String.format( "%.1f" , ((health2/sumhealth) * 1000 ) / 10)  + "% y la probabilidad del soldado del bando X es ---> " + String.format( "%.1f" , ((health1/sumhealth) * 1000) / 10) + "%" );
+                                System.out.println("El soldado del bando Y es el ganador ya que su probabilidad de ganar la batalla es --> " +  String.format( "%.1f" , ((health1/sumhealth) * 1000 ) / 10)  + "% y la probabilidad del soldado del bando X es ---> " + String.format( "%.1f" , ((health2/sumhealth) * 1000) / 10) + "%" );
                                 army1.get(rowafter).set(columnafternumber, null); //ELIMINAMOS AL SOLDADO DEL OTRO BANDO DE ESA CASILLA
-                                army2.get(row).get(columnnumber).setLifeActual(health1 - health2); //CAMBIAMOS LA VIDA ANTES DE MANDARLO CON EL OBJETO SOLDADO QUE HICIMOS
+                                army2.get(row).get(columnnumber).setLifeActual(health1 + 1); //CAMBIAMOS LA VIDA ANTES DE MANDARLO CON EL OBJETO SOLDADO QUE HICIMOS
                                 soldier = army2.get(row).get(columnnumber);
                                 army2.get(row).set(columnnumber, null); //ELIMINAMOS AL SOLDADO DE LA CASILLA DE DONDE ESTABA
                                 army2.get(rowafter).set(columnafternumber, soldier); //PONEMOS AL SOLDADO EN LA NUEVA CASILLA
