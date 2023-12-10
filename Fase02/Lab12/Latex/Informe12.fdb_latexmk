@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1702231206 "/home/user/fp2-23b/Fase02/Lab12/Latex/Informe12.tex" "Informe12.pdf" "Informe12" 1702231207
+["pdflatex"] 1702235939 "/home/user/fp2-23b/Fase02/Lab12/Latex/Informe12.tex" "Informe12.pdf" "Informe12" 1702235941
   "/etc/texmf/web2c/texmf.cnf" 1695244730 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/user/fp2-23b/Fase02/Lab12/Latex/Informe12.tex" 1702231205 22256 c99e94c54874dfaa212dcc879d15ac1a ""
+  "/home/user/fp2-23b/Fase02/Lab12/Latex/Informe12.tex" 1702235938 25190 3da57531c005d6f6ec8dc4b6ceea22fd ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tctt0900.tfm" 1136768653 1536 bda3e6bf9784a4cc572c754e0c3eeb00 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
@@ -128,12 +128,14 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1695244742 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1695244760 2802157 836bcf8882c264bca8c914dc83bfb65d ""
-  "Informe12.aux" 1702231207 3119 98fb17acefbf72dfa85a833b756b34e5 "pdflatex"
-  "Informe12.out" 1702231207 2054 d6569dd86161fc5f1d2fa5df436a0e12 "pdflatex"
-  "Informe12.tex" 1702231205 22256 c99e94c54874dfaa212dcc879d15ac1a ""
+  "Informe12.aux" 1702235941 3253 34ee19ce130378b8dfaf191865fd4341 "pdflatex"
+  "Informe12.out" 1702235941 2220 7428f51849a3ffbb9a12d734634a9f44 "pdflatex"
+  "Informe12.tex" 1702235938 25190 3da57531c005d6f6ec8dc4b6ceea22fd ""
   "img/Commit2.1.png" 1702226514 229102 5ebee316923417bca7f18a2cbad1ad04 ""
   "img/Commit2.png" 1702226334 186303 00550470458be7862335e2261a5c82ee ""
   "img/Commit3.png" 1702231167 209613 bb22c693bbe2f406aa9f33d6b0b5788f ""
+  "img/Commit4.0.png" 1702235816 220429 da0990b4f996a52607872cda83c30477 ""
+  "img/Commit4.1.png" 1702235731 195227 fbbb8e5e45169cab11483b7aecca9a10 ""
   "img/logo_abet.png" 1701899875 6307 66ff7f82180b3b29c348bdae974447b6 ""
   "img/logo_episunsa.png" 1701899875 6815 7da1fe7727dad63b523d0fbca337594d ""
   (generated)
