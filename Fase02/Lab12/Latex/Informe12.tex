@@ -557,6 +557,52 @@
 		%\label{img:mot2}
 		%\caption{Product backlog.}
 	\end{figure}
+	\subsection{Ejercicio Videojuego2}
+	\begin{itemize}	
+		\item En el quinto commit agregamos la opcion numero 2 la cual nos va poder permitir eliminar a un soldado del ejercito para esto hacemos una comprobacion y elminamos al soldado requerido mediante su ubicacion con eso vaciariamos su posicion y tambien con esta opcion no permitimos que este ejercito se autoelimine por no tener soldados anquesea vamos a dejar 1 soldado en sus filas.
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Dando la opcion numero 2 al juego persolnalizado la cual es eliminar a un soldado del ejercito pero sin que este ejercito se vacie para esto hacemos una condicion la cual nos va poder decir que esta anquesea va a tener 1 soldado en sus filas"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		case 2:
+			numbersoldiers = 0;
+			for(int i = 0; i < 10; i++){  //ITERACION CREADA PARA PODER SABER QUE SI ESTE BANDO DEL EJERCITO TIENE SOLDADOS PARA PODER JUGAR SI TIENE 10 ESTA OPCION ESTA CANCELADA
+				for(int j = 0; j < 10; j++){
+					if(army1.get(i).get(j) != null){
+						numbersoldiers++;
+					}
+				}
+			}
+			if(numbersoldiers == 1){
+				System.out.println("*********************************");
+				System.out.println("USTED NO PUEDE ELIMINAR MAS SOLDADOS YA QUE ELIMINARIA A SU EJERCITO");    
+			}else{
+				System.out.println("*********************************");
+				System.out.println("Escriba la fila donde esta el soldado el cual eliminara:");
+				int row = sc.nextInt() - 1;
+				System.out.println("Escriba la columna donde esta el soldado el cual eliminara:");
+				String column = sc.next();
+				army1.get(row).set((int)column.charAt(0) - 65, null);
+			}
+			viewBoard(army1, army2);
+			break;
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit5.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit5.1.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
 	\subsection{Estructura de laboratorio 12}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio12 es el siguiente:
