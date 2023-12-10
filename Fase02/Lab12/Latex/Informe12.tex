@@ -421,6 +421,26 @@
 		}		
 
 	\end{lstlisting}
+	\subsection{Ejercicio Videojuego2}
+	\begin{itemize}	
+		\item En el segundo commit ponemos las cosas necesarias que se requirio para el lab12 que era que tenemos que reutilizar el lab11 y en el lab11 se dice que las batallas entre 2 soldados sse define por su nivel de probabilidad asi imprimendolo para mostrar el resultado de esa batalla
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m " Poniendo las funciones del laboratorio 11 las cuales se pedian para hacer este lab por ejemplo las batallas entre 2 soldados y el resultado de estas mediante porcentajes de probabilidad"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		if(health2 > health1){
+            double sumhealth = (health2 + health1) * 1.0;
+            System.out.println("\n \t Resultado de la Batalla");
+            System.out.println("El soldado del bando X es el ganador ya que su probabilidad de ganar la batalla es --> " +  String.format( "%.1f" , ((health2/sumhealth) * 1000 ) / 10)  + "% y la probabilidad del soldado del bando Y es ---> " + String.format( "%.1f" , ((health1/sumhealth) * 1000) / 10) + "%" );
+		}
+		else if(health1 > health2){
+			double sumhealth = (health2 + health1) * 1.0; 
+			System.out.println("\n \t Resultado de la Batalla");
+			System.out.println("El soldado del bando Y es el ganador ya que su probabilidad de ganar la batalla es --> " +  String.format( "%.1f" , ((health1/sumhealth) * 1000 ) / 10)  + "% y la probabilidad del soldado del bando X es ---> " + String.format( "%.1f" , ((health2/sumhealth) * 1000) / 10) + "%" );
+		}
+	\end{lstlisting}
 	\subsection{Estructura de laboratorio 12}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio12 es el siguiente:
