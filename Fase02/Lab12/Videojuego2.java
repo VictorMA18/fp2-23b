@@ -459,9 +459,10 @@ class Videojuego2 {
                                 "\n[10] Jugar" +
                                 "\n[11] Volver");
             int optPersonalized = sc.nextInt();
+            int numbersoldiers = 0;
             switch (optPersonalized) {
                 case 1:
-                    int numbersoldiers = 0;
+                    numbersoldiers = 0;
                     for(int i = 0; i < 10; i++){  //ITERACION CREADA PARA PODER SABER QUE SI ESTE BANDO DEL EJERCITO TIENE SOLDADOS PARA PODER JUGAR SI TIENE 10 ESTA OPCION ESTA CANCELADA
                         for(int j = 0; j < 10; j++){
                             if(army1.get(i).get(j) != null){
@@ -470,14 +471,42 @@ class Videojuego2 {
                         }
                     }
                     if(numbersoldiers == 10){
+                        System.out.println("*********************************");
                         System.out.println("USTED NO PUEDE CREAR MAS SOLDADOS EL MAXIMO ES 10 SOLDADOS POR EJERCITO");
                     }else{
+                        System.out.println("*********************************");
+                        System.out.println("El nombre del soldado:");
                         String name = sc.next();
+                        System.out.println("La vida del soldado es de 1 a 5:");
                         int health = sc.nextInt();
+                        System.out.println("Escriba la fila donde va a estar el soldado:");
                         int row = sc.nextInt() - 1;
+                        System.out.println("Escriba la columna donde va a estar el soldado:");
                         String column = sc.next();
                         Soldado soldier =  new Soldado(name, health, numbersoldiers, column);
                         army1.get(row).set((int)column.charAt(0) - 65, soldier);
+                    }
+                    viewBoard(army1, army2);
+                    break;
+                case 2:
+                    numbersoldiers = 0;
+                    for(int i = 0; i < 10; i++){  //ITERACION CREADA PARA PODER SABER QUE SI ESTE BANDO DEL EJERCITO TIENE SOLDADOS PARA PODER JUGAR SI TIENE 10 ESTA OPCION ESTA CANCELADA
+                        for(int j = 0; j < 10; j++){
+                            if(army1.get(i).get(j) != null){
+                                numbersoldiers++;
+                            }
+                        }
+                    }
+                    if(numbersoldiers == 1){
+                        System.out.println("*********************************");
+                        System.out.println("USTED NO PUEDE ELIMINAR MAS SOLDADOS YA QUE ELIMINARIA A SU EJERCITO");    
+                    }else{
+                        System.out.println("*********************************");
+                        System.out.println("Escriba la fila donde esta el soldado el cual eliminara:");
+                        int row = sc.nextInt() - 1;
+                        System.out.println("Escriba la columna donde esta el soldado el cual eliminara:");
+                        String column = sc.next();
+                        army1.get(row).set((int)column.charAt(0) - 65, null);
                     }
                     viewBoard(army1, army2);
                     break;
