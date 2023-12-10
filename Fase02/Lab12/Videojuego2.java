@@ -217,7 +217,7 @@ class Videojuego2 {
         if(optbattle == 1){
             battle(army1, army2);
         }else{
-
+            battlePersonalized(army1, army2);
         }
     }
     public static void battle(ArrayList<ArrayList<Soldado>> army1 , ArrayList<ArrayList<Soldado>> army2){
@@ -442,6 +442,50 @@ class Videojuego2 {
         } while (true);
     }
     public static void battlePersonalized(ArrayList<ArrayList<Soldado>> army1 , ArrayList<ArrayList<Soldado>> army2){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Gestionar Ejercito \n[1] Ejercito 1\n[2] Ejercito 2");
+        int optarmy = sc.nextInt();
+        do {
+            System.out.println("Escoja una de estas opciones para el ejercito 1");
+            System.out.println("[1] Crear Soldado"+
+                                "\n[2] Eliminar Soldado" + 
+                                "\n[3] Clonar Soldado"+
+                                "\n[4] Modificar Soldado"+
+                                "\n[5] Comparar Soldados"+
+                                "\n[6] Intercambiar Soldados"+
+                                "\n[7] Ver soldado"+
+                                "\n[8] Ver ejercito"+
+                                "\n[9] Sumar Niveles"+
+                                "\n[10] Jugar" +
+                                "\n[11] Volver");
+            int optPersonalized = sc.nextInt();
+            switch (optPersonalized) {
+                case 1:
+                    int numbersoldiers = 0;
+                    for(int i = 0; i < 10; i++){  //ITERACION CREADA PARA PODER SABER QUE SI ESTE BANDO DEL EJERCITO TIENE SOLDADOS PARA PODER JUGAR SI TIENE 10 ESTA OPCION ESTA CANCELADA
+                        for(int j = 0; j < 10; j++){
+                            if(army1.get(i).get(j) != null){
+                                numbersoldiers++;
+                            }
+                        }
+                    }
+                    if(numbersoldiers == 10){
+                        System.out.println("USTED NO PUEDE CREAR MAS SOLDADOS EL MAXIMO ES 10 SOLDADOS POR EJERCITO");
+                    }else{
+                        String name = sc.next();
+                        int health = sc.nextInt();
+                        int row = sc.nextInt() - 1;
+                        String column = sc.next();
+                        Soldado soldier =  new Soldado(name, health, numbersoldiers, column);
+                        army1.get(row).set((int)column.charAt(0) - 65, soldier);
+                    }
+                    viewBoard(army1, army2);
+                    break;
+                default:
+                    break;
+            }
+            
+        } while (optarmy == 1);
     }
     public static void main(String[] args) {
         ArrayList<ArrayList<Soldado>> army1 = fillRegister(1);
@@ -455,9 +499,9 @@ class Videojuego2 {
         //rankingBurbujaLife(army2, 2);
         //rankingInsercionLife(army1, 1);
         //rankingInsercionLife(army2, 2);
-        //optionsbattle(army1, army2);
-        battle(army1, army2);
-        battlePersonalized(army1 , army2);
+        optionsbattle(army1, army2);
+        //battle(army1, army2);
+        //battlePersonalized(army1 , army2);
     }
 }
 
