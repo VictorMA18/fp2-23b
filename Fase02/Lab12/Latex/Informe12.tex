@@ -441,6 +441,52 @@
 			System.out.println("El soldado del bando Y es el ganador ya que su probabilidad de ganar la batalla es --> " +  String.format( "%.1f" , ((health1/sumhealth) * 1000 ) / 10)  + "% y la probabilidad del soldado del bando X es ---> " + String.format( "%.1f" , ((health2/sumhealth) * 1000) / 10) + "%" );
 		}
 	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit2.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit2.1.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\subsection{Ejercicio Videojuego2}
+	\begin{itemize}	
+		\item En el tercer commit agregamos opciones para tener un juego rapido o personalizado para esto creamos una funcion la cual nos ayudara  
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "El juego ya tendria opciones de juego si fuera un juego rapido falta el personalizado se agregan opciones para ver cual de estas se quiere jugar"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void optionsbattle(ArrayList<ArrayList<Soldado>> army1 , ArrayList<ArrayList<Soldado>> army2){
+			Scanner sc = new Scanner(System.in);
+			System.out.println("-------------------------------------------");
+			System.out.println("--          OPCIONES DE BATALLA          --"); 
+			System.out.println("-------------------------------------------");
+			System.out.println(" SELECCIONE UN NUMERO PARA PODER EMPEZAR O TERMINAR");
+			System.out.println(" 1 : JUEGO RAPIDO");
+			System.out.println(" 2 : JUEGO PERSONALIZADO");
+			int optbattle = sc.nextInt();
+			if(optbattle == 1){
+				battle(army1, army2);
+			}else{
+	
+			}
+		}
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit3.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
 	\subsection{Estructura de laboratorio 12}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio12 es el siguiente:
