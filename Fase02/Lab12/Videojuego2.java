@@ -510,10 +510,35 @@ class Videojuego2 {
                     }
                     viewBoard(army1, army2);
                     break;
+                case 3:
+                    numbersoldiers = 0;
+                    for(int i = 0; i < 10; i++){  //ITERACION CREADA PARA PODER SABER QUE SI ESTE BANDO DEL EJERCITO TIENE SOLDADOS PARA PODER JUGAR SI TIENE 10 ESTA OPCION ESTA CANCELADA
+                        for(int j = 0; j < 10; j++){
+                            if(army1.get(i).get(j) != null){
+                                numbersoldiers++;
+                            }
+                        }
+                    }
+                    if(numbersoldiers == 10){
+                        System.out.println("*********************************");
+                        System.out.println("USTED NO PUEDE CLONAR MAS SOLDADOS EL MAXIMO ES 10 SOLDADOS POR EJERCITO");
+                    }else{
+                        System.out.println("Escriba la fila donde esta el soldado que quiere clonar:");
+                        int row = sc.nextInt() - 1;
+                        System.out.println("Escriba la columna donde esta el soldado que quiere clonar:");
+                        String column = sc.next();
+                        Soldado soldado = army1.get(row).get((char)column.charAt(0) - 65);
+                        System.out.println("Escriba la fila donde va a estar el soldado que quiere clonar:");
+                        int rowafter = sc.nextInt() - 1;
+                        System.out.println("Escriba la columna donde va a estar el soldado que quiere clonar:");
+                        String columnafter = sc.next();
+                        army1.get(rowafter).set((char)columnafter.charAt(0) - 65, soldado);
+                    }
+                    viewBoard(army1, army2);
+                    break;
                 default:
                     break;
             }
-            
         } while (optarmy == 1);
     }
     public static void main(String[] args) {
