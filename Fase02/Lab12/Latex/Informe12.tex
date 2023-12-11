@@ -1251,6 +1251,75 @@
 		%\label{img:mot2}
 		%\caption{Product backlog.}
 	\end{figure}
+	\subsection{Ejercicio Videojuego2}
+	\begin{itemize}	
+		\item En el undecimo commit agregamos la opcion 8 la cual nos permite ver a todos los soldados del ejercito para esto aplicamos de iteracion y ver que este soldado exista para lo cual tendremos que tomarnos de if para ver que este no sea nulo y se imprima sus datos
+		\item El codigo , el commit y ejecucion seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Agregamos la opcion 8 la cual nos permite ver a todos los soldados del ejercito para esto aplicamos de iteracion y ver que este soldado exista para lo cual tendremos que tomarnos de if para ver que este no sea nulo y se imprima sus datos"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void viewArmy(ArrayList<ArrayList<Soldado>> army, int num){
+			System.out.println("Los Soldados del ejercito " + num + " son :");
+			for(int i = 0; i < 10; i++){  //ITERACION CREADA PARA PODER SABER QUE SI ESTE BANDO DEL EJERCITO TIENE SOLDADOS PARA PODER JUGAR SI TIENE 10 ESTA OPCION ESTA CANCELADA
+				for(int j = 0; j < 10; j++){
+					if(army.get(i).get(j) != null){
+						System.out.println("*********************************");
+						System.out.println(army.get(i).get(j).toString());
+					}
+				}
+			}
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		-------------------------------------------
+		--          OPCIONES DE BATALLA          --
+		-------------------------------------------
+		 SELECCIONE UN NUMERO PARA PODER EMPEZAR O TERMINAR
+		 1 : JUEGO RAPIDO
+		 2 : JUEGO PERSONALIZADO
+		2
+		Gestionar Ejercito 
+		[1] Ejercito 1
+		[2] Ejercito 2
+		1
+		Escoja una de estas opciones para el ejercito 1
+		[1] Crear Soldado
+		[2] Eliminar Soldado
+		[3] Clonar Soldado
+		[4] Modificar Soldado
+		[5] Comparar Soldados
+		[6] Intercambiar Soldados
+		[7] Ver soldado
+		[8] Ver ejercito
+		[9] Sumar Niveles
+		[10] Jugar
+		[11] Volver
+		8
+		Los Soldados del ejercito 1 son :
+		*********************************
+		
+		Nombre: Soldado0X1
+		Vida: 5
+		Fila: 6
+		Columna: H
+		Nivel de ataque: 3
+		Nivel de Defensa: 3
+		Nivel de vida: 5
+		Velocidad: 2
+		Actitud: null
+		Estado: true				
+		
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit11.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
 	\subsection{Estructura de laboratorio 12}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio12 es el siguiente:
