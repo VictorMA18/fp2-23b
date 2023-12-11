@@ -458,7 +458,7 @@
 	\subsection{Ejercicio Videojuego2}
 	\begin{itemize}	
 		\item En el tercer commit agregamos opciones para tener un juego rapido o personalizado para esto creamos una funcion la cual nos ayudara  
-		\item El codigo y el commit seria el siguiente:
+		\item El codigo , el commit y ejecución seria el siguiente:
 	\end{itemize}	
 	\begin{lstlisting}[language=bash,caption={Commit}][H]
 		$ git commit -m "El juego ya tendria opciones de juego si fuera un juego rapido falta el personalizado se agregan opciones para ver cual de estas se quiere jugar"
@@ -648,6 +648,259 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit6.1.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\subsection{Ejercicio Videojuego2}
+	\begin{itemize}	
+		\item En el septimo commit agregamos la opcion del menu el cual nos permite cambiar o modificar los atributos del soldado para esto aplicamos de un switch case y tambien imprimimos al soldado para ver sus cambios
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Agregamos la opcion numero 4 para este menu el cual nos permite modificar atributos del soldado el cual escogimos"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void changeSoldier(ArrayList<ArrayList<Soldado>> army){
+			System.out.println("*********************************");
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Escriba la fila donde esta el soldado el cual modificara:");
+			int row = sc.nextInt() - 1;
+			System.out.println("Escriba la columna donde esta el soldado el cual modificara:");
+			String column = sc.next();
+			System.out.println("*********************************");
+			System.out.println("QUE DESEA MODIFICAR");
+			System.out.println("[1] Nivel de ataque"+
+								"\n[2] Nivel de defensa" + 
+								"\n[3] Nivel de vida Actual");
+			int optchangesoldier = sc.nextInt();
+			System.out.println("*********************************");
+			switch (optchangesoldier) {
+				case 1:
+					System.out.println(army.get(row).get((int)column.charAt(0) - 65).toString());
+					System.out.println("*********************************");
+					System.out.println("Cual es el nivel de fuerza que le pondra del 1 al 5 ");
+					int attacklevel = sc.nextInt();
+					army.get(row).get((int)column.charAt(0) - 65).setAttackLevel(attacklevel);
+					System.out.println("*********************************");
+					System.out.println(army.get(row).get((int)column.charAt(0) - 65).toString());
+					break;
+				case 2:
+					System.out.println(army.get(row).get((int)column.charAt(0) - 65).toString());
+					System.out.println("*********************************");
+					System.out.println("Cual es el nivel de defensa que le pondra del 1 al 5 ");
+					int defenselevel = sc.nextInt();
+					army.get(row).get((int)column.charAt(0) - 65).setDefenseLevel(defenselevel);
+					System.out.println("*********************************");
+					System.out.println(army.get(row).get((int)column.charAt(0) - 65).toString());
+					break;
+				case 3:
+					System.out.println(army.get(row).get((int)column.charAt(0) - 65).toString());
+					System.out.println("*********************************");
+					System.out.println("Cual es el nivel de vida actual que le pondra del 1 al 5 ");
+					int lifeactuallevel = sc.nextInt();
+					army.get(row).get((int)column.charAt(0) - 65).setLifeActual(lifeactuallevel);
+					System.out.println("*********************************");
+					System.out.println(army.get(row).get((int)column.charAt(0) - 65).toString());
+					break;
+				default:
+					break;
+			}
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		-------------------------------------------
+		--          OPCIONES DE BATALLA          --
+		-------------------------------------------
+		 SELECCIONE UN NUMERO PARA PODER EMPEZAR O TERMINAR
+		 1 : JUEGO RAPIDO
+		 2 : JUEGO PERSONALIZADO
+		2
+		Gestionar Ejercito 
+		[1] Ejercito 1
+		[2] Ejercito 2
+		1
+		Escoja una de estas opciones para el ejercito 1
+		[1] Crear Soldado
+		[2] Eliminar Soldado
+		[3] Clonar Soldado
+		[4] Modificar Soldado
+		[5] Comparar Soldados
+		[6] Intercambiar Soldados
+		[7] Ver soldado
+		[8] Ver ejercito
+		[9] Sumar Niveles
+		[10] Jugar
+		[11] Volver
+		4
+		*********************************
+		Escriba la fila donde esta el soldado el cual modificara:
+		2
+		Escriba la columna donde esta el soldado el cual modificara:
+		E
+		*********************************
+		QUE DESEA MODIFICAR
+		[1] Nivel de ataque
+		[2] Nivel de defensa
+		[3] Nivel de vida Actual
+		1
+		*********************************
+		
+		Nombre: Soldado0X1
+		Vida: 3
+		Fila: 2
+		Columna: E
+		Nivel de ataque: 1
+		Nivel de Defensa: 5
+		Nivel de vida: 3
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		*********************************
+		Cual es el nivel de fuerza que le pondra del 1 al 5 
+		4
+		*********************************
+		
+		Nombre: Soldado0X1
+		Vida: 3
+		Fila: 2
+		Columna: E
+		Nivel de ataque: 4
+		Nivel de Defensa: 5
+		Nivel de vida: 3
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit7.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		Escoja una de estas opciones para el ejercito 1
+		[1] Crear Soldado
+		[2] Eliminar Soldado
+		[3] Clonar Soldado
+		[4] Modificar Soldado
+		[5] Comparar Soldados
+		[6] Intercambiar Soldados
+		[7] Ver soldado
+		[8] Ver ejercito
+		[9] Sumar Niveles
+		[10] Jugar
+		[11] Volver
+		4
+		*********************************
+		Escriba la fila donde esta el soldado el cual modificara:
+		3
+		Escriba la columna donde esta el soldado el cual modificara:
+		F
+		*********************************
+		QUE DESEA MODIFICAR
+		[1] Nivel de ataque
+		[2] Nivel de defensa
+		[3] Nivel de vida Actual
+		2
+		*********************************
+		
+		Nombre: Soldado3X1
+		Vida: 1
+		Fila: 3
+		Columna: F
+		Nivel de ataque: 4
+		Nivel de Defensa: 5
+		Nivel de vida: 1
+		Velocidad: 2
+		Actitud: null
+		Estado: true
+		*********************************
+		Cual es el nivel de defensa que le pondra del 1 al 5 
+		1
+		*********************************
+		
+		Nombre: Soldado3X1
+		Vida: 1
+		Fila: 3
+		Columna: F
+		Nivel de ataque: 4
+		Nivel de Defensa: 1
+		Nivel de vida: 1
+		Velocidad: 2
+		Actitud: null
+		Estado: true		
+		
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit7.1.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		Escoja una de estas opciones para el ejercito 1
+		[1] Crear Soldado
+		[2] Eliminar Soldado
+		[3] Clonar Soldado
+		[4] Modificar Soldado
+		[5] Comparar Soldados
+		[6] Intercambiar Soldados
+		[7] Ver soldado
+		[8] Ver ejercito
+		[9] Sumar Niveles
+		[10] Jugar
+		[11] Volver
+		4
+		*********************************
+		Escriba la fila donde esta el soldado el cual modificara:
+		3
+		Escriba la columna donde esta el soldado el cual modificara:
+		F
+		*********************************
+		QUE DESEA MODIFICAR
+		[1] Nivel de ataque
+		[2] Nivel de defensa
+		[3] Nivel de vida Actual
+		3
+		*********************************
+		
+		Nombre: Soldado3X1
+		Vida: 1
+		Fila: 3
+		Columna: F
+		Nivel de ataque: 4
+		Nivel de Defensa: 1
+		Nivel de vida: 1
+		Velocidad: 2
+		Actitud: null
+		Estado: true
+		*********************************
+		Cual es el nivel de vida actual que le pondra del 1 al 5 
+		5
+		*********************************
+		
+		Nombre: Soldado3X1
+		Vida: 5
+		Fila: 3
+		Columna: F
+		Nivel de ataque: 4
+		Nivel de Defensa: 1
+		Nivel de vida: 1
+		Velocidad: 2
+		Actitud: null
+		Estado: true
+				
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit7.2.png}
 		%\includesvg{img/automata.svg}
 		%\label{img:mot2}
 		%\caption{Product backlog.}
