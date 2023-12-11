@@ -654,7 +654,7 @@
 	\end{figure}
 	\subsection{Ejercicio Videojuego2}
 	\begin{itemize}	
-		\item En el septimo commit agregamos la opcion del menu el cual nos permite cambiar o modificar los atributos del soldado para esto aplicamos de un switch case y tambien imprimimos al soldado para ver sus cambios
+		\item En el septimo commit agregamos la opcion 4 del menu el cual nos permite cambiar o modificar los atributos del soldado para esto aplicamos de un switch case y tambien imprimimos al soldado para ver sus cambios
 		\item El codigo y el commit seria el siguiente:
 	\end{itemize}	
 	\begin{lstlisting}[language=bash,caption={Commit}][H]
@@ -901,6 +901,109 @@
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit7.2.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\subsection{Ejercicio Videojuego2}
+	\begin{itemize}	
+		\item En el octavo commit agregamos la opcion 5 del menu el cual nos permite comparar soldados con algunas de sus atributos para esto solo aplicarimos condiciones y pediriamos ubicaciones
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Agregando la opcion 5 la cual nos permite comparar soldados para esto aplicamos solo condiciones para poder verificar esto"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void compareSoldier(ArrayList<ArrayList<Soldado>> army){
+			System.out.println("*********************************");
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Escriba la fila donde esta el primer soldado que va comparar:");
+			int row = sc.nextInt() - 1;
+			System.out.println("Escriba la columna donde esta el primer soldado que va comparar:");
+			String column = sc.next();
+			System.out.println("EL PRIMER SOLDADO ES:");
+			Soldado soldier1 = army.get(row).get((int)column.charAt(0) - 65);
+			System.out.println(army.get(row).get((int)column.charAt(0) - 65).toString());
+			System.out.println("\nEscriba la fila donde esta el segundo soldado que va comparar:");
+			int row2 = sc.nextInt() - 1;
+			System.out.println("Escriba la columna donde esta el segundo soldado que va comparar:");
+			String column2 = sc.next();
+			System.out.println("EL SEGUNDO SOLDADO ES:");
+			Soldado soldier2 = army.get(row2).get((int)column2.charAt(0) - 65);
+			System.out.println(army.get(row2).get((int)column2.charAt(0) - 65).toString());
+			if(soldier1.getName().equals(soldier2.getName()) && soldier1.getAttackLevel() == soldier2.getAttackLevel() && soldier1.getDefenseLevel() == soldier2.getDefenseLevel() && soldier1.getLifeActual() == soldier2.getLifeActual() && soldier1.getLives() == soldier2.getLives()){
+				System.out.println("\nLOS SOLDADOS SON IGUALES EN EL ASPECTO DE NOMBRE , NIVEL DE ATAQUE , NIVEL DE DEFENSA , NIVEL DE VIDA ACTUAL Y ESTADO");
+			}else{
+				System.out.println("NO SON IGUALES EN EL ASPECTO DE NOMBRE , NIVEL DE ATAQUE , NIVEL DE DEFENSA , NIVEL DE VIDA ACTUAL Y ESTADO");
+			}
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		-------------------------------------------
+		--          OPCIONES DE BATALLA          --
+		-------------------------------------------
+		 SELECCIONE UN NUMERO PARA PODER EMPEZAR O TERMINAR
+		 1 : JUEGO RAPIDO
+		 2 : JUEGO PERSONALIZADO
+		2
+		Gestionar Ejercito 
+		[1] Ejercito 1
+		[2] Ejercito 2
+		1
+		Escoja una de estas opciones para el ejercito 1
+		[1] Crear Soldado
+		[2] Eliminar Soldado
+		[3] Clonar Soldado
+		[4] Modificar Soldado
+		[5] Comparar Soldados
+		[6] Intercambiar Soldados
+		[7] Ver soldado
+		[8] Ver ejercito
+		[9] Sumar Niveles
+		[10] Jugar
+		[11] Volver
+		5
+		*********************************
+		Escriba la fila donde esta el primer soldado que va comparar:
+		4
+		Escriba la columna donde esta el primer soldado que va comparar:
+		F
+		EL PRIMER SOLDADO ES:
+		
+		Nombre: Soldado2X1
+		Vida: 2
+		Fila: 4
+		Columna: F
+		Nivel de ataque: 2
+		Nivel de Defensa: 4
+		Nivel de vida: 4
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		
+		Escriba la fila donde esta el segundo soldado que va comparar:
+		4
+		Escriba la columna donde esta el segundo soldado que va comparar:
+		F
+		EL SEGUNDO SOLDADO ES:
+		
+		Nombre: Soldado2X1
+		Vida: 2
+		Fila: 4
+		Columna: F
+		Nivel de ataque: 2
+		Nivel de Defensa: 4
+		Nivel de vida: 4
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		
+		LOS SOLDADOS SON IGUALES EN EL ASPECTO DE NOMBRE , NIVEL DE ATAQUE , NIVEL DE DEFENSA , NIVEL DE VIDA ACTUAL Y ESTADO		
+		
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit8.png}
 		%\includesvg{img/automata.svg}
 		%\label{img:mot2}
 		%\caption{Product backlog.}
