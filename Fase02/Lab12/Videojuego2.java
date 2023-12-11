@@ -459,87 +459,149 @@ class Videojuego2 {
                                 "\n[10] Jugar" +
                                 "\n[11] Volver");
             int optPersonalized = sc.nextInt();
-            int numbersoldiers = 0;
             switch (optPersonalized) {
                 case 1:
-                    numbersoldiers = 0;
-                    for(int i = 0; i < 10; i++){  //ITERACION CREADA PARA PODER SABER QUE SI ESTE BANDO DEL EJERCITO TIENE SOLDADOS PARA PODER JUGAR SI TIENE 10 ESTA OPCION ESTA CANCELADA
-                        for(int j = 0; j < 10; j++){
-                            if(army1.get(i).get(j) != null){
-                                numbersoldiers++;
-                            }
-                        }
-                    }
-                    if(numbersoldiers == 10){
-                        System.out.println("*********************************");
-                        System.out.println("USTED NO PUEDE CREAR MAS SOLDADOS EL MAXIMO ES 10 SOLDADOS POR EJERCITO");
-                    }else{
-                        System.out.println("*********************************");
-                        System.out.println("El nombre del soldado:");
-                        String name = sc.next();
-                        System.out.println("La vida del soldado es de 1 a 5:");
-                        int health = sc.nextInt();
-                        System.out.println("Escriba la fila donde va a estar el soldado:");
-                        int row = sc.nextInt() - 1;
-                        System.out.println("Escriba la columna donde va a estar el soldado:");
-                        String column = sc.next();
-                        Soldado soldier =  new Soldado(name, health, numbersoldiers, column);
-                        army1.get(row).set((int)column.charAt(0) - 65, soldier);
-                    }
+                    createdSoldier(army1);
                     viewBoard(army1, army2);
                     break;
                 case 2:
-                    numbersoldiers = 0;
-                    for(int i = 0; i < 10; i++){  //ITERACION CREADA PARA PODER SABER QUE SI ESTE BANDO DEL EJERCITO TIENE SOLDADOS PARA PODER JUGAR SI TIENE 10 ESTA OPCION ESTA CANCELADA
-                        for(int j = 0; j < 10; j++){
-                            if(army1.get(i).get(j) != null){
-                                numbersoldiers++;
-                            }
-                        }
-                    }
-                    if(numbersoldiers == 1){
-                        System.out.println("*********************************");
-                        System.out.println("USTED NO PUEDE ELIMINAR MAS SOLDADOS YA QUE ELIMINARIA A SU EJERCITO");    
-                    }else{
-                        System.out.println("*********************************");
-                        System.out.println("Escriba la fila donde esta el soldado el cual eliminara:");
-                        int row = sc.nextInt() - 1;
-                        System.out.println("Escriba la columna donde esta el soldado el cual eliminara:");
-                        String column = sc.next();
-                        army1.get(row).set((int)column.charAt(0) - 65, null);
-                    }
+                    deleteSoldier(army1);                    
                     viewBoard(army1, army2);
                     break;
                 case 3:
-                    numbersoldiers = 0;
-                    for(int i = 0; i < 10; i++){  //ITERACION CREADA PARA PODER SABER QUE SI ESTE BANDO DEL EJERCITO TIENE SOLDADOS PARA PODER JUGAR SI TIENE 10 ESTA OPCION ESTA CANCELADA
-                        for(int j = 0; j < 10; j++){
-                            if(army1.get(i).get(j) != null){
-                                numbersoldiers++;
-                            }
-                        }
-                    }
-                    if(numbersoldiers == 10){
-                        System.out.println("*********************************");
-                        System.out.println("USTED NO PUEDE CLONAR MAS SOLDADOS EL MAXIMO ES 10 SOLDADOS POR EJERCITO");
-                    }else{
-                        System.out.println("Escriba la fila donde esta el soldado que quiere clonar:");
-                        int row = sc.nextInt() - 1;
-                        System.out.println("Escriba la columna donde esta el soldado que quiere clonar:");
-                        String column = sc.next();
-                        Soldado soldado = army1.get(row).get((char)column.charAt(0) - 65);
-                        System.out.println("Escriba la fila donde va a estar el soldado que quiere clonar:");
-                        int rowafter = sc.nextInt() - 1;
-                        System.out.println("Escriba la columna donde va a estar el soldado que quiere clonar:");
-                        String columnafter = sc.next();
-                        army1.get(rowafter).set((char)columnafter.charAt(0) - 65, soldado);
-                    }
+                    cloneSoldier(army1);
+                    viewBoard(army1, army2);
+                    break;
+                case 4:
+                    changeSoldier(army1);
                     viewBoard(army1, army2);
                     break;
                 default:
                     break;
             }
         } while (optarmy == 1);
+    }
+    public static void createdSoldier(ArrayList<ArrayList<Soldado>> army){
+        Scanner sc = new Scanner(System.in);
+        int numbersoldiers = 0;
+        for(int i = 0; i < 10; i++){  //ITERACION CREADA PARA PODER SABER QUE SI ESTE BANDO DEL EJERCITO TIENE SOLDADOS PARA PODER JUGAR SI TIENE 10 ESTA OPCION ESTA CANCELADA
+            for(int j = 0; j < 10; j++){
+                if(army.get(i).get(j) != null){
+                    numbersoldiers++;
+                }
+            }
+        }
+        if(numbersoldiers == 10){
+            System.out.println("*********************************");
+            System.out.println("USTED NO PUEDE CREAR MAS SOLDADOS EL MAXIMO ES 10 SOLDADOS POR EJERCITO");
+        }else{
+            System.out.println("*********************************");
+            System.out.println("El nombre del soldado:");
+            String name = sc.next();
+            System.out.println("La vida del soldado es de 1 a 5:");
+            int health = sc.nextInt();
+            System.out.println("Escriba la fila donde va a estar el soldado:");
+            int row = sc.nextInt() - 1;
+            System.out.println("Escriba la columna donde va a estar el soldado:");
+            String column = sc.next();
+            Soldado soldier =  new Soldado(name, health, numbersoldiers, column);
+            army.get(row).set((int)column.charAt(0) - 65, soldier);
+        }
+    }
+    public static void deleteSoldier(ArrayList<ArrayList<Soldado>> army ){
+        Scanner sc = new Scanner(System.in);
+        int numbersoldiers = 0;
+        for(int i = 0; i < 10; i++){  //ITERACION CREADA PARA PODER SABER QUE SI ESTE BANDO DEL EJERCITO TIENE SOLDADOS PARA PODER JUGAR SI TIENE 10 ESTA OPCION ESTA CANCELADA
+            for(int j = 0; j < 10; j++){
+                if(army.get(i).get(j) != null){
+                    numbersoldiers++;
+                }
+            }
+        }
+        if(numbersoldiers == 1){
+            System.out.println("*********************************");
+            System.out.println("USTED NO PUEDE ELIMINAR MAS SOLDADOS YA QUE ELIMINARIA A SU EJERCITO");    
+        }else{
+            System.out.println("*********************************");
+            System.out.println("Escriba la fila donde esta el soldado el cual eliminara:");
+            int row = sc.nextInt() - 1;
+            System.out.println("Escriba la columna donde esta el soldado el cual eliminara:");
+            String column = sc.next();
+            army.get(row).set((int)column.charAt(0) - 65, null);
+        }
+    }
+    public static void cloneSoldier(ArrayList<ArrayList<Soldado>> army){
+        Scanner sc = new Scanner(System.in);
+        int numbersoldiers = 0;
+        for(int i = 0; i < 10; i++){  //ITERACION CREADA PARA PODER SABER QUE SI ESTE BANDO DEL EJERCITO TIENE SOLDADOS PARA PODER JUGAR SI TIENE 10 ESTA OPCION ESTA CANCELADA
+            for(int j = 0; j < 10; j++){
+                if(army.get(i).get(j) != null){
+                    numbersoldiers++;
+                }
+            }
+        }
+        if(numbersoldiers == 10){
+            System.out.println("*********************************");
+            System.out.println("USTED NO PUEDE CLONAR MAS SOLDADOS EL MAXIMO ES 10 SOLDADOS POR EJERCITO");
+        }else{
+            System.out.println("*********************************");
+            System.out.println("Escriba la fila donde esta el soldado que quiere clonar:");
+            int row = sc.nextInt() - 1;
+            System.out.println("Escriba la columna donde esta el soldado que quiere clonar:");
+            String column = sc.next();
+            Soldado soldado = army.get(row).get((char)column.charAt(0) - 65);
+            System.out.println("Escriba la fila donde va a estar el soldado que quiere clonar:");
+            int rowafter = sc.nextInt() - 1;
+            System.out.println("Escriba la columna donde va a estar el soldado que quiere clonar:");
+            String columnafter = sc.next();
+            army.get(rowafter).set((char)columnafter.charAt(0) - 65, soldado);
+        }
+    }
+    public static void changeSoldier(ArrayList<ArrayList<Soldado>> army){
+        System.out.println("*********************************");
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Escriba la fila donde esta el soldado el cual modificara:");
+        int row = sc.nextInt() - 1;
+        System.out.println("Escriba la columna donde esta el soldado el cual modificara:");
+        String column = sc.next();
+        System.out.println("*********************************");
+        System.out.println("QUE DESEA MODIFICAR");
+        System.out.println("[1] Nivel de ataque"+
+                            "\n[2] Nivel de defensa" + 
+                            "\n[3] Nivel de vida Actual");
+        int optchangesoldier = sc.nextInt();
+        System.out.println("*********************************");
+        switch (optchangesoldier) {
+            case 1:
+                System.out.println(army.get(row).get((int)column.charAt(0) - 65).toString());
+                System.out.println("*********************************");
+                System.out.println("Cual es el nivel de fuerza que le pondra del 1 al 5 ");
+                int attacklevel = sc.nextInt();
+                army.get(row).get((int)column.charAt(0) - 65).setAttackLevel(attacklevel);
+                System.out.println("*********************************");
+                System.out.println(army.get(row).get((int)column.charAt(0) - 65).toString());
+                break;
+            case 2:
+                System.out.println(army.get(row).get((int)column.charAt(0) - 65).toString());
+                System.out.println("*********************************");
+                System.out.println("Cual es el nivel de defensa que le pondra del 1 al 5 ");
+                int defenselevel = sc.nextInt();
+                army.get(row).get((int)column.charAt(0) - 65).setDefenseLevel(defenselevel);
+                System.out.println("*********************************");
+                System.out.println(army.get(row).get((int)column.charAt(0) - 65).toString());
+                break;
+            case 3:
+                System.out.println(army.get(row).get((int)column.charAt(0) - 65).toString());
+                System.out.println("*********************************");
+                System.out.println("Cual es el nivel de vida actual que le pondra del 1 al 5 ");
+                int lifeactuallevel = sc.nextInt();
+                army.get(row).get((int)column.charAt(0) - 65).setLifeActual(lifeactuallevel);
+                System.out.println("*********************************");
+                System.out.println(army.get(row).get((int)column.charAt(0) - 65).toString());
+                break;
+            default:
+                break;
+        }
     }
     public static void main(String[] args) {
         ArrayList<ArrayList<Soldado>> army1 = fillRegister(1);
