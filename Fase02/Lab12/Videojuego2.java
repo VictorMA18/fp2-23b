@@ -476,6 +476,9 @@ class Videojuego2 {
                     changeSoldier(army1);
                     viewBoard(army1, army2);
                     break;
+                case 5:
+                    compareSoldier(army1);
+                    viewBoard(army1, army2);
                 default:
                     break;
             }
@@ -601,6 +604,29 @@ class Videojuego2 {
                 break;
             default:
                 break;
+        }
+    }
+    public static void compareSoldier(ArrayList<ArrayList<Soldado>> army){
+        System.out.println("*********************************");
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Escriba la fila donde esta el primer soldado que va comparar:");
+        int row = sc.nextInt() - 1;
+        System.out.println("Escriba la columna donde esta el primer soldado que va comparar:");
+        String column = sc.next();
+        System.out.println("EL PRIMER SOLDADO ES:");
+        Soldado soldier1 = army.get(row).get((int)column.charAt(0) - 65);
+        System.out.println(army.get(row).get((int)column.charAt(0) - 65).toString());
+        System.out.println("\nEscriba la fila donde esta el segundo soldado que va comparar:");
+        int row2 = sc.nextInt() - 1;
+        System.out.println("Escriba la columna donde esta el segundo soldado que va comparar:");
+        String column2 = sc.next();
+        System.out.println("EL SEGUNDO SOLDADO ES:");
+        Soldado soldier2 = army.get(row2).get((int)column2.charAt(0) - 65);
+        System.out.println(army.get(row2).get((int)column2.charAt(0) - 65).toString());
+        if(soldier1.getName().equals(soldier2.getName()) && soldier1.getAttackLevel() == soldier2.getAttackLevel() && soldier1.getDefenseLevel() == soldier2.getDefenseLevel() && soldier1.getLifeActual() == soldier2.getLifeActual() && soldier1.getLives() == soldier2.getLives()){
+            System.out.println("\nLOS SOLDADOS SON IGUALES EN EL ASPECTO DE NOMBRE , NIVEL DE ATAQUE , NIVEL DE DEFENSA , NIVEL DE VIDA ACTUAL Y ESTADO");
+        }else{
+            System.out.println("NO SON IGUALES EN EL ASPECTO DE NOMBRE , NIVEL DE ATAQUE , NIVEL DE DEFENSA , NIVEL DE VIDA ACTUAL Y ESTADO");
         }
     }
     public static void main(String[] args) {
