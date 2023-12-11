@@ -485,6 +485,9 @@ class Videojuego2 {
                 case 7:
                     searchSoldier(army1);
                     viewBoard(army1, army2);
+                case 8:
+                    viewArmy(army1, 1);
+                    viewBoard(army1, army2);
                 default:
                     break;
             }
@@ -683,6 +686,17 @@ class Videojuego2 {
         if(num == 0){
             System.out.println("*********************************");
             System.out.println("NO SE ENCONTRO AL SOLDADO \n");
+        }
+    }
+    public static void viewArmy(ArrayList<ArrayList<Soldado>> army, int num){
+        System.out.println("Los Soldados del ejercito " + num + " son :");
+        for(int i = 0; i < 10; i++){  //ITERACION CREADA PARA PODER SABER QUE SI ESTE BANDO DEL EJERCITO TIENE SOLDADOS PARA PODER JUGAR SI TIENE 10 ESTA OPCION ESTA CANCELADA
+            for(int j = 0; j < 10; j++){
+                if(army.get(i).get(j) != null){
+                    System.out.println("*********************************");
+                    System.out.println(army.get(i).get(j).toString());
+                }
+            }
         }
     }
     public static void main(String[] args) {
