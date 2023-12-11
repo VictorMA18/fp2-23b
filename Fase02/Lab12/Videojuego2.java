@@ -479,6 +479,9 @@ class Videojuego2 {
                 case 5:
                     compareSoldier(army1);
                     viewBoard(army1, army2);
+                case 6:
+                    swapSoldier(army1);
+                    viewBoard(army1, army2);
                 default:
                     break;
             }
@@ -628,6 +631,35 @@ class Videojuego2 {
         }else{
             System.out.println("NO SON IGUALES EN EL ASPECTO DE NOMBRE , NIVEL DE ATAQUE , NIVEL DE DEFENSA , NIVEL DE VIDA ACTUAL Y ESTADO");
         }
+    }
+    public static void swapSoldier(ArrayList<ArrayList<Soldado>> army){
+        System.out.println("*********************************");
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Escriba la fila donde esta el primer soldado que va intercambiar de posicion:");
+        int row = sc.nextInt() - 1;
+        System.out.println("Escriba la columna donde esta el primer soldado que va intercambiar de posicion:");
+        String column = sc.next();
+        System.out.println("EL PRIMER SOLDADO ES:");
+        Soldado soldier1 = army.get(row).get((int)column.charAt(0) - 65);
+        System.out.println(army.get(row).get((int)column.charAt(0) - 65).toString());
+        System.out.println("\nEscriba la fila donde esta el segundo soldado que va intercambiar de posicion:");
+        int row2 = sc.nextInt() - 1;
+        System.out.println("Escriba la columna donde esta el segundo soldado que va intercambiar de posicion:");
+        String column2 = sc.next();
+        System.out.println("EL SEGUNDO SOLDADO ES:");
+        Soldado soldier2 = army.get(row2).get((int)column2.charAt(0) - 65);
+        System.out.println(army.get(row2).get((int)column2.charAt(0) - 65).toString());
+        System.out.println("*********************************");
+        System.out.println("INTERCAMBIO EXITOSO");
+        soldier2.setRow(row + 1);
+        soldier2.setColumn(column);
+        soldier1.setRow(row2 + 1);
+        soldier1.setColumn(column2);
+        Soldado soldiertmp = army.get(row2).get((int)column2.charAt(0) - 65);
+        army.get(row2).set((int)column2.charAt(0) - 65, soldier1);
+        army.get(row).set((int)column.charAt(0) - 65, soldiertmp);
+        System.out.println(army.get(row).get((int)column.charAt(0) - 65).toString());
+        System.out.println(army.get(row2).get((int)column2.charAt(0) - 65).toString());
     }
     public static void main(String[] args) {
         ArrayList<ArrayList<Soldado>> army1 = fillRegister(1);
