@@ -488,6 +488,9 @@ class Videojuego2 {
                 case 8:
                     viewArmy(army1, 1);
                     viewBoard(army1, army2);
+                case 9:
+                    sumArmy(army1, 1);
+                    viewBoard(army1, army2);
                 default:
                     break;
             }
@@ -689,6 +692,7 @@ class Videojuego2 {
         }
     }
     public static void viewArmy(ArrayList<ArrayList<Soldado>> army, int num){
+        System.out.println("*********************************");
         System.out.println("Los Soldados del ejercito " + num + " son :");
         for(int i = 0; i < 10; i++){  //ITERACION CREADA PARA PODER SABER QUE SI ESTE BANDO DEL EJERCITO TIENE SOLDADOS PARA PODER JUGAR SI TIENE 10 ESTA OPCION ESTA CANCELADA
             for(int j = 0; j < 10; j++){
@@ -698,6 +702,30 @@ class Videojuego2 {
                 }
             }
         }
+    }
+    public static void sumArmy(ArrayList<ArrayList<Soldado>> army, int num){
+        System.out.println("*********************************");
+        Soldado soldierimportant = new Soldado("REPRESENTANTE DEL EJERCITO 1" , 0 , 0 , 0 , 0 , false , 0 , "#");
+        int attacklevel = 0;
+        int defenselevel = 0;
+        int lifelevel = 0;
+        int speedlevel = 0;
+        for(int i = 0; i < 10; i++){  //ITERACION CREADA PARA PODER SABER QUE SI ESTE BANDO DEL EJERCITO TIENE SOLDADOS PARA PODER JUGAR SI TIENE 10 ESTA OPCION ESTA CANCELADA
+            for(int j = 0; j < 10; j++){
+                if(army.get(i).get(j) != null){
+                    attacklevel += army.get(i).get(j).getAttackLevel();
+                    defenselevel += army.get(i).get(j).getDefenseLevel();
+                    lifelevel += army.get(i).get(j).getLifeActual();
+                    speedlevel += army.get(i).get(j).getSpeed();
+                }
+            }
+        }
+        soldierimportant.setAttackLevel(attacklevel);
+        soldierimportant.setDefenseLevel(defenselevel);
+        soldierimportant.setLifeActual(lifelevel);
+        soldierimportant.setSpeed(speedlevel);
+        System.out.println("EL SOLDADO REPRESENTANTE DEL EJERCITO " + num + " EL CONTENDRA LA SUMA DE LOS ATRIBUTOS DE LOS SOLDADOS DE TODO EL EJERCITO");
+        System.out.println(soldierimportant.toString());
     }
     public static void main(String[] args) {
         ArrayList<ArrayList<Soldado>> army1 = fillRegister(1);
