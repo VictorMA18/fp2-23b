@@ -1320,6 +1320,187 @@
 		%\label{img:mot2}
 		%\caption{Product backlog.}
 	\end{figure}
+	\subsection{Ejercicio Videojuego2}
+	\begin{itemize}	
+		\item En el duodecimo commit agregamos la opcion 9 la cual nos permite crear a un soldado al cual le tendremos que dar los datos totales de los soldados del ejercito para esto hacemos iteracion y sumamos los atributos de cada soldado y lo vamos recolectando en una variable la cual esta modificara al soldado que creamos para despues mostrarlo
+		\item El codigo , el commit y ejecucion seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Agregamos la opcion 9 la cual nos permite crear a un soldado al cual le tendremos que dar los datos totales de los soldados del ejercito para esto hacemos iteracion y sumamos los atributos de cada soldado y lo vamos recolectando en una variable la cual esta modificara al soldado que creamos para despues mostrarlo"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void sumArmy(ArrayList<ArrayList<Soldado>> army, int num){
+			System.out.println("*********************************");
+			Soldado soldierimportant = new Soldado("REPRESENTANTE DEL EJERCITO 1" , 0 , 0 , 0 , 0 , false , 0 , "#");
+			int attacklevel = 0;
+			int defenselevel = 0;
+			int lifelevel = 0;
+			int speedlevel = 0;
+			for(int i = 0; i < 10; i++){  //ITERACION CREADA PARA PODER SABER QUE SI ESTE BANDO DEL EJERCITO TIENE SOLDADOS PARA PODER JUGAR SI TIENE 10 ESTA OPCION ESTA CANCELADA
+				for(int j = 0; j < 10; j++){
+					if(army.get(i).get(j) != null){
+						attacklevel += army.get(i).get(j).getAttackLevel();
+						defenselevel += army.get(i).get(j).getDefenseLevel();
+						lifelevel += army.get(i).get(j).getLifeActual();
+						speedlevel += army.get(i).get(j).getSpeed();
+					}
+				}
+			}
+			soldierimportant.setAttackLevel(attacklevel);
+			soldierimportant.setDefenseLevel(defenselevel);
+			soldierimportant.setLifeActual(lifelevel);
+			soldierimportant.setSpeed(speedlevel);
+			System.out.println("EL SOLDADO REPRESENTANTE DEL EJERCITO " + num + " EL CONTENDRA LA SUMA DE LOS ATRIBUTOS DE LOS SOLDADOS DE TODO EL EJERCITO");
+			System.out.println(soldierimportant.toString());
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		El Ejercito 1 tiene 8 soldados : 
+
+		Registrando al 1 soldado del Ejercito 1
+		
+		Nombre: Soldado0X1
+		Vida: 5
+		Fila: 5
+		Columna: B
+		Nivel de ataque: 2
+		Nivel de Defensa: 5
+		Nivel de vida: 5
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito 1
+		
+		Nombre: Soldado1X1
+		Vida: 3
+		Fila: 10
+		Columna: A
+		Nivel de ataque: 3
+		Nivel de Defensa: 1
+		Nivel de vida: 3
+		Velocidad: 2
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito 1
+		
+		Nombre: Soldado2X1
+		Vida: 1
+		Fila: 7
+		Columna: B
+		Nivel de ataque: 3
+		Nivel de Defensa: 1
+		Nivel de vida: 1
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 4 soldado del Ejercito 1
+		
+		Nombre: Soldado3X1
+		Vida: 4
+		Fila: 5
+		Columna: G
+		Nivel de ataque: 1
+		Nivel de Defensa: 5
+		Nivel de vida: 4
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 5 soldado del Ejercito 1
+		
+		Nombre: Soldado4X1
+		Vida: 2
+		Fila: 5
+		Columna: I
+		Nivel de ataque: 3
+		Nivel de Defensa: 3
+		Nivel de vida: 2
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 6 soldado del Ejercito 1
+		
+		Nombre: Soldado5X1
+		Vida: 1
+		Fila: 3
+		Columna: F
+		Nivel de ataque: 1
+		Nivel de Defensa: 4
+		Nivel de vida: 1
+		Velocidad: 4
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 7 soldado del Ejercito 1
+		
+		Nombre: Soldado6X1
+		Vida: 5
+		Fila: 7
+		Columna: J
+		Nivel de ataque: 3
+		Nivel de Defensa: 4
+		Nivel de vida: 5
+		Velocidad: 3
+		Actitud: null
+		Estado: true
+		---------------------------------
+		Registrando al 8 soldado del Ejercito 1
+		
+		Nombre: Soldado7X1
+		Vida: 4
+		Fila: 9
+		Columna: F
+		Nivel de ataque: 3
+		Nivel de Defensa: 5
+		Nivel de vida: 4
+		Velocidad: 5
+		Actitud: null
+		Estado: true
+		---------------------------------
+		*********************************
+		-------------------------------------------
+		--          OPCIONES DE BATALLA          --
+		-------------------------------------------
+		 SELECCIONE UN NUMERO PARA PODER EMPEZAR O TERMINAR
+		 1 : JUEGO RAPIDO
+		 2 : JUEGO PERSONALIZADO
+		2
+		Gestionar Ejercito 
+		[1] Ejercito 1
+		[2] Ejercito 2
+		1
+		Escoja una de estas opciones para el ejercito 1
+		[1] Crear Soldado
+		[2] Eliminar Soldado
+		[3] Clonar Soldado
+		[4] Modificar Soldado
+		[5] Comparar Soldados
+		[6] Intercambiar Soldados
+		[7] Ver soldado
+		[8] Ver ejercito
+		[9] Sumar Niveles
+		[10] Jugar
+		[11] Volver
+		9
+		*********************************
+		EL SOLDADO REPRESENTANTE DEL EJERCITO 1 EL CONTENDRA LA SUMA DE LOS ATRIBUTOS DE LOS SOLDADOS DE TODO EL EJERCITO
+		
+		Nombre: REPRESENTANTE DEL EJERCITO 1
+		Vida: 23
+		Fila: 0
+		Columna: #
+		Nivel de ataque: 16
+		Nivel de Defensa: 25
+		Nivel de vida: 0
+		Velocidad: 25
+		Actitud: null
+		Estado: false
+						
+	\end{lstlisting}
 	\subsection{Estructura de laboratorio 12}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio12 es el siguiente:
