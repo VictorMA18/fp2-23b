@@ -482,6 +482,9 @@ class Videojuego2 {
                 case 6:
                     swapSoldier(army1);
                     viewBoard(army1, army2);
+                case 7:
+                    searchSoldier(army1);
+                    viewBoard(army1, army2);
                 default:
                     break;
             }
@@ -660,6 +663,27 @@ class Videojuego2 {
         army.get(row).set((int)column.charAt(0) - 65, soldiertmp);
         System.out.println(army.get(row).get((int)column.charAt(0) - 65).toString());
         System.out.println(army.get(row2).get((int)column2.charAt(0) - 65).toString());
+    }
+    public static void searchSoldier(ArrayList<ArrayList<Soldado>> army){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Escriba el nombre del Soldado:");
+        String namesoldier = sc.next();
+        int num = 0;
+        for(int i = 0; i < 10; i++){  //ITERACION CREADA PARA PODER SABER QUE SI ESTE BANDO DEL EJERCITO TIENE SOLDADOS PARA PODER JUGAR SI TIENE 10 ESTA OPCION ESTA CANCELADA
+            for(int j = 0; j < 10; j++){
+                if(army.get(i).get(j) != null && army.get(i).get(j).getName().equals(namesoldier)){
+                    System.out.println("*********************************");
+                    System.out.println("BUSQUEDA EXITOSA \n");
+                    System.out.println(army.get(i).get(j));
+                    num++;
+                    break;
+                }
+            }
+        }
+        if(num == 0){
+            System.out.println("*********************************");
+            System.out.println("NO SE ENCONTRO AL SOLDADO \n");
+        }
     }
     public static void main(String[] args) {
         ArrayList<ArrayList<Soldado>> army1 = fillRegister(1);
