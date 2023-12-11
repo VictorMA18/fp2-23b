@@ -1142,6 +1142,115 @@
 		%\label{img:mot2}
 		%\caption{Product backlog.}
 	\end{figure}
+	\subsection{Ejercicio Videojuego2}
+	\begin{itemize}	
+		\item En el decimo commit agregamos la opcion 7 la cual nos permite buscar a un soldado para esto hacemos iteracion en cada uno de los casilleros para ver si se encontro el soldado requerido en caso de no se mostrara un mensaje
+		\item El codigo , el commit y ejecucion seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Agregamos la opcion 7 la cual nos permite buscar a un soldado para esto hacemos iteracion en cada uno de los casilleros para ver si se encontro el soldado requerido en caso de no se mostrara un mensaje"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		public static void searchSoldier(ArrayList<ArrayList<Soldado>> army){
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Escriba el nombre del Soldado:");
+			String namesoldier = sc.next();
+			int num = 0;
+			for(int i = 0; i < 10; i++){  //ITERACION CREADA PARA PODER SABER QUE SI ESTE BANDO DEL EJERCITO TIENE SOLDADOS PARA PODER JUGAR SI TIENE 10 ESTA OPCION ESTA CANCELADA
+				for(int j = 0; j < 10; j++){
+					if(army.get(i).get(j) != null && army.get(i).get(j).getName().equals(namesoldier)){
+						System.out.println("*********************************");
+						System.out.println("BUSQUEDA EXITOSA \n");
+						System.out.println(army.get(i).get(j));
+						num++;
+						break;
+					}
+				}
+			}
+			if(num == 0){
+				System.out.println("*********************************");
+				System.out.println("NO SE ENCONTRO AL SOLDADO \n");
+			}
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		-------------------------------------------
+		--          OPCIONES DE BATALLA          --
+		-------------------------------------------
+		 SELECCIONE UN NUMERO PARA PODER EMPEZAR O TERMINAR
+		 1 : JUEGO RAPIDO
+		 2 : JUEGO PERSONALIZADO
+		2
+		Gestionar Ejercito 
+		[1] Ejercito 1
+		[2] Ejercito 2
+		1
+		Escoja una de estas opciones para el ejercito 1
+		[1] Crear Soldado
+		[2] Eliminar Soldado
+		[3] Clonar Soldado
+		[4] Modificar Soldado
+		[5] Comparar Soldados
+		[6] Intercambiar Soldados
+		[7] Ver soldado
+		[8] Ver ejercito
+		[9] Sumar Niveles
+		[10] Jugar
+		[11] Volver
+		7
+		Escriba el nombre del Soldado:
+		Soldado0X1
+		*********************************
+		BUSQUEDA EXITOSA 
+		
+		
+		Nombre: Soldado0X1
+		Vida: 1
+		Fila: 6
+		Columna: G
+		Nivel de ataque: 1
+		Nivel de Defensa: 4
+		Nivel de vida: 1
+		Velocidad: 1
+		Actitud: null
+		Estado: true		
+		
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit10.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		Escoja una de estas opciones para el ejercito 1
+		[1] Crear Soldado
+		[2] Eliminar Soldado
+		[3] Clonar Soldado
+		[4] Modificar Soldado
+		[5] Comparar Soldados
+		[6] Intercambiar Soldados
+		[7] Ver soldado
+		[8] Ver ejercito
+		[9] Sumar Niveles
+		[10] Jugar
+		[11] Volver
+		7
+		Escriba el nombre del Soldado:
+		Soldado7X1
+		*********************************
+		NO SE ENCONTRO AL SOLDADO 
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit10.1.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
 	\subsection{Estructura de laboratorio 12}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio12 es el siguiente:
