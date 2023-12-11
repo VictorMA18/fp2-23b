@@ -213,11 +213,13 @@ class Videojuego2 {
         System.out.println(" SELECCIONE UN NUMERO PARA PODER EMPEZAR O TERMINAR");
         System.out.println(" 1 : JUEGO RAPIDO");
         System.out.println(" 2 : JUEGO PERSONALIZADO");
+        System.out.println(" 3 : SALIR");
         int optbattle = sc.nextInt();
         if(optbattle == 1){
             battle(army1, army2);
-        }else{
+        }else if (optbattle == 2){
             battlePersonalized(army1, army2);
+        }else{
         }
     }
     public static void battle(ArrayList<ArrayList<Soldado>> army1 , ArrayList<ArrayList<Soldado>> army2){
@@ -445,56 +447,131 @@ class Videojuego2 {
         Scanner sc = new Scanner(System.in);
         System.out.println("Gestionar Ejercito \n[1] Ejercito 1\n[2] Ejercito 2");
         int optarmy = sc.nextInt();
-        do {
-            System.out.println("Escoja una de estas opciones para el ejercito 1");
-            System.out.println("[1] Crear Soldado"+
-                                "\n[2] Eliminar Soldado" + 
-                                "\n[3] Clonar Soldado"+
-                                "\n[4] Modificar Soldado"+
-                                "\n[5] Comparar Soldados"+
-                                "\n[6] Intercambiar Soldados"+
-                                "\n[7] Ver soldado"+
-                                "\n[8] Ver ejercito"+
-                                "\n[9] Sumar Niveles"+
-                                "\n[10] Jugar" +
-                                "\n[11] Volver");
-            int optPersonalized = sc.nextInt();
-            switch (optPersonalized) {
-                case 1:
-                    createdSoldier(army1);
-                    viewBoard(army1, army2);
-                    break;
-                case 2:
-                    deleteSoldier(army1);                    
-                    viewBoard(army1, army2);
-                    break;
-                case 3:
-                    cloneSoldier(army1);
-                    viewBoard(army1, army2);
-                    break;
-                case 4:
-                    changeSoldier(army1);
-                    viewBoard(army1, army2);
-                    break;
-                case 5:
-                    compareSoldier(army1);
-                    viewBoard(army1, army2);
-                case 6:
-                    swapSoldier(army1);
-                    viewBoard(army1, army2);
-                case 7:
-                    searchSoldier(army1);
-                    viewBoard(army1, army2);
-                case 8:
-                    viewArmy(army1, 1);
-                    viewBoard(army1, army2);
-                case 9:
-                    sumArmy(army1, 1);
-                    viewBoard(army1, army2);
-                default:
-                    break;
+        int optPersonalized = 0;
+        do{
+            if(optPersonalized != 10){
+                while(optarmy == 1 && optPersonalized != 10){
+                    System.out.println("Escoja una de estas opciones para el ejercito 1");
+                    System.out.println("[1] Crear Soldado"+
+                                        "\n[2] Eliminar Soldado" + 
+                                        "\n[3] Clonar Soldado"+
+                                        "\n[4] Modificar Soldado"+
+                                        "\n[5] Comparar Soldados"+
+                                        "\n[6] Intercambiar Soldados"+
+                                        "\n[7] Ver soldado"+
+                                        "\n[8] Ver ejercito"+
+                                        "\n[9] Sumar Niveles"+
+                                        "\n[10] Jugar" +
+                                        "\n[11] Volver");
+                    optPersonalized = sc.nextInt();
+                    switch (optPersonalized) {
+                        case 1:
+                            createdSoldier(army1);
+                            viewBoard(army1, army2);
+                            break;
+                        case 2:
+                            deleteSoldier(army1);                    
+                            viewBoard(army1, army2);
+                            break;
+                        case 3:
+                            cloneSoldier(army1);
+                            viewBoard(army1, army2);
+                            break;
+                        case 4:
+                            changeSoldier(army1);
+                            viewBoard(army1, army2);
+                            break;
+                        case 5:
+                            compareSoldier(army1);
+                            viewBoard(army1, army2);
+                        case 6:
+                            swapSoldier(army1);
+                            viewBoard(army1, army2);
+                        case 7:
+                            searchSoldier(army1);
+                            viewBoard(army1, army2);
+                        case 8:
+                            viewArmy(army1, 1);
+                            viewBoard(army1, army2);
+                        case 9:
+                            sumArmy(army1, 1);
+                            viewBoard(army1, army2);
+                        case 10:
+                            battle(army1, army2);
+                            break;
+                        case 11:
+                            System.out.println("*********************************");
+                            System.out.println("Gestionar Ejercito \n[1] Ejercito 1\n[2] Ejercito 2");
+                            optarmy = sc.nextInt();
+                            System.out.println("*********************************");
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                while(optarmy == 2 && optPersonalized != 10){
+                    System.out.println("Escoja una de estas opciones para el ejercito 2");
+                    System.out.println("[1] Crear Soldado"+
+                                        "\n[2] Eliminar Soldado" + 
+                                        "\n[3] Clonar Soldado"+
+                                        "\n[4] Modificar Soldado"+
+                                        "\n[5] Comparar Soldados"+
+                                        "\n[6] Intercambiar Soldados"+
+                                        "\n[7] Ver soldado"+
+                                        "\n[8] Ver ejercito"+
+                                        "\n[9] Sumar Niveles"+
+                                        "\n[10] Jugar" +
+                                        "\n[11] Volver");
+                    optPersonalized = sc.nextInt();
+                    switch (optPersonalized) {
+                        case 1:
+                            createdSoldier(army2);
+                            viewBoard(army1, army2);
+                            break;
+                        case 2:
+                            deleteSoldier(army2);                    
+                            viewBoard(army1, army2);
+                            break;
+                        case 3:
+                            cloneSoldier(army2);
+                            viewBoard(army1, army2);
+                            break;
+                        case 4:
+                            changeSoldier(army2);
+                            viewBoard(army1, army2);
+                            break;
+                        case 5:
+                            compareSoldier(army2);
+                            viewBoard(army1, army2);
+                        case 6:
+                            swapSoldier(army2);
+                            viewBoard(army1, army2);
+                        case 7:
+                            searchSoldier(army2);
+                            viewBoard(army1, army2);
+                        case 8:
+                            viewArmy(army2, 2);
+                            viewBoard(army1, army2);
+                        case 9:
+                            sumArmy(army2, 2);
+                            viewBoard(army1, army2);
+                        case 10:
+                            battle(army1, army2);
+                            break;
+                        case 11:
+                            System.out.println("*********************************");
+                            System.out.println("Gestionar Ejercito \n[1] Ejercito 1\n[2] Ejercito 2");
+                            optarmy = sc.nextInt();
+                            System.out.println("*********************************");
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }else{
+                break;
             }
-        } while (optarmy == 1);
+        }while (true);
     }
     public static void createdSoldier(ArrayList<ArrayList<Soldado>> army){
         Scanner sc = new Scanner(System.in);
