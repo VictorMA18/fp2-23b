@@ -1501,13 +1501,67 @@
 		Estado: false
 						
 	\end{lstlisting}
+	\subsection{Ejercicio Videojuego2}
+	\begin{itemize}	
+		\item En el decimotercero commit agregamos la opcion 10 , 11 y opcion SALIR las cuales nos dicen de la opcion jugar , opcion volver , y la opcion salir.
+		\item El codigo , el commit  seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Agregamos la opcion 10 , 11 y opcion SALIR las cuales nos dicen de la opcion jugar , opcion volver , y la opcion salir."
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
+		case 10:
+			battle(army1, army2);
+			break;
+		case 11:
+			System.out.println("*********************************");
+			System.out.println("Gestionar Ejercito \n[1] Ejercito 1\n[2] Ejercito 2");
+			optarmy = sc.nextInt();
+			System.out.println("*********************************");
+			break;
+		default:
+			break;
+	\end{lstlisting}
 	\subsection{Estructura de laboratorio 12}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio12 es el siguiente:
 	\end{itemize}
 	\begin{lstlisting}[style=ascii-tree]
 	/Lab12	
-
+	├── Latex
+	│   ├── img
+	│   │   ├── Commit10.1.png
+	│   │   ├── Commit10.png
+	│   │   ├── Commit11.png
+	│   │   ├── Commit2.1.png
+	│   │   ├── Commit2.png
+	│   │   ├── Commit3.png
+	│   │   ├── Commit4.0.png
+	│   │   ├── Commit4.1.png
+	│   │   ├── Commit5.1.png
+	│   │   ├── Commit5.png
+	│   │   ├── Commit6.1.png
+	│   │   ├── Commit6.png
+	│   │   ├── Commit7.1.png
+	│   │   ├── Commit7.2.png
+	│   │   ├── Commit7.png
+	│   │   ├── Commit8.png
+	│   │   ├── Commit9.png
+	│   │   ├── logo_abet.png
+	│   │   ├── logo_episunsa.png
+	│   │   └── logo_unsa.jpg
+	│   ├── Informe12.aux
+	│   ├── Informe12.fdb_latexmk
+	│   ├── Informe12.fls
+	│   ├── Informe12.log
+	│   ├── Informe12.out
+	│   ├── Informe12.pdf
+	│   ├── Informe12.synctex.gz
+	│   └── Informe12.tex
+	├── Soldado.class
+	├── Soldado.java
+	├── Videojuego2.class
+	└── Videojuego2.java
 	\end{lstlisting}    
 	\section{\textcolor{red}{Rúbricas}}
 	
