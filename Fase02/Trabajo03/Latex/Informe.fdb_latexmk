@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1703389322 "/home/user/fp2-23b/Fase02/Trabajo03/Latex/Informe.tex" "Informe.pdf" "Informe" 1703389322
+["pdflatex"] 1703389746 "/home/user/fp2-23b/Fase02/Trabajo03/Latex/Informe.tex" "Informe.pdf" "Informe" 1703389746
   "/etc/texmf/web2c/texmf.cnf" 1695244730 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/user/fp2-23b/Fase02/Trabajo03/Latex/Informe.tex" 1703389321 19490 55da5bb5c7176d934663bc4c029225b0 ""
+  "/home/user/fp2-23b/Fase02/Trabajo03/Latex/Informe.tex" 1703389744 19366 d594a3430270c7b4acf7e5f66880fcfa ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
@@ -119,9 +119,9 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1695244742 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1695244760 2802157 836bcf8882c264bca8c914dc83bfb65d ""
-  "Informe.aux" 1703389322 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "Informe.aux" 1703389746 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
   "Informe.out" 0 -1 0 "pdflatex"
-  "Informe.tex" 1703389321 19490 55da5bb5c7176d934663bc4c029225b0 ""
+  "Informe.tex" 1703389746 19366 d594a3430270c7b4acf7e5f66880fcfa ""
   "img/Captura.png" 1703388925 45621 1ff01db411ac1081e480182002445fae ""
   "img/Captura2.png" 1703389103 45009 fdba971dcb21704168ffd4fb5c098386 ""
   "img/Captura3.png" 1703389272 59126 ce49c20e5252f5aaf6a3678c5e378930 ""
