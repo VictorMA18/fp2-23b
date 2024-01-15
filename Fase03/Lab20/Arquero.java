@@ -1,5 +1,8 @@
 public class Arquero extends Soldado{
     private int flechas;
+    public Arquero(){
+        
+    }
     public Arquero(String name , int attacklevel, int defenselevel, int lifelevel, int speed, String attitude ,boolean lives, int row, String column, int flechas){
         super(name, attacklevel, defenselevel, lifelevel, speed, attitude, lives, row, column);
         this.flechas = flechas;

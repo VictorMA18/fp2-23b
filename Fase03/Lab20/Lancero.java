@@ -1,6 +1,9 @@
 public class Lancero extends Soldado{
     private int lancelth;
+    public Lancero(){
+    }
     public Lancero(String name , int attacklevel, int defenselevel, int lifelevel, int speed, String attitude ,boolean lives, int row, String column, int lancelth){
+        super(name, attacklevel, defenselevel, lifelevel, speed, attitude, lives, row, column);
         this.lancelth = lancelth;
     }
     public void schiltrom(){

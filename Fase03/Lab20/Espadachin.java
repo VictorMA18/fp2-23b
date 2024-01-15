@@ -1,5 +1,7 @@
 public class Espadachin extends Soldado{
     private int swordlth;
+    public Espadachin(){
+    }
     public Espadachin(String name , int attacklevel, int defenselevel, int lifelevel, int speed, String attitude ,boolean lives, int row, String column, int swordlth){
         super(name, attacklevel, defenselevel, lifelevel, speed, attitude, lives, row, column);
         this.swordlth = swordlth;

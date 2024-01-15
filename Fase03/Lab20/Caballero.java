@@ -1,6 +1,8 @@
 public class Caballero extends Soldado{
     private boolean montar;
     private String arma;
+    public Caballero(){
+    }
     public Caballero(String name , int attacklevel, int defenselevel, int lifelevel, int speed, String attitude ,boolean lives, int row, String column,boolean montar){
         super(name, attacklevel, defenselevel, lifelevel, speed, attitude, lives, row, column);
         this.montar = montar;
