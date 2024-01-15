@@ -2465,12 +2465,514 @@
 		Lanceros: 2
 		
 	\end{lstlisting}
+	\subsection{Ejercicio Mapa}
+	\begin{itemize}	
+		\item En el undecimo commit creamos los metodos resultBatleSum() el cual me da la suma de todos los soldados de un ejercito retorna un int para que despues pueda ser comparado y tambien tenemos a resbattle() el cual me da el mensaje de el jercito ganador dependiendo de su suma y el resultado de esta me dara un mensaje el cual nos dice quien gana con su promedio de victoria y tambien tenemos la funcion volveraJugar() el cual me dara un menu donde decidas si quieres volver a jugar o no.
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creacion de metodos resultBatleSum() el cual me da la suma de todos los soldados de un ejercito retorna un int para que despues pueda ser comparado y tambien tenemos a resbattle() el cual me da el mensaje de el jercito ganador dependiendo de su suma y el resultado de esta me dara un mensaje el cual nos dice quien gana con su promedio de victoria y tambien tenemos la funcion volveraJugar() el cual me dara un menu donde decidas si quieres volver a jugar o no"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos de la clase Mapa creada:}][H]
+		public static int resultBattleSum(ArrayList<ArrayList<Soldado>> army, String kingdom, int n){
+			int sum = 0;
+			for(int i = 0; i < 10; i++){ //ITERACION
+				for(int j = 0; j < 10 ; j++){//ITERACION
+					if(army.get(i).get(j) != null){
+						sum += army.get(i).get(j).getLifeLevel();
+					}
+				}
+			}
+			System.out.println("Ejercito " + n + ": " + kingdom + ": " + sum);
+			return sum;
+		}
+		public static void resbattle(double sumtotal , int sum1, int sum2 , int n1, int n2 , String kingdom1, String kingdom2){
+			DecimalFormat df = new DecimalFormat("#.##");
+			String numero1 = df.format(((sum1 / sumtotal) * 100));
+			String numero2 = df.format(((sum2 / sumtotal) * 100));
+			if(sum1 > sum2){
+				System.out.println("El ganador es el ejercito " + n1 + " de: " + kingdom1 +". Ya que al generar los porcentajes de probabilidad de victoria basada en los niveles de vida de sus soldados y aplicando un experimento aleatorio salió vencedor. (Aleatorio generado : "+ numero1 + ")");
+			}else if (sum2 > sum1){
+				System.out.println("El ganador es el ejercito " + n2 + " de: " + kingdom2 +". Ya que al generar los porcentajes de probabilidad de victoria basada en los niveles de vida de sus soldados y aplicando un experimento aleatorio salió vencedor. (Aleatorio generado : "+ numero2 + ")");
+			}else{
+				System.out.println("El resultado de la batalla es Empate");
+			}
+		}
+		public static void volveraJugar(){
+			System.out.println("\n*********************************");
+			System.out.println(" DESEA VOLVER A JUGAR");
+			System.out.println(" 1 : JUGAR");
+			System.out.println(" 2 : NO JUGAR");
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		-------------------------------------------
+		--                 MENU                  --
+		-------------------------------------------
+		 SELECCIONE UN NUMERO PARA PODER EMPEZAR O TERMINAR
+		 1 : JUGAR
+		 2 : NO JUGAR
+		1
+		El Ejercito Inglaterra tiene 7 soldados : 
+		
+		Registrando al 1 soldado del Ejercito Inglaterra
+		
+		Nombre: Caballero0X1
+		Vida: 11
+		Fila: 2
+		Columna: I
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 11
+		Velocidad: 2
+		Actitud: Caballero
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito Inglaterra
+		
+		Nombre: Espadachin1X1
+		Vida: 10
+		Fila: 9
+		Columna: I
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 10
+		Velocidad: 5
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito Inglaterra
+		
+		Nombre: Caballero2X1
+		Vida: 11
+		Fila: 6
+		Columna: J
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 11
+		Velocidad: 3
+		Actitud: Caballero
+		Estado: true
+		---------------------------------
+		Registrando al 4 soldado del Ejercito Inglaterra
+		
+		Nombre: Arquero3X1
+		Vida: 5
+		Fila: 4
+		Columna: G
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 5
+		Velocidad: 4
+		Actitud: Arquero
+		Estado: true
+		---------------------------------
+		Registrando al 5 soldado del Ejercito Inglaterra
+		
+		Nombre: Arquero4X1
+		Vida: 3
+		Fila: 3
+		Columna: J
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 3
+		Velocidad: 3
+		Actitud: Arquero
+		Estado: true
+		---------------------------------
+		Registrando al 6 soldado del Ejercito Inglaterra
+		
+		Nombre: Lancero5X1
+		Vida: 6
+		Fila: 4
+		Columna: D
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 6
+		Velocidad: 4
+		Actitud: Lancero
+		Estado: true
+		---------------------------------
+		Registrando al 7 soldado del Ejercito Inglaterra
+		
+		Nombre: Espadachin6X1
+		Vida: 8
+		Fila: 7
+		Columna: I
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 8
+		Velocidad: 1
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		*********************************
+		El Ejercito Francia tiene 1 soldados : 
+		
+		Registrando al 1 soldado del Ejercito Francia
+		
+		Nombre: Lancero0X2
+		Vida: 6
+		Fila: 10
+		Columna: D
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 6
+		Velocidad: 4
+		Actitud: Lancero
+		Estado: true
+		---------------------------------
+		*********************************
+		
+		*********************************
+		El tipo de territorio es: bosque
+		
+		*********************************
+		El Ejercito Inglaterra del 1 ejercito sus soldados son :
+		
+		*********************************
+		El 1 soldado es: 
+		
+		Nombre: Caballero0X1
+		Vida: 11
+		Fila: 2
+		Columna: I
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 12
+		Velocidad: 2
+		Actitud: Caballero
+		Estado: true
+		
+		*********************************
+		El 2 soldado es: 
+		
+		Nombre: Arquero4X1
+		Vida: 3
+		Fila: 3
+		Columna: J
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 4
+		Velocidad: 3
+		Actitud: Arquero
+		Estado: true
+		
+		*********************************
+		El 3 soldado es: 
+		
+		Nombre: Lancero5X1
+		Vida: 6
+		Fila: 4
+		Columna: D
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 7
+		Velocidad: 4
+		Actitud: Lancero
+		Estado: true
+		
+		*********************************
+		El 4 soldado es: 
+		
+		Nombre: Arquero3X1
+		Vida: 5
+		Fila: 4
+		Columna: G
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 6
+		Velocidad: 4
+		Actitud: Arquero
+		Estado: true
+		
+		*********************************
+		El 5 soldado es: 
+		
+		Nombre: Caballero2X1
+		Vida: 11
+		Fila: 6
+		Columna: J
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 12
+		Velocidad: 3
+		Actitud: Caballero
+		Estado: true
+		
+		*********************************
+		El 6 soldado es: 
+		
+		Nombre: Espadachin6X1
+		Vida: 8
+		Fila: 7
+		Columna: I
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 9
+		Velocidad: 1
+		Actitud: Espadachin
+		Estado: true
+		
+		*********************************
+		El 7 soldado es: 
+		
+		Nombre: Espadachin1X1
+		Vida: 10
+		Fila: 9
+		Columna: I
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 11
+		Velocidad: 5
+		Actitud: Espadachin
+		Estado: true
+		El Ejercito Francia del 2 ejercito sus soldados son :
+		
+		*********************************
+		El 1 soldado es: 
+		
+		Nombre: Lancero0X2
+		Vida: 6
+		Fila: 10
+		Columna: D
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 6
+		Velocidad: 4
+		Actitud: Lancero
+		Estado: true
+		
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit11.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		El soldado con mayor vida del Ejercito Inglaterra es: 
+		
+		Nombre: Caballero0X1
+		Vida: 11
+		Fila: 2
+		Columna: I
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 12
+		Velocidad: 2
+		Actitud: Caballero
+		Estado: true
+		*********************************
+		El soldado con mayor vida del Ejercito Francia es: 
+		
+		Nombre: Lancero0X2
+		Vida: 6
+		Fila: 10
+		Columna: D
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 6
+		Velocidad: 4
+		Actitud: Lancero
+		Estado: true
+		*********************************
+		El promedio de puntos de vida del Ejercito Inglaterra es: 
+		7.714285714285714
+		*********************************
+		El promedio de puntos de vida del Ejercito Francia es: 
+		6.0
+		*********************************
+		
+		El Ejercito Inglaterra ordenando por metodo insercion: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito Inglaterra ..... ////// --->
+		
+		Puesto 1
+		Nombre: Caballero0X1
+		Vida: 11
+		Fila: 2
+		Columna: I
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 12
+		Velocidad: 2
+		Actitud: Caballero
+		Estado: true
+		------------------
+		
+		Puesto 2
+		Nombre: Caballero2X1
+		Vida: 11
+		Fila: 6
+		Columna: J
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 12
+		Velocidad: 3
+		Actitud: Caballero
+		Estado: true
+		------------------
+		
+		Puesto 3
+		Nombre: Espadachin1X1
+		Vida: 10
+		Fila: 9
+		Columna: I
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 11
+		Velocidad: 5
+		Actitud: Espadachin
+		Estado: true
+		------------------
+		
+		Puesto 4
+		Nombre: Espadachin6X1
+		Vida: 8
+		Fila: 7
+		Columna: I
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 9
+		Velocidad: 1
+		Actitud: Espadachin
+		Estado: true
+		------------------
+		
+		Puesto 5
+		Nombre: Lancero5X1
+		Vida: 6
+		Fila: 4
+		Columna: D
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 7
+		Velocidad: 4
+		Actitud: Lancero
+		Estado: true
+		------------------
+		
+		Puesto 6
+		Nombre: Arquero3X1
+		Vida: 5
+		Fila: 4
+		Columna: G
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 6
+		Velocidad: 4
+		Actitud: Arquero
+		Estado: true
+		------------------
+		
+		Puesto 7
+		Nombre: Arquero4X1
+		Vida: 3
+		Fila: 3
+		Columna: J
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 4
+		Velocidad: 3
+		Actitud: Arquero
+		Estado: true
+		------------------
+		*********************************
+		
+		El Ejercito Francia ordenando por metodo insercion: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito Francia ..... ////// --->
+		
+		Puesto 1
+		Nombre: Lancero0X2
+		Vida: 6
+		Fila: 10
+		Columna: D
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 6
+		Velocidad: 4
+		Actitud: Lancero
+		Estado: true
+		------------------
+		*********************************
+		
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit11.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		Ejercito 1 : Inglaterra
+		Cantidad total de soldados creados: 7
+		Espadachines: 2
+		Arqueros: 2
+		Caballeros: 2
+		Lanceros: 1
+		
+		Ejercito 2 : Francia
+		Cantidad total de soldados creados: 1
+		Espadachines: 0
+		Arqueros: 0
+		Caballeros: 0
+		Lanceros: 1
+		
+		Ejercito 1: Inglaterra: 61
+		Ejercito 2: Francia: 6
+		El ganador es el ejercito 1 de: Inglaterra. Ya que al generar los porcentajes de probabilidad de victoria basada en los niveles de vida de sus soldados y aplicando un experimento aleatorio salio vencedor. (Aleatorio generado : 91.04)
+		
+		*********************************
+		 DESEA VOLVER A JUGAR
+		 1 : JUGAR
+		 2 : NO JUGAR		
+		
+	\end{lstlisting}
 	\subsection{Estructura de laboratorio 20}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio20 es el siguiente:
 	\end{itemize}
 	\begin{lstlisting}[style=ascii-tree]
 	\Lab20
+	├── Arquero.class
+	├── Arquero.java
+	├── Caballero.class
+	├── Caballero.java
+	├── Espadachin.class
+	├── Espadachin.java
+	├── Juegoprincipal.class
+	├── Juegoprincipal.java
+	├── Lancero.class
+	├── Lancero.java
+	├── Latex
+	│   ├── img
+	│   │   ├── Commit10.png
+	│   │   ├── Commit11.png
+	│   │   ├── Commit6.png
+	│   │   ├── Commit7.png
+	│   │   ├── Commit8.png
+	│   │   ├── Commit9.png
+	│   │   ├── logo_abet.png
+	│   │   ├── logo_episunsa.png
+	│   │   └── logo_unsa.jpg
+	│   ├── Informe20.aux
+	│   ├── Informe20.fdb_latexmk
+	│   ├── Informe20.fls
+	│   ├── Informe20.log
+	│   ├── Informe20.out
+	│   ├── Informe20.pdf
+	│   ├── Informe20.synctex.gz
+	│   └── Informe20.tex
+	├── Mapa.class
+	├── Mapa.java
+	├── Soldado.class
+	└── Soldado.java
 	\end{lstlisting}    
 	\section{\textcolor{red}{Rúbricas}}
 	
@@ -2553,7 +3055,7 @@
 
 \section{Referencias}
 \begin{itemize}			
-	\item \url{https://drive.google.com/drive/u/1/folders/19TzLFO-T77qG7bOWmg5OH7FXAMD2CrJL}
+	\item \url{https://drive.google.com/drive/folders/1_yO46UOaxs7uKVK7nrrkcNwybnk_ZJXJ}
 \end{itemize}	
 	
 %\clearpage
