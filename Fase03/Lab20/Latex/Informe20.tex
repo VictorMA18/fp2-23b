@@ -369,7 +369,7 @@
 			}
 		}
 	\end{lstlisting}
-	\subsection{Ejercicio Mapa}
+	\subsection{Ejercicio Mapa y Juegoprincipal}
 	\begin{itemize}	
 		\item En el quinto commit creamos la clase Mapa y la clase Juegoprincipal la cual va tener sus atributos private String territory;
 		private ArrayList-ArrayList-Soldado-- board;
@@ -473,6 +473,274 @@
 			}
 		}
 	\end{lstlisting}
+	\subsection{Ejercicio Mapa}
+	\begin{itemize}	
+		\item En el sexto commit creamos constructores null en todos las subclases de Soldado  para poder almacenar un objeto nulo para cualquier clase heredada de Soldado despues poder implementarla en el tablero y tambien creamos las funciones en Mapa las cuales son getRandomSoldado() y obtenerinicial() y tambien reformulamos el metodo fillarray el cual ahora almacena los diferentes subclases de Soldado y despues esto lo usamos en la funcion iniciarJuego() las cuales mostraremos con screens,
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Creamos constructores null en todos las subclases de Soldado  para poder almacenar un objeto nulo para cualquier clase heredada de Soldado despues poder implementarla en el tablero y tambien creamos las funciones en Mapa las cuales son getRandomSoldado() y obtenerinicial() y tambien reformulamos el metodo fillarray el cual ahora almacena los diferentes subclases de Soldado y despues esto lo usamos en la funcion iniciarJuego() las cuales mostraremos con screens"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos de la clase Mapa creada:}][H]
+		if (soldado instanceof Espadachin) {
+			name = "Espadachin" + i + "X" + num; 
+			lifelevel = rdm.nextInt(3) + 8; 
+			attacklevel = 10;
+			defenselevel = 8;
+			soldado.setName(name);                  
+			soldado.setAttackLevel(attacklevel);
+			soldado.setDefenseLevel(defenselevel);                    
+			soldado.setLifeLevel(lifelevel);
+			soldado.setRow(row);
+			soldado.setColumn(column);
+			if(army.get(row - 1).get((int)column.charAt(0) - 65) == null){
+				System.out.println("Registrando al " + (i + 1) + " soldado del Ejercito " + armyespe + "");
+				army.get(row - 1).set((int)column.charAt(0) - 65, new Espadachin(name, attacklevel, defenselevel, lifelevel, speed, "Espadachin", true, row, column, attacklevel));
+				army.get(row - 1).get((int)column.charAt(0) - 65).setSpeed(speed);
+				System.out.println(army.get(row - 1).get((int)column.charAt(0) - 65).toString());
+				System.out.println("---------------------------------");
+			}else{
+				i -= 1; //NOS AYUDARIA CON LOS SOLDADOS QUE SE REPITEN EN EL MISMO CASILLERO CON TAL QUE NO DEBERIA CONTAR 
+			}
+		} else if (soldado instanceof Arquero) {
+			name = "Arquero" + i + "X" + num; 
+			attacklevel = 7;
+			defenselevel = 3;
+			lifelevel = rdm.nextInt(3) + 3; 
+			soldado.setName(name);                  
+			soldado.setAttackLevel(attacklevel);
+			soldado.setDefenseLevel(defenselevel);                    
+			soldado.setLifeLevel(lifelevel);
+			soldado.setRow(row);
+			soldado.setColumn(column);
+			if(army.get(row - 1).get((int)column.charAt(0) - 65) == null){
+				System.out.println("Registrando al " + (i + 1) + " soldado del Ejercito " + armyespe + "");
+				army.get(row - 1).set((int)column.charAt(0) - 65, new Arquero(name, attacklevel, defenselevel, lifelevel, speed, "Arquero", true, row, column, attacklevel));
+				army.get(row - 1).get((int)column.charAt(0) - 65).setSpeed(speed);
+				System.out.println(army.get(row - 1).get((int)column.charAt(0) - 65).toString());
+				System.out.println("---------------------------------");
+			}else{
+				i -= 1; //NOS AYUDARIA CON LOS SOLDADOS QUE SE REPITEN EN EL MISMO CASILLERO CON TAL QUE NO DEBERIA CONTAR 
+			}
+		} else if (soldado instanceof Caballero) {
+			name = "Caballero" + i + "X" + num; 
+			attacklevel = 13;
+			defenselevel = 7;
+			lifelevel = rdm.nextInt(3) + 10; 
+			soldado.setName(name);                  
+			soldado.setAttackLevel(attacklevel);
+			soldado.setDefenseLevel(defenselevel);                    
+			soldado.setLifeLevel(lifelevel);
+			soldado.setRow(row);
+			soldado.setColumn(column);
+			if(army.get(row - 1).get((int)column.charAt(0) - 65) == null){
+				System.out.println("Registrando al " + (i + 1) + " soldado del Ejercito " + armyespe + "");
+				army.get(row - 1).set((int)column.charAt(0) - 65, new Caballero(name, attacklevel, defenselevel, lifelevel, speed, "Caballero", true, row, column, false));
+				army.get(row - 1).get((int)column.charAt(0) - 65).setSpeed(speed);
+				System.out.println(army.get(row - 1).get((int)column.charAt(0) - 65).toString());
+				System.out.println("---------------------------------");
+			}else{
+				i -= 1; //NOS AYUDARIA CON LOS SOLDADOS QUE SE REPITEN EN EL MISMO CASILLERO CON TAL QUE NO DEBERIA CONTAR 
+			}
+		} else if (soldado instanceof Lancero) {
+			name = "Lancero" + i + "X" + num; 
+			attacklevel = 5;
+			defenselevel = 10;
+			lifelevel = rdm.nextInt(3) + 5;
+			soldado.setName(name);                  
+			soldado.setAttackLevel(attacklevel);
+			soldado.setDefenseLevel(defenselevel);                    
+			soldado.setLifeLevel(lifelevel);
+			soldado.setRow(row);
+			soldado.setColumn(column);
+			if(army.get(row - 1).get((int)column.charAt(0) - 65) == null){
+				System.out.println("Registrando al " + (i + 1) + " soldado del Ejercito " + armyespe + "");
+				army.get(row - 1).set((int)column.charAt(0) - 65, new Lancero(name, attacklevel, defenselevel, lifelevel, speed, "Lancero", true, row, column, attacklevel));
+				army.get(row - 1).get((int)column.charAt(0) - 65).setSpeed(speed);
+				System.out.println(army.get(row - 1).get((int)column.charAt(0) - 65).toString());
+				System.out.println("---------------------------------");
+			}else{
+				i -= 1; //NOS AYUDARIA CON LOS SOLDADOS QUE SE REPITEN EN EL MISMO CASILLERO CON TAL QUE NO DEBERIA CONTAR 
+			}
+		}			
+			public static void viewBoard(ArrayList<ArrayList<Soldado>> army1, ArrayList<ArrayList<Soldado>> army2){ //EN ESTE METODO DEMOSTRAREMOS LA TABLA REUTILIZAREMOS CODIGOS DE ANTERIORES LABORATORIOS PARA PODER HACER LA BASE DE ESTE TABLERO
+			System.out.println("\nMostrando tabla de posicion ... --");
+			System.out.println("Leyenda: Ejercito1 --> X | Ejercito2 --> Y"); //RECONOCIMIENTO PARA LOS EJERCITOS Y POSICION DE SUS SOLDADOS
+			System.out.println("\n \t   A\t   B\t   C\t   D\t   E\t   F\t   G\t   H\t   I\t   J"); // RECONOCIMIENTO PARA CADA UBICACION DE CADA SOLDADO EN EL TABLERO POR PARTE DE LAS COLUMNAS
+			System.out.println("\t_________________________________________________________________________________");
+			for(int i = 0; i < 10; i++ ){
+				System.out.print((i + 1) + "\t"); // RECONOCIMIENTO PARA CADA UBICACION DE CADA SOLDADO EN EL TABLERO POR PARTE DE LAS FILAS
+					for(int j = 0; j < 10; j++){
+							if(army1.get(i).get(j) != null && army2.get(i).get(j) != null){ //CREAMOS UN IF PARA QUE ESTE NOS AYUDE A SABER QUIEN DE ESTOS SOLDADOS SE OCUPARA DEL CASILLERO EL CUAL DONDE ESTAN PELEANDO
+								if(army1.get(i).get(j).getLifeActual() > army2.get(i).get(j).getLifeActual()){
+									army1.get(i).get(j).setLifeActual(army1.get(i).get(j).getLifeActual() - army2.get(i).get(j).getLifeActual()); //Cambiamos 
+									army2.get(i).set(j, null); 
+									System.out.print("|  1" + obtenerInicial(army1.get(i).get(j)) + "1  ");
+								}else if(army2.get(i).get(j).getLifeActual() > army1.get(i).get(j).getLifeActual()){
+									army2.get(i).get(j).setLifeActual(army2.get(i).get(j).getLifeActual() - army1.get(i).get(j).getLifeActual());
+									army1.get(i).set(j, null);;
+									System.out.print("|  2" + obtenerInicial(army2.get(i).get(j)) + "2  ");
+								}else{
+									army2.get(i).set(j, null);
+									army1.get(i).set(j, null);
+									System.out.print("|   " + "" + "   ");
+								}
+							}else if(army1.get(i).get(j) != null){
+								System.out.print("|  1" + obtenerInicial(army1.get(i).get(j)) + "1  ");
+							}else if(army2.get(i).get(j) != null){
+								System.out.print("|  2" + obtenerInicial(army2.get(i).get(j)) + "2  ");
+							}else{
+								System.out.print("|   " + " " + "   ");
+							}
+					}
+					System.out.println("|");
+					System.out.println("\t|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|");
+			}
+			System.out.println("\n*********************************");
+		}
+		public static Soldado getRandomSoldado() {
+			Random rdm = new Random();
+			int tipoSoldado = rdm.nextInt(4);
+			switch (tipoSoldado) {
+				case 0:
+					return new Espadachin();
+				case 1:
+					return new Arquero();
+				case 2:
+					return new Lancero();
+				case 3:
+					return new Caballero();
+				default:
+					return new Espadachin();
+			}
+		}
+		public static String obtenerInicial(Soldado soldado) {
+			if (soldado instanceof Espadachin) {
+				return "E";
+			} else if (soldado instanceof Arquero) {
+				return "A";
+			} else if (soldado instanceof Caballero) {
+				return "C";
+			} else if (soldado instanceof Lancero) {
+				return "L";
+			} else {
+				return "S";
+			}
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		-------------------------------------------
+		--                 MENU                  --
+		-------------------------------------------
+		 SELECCIONE UN NUMERO PARA PODER EMPEZAR O TERMINAR
+		 1 : JUGAR
+		 2 : NO JUGAR
+		1
+		El Ejercito Castilla tiene 6 soldados : 
+		
+		Registrando al 1 soldado del Ejercito Castilla
+		
+		Nombre: Arquero0X1
+		Vida: 5
+		Fila: 5
+		Columna: A
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 5
+		Velocidad: 1
+		Actitud: Arquero
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito Castilla
+		
+		Nombre: Espadachin1X1
+		Vida: 9
+		Fila: 2
+		Columna: C
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 9
+		Velocidad: 2
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito Castilla
+		
+		Nombre: Caballero2X1
+		Vida: 12
+		Fila: 8
+		Columna: A
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 12
+		Velocidad: 4
+		Actitud: Caballero
+		Estado: true
+		---------------------------------
+		Registrando al 4 soldado del Ejercito Castilla
+		
+		Nombre: Espadachin3X1
+		Vida: 9
+		Fila: 3
+		Columna: F
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 9
+		Velocidad: 2
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		Registrando al 5 soldado del Ejercito Castilla
+		
+		Nombre: Caballero4X1
+		Vida: 11
+		Fila: 6
+		Columna: F
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 11
+		Velocidad: 5
+		Actitud: Caballero
+		Estado: true
+		---------------------------------
+		Registrando al 6 soldado del Ejercito Castilla
+		
+		Nombre: Lancero5X1
+		Vida: 7
+		Fila: 6
+		Columna: J
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 7
+		Velocidad: 3
+		Actitud: Lancero
+		Estado: true
+		---------------------------------
+		*********************************
+		El Ejercito Moros tiene 1 soldados : 
+		
+		Registrando al 1 soldado del Ejercito Moros
+		
+		Nombre: Caballero0X2
+		Vida: 10
+		Fila: 7
+		Columna: C
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 10
+		Velocidad: 3
+		Actitud: Caballero
+		Estado: true
+		---------------------------------
+		*********************************		
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit6.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
 	\subsection{Estructura de laboratorio 20}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio20 es el siguiente:
