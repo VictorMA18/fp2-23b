@@ -741,6 +741,377 @@
 		%\label{img:mot2}
 		%\caption{Product backlog.}
 	\end{figure}
+	\subsection{Ejercicio Mapa}
+	\begin{itemize}	
+		\item En el septimo commit creamos las funcion viewSoldiers() y bonificacion() los cuales bonficacion me permite aumentar 1 punto de vida a cada soldado de cada ejercito con 1 para cada tipo de territorio y tambien en viewSoldiers podemos ver la informacion de los soldados de cada ejercito.	
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Agregando a mapa las funciones como viewSoldiers() y bonificacion() los cuales nos van poder mostrar el territorio y la informacion de cada soldado la cual fue cambiada por el tipo de territorio y reino que es este ejercito"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos de la clase Mapa creada:}][H]
+		public void bonificacion(ArrayList<ArrayList<Soldado>> army, String territory , String kingdom) {
+			for(int i = 0; i < 10; i++){ //ITERACION
+				for(int j = 0; j < 10 ; j++){//ITERACION
+					if(army.get(i).get(j) != null){
+						if(kingdom.equals("Inglaterra") && territory.equals("bosque")){
+							army.get(i).get(j).setLifeLevel(army.get(i).get(j).getLifeLevel() + 1);
+						}else if(kingdom.equals("Francia") && territory.equals("campo abierto")){
+							army.get(i).get(j).setLifeLevel(army.get(i).get(j).getLifeLevel() + 1);
+						}else if((kingdom.equals("Castilla") || kingdom.equals("Aragon")) && territory.equals("montana")){
+							army.get(i).get(j).setLifeLevel(army.get(i).get(j).getLifeLevel() + 1);
+						}else if(kingdom.equals("Moros") && territory.equals("desierto")){
+							army.get(i).get(j).setLifeLevel(army.get(i).get(j).getLifeLevel() + 1);
+						}else if(kingdom.equals("Sacro") && (territory.equals("desierto") || territory.equals("playa") || territory.equals("campo abierto"))){
+							army.get(i).get(j).setLifeLevel(army.get(i).get(j).getLifeLevel() + 1);
+						}
+					}
+				}
+			}
+		} 
+		public static void viewSoldiers(String armyespe, int num, ArrayList<ArrayList<Soldado>> army){
+			int numbersoldiers = 0;
+			System.out.println("El Ejercito " + armyespe + " del " + num + " ejercito sus soldados son :");
+			for(int i = 0; i < 10; i++){ //ITERACION
+				for(int j = 0; j < 10 ; j++){//ITERACION
+					if(army.get(i).get(j) != null){
+						System.out.println("\n*********************************");
+						System.out.println("El " + (numbersoldiers + 1) + " soldado es: ");
+						System.out.println(army.get(i).get(j).toString());
+						numbersoldiers++;
+					}
+				}
+			}
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		-------------------------------------------
+		--                 MENU                  --
+		-------------------------------------------
+		 SELECCIONE UN NUMERO PARA PODER EMPEZAR O TERMINAR
+		 1 : JUGAR
+		 2 : NO JUGAR
+		1
+		El Ejercito Francia tiene 6 soldados : 
+		
+		Registrando al 1 soldado del Ejercito Francia
+		
+		Nombre: Espadachin0X1
+		Vida: 9
+		Fila: 6
+		Columna: H
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 9
+		Velocidad: 1
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito Francia
+		
+		Nombre: Espadachin1X1
+		Vida: 8
+		Fila: 5
+		Columna: F
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 8
+		Velocidad: 2
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito Francia
+		
+		Nombre: Espadachin2X1
+		Vida: 8
+		Fila: 2
+		Columna: G
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 8
+		Velocidad: 1
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		Registrando al 4 soldado del Ejercito Francia
+		
+		Nombre: Lancero3X1
+		Vida: 5
+		Fila: 5
+		Columna: I
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 5
+		Velocidad: 3
+		Actitud: Lancero
+		Estado: true
+		---------------------------------
+		Registrando al 5 soldado del Ejercito Francia
+		
+		Nombre: Arquero4X1
+		Vida: 5
+		Fila: 8
+		Columna: A
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 5
+		Velocidad: 1
+		Actitud: Arquero
+		Estado: true
+		---------------------------------
+		Registrando al 6 soldado del Ejercito Francia
+		
+		Nombre: Arquero5X1
+		Vida: 4
+		Fila: 2
+		Columna: C
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 4
+		Velocidad: 5
+		Actitud: Arquero
+		Estado: true
+		---------------------------------
+		*********************************
+		El Ejercito Castilla tiene 5 soldados : 
+		
+		Registrando al 1 soldado del Ejercito Castilla
+		
+		Nombre: Lancero0X2
+		Vida: 5
+		Fila: 6
+		Columna: E
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 5
+		Velocidad: 2
+		Actitud: Lancero
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito Castilla
+		
+		Nombre: Caballero1X2
+		Vida: 10
+		Fila: 4
+		Columna: D
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 10
+		Velocidad: 3
+		Actitud: Caballero
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito Castilla
+		
+		Nombre: Arquero2X2
+		Vida: 5
+		Fila: 7
+		Columna: B
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 5
+		Velocidad: 1
+		Actitud: Arquero
+		Estado: true
+		---------------------------------
+		Registrando al 4 soldado del Ejercito Castilla
+		
+		Nombre: Espadachin3X2
+		Vida: 9
+		Fila: 8
+		Columna: H
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 9
+		Velocidad: 1
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		Registrando al 5 soldado del Ejercito Castilla
+		
+		Nombre: Lancero4X2
+		Vida: 7
+		Fila: 4
+		Columna: C
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 7
+		Velocidad: 1
+		Actitud: Lancero
+		Estado: true
+		---------------------------------
+		*********************************
+		
+		*********************************
+		El tipo de territorio es: campo abierto
+		
+		*********************************
+		El Ejercito Francia del 1 ejercito sus soldados son :
+		
+		*********************************
+		El 1 soldado es: 
+		
+		Nombre: Arquero5X1
+		Vida: 4
+		Fila: 2
+		Columna: C
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 5
+		Velocidad: 5
+		Actitud: Arquero
+		Estado: true
+		
+		*********************************
+		El 2 soldado es: 
+		
+		Nombre: Espadachin2X1
+		Vida: 8
+		Fila: 2
+		Columna: G
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 9
+		Velocidad: 1
+		Actitud: Espadachin
+		Estado: true
+		
+		*********************************
+		El 3 soldado es: 
+		
+		Nombre: Espadachin1X1
+		Vida: 8
+		Fila: 5
+		Columna: F
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 9
+		Velocidad: 2
+		Actitud: Espadachin
+		Estado: true
+		
+		*********************************
+		El 4 soldado es: 
+		
+		Nombre: Lancero3X1
+		Vida: 5
+		Fila: 5
+		Columna: I
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 6
+		Velocidad: 3
+		Actitud: Lancero
+		Estado: true
+		
+		*********************************
+		El 5 soldado es: 
+		
+		Nombre: Espadachin0X1
+		Vida: 9
+		Fila: 6
+		Columna: H
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 10
+		Velocidad: 1
+		Actitud: Espadachin
+		Estado: true
+		
+		*********************************
+		El 6 soldado es: 
+		
+		Nombre: Arquero4X1
+		Vida: 5
+		Fila: 8
+		Columna: A
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 6
+		Velocidad: 1
+		Actitud: Arquero
+		Estado: true
+		El Ejercito Castilla del 2 ejercito sus soldados son :
+		
+		*********************************
+		El 1 soldado es: 
+		
+		Nombre: Lancero4X2
+		Vida: 7
+		Fila: 4
+		Columna: C
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 7
+		Velocidad: 1
+		Actitud: Lancero
+		Estado: true
+		
+		*********************************
+		El 2 soldado es: 
+		
+		Nombre: Caballero1X2
+		Vida: 10
+		Fila: 4
+		Columna: D
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 10
+		Velocidad: 3
+		Actitud: Caballero
+		Estado: true
+		
+		*********************************
+		El 3 soldado es: 
+		
+		Nombre: Lancero0X2
+		Vida: 5
+		Fila: 6
+		Columna: E
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 5
+		Velocidad: 2
+		Actitud: Lancero
+		Estado: true
+		
+		*********************************
+		El 4 soldado es: 
+		
+		Nombre: Arquero2X2
+		Vida: 5
+		Fila: 7
+		Columna: B
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 5
+		Velocidad: 1
+		Actitud: Arquero
+		Estado: true
+		
+		*********************************
+		El 5 soldado es: 
+		
+		Nombre: Espadachin3X2
+		Vida: 9
+		Fila: 8
+		Columna: H
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 9
+		Velocidad: 1
+		Actitud: Espadachin
+		Estado: true
+		
+		
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit7.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
 	\subsection{Estructura de laboratorio 20}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio20 es el siguiente:
