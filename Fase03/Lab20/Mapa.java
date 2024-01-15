@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class Mapa {
@@ -14,8 +15,8 @@ public class Mapa {
         this.board = fillboard();
     }
     public void iniciarJuego() {
+        menuBatalla();
         do {
-            menuBatalla();
             int resbattle = sc.nextInt();
             if(resbattle == 1){
                 String kingdom1 = kingdoms[rdm.nextInt(6)];
@@ -40,6 +41,19 @@ public class Mapa {
                 viewBoard(army1, army2);
                 resultBattleInfo(army1, kingdom1 , 1);
                 resultBattleInfo(army2, kingdom2 , 2);
+                int sum1 = resultBattleSum(army1, kingdom1, 1);
+                int sum2 = resultBattleSum(army2, kingdom2, 2);
+                double sumtotal = (sum1 * 1.0) + (sum2 * 1.0);
+                resbattle(sumtotal, sum1, sum2, 1, 2, kingdom1, kingdom2);
+                volveraJugar();
+                int n = sc.nextInt();
+                if(n == 1){
+                    iniciarJuego();
+                }else if (n == 2){
+                    break;
+                }else{
+                    break;
+                }
             }else{
                 if(resbattle == 2){
                     break;
@@ -177,7 +191,7 @@ public class Mapa {
     }
     public static void viewBoard(ArrayList<ArrayList<Soldado>> army1, ArrayList<ArrayList<Soldado>> army2){ //EN ESTE METODO DEMOSTRAREMOS LA TABLA REUTILIZAREMOS CODIGOS DE ANTERIORES LABORATORIOS PARA PODER HACER LA BASE DE ESTE TABLERO
         System.out.println("\nMostrando tabla de posicion ... --");
-        System.out.println("Leyenda: Ejercito1 --> X | Ejercito2 --> Y"); //RECONOCIMIENTO PARA LOS EJERCITOS Y POSICION DE SUS SOLDADOS
+        System.out.println("Leyenda: Ejercito1 --> 1#1 | Ejercito2 --> 2#2"); //RECONOCIMIENTO PARA LOS EJERCITOS Y POSICION DE SUS SOLDADOS
         System.out.println("\n \t   A\t   B\t   C\t   D\t   E\t   F\t   G\t   H\t   I\t   J"); // RECONOCIMIENTO PARA CADA UBICACION DE CADA SOLDADO EN EL TABLERO POR PARTE DE LAS COLUMNAS
         System.out.println("\t_________________________________________________________________________________");
         for(int i = 0; i < 10; i++ ){
@@ -384,5 +398,35 @@ public class Mapa {
         System.out.println("Arqueros: " + numberarqueros);
         System.out.println("Caballeros: " + numbercaballeros);
         System.out.println("Lanceros: " + numberlanceros + "\n");
+    }
+    public static int resultBattleSum(ArrayList<ArrayList<Soldado>> army, String kingdom, int n){
+        int sum = 0;
+        for(int i = 0; i < 10; i++){ //ITERACION
+            for(int j = 0; j < 10 ; j++){//ITERACION
+                if(army.get(i).get(j) != null){
+                    sum += army.get(i).get(j).getLifeLevel();
+                }
+            }
+        }
+        System.out.println("Ejercito " + n + ": " + kingdom + ": " + sum);
+        return sum;
+    }
+    public static void resbattle(double sumtotal , int sum1, int sum2 , int n1, int n2 , String kingdom1, String kingdom2){
+        DecimalFormat df = new DecimalFormat("#.##");
+        String numero1 = df.format(((sum1 / sumtotal) * 100));
+        String numero2 = df.format(((sum2 / sumtotal) * 100));
+        if(sum1 > sum2){
+            System.out.println("El ganador es el ejercito " + n1 + " de: " + kingdom1 +". Ya que al generar los porcentajes de probabilidad de victoria basada en los niveles de vida de sus soldados y aplicando un experimento aleatorio salió vencedor. (Aleatorio generado : "+ numero1 + ")");
+        }else if (sum2 > sum1){
+            System.out.println("El ganador es el ejercito " + n2 + " de: " + kingdom2 +". Ya que al generar los porcentajes de probabilidad de victoria basada en los niveles de vida de sus soldados y aplicando un experimento aleatorio salió vencedor. (Aleatorio generado : "+ numero2 + ")");
+        }else{
+            System.out.println("El resultado de la batalla es Empate");
+        }
+    }
+    public static void volveraJugar(){
+        System.out.println("\n*********************************");
+        System.out.println(" DESEA VOLVER A JUGAR");
+        System.out.println(" 1 : JUGAR");
+        System.out.println(" 2 : NO JUGAR");
     }
 }
