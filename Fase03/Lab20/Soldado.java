@@ -53,6 +53,7 @@ public class Soldado { //CREAMOS LA CLASE SOLDODADO PARA PODER USAR UN ARREGLO B
         this.name = name;
         this.attacklevel = attacklevel;
         this.defenselevel = defenselevel;
+        this.lifeactual = lifelevel;
         this.lifelevel = lifelevel;
         this.speed = speed;
         this.lives = lives;
@@ -85,6 +86,14 @@ public class Soldado { //CREAMOS LA CLASE SOLDODADO PARA PODER USAR UN ARREGLO B
                 this.speed = 0;
                 this.attitude = "DEFENSIVA";
             }
+        }
+    }
+	public void atacar(){
+        this.speed += 1;
+        this.attitude = "Atacar";
+        this.lifeactual += 1;
+        if(this.lifeactual == 0){
+            morir();
         }
     }
     public void attack(Soldado soldier){
