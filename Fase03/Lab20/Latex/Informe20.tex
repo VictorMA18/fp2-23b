@@ -1360,6 +1360,318 @@
 		Estado: true
 		*********************************
 	\end{lstlisting}
+	\subsection{Ejercicio Mapa}
+	\begin{itemize}	
+		\item En el noveno commit creamos las funcion averageLife() y rankingInsercionLife() (reutilizamos codigo de otros labs anteriores) las cuales la primera funcion me devolvera el promedio de vida del primer ejercito y el segundo metodo me dara el ranking respecto a su nivel de Vida de cada soldado del mayor a menor por el metodo de ordenamiento que es insercion.
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Agregando las funciones averageLife() y rankingInsercionLife() las cuales la primera funcion me devolvera el promedio de vida del primer ejercito y el segundo metodo me dara el ranking respecto a su nivel de Vida de cada soldado del mayor a menor por el metodo de ordenamiento que es insercion"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos de la clase Mapa creada:}][H]
+		public static double averageLife(ArrayList<ArrayList<Soldado>> army , String kingdom){
+			int sum = 0;
+			int count = 0;
+			System.out.println("El promedio de puntos de vida del Ejercito " + kingdom + " es: ");
+			for(int i = 0; i < 10; i++){
+				for(int j = 0; j < 10; j++){ //ITERACION LA CUAL NOS AYUDA A PASAR POR TODOS LOS SOLDADOS DE CADA EJERCITO
+					if(army.get(i).get(j) != null){ 
+						sum += army.get(i).get(j).getLifeActual();
+						count++;
+					}
+				}
+			}
+			if(sum != 0){
+				double avg = sum / (count * 1.0);
+				System.out.println(avg); // DAMOS A CONOCER EL PROMEDIO DE VIDA DE CADA EJERCITO 
+				System.out.println("*********************************");
+				return avg;
+			}else{
+				double avg = 0;
+				System.out.println(avg); // DAMOS A CONOCER EL PROMEDIO DE VIDA DE CADA EJERCITO 
+				System.out.println("*********************************");
+				return avg;
+			}
+		}
+		public static void rankingInsercionLife(ArrayList<ArrayList<Soldado>> army , String kingdom){
+			System.out.println("\nEl Ejercito " + kingdom + " ordenando por metodo insercion: ");
+			int count = 0;
+			for(int i = 0; i < 10; i++){
+				for(int j = 0; j < 10; j++){ //ITERACION LA CUAL NOS AYUDA A PASAR POR TODOS LOS SOLDADOS DE CADA EJERCITO
+					if(army.get(i).get(j) != null){ 
+					   count++;
+					}
+				}
+			}
+			System.out.println("------------------------------------------");
+			System.out.println("Mostrando Ranking del Ejercito " + kingdom + " ..... ////// --->");
+			Soldado[] soldados = new Soldado[count];
+			int x = 0;
+			for(int i = 0; i < 10; i++){
+				for(int j = 0; j < 10; j++){ //ITERACION LA CUAL NOS AYUDA A PASAR POR TODOS LOS SOLDADOS AL ARRAY SOLDADO PARA PODER USAR EL USO DEL METODO DE ORDENACION INSERCION
+					if(army.get(i).get(j) != null){ 
+						if(count - count + x == count){
+							break;
+						}else{
+							soldados[count - count + x] = army.get(i).get(j); //LA MISMA LOGICA QUE EL ANTERIOR METODO SOLO QUE EN ESTE LO USARIAMOS DE MANERA DIFERENTE YA QUE ESTE SERIA DE FORMA DE INSERCION
+						}
+						x++;   
+					}
+				}
+			}
+			int n = soldados.length;
+			for (int i = 1; i < n; i++) {
+				Soldado actual = soldados[i];
+				int j = i - 1;
+				while (j >= 0 && soldados[j].getLifeActual() < actual.getLifeActual()) { //ORDENAMOS EL EJERCITO RESPECTIVAMENTE MEDIANTE EL METODO QUE NOS OFRECE INSERCION EL CUAL ES ESTE CODIGO
+					soldados[j + 1] = soldados[j];
+					j--;
+				}
+				soldados[j + 1] = actual;
+			}
+			for(int i = 0; i < soldados.length; i++){
+				System.out.print("\n" + "Puesto " + (i + 1));
+				System.out.println(soldados[i].toString()); //PUBLICAMOS RESULTADOS
+				System.out.println("------------------");
+			}
+			System.out.println("*********************************");
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		-------------------------------------------
+		--                 MENU                  --
+		-------------------------------------------
+		 SELECCIONE UN NUMERO PARA PODER EMPEZAR O TERMINAR
+		 1 : JUGAR
+		 2 : NO JUGAR
+		1
+		El Ejercito Moros tiene 1 soldados : 
+		
+		Registrando al 1 soldado del Ejercito Moros
+		
+		Nombre: Arquero0X1
+		Vida: 4
+		Fila: 4
+		Columna: J
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 4
+		Velocidad: 4
+		Actitud: Arquero
+		Estado: true
+		---------------------------------
+		*********************************
+		El Ejercito Inglaterra tiene 3 soldados : 
+		
+		Registrando al 1 soldado del Ejercito Inglaterra
+		
+		Nombre: Arquero0X2
+		Vida: 4
+		Fila: 6
+		Columna: E
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 4
+		Velocidad: 4
+		Actitud: Arquero
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito Inglaterra
+		
+		Nombre: Espadachin1X2
+		Vida: 10
+		Fila: 2
+		Columna: G
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 10
+		Velocidad: 4
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito Inglaterra
+		
+		Nombre: Espadachin2X2
+		Vida: 10
+		Fila: 10
+		Columna: A
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 10
+		Velocidad: 4
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		*********************************
+		
+		*********************************
+		El tipo de territorio es: playa
+		
+		*********************************
+		El Ejercito Moros del 1 ejercito sus soldados son :
+		
+		*********************************
+		El 1 soldado es: 
+		
+		Nombre: Arquero0X1
+		Vida: 4
+		Fila: 4
+		Columna: J
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 4
+		Velocidad: 4
+		Actitud: Arquero
+		Estado: true
+		El Ejercito Inglaterra del 2 ejercito sus soldados son :
+		
+		*********************************
+		El 1 soldado es: 
+		
+		Nombre: Espadachin1X2
+		Vida: 10
+		Fila: 2
+		Columna: G
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 10
+		Velocidad: 4
+		Actitud: Espadachin
+		Estado: true
+		
+		*********************************
+		El 2 soldado es: 
+		
+		Nombre: Arquero0X2
+		Vida: 4
+		Fila: 6
+		Columna: E
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 4
+		Velocidad: 4
+		Actitud: Arquero
+		Estado: true
+		
+		*********************************
+		El 3 soldado es: 
+		
+		Nombre: Espadachin2X2
+		Vida: 10
+		Fila: 10
+		Columna: A
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 10
+		Velocidad: 4
+		Actitud: Espadachin
+		Estado: true
+		
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit9.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		El soldado con mayor vida del Ejercito Moros es: 
+		
+		Nombre: Arquero0X1
+		Vida: 4
+		Fila: 4
+		Columna: J
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 4
+		Velocidad: 4
+		Actitud: Arquero
+		Estado: true
+		*********************************
+		El soldado con mayor vida del Ejercito Inglaterra es: 
+		
+		Nombre: Espadachin1X2
+		Vida: 10
+		Fila: 2
+		Columna: G
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 10
+		Velocidad: 4
+		Actitud: Espadachin
+		Estado: true
+		*********************************
+		El promedio de puntos de vida del Ejercito Moros es: 
+		4.0
+		*********************************
+		El promedio de puntos de vida del Ejercito Inglaterra es: 
+		8.0
+		*********************************
+		
+		El Ejercito Moros ordenando por metodo insercion: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito Moros ..... ////// --->
+		
+		Puesto 1
+		Nombre: Arquero0X1
+		Vida: 4
+		Fila: 4
+		Columna: J
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 4
+		Velocidad: 4
+		Actitud: Arquero
+		Estado: true
+		------------------
+		*********************************
+		
+		El Ejercito Inglaterra ordenando por metodo insercion: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito Inglaterra ..... ////// --->
+		
+		Puesto 1
+		Nombre: Espadachin1X2
+		Vida: 10
+		Fila: 2
+		Columna: G
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 10
+		Velocidad: 4
+		Actitud: Espadachin
+		Estado: true
+		------------------
+		
+		Puesto 2
+		Nombre: Espadachin2X2
+		Vida: 10
+		Fila: 10
+		Columna: A
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 10
+		Velocidad: 4
+		Actitud: Espadachin
+		Estado: true
+		------------------
+		
+		Puesto 3
+		Nombre: Arquero0X2
+		Vida: 4
+		Fila: 6
+		Columna: E
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 4
+		Velocidad: 4
+		Actitud: Arquero
+		Estado: true
+		------------------
+		
+	\end{lstlisting}
 	\subsection{Estructura de laboratorio 20}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio20 es el siguiente:
