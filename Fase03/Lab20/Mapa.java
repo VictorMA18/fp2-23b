@@ -22,6 +22,14 @@ public class Mapa {
                 String kingdom2 = kingdoms[rdm.nextInt(6)];
                 this.army1 = fillarray(kingdom1, 1);
                 this.army2 = fillarray(kingdom2, 2);
+                territory = typesterritory[rdm.nextInt(5)];
+                System.out.println("\n*********************************");
+                System.out.println("El tipo de territorio es: " + territory);
+                System.out.println("\n*********************************");
+                bonificacion(army1, territory, kingdom1);
+                bonificacion(army2, territory, kingdom2);
+                viewSoldiers(kingdom1, 1, army1);
+                viewSoldiers(kingdom2, 2, army2);
                 viewBoard(army1, army2);
             }else{
                 if(resbattle == 2){
@@ -220,6 +228,39 @@ public class Mapa {
             return "L";
         } else {
             return "S";
+        }
+    }
+    public void bonificacion(ArrayList<ArrayList<Soldado>> army, String territory , String kingdom) {
+        for(int i = 0; i < 10; i++){ //ITERACION
+            for(int j = 0; j < 10 ; j++){//ITERACION
+                if(army.get(i).get(j) != null){
+                    if(kingdom.equals("Inglaterra") && territory.equals("bosque")){
+                        army.get(i).get(j).setLifeLevel(army.get(i).get(j).getLifeLevel() + 1);
+                    }else if(kingdom.equals("Francia") && territory.equals("campo abierto")){
+                        army.get(i).get(j).setLifeLevel(army.get(i).get(j).getLifeLevel() + 1);
+                    }else if((kingdom.equals("Castilla") || kingdom.equals("Aragon")) && territory.equals("montaña")){
+                        army.get(i).get(j).setLifeLevel(army.get(i).get(j).getLifeLevel() + 1);
+                    }else if(kingdom.equals("Moros") && territory.equals("desierto")){
+                        army.get(i).get(j).setLifeLevel(army.get(i).get(j).getLifeLevel() + 1);
+                    }else if(kingdom.equals("Sacro") && (territory.equals("desierto") || territory.equals("playa") || territory.equals("campo abierto"))){
+                        army.get(i).get(j).setLifeLevel(army.get(i).get(j).getLifeLevel() + 1);
+                    }
+                }
+            }
+        }
+    } 
+    public static void viewSoldiers(String armyespe, int num, ArrayList<ArrayList<Soldado>> army){
+        int numbersoldiers = 0;
+        System.out.println("El Ejercito " + armyespe + " del " + num + " ejercito sus soldados son :");
+        for(int i = 0; i < 10; i++){ //ITERACION
+            for(int j = 0; j < 10 ; j++){//ITERACION
+                if(army.get(i).get(j) != null){
+                    System.out.println("\n*********************************");
+                    System.out.println("El " + (numbersoldiers + 1) + " soldado es: ");
+                    System.out.println(army.get(i).get(j).toString());
+                    numbersoldiers++;
+                }
+            }
         }
     }
 }
