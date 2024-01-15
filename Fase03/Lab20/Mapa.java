@@ -31,6 +31,8 @@ public class Mapa {
                 viewSoldiers(kingdom1, 1, army1);
                 viewSoldiers(kingdom2, 2, army2);
                 viewBoard(army1, army2);
+                longerLife(army1, kingdom1);
+                longerLife(army2, kingdom2);
             }else{
                 if(resbattle == 2){
                     break;
@@ -262,5 +264,22 @@ public class Mapa {
                 }
             }
         }
+    }
+    public static void longerLife(ArrayList<ArrayList<Soldado>> army, String kingdom){
+        int mayor = 0;//METODO CREADO PARA PODER PERMITIRNOS A CONOCER EL SOLDADO CON MAYOR VIDA DE CADA EJERCITO 
+        Soldado soldier = null;
+        for(int i = 0; i < army.size(); i++){
+            for(int j = 0; j < army.get(i).size(); j++){
+                if(army.get(i).get(j) != null){ //COMPROBACION QUE HACEMOS PARA PODER DECIR QUE EL CASILLERO DONDE ESTAMOS ES UN SOLDADO QUE EXISTE
+                    if(army.get(i).get(j).getLifeActual() > mayor){ //COMPARAMOS PUNTOS DE VIDA DE CADA SOLDADO PARA VER QUIEN ES EL MAYOR 
+                        mayor = army.get(i).get(j).getLifeActual();
+                        soldier = army.get(i).get(j);
+                    }
+                }
+            }
+        }
+        System.out.println("El soldado con mayor vida del Ejercito " + kingdom + " es: ");
+        System.out.println(soldier.toString());//IMPRIMIMOS SUS DATOS PARA PODER VER DE QUE SOLDADO SE TRATA 
+        System.out.println("*********************************");
     }
 }
