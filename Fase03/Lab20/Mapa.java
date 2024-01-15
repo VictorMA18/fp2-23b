@@ -37,6 +37,9 @@ public class Mapa {
                 double avg2 = averageLife(army2, kingdom2);
                 rankingInsercionLife(army1, kingdom1);
                 rankingInsercionLife(army2, kingdom2);
+                viewBoard(army1, army2);
+                resultBattleInfo(army1, kingdom1 , 1);
+                resultBattleInfo(army2, kingdom2 , 2);
             }else{
                 if(resbattle == 2){
                     break;
@@ -352,5 +355,34 @@ public class Mapa {
             System.out.println("------------------");
         }
         System.out.println("*********************************");
+    }
+    public static void resultBattleInfo(ArrayList<ArrayList<Soldado>> army, String kingdom, int n){
+        System.out.println("Ejercito " + n + " : " + kingdom);
+        int numbersoldiers = 0;
+        int numberespadachines = 0;
+        int numbercaballeros = 0;
+        int numberlanceros = 0;
+        int numberarqueros = 0;
+        for(int i = 0; i < 10; i++){ //ITERACION
+            for(int j = 0; j < 10 ; j++){//ITERACION
+                if(army.get(i).get(j) != null){
+                    numbersoldiers++;
+                    if(army.get(i).get(j) instanceof Espadachin){
+                        numberespadachines++;
+                    }else if(army.get(i).get(j) instanceof Caballero){
+                        numbercaballeros++;
+                    }else if(army.get(i).get(j) instanceof Lancero){
+                        numberlanceros++;
+                    }else if(army.get(i).get(j) instanceof Arquero){
+                        numberarqueros++;
+                    }
+                }
+            }
+        }
+        System.out.println("Cantidad total de soldados creados: " + numbersoldiers);
+        System.out.println("Espadachines: " + numberespadachines);
+        System.out.println("Arqueros: " + numberarqueros);
+        System.out.println("Caballeros: " + numbercaballeros);
+        System.out.println("Lanceros: " + numberlanceros + "\n");
     }
 }
