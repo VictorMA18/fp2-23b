@@ -1112,6 +1112,254 @@
 		%\label{img:mot2}
 		%\caption{Product backlog.}
 	\end{figure}
+	\subsection{Ejercicio Mapa}
+	\begin{itemize}	
+		\item En el octavo commit creamos las funcion longerLife() el cual nos retorna especificaiones del soldado con mayor vida del ejercito;
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Agregando la funcion longerlife() el cual me dara al soldado con mayor vida y sus especificaciones"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos de la clase Mapa creada:}][H]
+		public static void longerLife(ArrayList<ArrayList<Soldado>> army, String kingdom){
+			int mayor = 0;//METODO CREADO PARA PODER PERMITIRNOS A CONOCER EL SOLDADO CON MAYOR VIDA DE CADA EJERCITO 
+			Soldado soldier = null;
+			for(int i = 0; i < army.size(); i++){
+				for(int j = 0; j < army.get(i).size(); j++){
+					if(army.get(i).get(j) != null){ //COMPROBACION QUE HACEMOS PARA PODER DECIR QUE EL CASILLERO DONDE ESTAMOS ES UN SOLDADO QUE EXISTE
+						if(army.get(i).get(j).getLifeActual() > mayor){ //COMPARAMOS PUNTOS DE VIDA DE CADA SOLDADO PARA VER QUIEN ES EL MAYOR 
+							mayor = army.get(i).get(j).getLifeActual();
+							soldier = army.get(i).get(j);
+						}
+					}
+				}
+			}
+			System.out.println("El soldado con mayor vida del Ejercito " + kingdom + " es: ");
+			System.out.println(soldier.toString());//IMPRIMIMOS SUS DATOS PARA PODER VER DE QUE SOLDADO SE TRATA 
+			System.out.println("*********************************");
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		-------------------------------------------
+		--                 MENU                  --
+		-------------------------------------------
+		 SELECCIONE UN NUMERO PARA PODER EMPEZAR O TERMINAR
+		 1 : JUGAR
+		 2 : NO JUGAR
+		1
+		El Ejercito Aragon tiene 3 soldados : 
+		
+		Registrando al 1 soldado del Ejercito Aragon
+		
+		Nombre: Lancero0X1
+		Vida: 6
+		Fila: 6
+		Columna: G
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 6
+		Velocidad: 1
+		Actitud: Lancero
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito Aragon
+		
+		Nombre: Espadachin1X1
+		Vida: 9
+		Fila: 8
+		Columna: F
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 9
+		Velocidad: 4
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito Aragon
+		
+		Nombre: Espadachin2X1
+		Vida: 9
+		Fila: 3
+		Columna: E
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 9
+		Velocidad: 1
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		*********************************
+		El Ejercito Inglaterra tiene 3 soldados : 
+		
+		Registrando al 1 soldado del Ejercito Inglaterra
+		
+		Nombre: Espadachin0X2
+		Vida: 9
+		Fila: 3
+		Columna: A
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 9
+		Velocidad: 5
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito Inglaterra
+		
+		Nombre: Arquero1X2
+		Vida: 3
+		Fila: 6
+		Columna: H
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 3
+		Velocidad: 4
+		Actitud: Arquero
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito Inglaterra
+		
+		Nombre: Caballero2X2
+		Vida: 12
+		Fila: 7
+		Columna: I
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 12
+		Velocidad: 1
+		Actitud: Caballero
+		Estado: true
+		---------------------------------
+		*********************************
+		
+		*********************************
+		El tipo de territorio es: desierto
+		
+		*********************************
+		El Ejercito Aragon del 1 ejercito sus soldados son :
+		
+		*********************************
+		El 1 soldado es: 
+		
+		Nombre: Espadachin2X1
+		Vida: 9
+		Fila: 3
+		Columna: E
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 9
+		Velocidad: 1
+		Actitud: Espadachin
+		Estado: true
+		
+		*********************************
+		El 2 soldado es: 
+		
+		Nombre: Lancero0X1
+		Vida: 6
+		Fila: 6
+		Columna: G
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 6
+		Velocidad: 1
+		Actitud: Lancero
+		Estado: true
+		
+		*********************************
+		El 3 soldado es: 
+		
+		Nombre: Espadachin1X1
+		Vida: 9
+		Fila: 8
+		Columna: F
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 9
+		Velocidad: 4
+		Actitud: Espadachin
+		Estado: true
+		El Ejercito Inglaterra del 2 ejercito sus soldados son :
+		
+		*********************************
+		El 1 soldado es: 
+		
+		Nombre: Espadachin0X2
+		Vida: 9
+		Fila: 3
+		Columna: A
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 9
+		Velocidad: 5
+		Actitud: Espadachin
+		Estado: true
+		
+		*********************************
+		El 2 soldado es: 
+		
+		Nombre: Arquero1X2
+		Vida: 3
+		Fila: 6
+		Columna: H
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 3
+		Velocidad: 4
+		Actitud: Arquero
+		Estado: true
+		
+		*********************************
+		El 3 soldado es: 
+		
+		Nombre: Caballero2X2
+		Vida: 12
+		Fila: 7
+		Columna: I
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 12
+		Velocidad: 1
+		Actitud: Caballero
+		Estado: true
+		
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit8.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		El soldado con mayor vida del Ejercito Aragon es: 
+		
+		Nombre: Espadachin2X1
+		Vida: 9
+		Fila: 3
+		Columna: E
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 9
+		Velocidad: 1
+		Actitud: Espadachin
+		Estado: true
+		*********************************
+		El soldado con mayor vida del Ejercito Inglaterra es: 
+		
+		Nombre: Caballero2X2
+		Vida: 12
+		Fila: 7
+		Columna: I
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 12
+		Velocidad: 1
+		Actitud: Caballero
+		Estado: true
+		*********************************
+	\end{lstlisting}
 	\subsection{Estructura de laboratorio 20}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio20 es el siguiente:
