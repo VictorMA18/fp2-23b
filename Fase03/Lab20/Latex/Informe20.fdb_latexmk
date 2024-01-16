@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1705350496 "/home/user/fp2-23b/Fase03/Lab20/Latex/Informe20.tex" "Informe20.pdf" "Informe20" 1705350496
+["pdflatex"] 1705365113 "/home/user/fp2-23b/Fase03/Lab20/Latex/Informe20.tex" "Informe20.pdf" "Informe20" 1705365113
   "/etc/texmf/web2c/texmf.cnf" 1695244730 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/user/fp2-23b/Fase03/Lab20/Latex/Informe20.tex" 1705350495 87868 6c8f379ec05bacc5fd2a079108684df4 ""
+  "/home/user/fp2-23b/Fase03/Lab20/Latex/Informe20.tex" 1705365111 88151 459d1343d856d0cdff06c29dc482fc92 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tctt0900.tfm" 1136768653 1536 bda3e6bf9784a4cc572c754e0c3eeb00 ""
@@ -125,15 +125,16 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1695244742 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1695244760 2802157 836bcf8882c264bca8c914dc83bfb65d ""
-  "Informe20.aux" 1705350496 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "Informe20.aux" 1705365113 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
   "Informe20.out" 0 -1 0 "pdflatex"
-  "Informe20.tex" 1705350495 87868 6c8f379ec05bacc5fd2a079108684df4 ""
+  "Informe20.tex" 1705365111 88151 459d1343d856d0cdff06c29dc482fc92 ""
   "img/Commit10.png" 1705343591 114774 7eb0abdaac94fa30d5e781d1de4a1514 ""
   "img/Commit11.png" 1705350312 102460 f795edd86c61dd70f71cdebcb0a30cd4 ""
   "img/Commit6.png" 1705337085 127125 323c04bde84fd8dd2720d44e5b78c921 ""
   "img/Commit7.png" 1705339896 125133 bba0188f1e05d88480a8e3092a865fa4 ""
   "img/Commit8.png" 1705341696 103697 861e44820a3314b7e11df6acfe17e7eb ""
   "img/Commit9.png" 1705342408 109441 fab14479693e9634b4a550fcdad4d6c5 ""
+  "img/UML.png" 1705365018 187456 1aea4b60bfaa91680acc9df0655abfb1 ""
   "img/logo_abet.png" 1701899875 6307 66ff7f82180b3b29c348bdae974447b6 ""
   "img/logo_episunsa.png" 1701899875 6815 7da1fe7727dad63b523d0fbca337594d ""
   (generated)
