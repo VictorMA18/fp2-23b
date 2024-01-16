@@ -210,7 +210,6 @@
 	\begin{itemize}	
 		\item El código Java proporciona una implementación básica de un patrón Singleton para la gestión de conexiones a una base de datos MySQL. La clase Conectar utiliza el patrón Singleton para garantizar la existencia de una única instancia de la conexión a la base de datos. La clase contiene un método estático getInstance() que devuelve la instancia única de la clase, y un método conexion() que establece la conexión a la base de datos MySQL local utilizando el controlador com.mysql.jdbc.Driver. La conexión se establece con credenciales específicas (usuario: "root", contraseña: "") y la base de datos "fp2_23b"
 	\end{itemize}		
-		\item Cabe mencionar que el código presenta una redundancia en la implementación del patrón Singleton con la presencia de dos campos estáticos singleton y instancia, y la ausencia de una variable de instancia real, lo cual podría llevar a confusión y no sigue estrictamente el patrón. Además, el código maneja las excepciones generales sin detallar mensajes específicos, lo cual podría dificultar la depuración en caso de errores.
 	\begin{lstlisting}[language=java,caption={Las lineas de codigos del metodo creado:}][H]
 		import java.sql.Connection;
 		import java.sql.DriverManager;

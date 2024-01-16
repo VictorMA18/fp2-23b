@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1705426044 "/home/user/fp2-23b/Fase03/Examen-Prac02/Latex/InformePrac-02.tex" "InformePrac-02.pdf" "InformePrac-02" 1705426044
+["pdflatex"] 1705426543 "/home/user/fp2-23b/Fase03/Examen-Prac02/Latex/InformePrac-02.tex" "InformePrac-02.pdf" "InformePrac-02" 1705426543
   "/etc/texmf/web2c/texmf.cnf" 1695244730 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/user/fp2-23b/Fase03/Examen-Prac02/Latex/InformePrac-02.tex" 1705426043 15787 875a0c2a967cf8667f167ba57951bd40 ""
+  "/home/user/fp2-23b/Fase03/Examen-Prac02/Latex/InformePrac-02.tex" 1705426542 15342 52fe365492cd5e8277df15b856b9f8a4 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tctt0900.tfm" 1136768653 1536 bda3e6bf9784a4cc572c754e0c3eeb00 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
@@ -124,9 +124,9 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1644012257 39432 7155514e09a3d69036fac785183a21c2 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1695244742 4379155 98693266ff65f58d9f98aff394de12d2 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1695244760 2802157 836bcf8882c264bca8c914dc83bfb65d ""
-  "InformePrac-02.aux" 1705426044 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
+  "InformePrac-02.aux" 1705426543 32 3985256e7290058c681f74d7a3565a19 "pdflatex"
   "InformePrac-02.out" 0 -1 0 "pdflatex"
-  "InformePrac-02.tex" 1705426043 15787 875a0c2a967cf8667f167ba57951bd40 ""
+  "InformePrac-02.tex" 1705426542 15342 52fe365492cd5e8277df15b856b9f8a4 ""
   "img/Screen.png" 1705425342 63795 f0a8d83f14fd2929e79ab59fe18b736c ""
   "img/logo_abet.png" 1705420029 6307 66ff7f82180b3b29c348bdae974447b6 ""
   "img/logo_episunsa.png" 1705420029 6815 7da1fe7727dad63b523d0fbca337594d ""
