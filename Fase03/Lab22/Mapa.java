@@ -177,7 +177,7 @@ public class Mapa {
     }
     public static void viewBoard(ArrayList<ArrayList<Soldado>> army1, ArrayList<ArrayList<Soldado>> army2){ //EN ESTE METODO DEMOSTRAREMOS LA TABLA REUTILIZAREMOS CODIGOS DE ANTERIORES LABORATORIOS PARA PODER HACER LA BASE DE ESTE TABLERO
         System.out.println("\nMostrando tabla de posicion ... --");
-        System.out.println("Leyenda: Ejercito1 --> 1#1 | Ejercito2 --> 2#2"); //RECONOCIMIENTO PARA LOS EJERCITOS Y POSICION DE SUS SOLDADOS
+        System.out.println("Leyenda: Ejercito1 --> 1#- | Ejercito2 --> 2#-"); //RECONOCIMIENTO PARA LOS EJERCITOS Y POSICION DE SUS SOLDADOS
         System.out.println("\n \t   A\t   B\t   C\t   D\t   E\t   F\t   G\t   H\t   I\t   J"); // RECONOCIMIENTO PARA CADA UBICACION DE CADA SOLDADO EN EL TABLERO POR PARTE DE LAS COLUMNAS
         System.out.println("\t_________________________________________________________________________________");
         for(int i = 0; i < 10; i++ ){
@@ -187,20 +187,20 @@ public class Mapa {
                             if(army1.get(i).get(j).getLifeActual() > army2.get(i).get(j).getLifeActual()){
                                 army1.get(i).get(j).setLifeActual(army1.get(i).get(j).getLifeActual() - army2.get(i).get(j).getLifeActual()); //Cambiamos 
                                 army2.get(i).set(j, null); 
-                                System.out.print("|  1" + obtenerInicial(army1.get(i).get(j)) + "1  ");
+                                System.out.printf("|  1%s%2d ", obtenerInicial(army1.get(i).get(j)), army1.get(i).get(j).getLifeActual());
                             }else if(army2.get(i).get(j).getLifeActual() > army1.get(i).get(j).getLifeActual()){
                                 army2.get(i).get(j).setLifeActual(army2.get(i).get(j).getLifeActual() - army1.get(i).get(j).getLifeActual());
                                 army1.get(i).set(j, null);;
-                                System.out.print("|  2" + obtenerInicial(army2.get(i).get(j)) + "2  ");
+                                System.out.printf("|  2%s%2d ", obtenerInicial(army2.get(i).get(j)), army2.get(i).get(j).getLifeActual());
                             }else{
                                 army2.get(i).set(j, null);
                                 army1.get(i).set(j, null);
                                 System.out.print("|   " + "" + "   ");
                             }
                         }else if(army1.get(i).get(j) != null){
-                            System.out.print("|  1" + obtenerInicial(army1.get(i).get(j)) + "1  ");
+                            System.out.printf("|  1%s%2d ", obtenerInicial(army1.get(i).get(j)), army1.get(i).get(j).getLifeActual());
                         }else if(army2.get(i).get(j) != null){
-                            System.out.print("|  2" + obtenerInicial(army2.get(i).get(j)) + "2  ");
+                            System.out.printf("|  2%s%2d ", obtenerInicial(army2.get(i).get(j)), army2.get(i).get(j).getLifeActual());
                         }else{
                             System.out.print("|   " + " " + "   ");
                         }
