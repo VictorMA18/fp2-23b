@@ -519,7 +519,6 @@
 			
 		}
 	\end{lstlisting}
-
 	\subsection{Ejercicio Ejercito y Mapa}
 	\begin{itemize}	
 		\item En esta seccion En la clase Ejercito creamos un contructor null y constructor el cual reciba parametros para reconocer a este le agregamos los metodos viewsoldiers() , longerlife() , averagelife(),  rankingInsercionLife() y tambien sus getters y setters esto con el fin que nos ayude a simplificar algunas funciones las cuales sean representadas mejor con una clase Ejercito.
@@ -971,6 +970,405 @@
 			}
 		}
 	\end{lstlisting}
+	\subsection{Ejercicio Mapa}
+	\begin{itemize}	
+		\item En esta seccion solo mejoramos cuando se imprime el tablero con la informacion del soldado el cual esta en esta cuadrilla .
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Mejorando el tablero su informacion con el ejercito donde pertenecen , el tipo de soldado y su nivel de vida"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos de la clase Mapa:}][H]
+		public static void viewBoard(ArrayList<ArrayList<Soldado>> army1, ArrayList<ArrayList<Soldado>> army2){ //EN ESTE METODO DEMOSTRAREMOS LA TABLA REUTILIZAREMOS CODIGOS DE ANTERIORES LABORATORIOS PARA PODER HACER LA BASE DE ESTE TABLERO
+        System.out.println("\nMostrando tabla de posicion ... --");
+        System.out.println("Leyenda: Ejercito1 --> 1#- | Ejercito2 --> 2#-"); //RECONOCIMIENTO PARA LOS EJERCITOS Y POSICION DE SUS SOLDADOS
+        System.out.println("\n \t   A\t   B\t   C\t   D\t   E\t   F\t   G\t   H\t   I\t   J"); // RECONOCIMIENTO PARA CADA UBICACION DE CADA SOLDADO EN EL TABLERO POR PARTE DE LAS COLUMNAS
+        System.out.println("\t_________________________________________________________________________________");
+        for(int i = 0; i < 10; i++ ){
+            System.out.print((i + 1) + "\t"); // RECONOCIMIENTO PARA CADA UBICACION DE CADA SOLDADO EN EL TABLERO POR PARTE DE LAS FILAS
+                for(int j = 0; j < 10; j++){
+                        if(army1.get(i).get(j) != null && army2.get(i).get(j) != null){ //CREAMOS UN IF PARA QUE ESTE NOS AYUDE A SABER QUIEN DE ESTOS SOLDADOS SE OCUPARA DEL CASILLERO EL CUAL DONDE ESTAN PELEANDO
+                            if(army1.get(i).get(j).getLifeActual() > army2.get(i).get(j).getLifeActual()){
+                                army1.get(i).get(j).setLifeActual(army1.get(i).get(j).getLifeActual() - army2.get(i).get(j).getLifeActual()); //Cambiamos 
+                                army2.get(i).set(j, null); 
+                                System.out.printf("|  1%s%2d ", obtenerInicial(army1.get(i).get(j)), army1.get(i).get(j).getLifeActual());
+                            }else if(army2.get(i).get(j).getLifeActual() > army1.get(i).get(j).getLifeActual()){
+                                army2.get(i).get(j).setLifeActual(army2.get(i).get(j).getLifeActual() - army1.get(i).get(j).getLifeActual());
+                                army1.get(i).set(j, null);;
+                                System.out.printf("|  2%s%2d ", obtenerInicial(army2.get(i).get(j)), army2.get(i).get(j).getLifeActual());
+                            }else{
+                                army2.get(i).set(j, null);
+                                army1.get(i).set(j, null);
+                                System.out.print("|   " + "" + "   ");
+                            }
+                        }else if(army1.get(i).get(j) != null){
+                            System.out.printf("|  1%s%2d ", obtenerInicial(army1.get(i).get(j)), army1.get(i).get(j).getLifeActual());
+                        }else if(army2.get(i).get(j) != null){
+                            System.out.printf("|  2%s%2d ", obtenerInicial(army2.get(i).get(j)), army2.get(i).get(j).getLifeActual());
+                        }else{
+                            System.out.print("|   " + " " + "   ");
+                        }
+                }
+                System.out.println("|");
+                System.out.println("\t|_______|_______|_______|_______|_______|_______|_______|_______|_______|_______|");
+        }
+        System.out.println("\n*********************************");
+    }
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		-------------------------------------------
+		--                 MENU                  --
+		-------------------------------------------
+		 SELECCIONE UN NUMERO PARA PODER EMPEZAR O TERMINAR
+		 1 : JUGAR
+		 2 : NO JUGAR
+		1
+		El Ejercito Inglaterra tiene 9 soldados : 
+		
+		Registrando al 1 soldado del Ejercito Inglaterra
+		
+		Nombre: Espadachin0X1
+		Vida: 10
+		Fila: 2
+		Columna: E
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 10
+		Velocidad: 1
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito Inglaterra
+		
+		Nombre: Caballero1X1
+		Vida: 12
+		Fila: 9
+		Columna: E
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 12
+		Velocidad: 5
+		Actitud: Caballero
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito Inglaterra
+		
+		Nombre: Lancero2X1
+		Vida: 7
+		Fila: 2
+		Columna: G
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 7
+		Velocidad: 1
+		Actitud: Lancero
+		Estado: true
+		---------------------------------
+		Registrando al 4 soldado del Ejercito Inglaterra
+		
+		Nombre: Caballero3X1
+		Vida: 11
+		Fila: 10
+		Columna: J
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 11
+		Velocidad: 3
+		Actitud: Caballero
+		Estado: true
+		---------------------------------
+		Registrando al 5 soldado del Ejercito Inglaterra
+		
+		Nombre: Espadachin4X1
+		Vida: 10
+		Fila: 7
+		Columna: D
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 10
+		Velocidad: 1
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		Registrando al 6 soldado del Ejercito Inglaterra
+		
+		Nombre: Espadachin5X1
+		Vida: 8
+		Fila: 6
+		Columna: J
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 8
+		Velocidad: 4
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		Registrando al 7 soldado del Ejercito Inglaterra
+		
+		Nombre: Lancero6X1
+		Vida: 7
+		Fila: 8
+		Columna: F
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 7
+		Velocidad: 3
+		Actitud: Lancero
+		Estado: true
+		---------------------------------
+		Registrando al 8 soldado del Ejercito Inglaterra
+		
+		Nombre: Espadachin7X1
+		Vida: 8
+		Fila: 10
+		Columna: E
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 8
+		Velocidad: 2
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		Registrando al 9 soldado del Ejercito Inglaterra
+		
+		Nombre: Lancero8X1
+		Vida: 6
+		Fila: 1
+		Columna: D
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 6
+		Velocidad: 2
+		Actitud: Lancero
+		Estado: true
+		---------------------------------
+		*********************************
+		El Ejercito Sacro tiene 3 soldados : 
+		
+		Registrando al 1 soldado del Ejercito Sacro
+		
+		Nombre: Espadachin0X2
+		Vida: 10
+		Fila: 4
+		Columna: I
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 10
+		Velocidad: 4
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito Sacro
+		
+		Nombre: Lancero1X2
+		Vida: 5
+		Fila: 3
+		Columna: G
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 5
+		Velocidad: 1
+		Actitud: Lancero
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito Sacro
+		
+		Nombre: Lancero2X2
+		Vida: 7
+		Fila: 7
+		Columna: B
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 7
+		Velocidad: 3
+		Actitud: Lancero
+		Estado: true
+		---------------------------------
+		*********************************
+		
+		*********************************
+		El tipo de territorio es: campo abierto
+		
+		*********************************
+		El Ejercito Inglaterra del 1 ejercito sus soldados son :
+		
+		*********************************
+		El 1 soldado es: 
+		
+		Nombre: Lancero8X1
+		Vida: 6
+		Fila: 1
+		Columna: D
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 6
+		Velocidad: 2
+		Actitud: Lancero
+		Estado: true
+		
+		*********************************
+		El 2 soldado es: 
+		
+		Nombre: Espadachin0X1
+		Vida: 10
+		Fila: 2
+		Columna: E
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 10
+		Velocidad: 1
+		Actitud: Espadachin
+		Estado: true
+		
+		*********************************
+		El 3 soldado es: 
+		
+		Nombre: Lancero2X1
+		Vida: 7
+		Fila: 2
+		Columna: G
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 7
+		Velocidad: 1
+		Actitud: Lancero
+		Estado: true
+		
+		*********************************
+		El 4 soldado es: 
+		
+		Nombre: Espadachin5X1
+		Vida: 8
+		Fila: 6
+		Columna: J
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 8
+		Velocidad: 4
+		Actitud: Espadachin
+		Estado: true
+		
+		*********************************
+		El 5 soldado es: 
+		
+		Nombre: Espadachin4X1
+		Vida: 10
+		Fila: 7
+		Columna: D
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 10
+		Velocidad: 1
+		Actitud: Espadachin
+		Estado: true
+		
+		*********************************
+		El 6 soldado es: 
+		
+		Nombre: Lancero6X1
+		Vida: 7
+		Fila: 8
+		Columna: F
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 7
+		Velocidad: 3
+		Actitud: Lancero
+		Estado: true
+		
+		*********************************
+		El 7 soldado es: 
+		
+		Nombre: Caballero1X1
+		Vida: 12
+		Fila: 9
+		Columna: E
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 12
+		Velocidad: 5
+		Actitud: Caballero
+		Estado: true
+		
+		*********************************
+		El 8 soldado es: 
+		
+		Nombre: Espadachin7X1
+		Vida: 8
+		Fila: 10
+		Columna: E
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 8
+		Velocidad: 2
+		Actitud: Espadachin
+		Estado: true
+		
+		*********************************
+		El 9 soldado es: 
+		
+		Nombre: Caballero3X1
+		Vida: 11
+		Fila: 10
+		Columna: J
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 11
+		Velocidad: 3
+		Actitud: Caballero
+		Estado: true
+		El Ejercito Sacro del 2 ejercito sus soldados son :
+		
+		*********************************
+		El 1 soldado es: 
+		
+		Nombre: Lancero1X2
+		Vida: 5
+		Fila: 3
+		Columna: G
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 6
+		Velocidad: 1
+		Actitud: Lancero
+		Estado: true
+		
+		*********************************
+		El 2 soldado es: 
+		
+		Nombre: Espadachin0X2
+		Vida: 10
+		Fila: 4
+		Columna: I
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 11
+		Velocidad: 4
+		Actitud: Espadachin
+		Estado: true
+		
+		*********************************
+		El 3 soldado es: 
+		
+		Nombre: Lancero2X2
+		Vida: 7
+		Fila: 7
+		Columna: B
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 8
+		Velocidad: 3
+		Actitud: Lancero
+		Estado: true
+		
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit3.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
 	\subsection{Estructura de laboratorio 22}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio22 es el siguiente:
