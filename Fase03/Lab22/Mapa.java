@@ -393,6 +393,11 @@ public class Mapa {
         int numbercaballeros = 0;
         int numberlanceros = 0;
         int numberarqueros = 0;
+        int numberespadachinesreales = 0;
+        int numbercaballerosfrancos = 0;
+        int numbercaballerosmoros = 0;
+        int numberespadachinesteutonicos = 0;
+        int numberespadachinesconquistadores = 0;
         for(int i = 0; i < 10; i++){ //ITERACION
             for(int j = 0; j < 10 ; j++){//ITERACION
                 if(army.get(i).get(j) != null){
@@ -405,6 +410,16 @@ public class Mapa {
                         numberlanceros++;
                     }else if(army.get(i).get(j) instanceof Arquero){
                         numberarqueros++;
+                    }else if(army.get(i).get(j) instanceof EspadachinReal){
+                        numberespadachinesreales++;
+                    }else if(army.get(i).get(j) instanceof CaballeroFranco){
+                        numbercaballerosfrancos++;
+                    }else if(army.get(i).get(j) instanceof CaballeroMoro){
+                        numbercaballerosmoros++;
+                    }else if(army.get(i).get(j) instanceof EspadachinTeutonico){
+                        numberespadachinesteutonicos++;
+                    }else if(army.get(i).get(j) instanceof EspadachinConquistador){
+                        numberespadachinesconquistadores++;
                     }
                 }
             }
@@ -413,7 +428,13 @@ public class Mapa {
         System.out.println("Espadachines: " + numberespadachines);
         System.out.println("Arqueros: " + numberarqueros);
         System.out.println("Caballeros: " + numbercaballeros);
-        System.out.println("Lanceros: " + numberlanceros + "\n");
+        System.out.println("Lanceros: " + numberlanceros);
+        System.out.println("Espadachin Real: " + numberespadachinesreales);
+        System.out.println("Caballero Moro: " + numbercaballerosmoros);
+        System.out.println("Caballero Franco: " + numbercaballerosfrancos);
+        System.out.println("Espadachin Teutonico: " + numberespadachinesteutonicos);
+        System.out.println("Espadachin Conquistador: " + numberespadachinesconquistadores + "\n");
+
     }
     public static int resultBattleSum(ArrayList<ArrayList<Soldado>> army, String kingdom, int n){
         int sum = 0;
