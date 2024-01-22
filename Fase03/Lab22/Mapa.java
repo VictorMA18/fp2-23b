@@ -52,11 +52,9 @@ public class Mapa {
             int sum2 = resultBattleSum(army2, kingdom2, 2);
             double sumtotal = (sum1 * 1.0) + (sum2 * 1.0);
             resbattle(sumtotal, sum1, sum2, 1, 2, kingdom1, kingdom2);
-            volveraJugar();
-            int n = sc.nextInt();
-            if(n == 1){
-                play = true;
-            }else{
+            String respuesta = JOptionPane.showInputDialog("¿Quieres jugar de nuevo? (si/no): ");
+            if (!respuesta.equalsIgnoreCase("si")) {
+                JOptionPane.showMessageDialog(null, "Fin del programa. ¡Hasta luego!");
                 play = false;
             }
         }
