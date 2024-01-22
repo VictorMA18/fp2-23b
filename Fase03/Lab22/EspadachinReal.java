@@ -15,7 +15,7 @@ public class EspadachinReal extends Soldado{
     public int getlongKnifes(){
         return longknife;
     }
-    public void throwOranges(){
+    public void throwKnifes(){
         if(numknifes == 0){
             System.out.println("Ya no quedan cuchillos");
         }else{
