@@ -1369,6 +1369,221 @@
 		%\label{img:mot2}
 		%\caption{Product backlog.}
 	\end{figure}
+	\subsection{Ejercicio Soldado(Herencia)}
+	\begin{itemize}	
+		\item En esta seccion publicamos los otros tipos de soldados especiales por cada reino los cuales son CaballeroFranco, CaballeroMoro , EspadachinReal , EspadachinConquistador, EspadachinTeutonico.
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Agregando la clase EspadachinReal el cual es una unidad especial para el reino de inglaterra creamos sus metodos y sus atributos necesarios"
+		$ git commit -m "Agregando la clase CaballeroFranco la cual tiene sus metodos , getters y setters, y sus debidos atributos"
+		$ git commit -m "Agregando la clase EspadachinTeutonico la cual tiene sus metodos como el modoTortuga() y otros, getters y setters, y sus debidos atributos"
+		$ git commit -m "Agregando la clase CaballeroMoro la cual tiene sus metodos, getters y setters, y sus debidos atributos"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos de la clase CaballeroFranco:}][H]
+		public class CaballeroFranco extends Soldado{
+			private int numspears;
+			private int longspears;
+			private int evolve = 0;
+			public CaballeroFranco(){
+			}
+			public CaballeroFranco(String name , int attacklevel, int defenselevel, int lifelevel, int speed, String attitude ,boolean lives, int row, String column,int numspears, int longspears){
+				super(name, attacklevel, defenselevel, lifelevel, speed, attitude, lives, row, column);
+				this.numspears = numspears;
+				this.longspears = longspears;
+			}
+			public void throwSpears(){
+				if(numspears == 0){
+					System.out.println("Ya no quedan lanzas");
+				}else{
+					numspears--;
+				}
+			}
+			public void evolveSoldier(){
+				if(evolve < 4){
+					evolve++;
+					numspears += evolve;
+					numspears += evolve;
+					System.out.println("Caballero Franco evoluciono a nivel " + evolve);
+				}else{
+					System.out.println("Caballero Franco ya esta en su nivel maximo de evolucion.");
+				}
+			}
+			public int getnumSpears(){
+				return numspears;
+			}
+			public int getlongSpears(){
+				return longspears;
+			}
+			public void setnumSpears(int n){
+				this.numspears = n;
+			}
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos de la clase CaballeroMoro:}][H]
+		public class CaballeroMoro extends Soldado{
+			private int flechas;
+			private int longflechas;
+			private int evolve = 0;
+			public CaballeroMoro(){
+			}
+			public CaballeroMoro(String name , int attacklevel, int defenselevel, int lifelevel, int speed, String attitude ,boolean lives, int row, String column, int flechas, int longflechas){
+				super(name, attacklevel, defenselevel, lifelevel, speed, attitude, lives, row, column);
+				this.flechas = flechas;
+				this.longflechas = longflechas;
+			}
+			public void disparar(){
+				if(this.flechas == 0){
+					System.out.println("El arquero ya no tiene flechas para poder disparar");
+				}else{
+					this.flechas = flechas - 1;
+					this.atacar();
+				}
+			}
+			public void evolveSoldier(){
+				if(evolve < 4){
+					evolve++;
+					flechas += evolve;
+					longflechas += evolve;
+					System.out.println("Espadachin Conquistador evoluciono a nivel " + evolve);
+				}else{
+					System.out.println("Espadachin Conquistador ya esta en su nivel maximo de evolucion.");
+				}
+			}
+			public void setFlechas(int n){
+				this.flechas = n;
+			}
+			public int getFlechas(){
+				return flechas;
+			}
+			public int getLongFlechas(){
+				return longflechas;
+			}
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos de la clase EspadachinReal:}][H]
+		public class EspadachinReal extends Soldado{
+			private int numknifes;
+			private int longknife;
+			private int evolve = 0;
+			public EspadachinReal(){
+			}
+			public EspadachinReal(String name , int attacklevel, int defenselevel, int lifelevel, int speed, String attitude ,boolean lives, int row, String column, int numknifes, int longknife){
+				super(name, attacklevel, defenselevel, lifelevel, speed, attitude, lives, row, column);
+				this.numknifes = numknifes;
+				this.longknife = longknife;
+			}
+			public int getnumKnifes(){
+				return numknifes;
+			}
+			public int getlongKnifes(){
+				return longknife;
+			}
+			public void throwKnifes(){
+				if(numknifes == 0){
+					System.out.println("Ya no quedan cuchillos");
+				}else{
+					numknifes--;
+				}
+			}
+			public void evolveSoldier(){
+				if(evolve < 4){
+					evolve++;
+					numknifes += evolve;
+					longknife += evolve;
+					System.out.println("Espadachin Real evoluciono a nivel " + evolve);
+				}else{
+					System.out.println("Espadachin Real ya esta en su nivel maximo de evolucion.");
+				}
+			}
+			public void setnumKnifes(int n){
+				this.numknifes = n;
+			}
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos de la clase EspadachinConquistador:}][H]
+		public class EspadachinConquistador extends Soldado{
+			private int numaxes;
+			private int longaxes;
+			private int evolve;
+			public EspadachinConquistador(){
+			}
+			public EspadachinConquistador(String name , int attacklevel, int defenselevel, int lifelevel, int speed, String attitude ,boolean lives, int row, String column, int numaxes, int longaxes){
+				super(name, attacklevel, defenselevel, lifelevel, speed, attitude, lives, row, column);
+				this.numaxes = numaxes;
+				this.longaxes = longaxes;
+			}
+			public void throwAxes(){
+				if(numaxes == 0){
+					System.out.println("No es posible que el espadachin lance hachas");
+				} else {
+					numaxes--;
+				}
+			}
+			public void evolveSoldier(){
+				if(evolve < 4){
+					evolve++;
+					numaxes += evolve;
+					longaxes += evolve;
+					System.out.println("Espadachin Conquistador evoluciono a nivel " + evolve);
+				}else{
+					System.out.println("Espadachin Conquistador ya esta en su nivel maximo de evolucion.");
+				}
+			}
+			public void setnumAxes(int n){
+				this.numaxes = n;
+			}
+			public int getnumAxes(){
+				return numaxes;
+			}
+			public int getlongAxes(){
+				return longaxes;
+			}
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos de la clase EspadachinTeutonico:}][H]
+		public class EspadachinTeutonico extends Soldado{
+			private int numjavelin;
+			private int longjavelin;
+			private int evolve;
+			public EspadachinTeutonico(){
+			}
+			public EspadachinTeutonico(String name , int attacklevel, int defenselevel, int lifelevel, int speed, String attitude ,boolean lives, int row, String column, int numjavelin, int longjavelin){
+				super(name, attacklevel, defenselevel, lifelevel, speed, attitude, lives, row, column);
+				this.numjavelin = numjavelin;
+				this.longjavelin = longjavelin;
+			}
+			public void throwJavelin(){
+				if(numjavelin == 0){
+					System.out.println("No es posible que el espadachin lance jabalinas");
+				} else {
+					numjavelin--;
+				}
+			}
+			public void modoTortuga(){
+				System.out.println("Usted uso la habilidad modo Tortuga, Defensa Especial");
+			}
+			public void evolveSoldier(){
+				if(evolve < 4){
+					evolve++;
+					numjavelin += evolve;
+					longjavelin += evolve;
+					System.out.println("Espadachin Teutonico evoluciono a nivel " + evolve);
+				}else{
+					System.out.println("Espadachin Teutonico ya esta en su nivel maximo de evolucion.");
+				}
+			}
+			public void setnumJavelin(int n){
+				this.numjavelin = n;
+			}
+			public int getnumJavelin(){
+				return numjavelin;
+			}
+			public int getlongJavelin(){
+				return longjavelin;
+			}
+		}
+	\end{lstlisting}
 	\subsection{Estructura de laboratorio 22}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio22 es el siguiente:
