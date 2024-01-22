@@ -3799,12 +3799,592 @@
 		 2 : NO JUGAR
 		
 	\end{lstlisting}
+	\subsection{Ejercicio Mapa}
+	\begin{itemize}	
+		\item En este fragmento de código, solicito al usuario que ingrese su preferencia sobre jugar de nuevo mediante un cuadro de diálogo de entrada de JOptionPane. La respuesta se almacena en la variable respuesta. Luego, compruebo si su respuesta no es "si" (ignorando mayúsculas y minúsculas). Si la respuesta no es afirmativa, muestro un cuadro de diálogo informativo indicando "Fin del programa. ¡Hasta luego!" y establezco la variable play en false. Esto me permite controlar la ejecución del programa y salir de un posible bucle de juego en caso de que el usuario decida no jugar de nuevo.
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Agregando el menu de volver a jugar en JOption el cual me permitira jugar denuevo o no en caso que no mi imprime un mensage"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos de la clase Mapa}][H]
+		String respuesta = JOptionPane.showInputDialog("¿Quieres jugar de nuevo? (si/no): ");
+		if (!respuesta.equalsIgnoreCase("si")) {
+			JOptionPane.showMessageDialog(null, "Fin del programa. ¡Hasta luego!");
+			play = false;
+		}
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit11-1.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit12-1.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		El Ejercito Moros tiene 6 soldados : 
+
+		Registrando al 1 soldado del Ejercito Moros
+		
+		Nombre: Espadachin0X1
+		Vida: 8
+		Fila: 7
+		Columna: C
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 8
+		Velocidad: 4
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito Moros
+		
+		Nombre: Caballero1X1
+		Vida: 11
+		Fila: 6
+		Columna: F
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 11
+		Velocidad: 2
+		Actitud: Caballero
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito Moros
+		
+		Nombre: Lancero2X1
+		Vida: 5
+		Fila: 1
+		Columna: G
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 5
+		Velocidad: 3
+		Actitud: Lancero
+		Estado: true
+		---------------------------------
+		Registrando al 4 soldado del Ejercito Moros
+		
+		Nombre: Lancero3X1
+		Vida: 5
+		Fila: 9
+		Columna: J
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 5
+		Velocidad: 2
+		Actitud: Lancero
+		Estado: true
+		---------------------------------
+		Registrando al 5 soldado del Ejercito Moros
+		
+		Nombre: Espadachin4X1
+		Vida: 10
+		Fila: 3
+		Columna: E
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 10
+		Velocidad: 2
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		Registrando al 6 soldado del Ejercito Moros
+		
+		Nombre: Espadachin5X1
+		Vida: 9
+		Fila: 7
+		Columna: H
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 9
+		Velocidad: 5
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		*********************************
+		El Ejercito Aragon tiene 3 soldados : 
+		
+		Registrando al 1 soldado del Ejercito Aragon
+		
+		Nombre: Espadachin0X2
+		Vida: 8
+		Fila: 2
+		Columna: D
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 8
+		Velocidad: 5
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito Aragon
+		
+		Nombre: Espadachin1X2
+		Vida: 10
+		Fila: 9
+		Columna: I
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 10
+		Velocidad: 1
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito Aragon
+		
+		Nombre: Lancero2X2
+		Vida: 7
+		Fila: 4
+		Columna: F
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 7
+		Velocidad: 2
+		Actitud: Lancero
+		Estado: true
+		---------------------------------
+		*********************************
+		
+		*********************************
+		El tipo de territorio es: montaña
+		
+		*********************************
+		El Ejercito Moros del 1 ejercito sus soldados son :
+		
+		*********************************
+		El 1 soldado es: 
+		
+		Nombre: Lancero2X1
+		Vida: 5
+		Fila: 1
+		Columna: G
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 5
+		Velocidad: 3
+		Actitud: Lancero
+		Estado: true
+		
+		*********************************
+		El 2 soldado es: 
+		
+		Nombre: Espadachin4X1
+		Vida: 10
+		Fila: 3
+		Columna: E
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 10
+		Velocidad: 2
+		Actitud: Espadachin
+		Estado: true
+		
+		*********************************
+		El 3 soldado es: 
+		
+		Nombre: Caballero1X1
+		Vida: 11
+		Fila: 6
+		Columna: F
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 11
+		Velocidad: 2
+		Actitud: Caballero
+		Estado: true
+		
+		*********************************
+		El 4 soldado es: 
+		
+		Nombre: Espadachin0X1
+		Vida: 8
+		Fila: 7
+		Columna: C
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 8
+		Velocidad: 4
+		Actitud: Espadachin
+		Estado: true
+		
+		*********************************
+		El 5 soldado es: 
+		
+		Nombre: Espadachin5X1
+		Vida: 9
+		Fila: 7
+		Columna: H
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 9
+		Velocidad: 5
+		Actitud: Espadachin
+		Estado: true
+		
+		*********************************
+		El 6 soldado es: 
+		
+		Nombre: Lancero3X1
+		Vida: 5
+		Fila: 9
+		Columna: J
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 5
+		Velocidad: 2
+		Actitud: Lancero
+		Estado: true
+		El Ejercito Aragon del 2 ejercito sus soldados son :
+		
+		*********************************
+		El 1 soldado es: 
+		
+		Nombre: Espadachin0X2
+		Vida: 8
+		Fila: 2
+		Columna: D
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 9
+		Velocidad: 5
+		Actitud: Espadachin
+		Estado: true
+		
+		*********************************
+		El 2 soldado es: 
+		
+		Nombre: Lancero2X2
+		Vida: 7
+		Fila: 4
+		Columna: F
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 8
+		Velocidad: 2
+		Actitud: Lancero
+		Estado: true
+		
+		*********************************
+		El 3 soldado es: 
+		
+		Nombre: Espadachin1X2
+		Vida: 10
+		Fila: 9
+		Columna: I
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 11
+		Velocidad: 1
+		Actitud: Espadachin
+		Estado: true
+		
+		*********************************
+		El tipo de territorio es: montaña
+		
+		*********************************
+		
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit12-5.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		El soldado con mayor vida del Ejercito Moros es: 
+		
+		Nombre: Caballero1X1
+		Vida: 11
+		Fila: 6
+		Columna: F
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 11
+		Velocidad: 2
+		Actitud: Caballero
+		Estado: true
+		*********************************
+		El soldado con mayor vida del Ejercito Aragon es: 
+		
+		Nombre: Espadachin1X2
+		Vida: 10
+		Fila: 9
+		Columna: I
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 11
+		Velocidad: 1
+		Actitud: Espadachin
+		Estado: true
+		*********************************
+		El promedio de puntos de vida del Ejercito Moros es: 
+		8.0
+		*********************************
+		El promedio de puntos de vida del Ejercito Aragon es: 
+		8.333333333333334
+		*********************************
+		
+		El Ejercito Moros ordenando por metodo insercion: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito Moros ..... ////// --->
+		
+		Puesto 1
+		Nombre: Caballero1X1
+		Vida: 11
+		Fila: 6
+		Columna: F
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 11
+		Velocidad: 2
+		Actitud: Caballero
+		Estado: true
+		------------------
+		
+		Puesto 2
+		Nombre: Espadachin4X1
+		Vida: 10
+		Fila: 3
+		Columna: E
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 10
+		Velocidad: 2
+		Actitud: Espadachin
+		Estado: true
+		------------------
+		
+		Puesto 3
+		Nombre: Espadachin5X1
+		Vida: 9
+		Fila: 7
+		Columna: H
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 9
+		Velocidad: 5
+		Actitud: Espadachin
+		Estado: true
+		------------------
+		
+		Puesto 4
+		Nombre: Espadachin0X1
+		Vida: 8
+		Fila: 7
+		Columna: C
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 8
+		Velocidad: 4
+		Actitud: Espadachin
+		Estado: true
+		------------------
+		
+		Puesto 5
+		Nombre: Lancero2X1
+		Vida: 5
+		Fila: 1
+		Columna: G
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 5
+		Velocidad: 3
+		Actitud: Lancero
+		Estado: true
+		------------------
+		
+		Puesto 6
+		Nombre: Lancero3X1
+		Vida: 5
+		Fila: 9
+		Columna: J
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 5
+		Velocidad: 2
+		Actitud: Lancero
+		Estado: true
+		------------------
+		*********************************
+		
+		El Ejercito Aragon ordenando por metodo insercion: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito Aragon ..... ////// --->
+		
+		Puesto 1
+		Nombre: Espadachin1X2
+		Vida: 10
+		Fila: 9
+		Columna: I
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 11
+		Velocidad: 1
+		Actitud: Espadachin
+		Estado: true
+		------------------
+		
+		Puesto 2
+		Nombre: Espadachin0X2
+		Vida: 8
+		Fila: 2
+		Columna: D
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 9
+		Velocidad: 5
+		Actitud: Espadachin
+		Estado: true
+		------------------
+		
+		Puesto 3
+		Nombre: Lancero2X2
+		Vida: 7
+		Fila: 4
+		Columna: F
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 8
+		Velocidad: 2
+		Actitud: Lancero
+		Estado: true
+		------------------
+		*********************************
+		
+		*********************************
+		El tipo de territorio es: montaña
+		
+		*********************************
+		
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit12-5.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		Ejercito 1 : Moros
+		Cantidad total de soldados creados: 6
+		Espadachines: 3
+		Arqueros: 0
+		Caballeros: 1
+		Lanceros: 2
+		Espadachin Real: 0
+		Caballero Moro: 0
+		Caballero Franco: 0
+		Espadachin Teutonico: 0
+		Espadachin Conquistador: 0
+		
+		Ejercito 2 : Aragon
+		Cantidad total de soldados creados: 3
+		Espadachines: 2
+		Arqueros: 0
+		Caballeros: 0
+		Lanceros: 1
+		Espadachin Real: 0
+		Caballero Moro: 0
+		Caballero Franco: 0
+		Espadachin Teutonico: 0
+		Espadachin Conquistador: 0
+		
+		Ejercito 1: Moros: 48
+		Ejercito 2: Aragon: 28
+		El ganador es el ejercito 1 de: Moros. Ya que al generar los porcentajes de probabilidad de victoria basada en los niveles de vida de sus soldados y aplicando un experimento aleatorio salió vencedor. (Aleatorio generado : 63.16)
+		
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit12-2.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit12-3.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit12-4.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
 	\subsection{Estructura de laboratorio 22}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio22 es el siguiente:
 	\end{itemize}
 	\begin{lstlisting}[style=ascii-tree]
 	\Lab22
+	├── Arquero.class
+	├── Arquero.java
+	├── Caballero.class
+	├── CaballeroFranco.class
+	├── CaballeroFranco.java
+	├── Caballero.java
+	├── CaballeroMoro.class
+	├── CaballeroMoro.java
+	├── Ejercito.class
+	├── Ejercito.java
+	├── Espadachin.class
+	├── EspadachinConquistador.class
+	├── EspadachinConquistador.java
+	├── Espadachin.java
+	├── EspadachinReal.class
+	├── EspadachinReal.java
+	├── EspadachinTeutonico.class
+	├── EspadachinTeutonico.java
+	├── Juegoprincipal$1.class
+	├── Juegoprincipal$2.class
+	├── Juegoprincipal.class
+	├── Juegoprincipal.java
+	├── Lancero.class
+	├── Lancero.java
+	├── Latex
+	│   ├── img
+	│   │   ├── Commit10.png
+	│   │   ├── Commit11-1.png
+	│   │   ├── Commit11-2.png
+	│   │   ├── Commit11-3.png
+	│   │   ├── Commit12-1.png
+	│   │   ├── Commit12-2.png
+	│   │   ├── Commit12-3.png
+	│   │   ├── Commit12-4.png
+	│   │   ├── Commit12-5.png
+	│   │   ├── Commit3.png
+	│   │   ├── Commit9.png
+	│   │   ├── logo_abet.png
+	│   │   ├── logo_episunsa.png
+	│   │   └── logo_unsa.jpg
+	│   ├── Informe22.aux
+	│   ├── Informe22.fdb_latexmk
+	│   ├── Informe22.fls
+	│   ├── Informe22.log
+	│   ├── Informe22.out
+	│   ├── Informe22.pdf
+	│   ├── Informe22.synctex.gz
+	│   └── Informe22.tex
+	├── Mapa.class
+	├── Mapa.java
+	├── Soldado.class
+	└── Soldado.java
+	
 	\end{lstlisting}    
 	\section{\textcolor{red}{Rúbricas}}
 	
@@ -3871,11 +4451,11 @@
 			\hline	
 			\textbf{6. Fechas} & Las fechas de modificación del código fuente estan dentro de los plazos de fecha de entrega establecidos. &2 &X &2 & \\ 
 			\hline 
-			\textbf{7. Ortografía} & El documento no muestra errores ortográficos. &2 &X &2 & \\ 
+			\textbf{7. Ortografía} & El documento no muestra errores ortográficos. &2 &X &1.5 & \\ 
 			\hline 
 			\textbf{8. Madurez} & El Informe muestra de manera general una evolución de la madurez del código fuente,  explicaciones puntuales pero precisas y un acabado impecable.   (El profesor puede preguntar para refrendar calificación).  &4 &X &2 & \\ 
 			\hline
-			\multicolumn{2}{|c|}{\textbf{Total}} &20 & &18 & \\ 
+			\multicolumn{2}{|c|}{\textbf{Total}} &20 & &17.5 & \\ 
 			\hline
 		\end{tabular}
 		%\end{center}
