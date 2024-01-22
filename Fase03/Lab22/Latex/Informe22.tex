@@ -1377,6 +1377,7 @@
 	\begin{lstlisting}[language=bash,caption={Commit}][H]
 		$ git commit -m "Agregando la clase EspadachinReal el cual es una unidad especial para el reino de inglaterra creamos sus metodos y sus atributos necesarios"
 		$ git commit -m "Agregando la clase CaballeroFranco la cual tiene sus metodos , getters y setters, y sus debidos atributos"
+		$ git commit -m "Agregando la clase EspadachinConquistador la cual tiene sus metodos,getters y setters, y sus debidos atributos"
 		$ git commit -m "Agregando la clase EspadachinTeutonico la cual tiene sus metodos como el modoTortuga() y otros, getters y setters, y sus debidos atributos"
 		$ git commit -m "Agregando la clase CaballeroMoro la cual tiene sus metodos, getters y setters, y sus debidos atributos"
 	\end{lstlisting}	
@@ -2210,6 +2211,754 @@
 		 1 : JUGAR
 		 2 : NO JUGAR
 			
+	\end{lstlisting}
+	\subsection{Ejercicio Mapa}
+	\begin{itemize}	
+		\item En esta seccion mi funcion resultBattleInfo, proporciono informacion detallada sobre la composicion del ejercito representado por la matriz de objetos ArrayList bidimensional army. La funcion recorre la matriz y cuenta la cantidad de soldados totales, asi como la distribucion por tipo, que incluye Espadachines, Arqueros, Caballeros, Lanceros, Espadachines Reales, Caballeros Francos, Caballeros Moros, Espadachines Teutonicos y Espadachines Conquistadores. La informacion se presenta de manera organizada, especificando la cantidad de cada tipo de soldado en el ejercito del reino correspondiente (identificado por el parametro kingdom). Los resultados se imprimen en la consola, proporcionando una vision general clara de la fuerza militar de cada reino en terminos de composicion de tropas.
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Agregando opciones en getRandomSoldado() el cual serian estas clases heredadas anteriormente respetando si estas pertenecen a cierto reino especifico tambien modificamos el metodo obtenerIncial() el cual tambien agregamos las inciales de cada tipo de Soldado y tambien en el metodo fillarray() el cual creara a cada soldado dependiendo el tipo que sea con un constructor seria solo agregar mas clases heredadas en resumen "
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos de la clase Mapa}][H]
+		public static void resultBattleInfo(ArrayList<ArrayList<Soldado>> army, String kingdom, int n){
+			System.out.println("Ejercito " + n + " : " + kingdom);
+			int numbersoldiers = 0;
+			int numberespadachines = 0;
+			int numbercaballeros = 0;
+			int numberlanceros = 0;
+			int numberarqueros = 0;
+			int numberespadachinesreales = 0;
+			int numbercaballerosfrancos = 0;
+			int numbercaballerosmoros = 0;
+			int numberespadachinesteutonicos = 0;
+			int numberespadachinesconquistadores = 0;
+			for(int i = 0; i < 10; i++){ //ITERACION
+				for(int j = 0; j < 10 ; j++){//ITERACION
+					if(army.get(i).get(j) != null){
+						numbersoldiers++;
+						if(army.get(i).get(j) instanceof Espadachin){
+							numberespadachines++;
+						}else if(army.get(i).get(j) instanceof Caballero){
+							numbercaballeros++;
+						}else if(army.get(i).get(j) instanceof Lancero){
+							numberlanceros++;
+						}else if(army.get(i).get(j) instanceof Arquero){
+							numberarqueros++;
+						}else if(army.get(i).get(j) instanceof EspadachinReal){
+							numberespadachinesreales++;
+						}else if(army.get(i).get(j) instanceof CaballeroFranco){
+							numbercaballerosfrancos++;
+						}else if(army.get(i).get(j) instanceof CaballeroMoro){
+							numbercaballerosmoros++;
+						}else if(army.get(i).get(j) instanceof EspadachinTeutonico){
+							numberespadachinesteutonicos++;
+						}else if(army.get(i).get(j) instanceof EspadachinConquistador){
+							numberespadachinesconquistadores++;
+						}
+					}
+				}
+			}
+			System.out.println("Cantidad total de soldados creados: " + numbersoldiers);
+			System.out.println("Espadachines: " + numberespadachines);
+			System.out.println("Arqueros: " + numberarqueros);
+			System.out.println("Caballeros: " + numbercaballeros);
+			System.out.println("Lanceros: " + numberlanceros);
+			System.out.println("Espadachin Real: " + numberespadachinesreales);
+			System.out.println("Caballero Moro: " + numbercaballerosmoros);
+			System.out.println("Caballero Franco: " + numbercaballerosfrancos);
+			System.out.println("Espadachin Teutonico: " + numberespadachinesteutonicos);
+			System.out.println("Espadachin Conquistador: " + numberespadachinesconquistadores + "\n");
+	
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		-------------------------------------------
+		--                 MENU                  --
+		-------------------------------------------
+		 SELECCIONE UN NUMERO PARA PODER EMPEZAR O TERMINAR
+		 1 : JUGAR
+		 2 : NO JUGAR
+		1
+		El Ejercito Castilla tiene 6 soldados : 
+		
+		Registrando al 1 soldado del Ejercito Castilla
+		
+		Nombre: Lancero0X1
+		Vida: 6
+		Fila: 6
+		Columna: G
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 6
+		Velocidad: 1
+		Actitud: Lancero
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito Castilla
+		
+		Nombre: Lancero1X1
+		Vida: 6
+		Fila: 9
+		Columna: D
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 6
+		Velocidad: 5
+		Actitud: Lancero
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito Castilla
+		
+		Nombre: Espadachin Conquistador2X1
+		Vida: 14
+		Fila: 9
+		Columna: J
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 14
+		Velocidad: 3
+		Actitud: Espadachin Conquistador
+		Estado: true
+		---------------------------------
+		Registrando al 4 soldado del Ejercito Castilla
+		
+		Nombre: Espadachin Conquistador3X1
+		Vida: 14
+		Fila: 2
+		Columna: G
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 14
+		Velocidad: 3
+		Actitud: Espadachin Conquistador
+		Estado: true
+		---------------------------------
+		Registrando al 5 soldado del Ejercito Castilla
+		
+		Nombre: Caballero4X1
+		Vida: 10
+		Fila: 10
+		Columna: F
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 10
+		Velocidad: 2
+		Actitud: Caballero
+		Estado: true
+		---------------------------------
+		Registrando al 6 soldado del Ejercito Castilla
+		
+		Nombre: Espadachin Conquistador5X1
+		Vida: 14
+		Fila: 9
+		Columna: F
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 14
+		Velocidad: 1
+		Actitud: Espadachin Conquistador
+		Estado: true
+		---------------------------------
+		*********************************
+		El Ejercito Aragon tiene 8 soldados : 
+		
+		Registrando al 1 soldado del Ejercito Aragon
+		
+		Nombre: Espadachin0X2
+		Vida: 8
+		Fila: 1
+		Columna: F
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 8
+		Velocidad: 4
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito Aragon
+		
+		Nombre: Espadachin Conquistador1X2
+		Vida: 14
+		Fila: 4
+		Columna: I
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 14
+		Velocidad: 1
+		Actitud: Espadachin Conquistador
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito Aragon
+		
+		Nombre: Espadachin Conquistador2X2
+		Vida: 14
+		Fila: 6
+		Columna: B
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 14
+		Velocidad: 2
+		Actitud: Espadachin Conquistador
+		Estado: true
+		---------------------------------
+		Registrando al 4 soldado del Ejercito Aragon
+		
+		Nombre: Espadachin Conquistador3X2
+		Vida: 14
+		Fila: 4
+		Columna: G
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 14
+		Velocidad: 4
+		Actitud: Espadachin Conquistador
+		Estado: true
+		---------------------------------
+		Registrando al 5 soldado del Ejercito Aragon
+		
+		Nombre: Espadachin Conquistador4X2
+		Vida: 14
+		Fila: 6
+		Columna: D
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 14
+		Velocidad: 3
+		Actitud: Espadachin Conquistador
+		Estado: true
+		---------------------------------
+		Registrando al 6 soldado del Ejercito Aragon
+		
+		Nombre: Espadachin5X2
+		Vida: 9
+		Fila: 8
+		Columna: A
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 9
+		Velocidad: 5
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		Registrando al 7 soldado del Ejercito Aragon
+		
+		Nombre: Caballero6X2
+		Vida: 10
+		Fila: 10
+		Columna: E
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 10
+		Velocidad: 2
+		Actitud: Caballero
+		Estado: true
+		---------------------------------
+		Registrando al 8 soldado del Ejercito Aragon
+		
+		Nombre: Caballero7X2
+		Vida: 10
+		Fila: 5
+		Columna: D
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 10
+		Velocidad: 5
+		Actitud: Caballero
+		Estado: true
+		---------------------------------
+		*********************************
+		
+		*********************************
+		El tipo de territorio es: montana
+		
+		*********************************
+		El Ejercito Castilla del 1 ejercito sus soldados son :
+		
+		*********************************
+		El 1 soldado es: 
+		
+		Nombre: Espadachin Conquistador3X1
+		Vida: 14
+		Fila: 2
+		Columna: G
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 15
+		Velocidad: 3
+		Actitud: Espadachin Conquistador
+		Estado: true
+		
+		*********************************
+		El 2 soldado es: 
+		
+		Nombre: Lancero0X1
+		Vida: 6
+		Fila: 6
+		Columna: G
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 7
+		Velocidad: 1
+		Actitud: Lancero
+		Estado: true
+		
+		*********************************
+		El 3 soldado es: 
+		
+		Nombre: Lancero1X1
+		Vida: 6
+		Fila: 9
+		Columna: D
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 7
+		Velocidad: 5
+		Actitud: Lancero
+		Estado: true
+		
+		*********************************
+		El 4 soldado es: 
+		
+		Nombre: Espadachin Conquistador5X1
+		Vida: 14
+		Fila: 9
+		Columna: F
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 15
+		Velocidad: 1
+		Actitud: Espadachin Conquistador
+		Estado: true
+		
+		*********************************
+		El 5 soldado es: 
+		
+		Nombre: Espadachin Conquistador2X1
+		Vida: 14
+		Fila: 9
+		Columna: J
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 15
+		Velocidad: 3
+		Actitud: Espadachin Conquistador
+		Estado: true
+		
+		*********************************
+		El 6 soldado es: 
+		
+		Nombre: Caballero4X1
+		Vida: 10
+		Fila: 10
+		Columna: F
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 11
+		Velocidad: 2
+		Actitud: Caballero
+		Estado: true
+		El Ejercito Aragon del 2 ejercito sus soldados son :
+		
+		*********************************
+		El 1 soldado es: 
+		
+		Nombre: Espadachin0X2
+		Vida: 8
+		Fila: 1
+		Columna: F
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 9
+		Velocidad: 4
+		Actitud: Espadachin
+		Estado: true
+		
+		*********************************
+		El 2 soldado es: 
+		
+		Nombre: Espadachin Conquistador3X2
+		Vida: 14
+		Fila: 4
+		Columna: G
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 15
+		Velocidad: 4
+		Actitud: Espadachin Conquistador
+		Estado: true
+		
+		*********************************
+		El 3 soldado es: 
+		
+		Nombre: Espadachin Conquistador1X2
+		Vida: 14
+		Fila: 4
+		Columna: I
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 15
+		Velocidad: 1
+		Actitud: Espadachin Conquistador
+		Estado: true
+		
+		*********************************
+		El 4 soldado es: 
+		
+		Nombre: Caballero7X2
+		Vida: 10
+		Fila: 5
+		Columna: D
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 11
+		Velocidad: 5
+		Actitud: Caballero
+		Estado: true
+		
+		*********************************
+		El 5 soldado es: 
+		
+		Nombre: Espadachin Conquistador2X2
+		Vida: 14
+		Fila: 6
+		Columna: B
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 15
+		Velocidad: 2
+		Actitud: Espadachin Conquistador
+		Estado: true
+		
+		*********************************
+		El 6 soldado es: 
+		
+		Nombre: Espadachin Conquistador4X2
+		Vida: 14
+		Fila: 6
+		Columna: D
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 15
+		Velocidad: 3
+		Actitud: Espadachin Conquistador
+		Estado: true
+		
+		*********************************
+		El 7 soldado es: 
+		
+		Nombre: Espadachin5X2
+		Vida: 9
+		Fila: 8
+		Columna: A
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 10
+		Velocidad: 5
+		Actitud: Espadachin
+		Estado: true
+		
+		*********************************
+		El 8 soldado es: 
+		
+		Nombre: Caballero6X2
+		Vida: 10
+		Fila: 10
+		Columna: E
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 11
+		Velocidad: 2
+		Actitud: Caballero
+		Estado: true
+		
+		*********************************
+		El tipo de territorio es: montana
+		
+		*********************************
+		
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit10.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		El soldado con mayor vida del Ejercito Castilla es: 
+
+		Nombre: Espadachin Conquistador3X1
+		Vida: 14
+		Fila: 2
+		Columna: G
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 15
+		Velocidad: 3
+		Actitud: Espadachin Conquistador
+		Estado: true
+		*********************************
+		El soldado con mayor vida del Ejercito Aragon es: 
+		
+		Nombre: Espadachin Conquistador3X2
+		Vida: 14
+		Fila: 4
+		Columna: G
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 15
+		Velocidad: 4
+		Actitud: Espadachin Conquistador
+		Estado: true
+		*********************************
+		El promedio de puntos de vida del Ejercito Castilla es: 
+		10.666666666666666
+		*********************************
+		El promedio de puntos de vida del Ejercito Aragon es: 
+		11.625
+		*********************************
+		
+		El Ejercito Castilla ordenando por metodo insercion: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito Castilla ..... ////// --->
+		
+		Puesto 1
+		Nombre: Espadachin Conquistador3X1
+		Vida: 14
+		Fila: 2
+		Columna: G
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 15
+		Velocidad: 3
+		Actitud: Espadachin Conquistador
+		Estado: true
+		------------------
+		
+		Puesto 2
+		Nombre: Espadachin Conquistador5X1
+		Vida: 14
+		Fila: 9
+		Columna: F
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 15
+		Velocidad: 1
+		Actitud: Espadachin Conquistador
+		Estado: true
+		------------------
+		
+		Puesto 3
+		Nombre: Espadachin Conquistador2X1
+		Vida: 14
+		Fila: 9
+		Columna: J
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 15
+		Velocidad: 3
+		Actitud: Espadachin Conquistador
+		Estado: true
+		------------------
+		
+		Puesto 4
+		Nombre: Caballero4X1
+		Vida: 10
+		Fila: 10
+		Columna: F
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 11
+		Velocidad: 2
+		Actitud: Caballero
+		Estado: true
+		------------------
+		
+		Puesto 5
+		Nombre: Lancero0X1
+		Vida: 6
+		Fila: 6
+		Columna: G
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 7
+		Velocidad: 1
+		Actitud: Lancero
+		Estado: true
+		------------------
+		
+		Puesto 6
+		Nombre: Lancero1X1
+		Vida: 6
+		Fila: 9
+		Columna: D
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 7
+		Velocidad: 5
+		Actitud: Lancero
+		Estado: true
+		------------------
+		*********************************
+		
+		El Ejercito Aragon ordenando por metodo insercion: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito Aragon ..... ////// --->
+		
+		Puesto 1
+		Nombre: Espadachin Conquistador3X2
+		Vida: 14
+		Fila: 4
+		Columna: G
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 15
+		Velocidad: 4
+		Actitud: Espadachin Conquistador
+		Estado: true
+		------------------
+		
+		Puesto 2
+		Nombre: Espadachin Conquistador1X2
+		Vida: 14
+		Fila: 4
+		Columna: I
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 15
+		Velocidad: 1
+		Actitud: Espadachin Conquistador
+		Estado: true
+		------------------
+		
+		Puesto 3
+		Nombre: Espadachin Conquistador2X2
+		Vida: 14
+		Fila: 6
+		Columna: B
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 15
+		Velocidad: 2
+		Actitud: Espadachin Conquistador
+		Estado: true
+		------------------
+		
+		Puesto 4
+		Nombre: Espadachin Conquistador4X2
+		Vida: 14
+		Fila: 6
+		Columna: D
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 15
+		Velocidad: 3
+		Actitud: Espadachin Conquistador
+		Estado: true
+		------------------
+		
+		Puesto 5
+		Nombre: Caballero7X2
+		Vida: 10
+		Fila: 5
+		Columna: D
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 11
+		Velocidad: 5
+		Actitud: Caballero
+		Estado: true
+		------------------
+		
+		Puesto 6
+		Nombre: Caballero6X2
+		Vida: 10
+		Fila: 10
+		Columna: E
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 11
+		Velocidad: 2
+		Actitud: Caballero
+		Estado: true
+		------------------
+		
+		Puesto 7
+		Nombre: Espadachin5X2
+		Vida: 9
+		Fila: 8
+		Columna: A
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 10
+		Velocidad: 5
+		Actitud: Espadachin
+		Estado: true
+		------------------
+		
+		Puesto 8
+		Nombre: Espadachin0X2
+		Vida: 8
+		Fila: 1
+		Columna: F
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 9
+		Velocidad: 4
+		Actitud: Espadachin
+		Estado: true
+		------------------
+		*********************************
+		
+		*********************************
+		El tipo de territorio es: montana
+		
+		*********************************
+			
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit10.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		Ejercito 1 : Castilla
+		Cantidad total de soldados creados: 6
+		Espadachines: 0
+		Arqueros: 0
+		Caballeros: 1
+		Lanceros: 2
+		Espadachin Real: 0
+		Caballero Moro: 0
+		Caballero Franco: 0
+		Espadachin Teutonico: 0
+		Espadachin Conquistador: 3
+		
+		Ejercito 2 : Aragon
+		Cantidad total de soldados creados: 8
+		Espadachines: 2
+		Arqueros: 0
+		Caballeros: 2
+		Lanceros: 0
+		Espadachin Real: 0
+		Caballero Moro: 0
+		Caballero Franco: 0
+		Espadachin Teutonico: 0
+		Espadachin Conquistador: 4
+		
+		Ejercito 1: Castilla: 70
+		Ejercito 2: Aragon: 101
+		El ganador es el ejercito 2 de: Aragon. Ya que al generar los porcentajes de probabilidad de victoria basada en los niveles de vida de sus soldados y aplicando un experimento aleatorio salio vencedor. (Aleatorio generado : 59.06)
+		
+		*********************************
+		 DESEA VOLVER A JUGAR
+		 1 : JUGAR
+		 2 : NO JUGAR
+		
 	\end{lstlisting}
 	\subsection{Estructura de laboratorio 22}
 	\begin{itemize}	
