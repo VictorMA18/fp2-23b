@@ -1584,6 +1584,633 @@
 			}
 		}
 	\end{lstlisting}
+	\subsection{Ejercicio Mapa}
+	\begin{itemize}	
+		\item En esta seccion publicamos los otros tipos de soldados especiales por cada reino los cuales son CaballeroFranco, CaballeroMoro , EspadachinReal , EspadachinConquistador, EspadachinTeutonico.
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Agregando opciones en getRandomSoldado() el cual serian estas clases heredadas anteriormente respetando si estas pertenecen a cierto reino especifico tambien modificamos el metodo obtenerIncial() el cual tambien agregamos las inciales de cada tipo de Soldado y tambien en el metodo fillarray() el cual creara a cada soldado dependiendo el tipo que sea con un constructor seria solo agregar mas clases heredadas en resumen "
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos de la clase Mapa}][H]
+		public static Soldado getRandomSoldado(String armyespe) {
+			Random rdm = new Random();
+			int tipoSoldado = rdm.nextInt(5);
+			switch (tipoSoldado) {
+				case 0:
+					return new Espadachin();
+				case 1:
+					return new Arquero();
+				case 2:
+					return new Lancero();
+				case 3:
+					return new Caballero();
+				case 4:
+					if(armyespe == "Inglaterra"){
+						return new EspadachinReal();
+					}else if(armyespe == "Francia"){
+						return new CaballeroFranco();
+					}else if(armyespe == "Sacro"){
+						return new EspadachinTeutonico();
+					}else if(armyespe == "Aragon" || armyespe == "Castilla"){
+						return new EspadachinConquistador();
+					}else if(armyespe == "Moros"){
+						return new CaballeroMoro();
+					}
+				default:
+					return new Espadachin();
+			}
+		}
+		public static String obtenerInicial(Soldado soldado) {
+			if (soldado instanceof Espadachin) {
+				return "E";
+			} else if (soldado instanceof Arquero) {
+				return "A";
+			} else if (soldado instanceof Caballero) {
+				return "C";
+			} else if (soldado instanceof Lancero) {
+				return "L";
+			} else if (soldado instanceof EspadachinReal){
+				return "ER";
+			} else if (soldado instanceof CaballeroFranco){
+				return "CF";
+			} else if (soldado instanceof EspadachinTeutonico){
+				return "ET";
+			} else if (soldado instanceof EspadachinConquistador){
+				return "EC";
+			} else if (soldado instanceof CaballeroMoro){
+				return "CM";
+			}else{
+				return " ";
+			}
+		}
+		public static ArrayList<ArrayList<Soldado>> fillarray(String armyespe, int num){
+			Random rdm = new Random();
+			ArrayList<ArrayList<Soldado>> army = new ArrayList<ArrayList<Soldado>>();
+			int numbersoldiers = rdm.nextInt(10) + 1; //NUMERO DE SOLDADOS ALEATORIOS ENTRE 1 A 10 SOLDADOS 
+			for(int i = 0; i < 10; i++){ //ITERACION
+				army.add(new ArrayList<Soldado>()); //LLENAMOS NUESTROS ARRAYLIST BIDIMENSIONAL CON CADA FILA PARA QUE CUMPLAN CON ESTRUCTURA DEL TABLERO
+				for(int j = 0; j < 10 ; j++){//ITERACION
+					army.get(i).add(null); // LLENAMOS CADA FILA DEL ARRAYLIST CON UN OBJETO SOLDADO CON TAL QUE ESTE SEA NULL PARA QUE SEPA QUE ESTE TIENE UNA CASILLA PERO NO HAY NADIE TODAVIA SE PUEDE LLENAR 
+				}
+			}
+			System.out.println("El Ejercito " + armyespe + " tiene " + numbersoldiers + " soldados : " ); 
+			System.out.println("");
+			for(int i = 0; i < numbersoldiers; i++){ //LLENAMOS CASILLAS CON CADA SOLDADO CREADO ALEATORIAMENTE
+				Soldado soldado = getRandomSoldado(armyespe);
+				String name = "Soldado" + i + "X" + num;
+				//System.out.println(name); PRUEBA QUE SE HIZO PARA VER LOS NOMBRES
+				int health = rdm.nextInt(5) + 1;
+				int row = rdm.nextInt(10) + 1;
+				int speed = rdm.nextInt(5) + 1;
+				String column = String.valueOf((char)(rdm.nextInt(10) + 65)); //REUTILIZAMOS CODIGO DEL ANTERIOR ARCHIVO VIDEOJUEGO2.JAVA YA QUE TENDRIAN LA MISMA FUNCIONALIDAD
+				//System.out.println(army.get(row - 1).get((int)column.charAt(0) - 65)); PRUEBA QUE SE HIZO PARA COMPROBAR SI EL OBJETO SE ESTABA DANDO O NO CAPAZ NI EXISTIA  
+				int lifelevel, defenselevel = 0;
+				int attacklevel = 0;
+				if (soldado instanceof Espadachin) {
+					name = "Espadachin" + i + "X" + num; 
+					lifelevel = rdm.nextInt(3) + 8; 
+					attacklevel = 10;
+					defenselevel = 8;
+					soldado.setName(name);                  
+					soldado.setAttackLevel(attacklevel);
+					soldado.setDefenseLevel(defenselevel);                    
+					soldado.setLifeLevel(lifelevel);
+					soldado.setRow(row);
+					soldado.setColumn(column);
+					if(army.get(row - 1).get((int)column.charAt(0) - 65) == null){
+						System.out.println("Registrando al " + (i + 1) + " soldado del Ejercito " + armyespe + "");
+						army.get(row - 1).set((int)column.charAt(0) - 65, new Espadachin(name, attacklevel, defenselevel, lifelevel, speed, "Espadachin", true, row, column, attacklevel));
+						army.get(row - 1).get((int)column.charAt(0) - 65).setSpeed(speed);
+						System.out.println(army.get(row - 1).get((int)column.charAt(0) - 65).toString());
+						System.out.println("---------------------------------");
+					}else{
+						i -= 1; //NOS AYUDARIA CON LOS SOLDADOS QUE SE REPITEN EN EL MISMO CASILLERO CON TAL QUE NO DEBERIA CONTAR 
+					}
+				} else if (soldado instanceof Arquero) {
+					name = "Arquero" + i + "X" + num; 
+					attacklevel = 7;
+					defenselevel = 3;
+					lifelevel = rdm.nextInt(3) + 3; 
+					soldado.setName(name);                  
+					soldado.setAttackLevel(attacklevel);
+					soldado.setDefenseLevel(defenselevel);                    
+					soldado.setLifeLevel(lifelevel);
+					soldado.setRow(row);
+					soldado.setColumn(column);
+					if(army.get(row - 1).get((int)column.charAt(0) - 65) == null){
+						System.out.println("Registrando al " + (i + 1) + " soldado del Ejercito " + armyespe + "");
+						army.get(row - 1).set((int)column.charAt(0) - 65, new Arquero(name, attacklevel, defenselevel, lifelevel, speed, "Arquero", true, row, column, attacklevel));
+						army.get(row - 1).get((int)column.charAt(0) - 65).setSpeed(speed);
+						System.out.println(army.get(row - 1).get((int)column.charAt(0) - 65).toString());
+						System.out.println("---------------------------------");
+					}else{
+						i -= 1; //NOS AYUDARIA CON LOS SOLDADOS QUE SE REPITEN EN EL MISMO CASILLERO CON TAL QUE NO DEBERIA CONTAR 
+					}
+				} else if (soldado instanceof Caballero) {
+					name = "Caballero" + i + "X" + num; 
+					attacklevel = 13;
+					defenselevel = 7;
+					lifelevel = rdm.nextInt(3) + 10; 
+					soldado.setName(name);                  
+					soldado.setAttackLevel(attacklevel);
+					soldado.setDefenseLevel(defenselevel);                    
+					soldado.setLifeLevel(lifelevel);
+					soldado.setRow(row);
+					soldado.setColumn(column);
+					if(army.get(row - 1).get((int)column.charAt(0) - 65) == null){
+						System.out.println("Registrando al " + (i + 1) + " soldado del Ejercito " + armyespe + "");
+						army.get(row - 1).set((int)column.charAt(0) - 65, new Caballero(name, attacklevel, defenselevel, lifelevel, speed, "Caballero", true, row, column, false));
+						army.get(row - 1).get((int)column.charAt(0) - 65).setSpeed(speed);
+						System.out.println(army.get(row - 1).get((int)column.charAt(0) - 65).toString());
+						System.out.println("---------------------------------");
+					}else{
+						i -= 1; //NOS AYUDARIA CON LOS SOLDADOS QUE SE REPITEN EN EL MISMO CASILLERO CON TAL QUE NO DEBERIA CONTAR 
+					}
+				} else if (soldado instanceof Lancero) {
+					name = "Lancero" + i + "X" + num; 
+					attacklevel = 5;
+					defenselevel = 10;
+					lifelevel = rdm.nextInt(3) + 5;
+					soldado.setName(name);                  
+					soldado.setAttackLevel(attacklevel);
+					soldado.setDefenseLevel(defenselevel);                    
+					soldado.setLifeLevel(lifelevel);
+					soldado.setRow(row);
+					soldado.setColumn(column);
+					if(army.get(row - 1).get((int)column.charAt(0) - 65) == null){
+						System.out.println("Registrando al " + (i + 1) + " soldado del Ejercito " + armyespe + "");
+						army.get(row - 1).set((int)column.charAt(0) - 65, new Lancero(name, attacklevel, defenselevel, lifelevel, speed, "Lancero", true, row, column, attacklevel));
+						army.get(row - 1).get((int)column.charAt(0) - 65).setSpeed(speed);
+						System.out.println(army.get(row - 1).get((int)column.charAt(0) - 65).toString());
+						System.out.println("---------------------------------");
+					}else{
+						i -= 1; //NOS AYUDARIA CON LOS SOLDADOS QUE SE REPITEN EN EL MISMO CASILLERO CON TAL QUE NO DEBERIA CONTAR 
+					}
+				} else if (soldado instanceof EspadachinReal){
+					name = "Espadachin Real" + i + "X" + num;
+					attacklevel = 10;
+					defenselevel = 8;
+					lifelevel = 12;
+					soldado.setName(name);                  
+					soldado.setAttackLevel(attacklevel);
+					soldado.setDefenseLevel(defenselevel);                    
+					soldado.setLifeLevel(lifelevel);
+					soldado.setRow(row);
+					soldado.setColumn(column);
+					if(army.get(row - 1).get((int)column.charAt(0) - 65) == null){
+						System.out.println("Registrando al " + (i + 1) + " soldado del Ejercito " + armyespe + "");
+						army.get(row - 1).set((int)column.charAt(0) - 65, new EspadachinReal(name, attacklevel, defenselevel, lifelevel, speed, "Espadachin Real", true, row, column, attacklevel, attacklevel));
+						army.get(row - 1).get((int)column.charAt(0) - 65).setSpeed(speed);
+						System.out.println(army.get(row - 1).get((int)column.charAt(0) - 65).toString());
+						System.out.println("---------------------------------");
+					}else{
+						i -= 1; //NOS AYUDARIA CON LOS SOLDADOS QUE SE REPITEN EN EL MISMO CASILLERO CON TAL QUE NO DEBERIA CONTAR 
+					}
+				} else if (soldado instanceof CaballeroFranco){
+					name = "Caballero Franco" + i + "X" + num;
+					attacklevel = 13;
+					defenselevel = 7;
+					lifelevel = 15;
+					soldado.setName(name);                  
+					soldado.setAttackLevel(attacklevel);
+					soldado.setDefenseLevel(defenselevel);                    
+					soldado.setLifeLevel(lifelevel);
+					soldado.setRow(row);
+					soldado.setColumn(column);
+					if(army.get(row - 1).get((int)column.charAt(0) - 65) == null){
+						System.out.println("Registrando al " + (i + 1) + " soldado del Ejercito " + armyespe + "");
+						army.get(row - 1).set((int)column.charAt(0) - 65, new CaballeroFranco(name, attacklevel, defenselevel, lifelevel, speed, "Caballero Franco", true, row, column, attacklevel, attacklevel));
+						army.get(row - 1).get((int)column.charAt(0) - 65).setSpeed(speed);
+						System.out.println(army.get(row - 1).get((int)column.charAt(0) - 65).toString());
+						System.out.println("---------------------------------");
+					}else{
+						i -= 1; //NOS AYUDARIA CON LOS SOLDADOS QUE SE REPITEN EN EL MISMO CASILLERO CON TAL QUE NO DEBERIA CONTAR 
+					}
+				} else if (soldado instanceof EspadachinTeutonico){
+					name = "Espadachin Teutonico" + i + "X" + num;
+					attacklevel = 10;
+					defenselevel = 8;
+					lifelevel = 13;
+					soldado.setName(name);                  
+					soldado.setAttackLevel(attacklevel);
+					soldado.setDefenseLevel(defenselevel);                    
+					soldado.setLifeLevel(lifelevel);
+					soldado.setRow(row);
+					soldado.setColumn(column);
+					if(army.get(row - 1).get((int)column.charAt(0) - 65) == null){
+						System.out.println("Registrando al " + (i + 1) + " soldado del Ejercito " + armyespe + "");
+						army.get(row - 1).set((int)column.charAt(0) - 65, new EspadachinTeutonico(name, attacklevel, defenselevel, lifelevel, speed, "Espadachin Teutonico", true, row, column, attacklevel, attacklevel));
+						army.get(row - 1).get((int)column.charAt(0) - 65).setSpeed(speed);
+						System.out.println(army.get(row - 1).get((int)column.charAt(0) - 65).toString());
+						System.out.println("---------------------------------");
+					}else{
+						i -= 1; //NOS AYUDARIA CON LOS SOLDADOS QUE SE REPITEN EN EL MISMO CASILLERO CON TAL QUE NO DEBERIA CONTAR 
+					}
+				} else if (soldado instanceof EspadachinConquistador){
+					name = "Espadachin Conquistador" + i + "X" + num;
+					attacklevel = 10;
+					defenselevel = 8;
+					lifelevel = 14;
+					soldado.setName(name);                  
+					soldado.setAttackLevel(attacklevel);
+					soldado.setDefenseLevel(defenselevel);                    
+					soldado.setLifeLevel(lifelevel);
+					soldado.setRow(row);
+					soldado.setColumn(column);
+					if(army.get(row - 1).get((int)column.charAt(0) - 65) == null){
+						System.out.println("Registrando al " + (i + 1) + " soldado del Ejercito " + armyespe + "");
+						army.get(row - 1).set((int)column.charAt(0) - 65, new EspadachinConquistador(name, attacklevel, defenselevel, lifelevel, speed, "Espadachin Conquistador", true, row, column, attacklevel, attacklevel));
+						army.get(row - 1).get((int)column.charAt(0) - 65).setSpeed(speed);
+						System.out.println(army.get(row - 1).get((int)column.charAt(0) - 65).toString());
+						System.out.println("---------------------------------");
+					}else{
+						i -= 1; //NOS AYUDARIA CON LOS SOLDADOS QUE SE REPITEN EN EL MISMO CASILLERO CON TAL QUE NO DEBERIA CONTAR 
+					}
+				} else if (soldado instanceof CaballeroMoro){
+					name = "Caballero Moro" + i + "X" + num;
+					attacklevel = 13;
+					defenselevel = 7;
+					lifelevel = 13;
+					soldado.setName(name);                  
+					soldado.setAttackLevel(attacklevel);
+					soldado.setDefenseLevel(defenselevel);                    
+					soldado.setLifeLevel(lifelevel);
+					soldado.setRow(row);
+					soldado.setColumn(column);
+					if(army.get(row - 1).get((int)column.charAt(0) - 65) == null){
+						System.out.println("Registrando al " + (i + 1) + " soldado del Ejercito " + armyespe + "");
+						army.get(row - 1).set((int)column.charAt(0) - 65, new CaballeroMoro(name, attacklevel, defenselevel, lifelevel, speed, "Caballero Moro", true, row, column, attacklevel, attacklevel));
+						army.get(row - 1).get((int)column.charAt(0) - 65).setSpeed(speed);
+						System.out.println(army.get(row - 1).get((int)column.charAt(0) - 65).toString());
+						System.out.println("---------------------------------");
+					}else{
+						i -= 1; //NOS AYUDARIA CON LOS SOLDADOS QUE SE REPITEN EN EL MISMO CASILLERO CON TAL QUE NO DEBERIA CONTAR 
+					}
+				}
+			}
+			System.out.println("*********************************");
+			return army;
+		}
+	\end{lstlisting}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		-------------------------------------------
+		--                 MENU                  --
+		-------------------------------------------
+		 SELECCIONE UN NUMERO PARA PODER EMPEZAR O TERMINAR
+		 1 : JUGAR
+		 2 : NO JUGAR
+		1
+		El Ejercito Francia tiene 3 soldados : 
+		
+		Registrando al 1 soldado del Ejercito Francia
+		
+		Nombre: Espadachin0X1
+		Vida: 8
+		Fila: 6
+		Columna: H
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 8
+		Velocidad: 2
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito Francia
+		
+		Nombre: Espadachin1X1
+		Vida: 10
+		Fila: 2
+		Columna: A
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 10
+		Velocidad: 5
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito Francia
+		
+		Nombre: Arquero2X1
+		Vida: 3
+		Fila: 4
+		Columna: F
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 3
+		Velocidad: 2
+		Actitud: Arquero
+		Estado: true
+		---------------------------------
+		*********************************
+		El Ejercito Aragon tiene 3 soldados : 
+		
+		Registrando al 1 soldado del Ejercito Aragon
+		
+		Nombre: Espadachin0X2
+		Vida: 10
+		Fila: 7
+		Columna: G
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 10
+		Velocidad: 5
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito Aragon
+		
+		Nombre: Arquero1X2
+		Vida: 3
+		Fila: 5
+		Columna: C
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 3
+		Velocidad: 2
+		Actitud: Arquero
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito Aragon
+		
+		Nombre: Lancero2X2
+		Vida: 6
+		Fila: 8
+		Columna: E
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 6
+		Velocidad: 5
+		Actitud: Lancero
+		Estado: true
+		---------------------------------
+		*********************************
+		
+		*********************************
+		El tipo de territorio es: campo abierto
+		
+		*********************************
+		El Ejercito Francia del 1 ejercito sus soldados son :
+		
+		*********************************
+		El 1 soldado es: 
+		
+		Nombre: Espadachin1X1
+		Vida: 10
+		Fila: 2
+		Columna: A
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 11
+		Velocidad: 5
+		Actitud: Espadachin
+		Estado: true
+		
+		*********************************
+		El 2 soldado es: 
+		
+		Nombre: Arquero2X1
+		Vida: 3
+		Fila: 4
+		Columna: F
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 4
+		Velocidad: 2
+		Actitud: Arquero
+		Estado: true
+		
+		*********************************
+		El 3 soldado es: 
+		
+		Nombre: Espadachin0X1
+		Vida: 8
+		Fila: 6
+		Columna: H
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 9
+		Velocidad: 2
+		Actitud: Espadachin
+		Estado: true
+		El Ejercito Aragon del 2 ejercito sus soldados son :
+		
+		*********************************
+		El 1 soldado es: 
+		
+		Nombre: Arquero1X2
+		Vida: 3
+		Fila: 5
+		Columna: C
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 3
+		Velocidad: 2
+		Actitud: Arquero
+		Estado: true
+		
+		*********************************
+		El 2 soldado es: 
+		
+		Nombre: Espadachin0X2
+		Vida: 10
+		Fila: 7
+		Columna: G
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 10
+		Velocidad: 5
+		Actitud: Espadachin
+		Estado: true
+		
+		*********************************
+		El 3 soldado es: 
+		
+		Nombre: Lancero2X2
+		Vida: 6
+		Fila: 8
+		Columna: E
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 6
+		Velocidad: 5
+		Actitud: Lancero
+		Estado: true
+		
+		*********************************
+		El tipo de territorio es: campo abierto
+		
+		*********************************
+				
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit9.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		El soldado con mayor vida del Ejercito Francia es: 
+		
+		Nombre: Espadachin1X1
+		Vida: 10
+		Fila: 2
+		Columna: A
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 11
+		Velocidad: 5
+		Actitud: Espadachin
+		Estado: true
+		*********************************
+		El soldado con mayor vida del Ejercito Aragon es: 
+		
+		Nombre: Espadachin0X2
+		Vida: 10
+		Fila: 7
+		Columna: G
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 10
+		Velocidad: 5
+		Actitud: Espadachin
+		Estado: true
+		*********************************
+		El promedio de puntos de vida del Ejercito Francia es: 
+		7.0
+		*********************************
+		El promedio de puntos de vida del Ejercito Aragon es: 
+		6.333333333333333
+		*********************************
+		
+		El Ejercito Francia ordenando por metodo insercion: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito Francia ..... ////// --->
+		
+		Puesto 1
+		Nombre: Espadachin1X1
+		Vida: 10
+		Fila: 2
+		Columna: A
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 11
+		Velocidad: 5
+		Actitud: Espadachin
+		Estado: true
+		------------------
+		
+		Puesto 2
+		Nombre: Espadachin0X1
+		Vida: 8
+		Fila: 6
+		Columna: H
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 9
+		Velocidad: 2
+		Actitud: Espadachin
+		Estado: true
+		------------------
+		
+		Puesto 3
+		Nombre: Arquero2X1
+		Vida: 3
+		Fila: 4
+		Columna: F
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 4
+		Velocidad: 2
+		Actitud: Arquero
+		Estado: true
+		------------------
+		*********************************
+		
+		El Ejercito Aragon ordenando por metodo insercion: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito Aragon ..... ////// --->
+		
+		Puesto 1
+		Nombre: Espadachin0X2
+		Vida: 10
+		Fila: 7
+		Columna: G
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 10
+		Velocidad: 5
+		Actitud: Espadachin
+		Estado: true
+		------------------
+		
+		Puesto 2
+		Nombre: Lancero2X2
+		Vida: 6
+		Fila: 8
+		Columna: E
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 6
+		Velocidad: 5
+		Actitud: Lancero
+		Estado: true
+		------------------
+		
+		Puesto 3
+		Nombre: Arquero1X2
+		Vida: 3
+		Fila: 5
+		Columna: C
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 3
+		Velocidad: 2
+		Actitud: Arquero
+		Estado: true
+		------------------
+		*********************************
+		
+		*********************************
+		El tipo de territorio es: campo abierto
+		
+		*********************************		
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit9.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		Ejercito 1 : Francia
+		Cantidad total de soldados creados: 3
+		Espadachines: 2
+		Arqueros: 1
+		Caballeros: 0
+		Lanceros: 0
+		
+		Ejercito 2 : Aragon
+		Cantidad total de soldados creados: 3
+		Espadachines: 1
+		Arqueros: 1
+		Caballeros: 0
+		Lanceros: 1
+		
+		Ejercito 1: Francia: 24
+		Ejercito 2: Aragon: 19
+		El ganador es el ejercito 1 de: Francia. Ya que al generar los porcentajes de probabilidad de victoria basada en los niveles de vida de sus soldados y aplicando un experimento aleatorio salio vencedor. (Aleatorio generado : 55.81)
+		
+		*********************************
+		 DESEA VOLVER A JUGAR
+		 1 : JUGAR
+		 2 : NO JUGAR
+			
+	\end{lstlisting}
 	\subsection{Estructura de laboratorio 22}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio22 es el siguiente:
