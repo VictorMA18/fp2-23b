@@ -9,6 +9,7 @@ public class Mapa {
     private ArrayList<ArrayList<Soldado>> board;
     private Ejercito army1e;
     private Ejercito army2e;
+    private BoardView boarde;
     private String[] typesterritory = {"bosque", "campo abierto", "montaña", "desierto", "playa"};
     private String[] kingdoms = {"Inglaterra", "Francia", "Sacro", "Castilla", "Aragon", "Moros"};
     public Mapa(){
@@ -52,6 +53,7 @@ public class Mapa {
             int sum2 = resultBattleSum(army2, kingdom2, 2);
             double sumtotal = (sum1 * 1.0) + (sum2 * 1.0);
             resbattle(sumtotal, sum1, sum2, 1, 2, kingdom1, kingdom2);
+            boarde = new BoardView(army1, army2);
             String respuesta = JOptionPane.showInputDialog("¿Quieres jugar de nuevo? (si/no): ");
             if (!respuesta.equalsIgnoreCase("si")) {
                 JOptionPane.showMessageDialog(null, "Fin del programa. ¡Hasta luego!");
