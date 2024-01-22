@@ -9,7 +9,7 @@ public class Arquero extends Soldado{
     }
     public void disparar(){
         if(this.flechas == 0){
-            System.out.println("El arquero ya tiene flechas para poder disparar");
+            System.out.println("El arquero ya no tiene flechas para poder disparar");
         }else{
             this.flechas = flechas - 1;
             this.atacar();

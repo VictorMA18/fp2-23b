@@ -4,7 +4,7 @@ import java.util.*;
 public class Mapa {
     Scanner sc = new Scanner(System.in);
     Random rdm = new Random();
-    private String territory;
+    private static String territory;
     private ArrayList<ArrayList<Soldado>> board;
     private Ejercito army1e;
     private Ejercito army2e;
@@ -31,6 +31,9 @@ public class Mapa {
             bonificacion(army2, territory, kingdom2);
             army1e.viewSoldiers(kingdom1, 1, army1);
             army2e.viewSoldiers(kingdom2, 2, army2);
+            System.out.println("\n*********************************");
+            System.out.println("El tipo de territorio es: " + territory);
+            System.out.println("\n*********************************");
             viewBoard(army1, army2);
             army1e.longerLife(army1, kingdom1);
             army2e.longerLife(army2, kingdom2);
@@ -38,6 +41,9 @@ public class Mapa {
             double avg2 = army2e.averageLife(army2, kingdom2);
             army1e.rankingInsercionLife(army1, kingdom1);
             army2e.rankingInsercionLife(army2, kingdom2);
+            System.out.println("\n*********************************");
+            System.out.println("El tipo de territorio es: " + territory);
+            System.out.println("\n*********************************");
             viewBoard(army1, army2);
             resultBattleInfo(army1, kingdom1 , 1);
             resultBattleInfo(army2, kingdom2 , 2);
@@ -72,7 +78,7 @@ public class Mapa {
         System.out.println("El Ejercito " + armyespe + " tiene " + numbersoldiers + " soldados : " ); 
         System.out.println("");
         for(int i = 0; i < numbersoldiers; i++){ //LLENAMOS CASILLAS CON CADA SOLDADO CREADO ALEATORIAMENTE
-            Soldado soldado = getRandomSoldado();
+            Soldado soldado = getRandomSoldado(armyespe);
             String name = "Soldado" + i + "X" + num;
             //System.out.println(name); PRUEBA QUE SE HIZO PARA VER LOS NOMBRES
             int health = rdm.nextInt(5) + 1;
@@ -162,6 +168,106 @@ public class Mapa {
                 }else{
                     i -= 1; //NOS AYUDARIA CON LOS SOLDADOS QUE SE REPITEN EN EL MISMO CASILLERO CON TAL QUE NO DEBERIA CONTAR 
                 }
+            } else if (soldado instanceof EspadachinReal){
+                name = "Espadachin Real" + i + "X" + num;
+                attacklevel = 10;
+                defenselevel = 8;
+                lifelevel = 12;
+                soldado.setName(name);                  
+                soldado.setAttackLevel(attacklevel);
+                soldado.setDefenseLevel(defenselevel);                    
+                soldado.setLifeLevel(lifelevel);
+                soldado.setRow(row);
+                soldado.setColumn(column);
+                if(army.get(row - 1).get((int)column.charAt(0) - 65) == null){
+                    System.out.println("Registrando al " + (i + 1) + " soldado del Ejercito " + armyespe + "");
+                    army.get(row - 1).set((int)column.charAt(0) - 65, new EspadachinReal(name, attacklevel, defenselevel, lifelevel, speed, "Espadachin Real", true, row, column, attacklevel, attacklevel));
+                    army.get(row - 1).get((int)column.charAt(0) - 65).setSpeed(speed);
+                    System.out.println(army.get(row - 1).get((int)column.charAt(0) - 65).toString());
+                    System.out.println("---------------------------------");
+                }else{
+                    i -= 1; //NOS AYUDARIA CON LOS SOLDADOS QUE SE REPITEN EN EL MISMO CASILLERO CON TAL QUE NO DEBERIA CONTAR 
+                }
+            } else if (soldado instanceof CaballeroFranco){
+                name = "Caballero Franco" + i + "X" + num;
+            	attacklevel = 13;
+            	defenselevel = 7;
+                lifelevel = 15;
+                soldado.setName(name);                  
+                soldado.setAttackLevel(attacklevel);
+                soldado.setDefenseLevel(defenselevel);                    
+                soldado.setLifeLevel(lifelevel);
+                soldado.setRow(row);
+                soldado.setColumn(column);
+                if(army.get(row - 1).get((int)column.charAt(0) - 65) == null){
+                    System.out.println("Registrando al " + (i + 1) + " soldado del Ejercito " + armyespe + "");
+                    army.get(row - 1).set((int)column.charAt(0) - 65, new CaballeroFranco(name, attacklevel, defenselevel, lifelevel, speed, "Caballero Franco", true, row, column, attacklevel, attacklevel));
+                    army.get(row - 1).get((int)column.charAt(0) - 65).setSpeed(speed);
+                    System.out.println(army.get(row - 1).get((int)column.charAt(0) - 65).toString());
+                    System.out.println("---------------------------------");
+                }else{
+                    i -= 1; //NOS AYUDARIA CON LOS SOLDADOS QUE SE REPITEN EN EL MISMO CASILLERO CON TAL QUE NO DEBERIA CONTAR 
+                }
+            } else if (soldado instanceof EspadachinTeutonico){
+                name = "Espadachin Teutonico" + i + "X" + num;
+                attacklevel = 10;
+                defenselevel = 8;
+                lifelevel = 13;
+                soldado.setName(name);                  
+                soldado.setAttackLevel(attacklevel);
+                soldado.setDefenseLevel(defenselevel);                    
+                soldado.setLifeLevel(lifelevel);
+                soldado.setRow(row);
+                soldado.setColumn(column);
+                if(army.get(row - 1).get((int)column.charAt(0) - 65) == null){
+                    System.out.println("Registrando al " + (i + 1) + " soldado del Ejercito " + armyespe + "");
+                    army.get(row - 1).set((int)column.charAt(0) - 65, new EspadachinTeutonico(name, attacklevel, defenselevel, lifelevel, speed, "Espadachin Teutonico", true, row, column, attacklevel, attacklevel));
+                    army.get(row - 1).get((int)column.charAt(0) - 65).setSpeed(speed);
+                    System.out.println(army.get(row - 1).get((int)column.charAt(0) - 65).toString());
+                    System.out.println("---------------------------------");
+                }else{
+                    i -= 1; //NOS AYUDARIA CON LOS SOLDADOS QUE SE REPITEN EN EL MISMO CASILLERO CON TAL QUE NO DEBERIA CONTAR 
+                }
+            } else if (soldado instanceof EspadachinConquistador){
+                name = "Espadachin Conquistador" + i + "X" + num;
+                attacklevel = 10;
+                defenselevel = 8;
+                lifelevel = 14;
+                soldado.setName(name);                  
+                soldado.setAttackLevel(attacklevel);
+                soldado.setDefenseLevel(defenselevel);                    
+                soldado.setLifeLevel(lifelevel);
+                soldado.setRow(row);
+                soldado.setColumn(column);
+                if(army.get(row - 1).get((int)column.charAt(0) - 65) == null){
+                    System.out.println("Registrando al " + (i + 1) + " soldado del Ejercito " + armyespe + "");
+                    army.get(row - 1).set((int)column.charAt(0) - 65, new EspadachinConquistador(name, attacklevel, defenselevel, lifelevel, speed, "Espadachin Conquistador", true, row, column, attacklevel, attacklevel));
+                    army.get(row - 1).get((int)column.charAt(0) - 65).setSpeed(speed);
+                    System.out.println(army.get(row - 1).get((int)column.charAt(0) - 65).toString());
+                    System.out.println("---------------------------------");
+                }else{
+                    i -= 1; //NOS AYUDARIA CON LOS SOLDADOS QUE SE REPITEN EN EL MISMO CASILLERO CON TAL QUE NO DEBERIA CONTAR 
+                }
+            } else if (soldado instanceof CaballeroMoro){
+                name = "Caballero Moro" + i + "X" + num;
+            	attacklevel = 13;
+            	defenselevel = 7;
+                lifelevel = 13;
+                soldado.setName(name);                  
+                soldado.setAttackLevel(attacklevel);
+                soldado.setDefenseLevel(defenselevel);                    
+                soldado.setLifeLevel(lifelevel);
+                soldado.setRow(row);
+                soldado.setColumn(column);
+                if(army.get(row - 1).get((int)column.charAt(0) - 65) == null){
+                    System.out.println("Registrando al " + (i + 1) + " soldado del Ejercito " + armyespe + "");
+                    army.get(row - 1).set((int)column.charAt(0) - 65, new CaballeroMoro(name, attacklevel, defenselevel, lifelevel, speed, "Caballero Moro", true, row, column, attacklevel, attacklevel));
+                    army.get(row - 1).get((int)column.charAt(0) - 65).setSpeed(speed);
+                    System.out.println(army.get(row - 1).get((int)column.charAt(0) - 65).toString());
+                    System.out.println("---------------------------------");
+                }else{
+                    i -= 1; //NOS AYUDARIA CON LOS SOLDADOS QUE SE REPITEN EN EL MISMO CASILLERO CON TAL QUE NO DEBERIA CONTAR 
+                }
             }
         }
         System.out.println("*********************************");
@@ -187,20 +293,20 @@ public class Mapa {
                             if(army1.get(i).get(j).getLifeActual() > army2.get(i).get(j).getLifeActual()){
                                 army1.get(i).get(j).setLifeActual(army1.get(i).get(j).getLifeActual() - army2.get(i).get(j).getLifeActual()); //Cambiamos 
                                 army2.get(i).set(j, null); 
-                                System.out.printf("|  1%s%2d ", obtenerInicial(army1.get(i).get(j)), army1.get(i).get(j).getLifeActual());
+                                System.out.printf("| 1%2s%2d ", obtenerInicial(army1.get(i).get(j)), army1.get(i).get(j).getLifeActual());
                             }else if(army2.get(i).get(j).getLifeActual() > army1.get(i).get(j).getLifeActual()){
                                 army2.get(i).get(j).setLifeActual(army2.get(i).get(j).getLifeActual() - army1.get(i).get(j).getLifeActual());
                                 army1.get(i).set(j, null);;
-                                System.out.printf("|  2%s%2d ", obtenerInicial(army2.get(i).get(j)), army2.get(i).get(j).getLifeActual());
+                                System.out.printf("| 2%2s%2d ", obtenerInicial(army2.get(i).get(j)), army2.get(i).get(j).getLifeActual());
                             }else{
                                 army2.get(i).set(j, null);
                                 army1.get(i).set(j, null);
                                 System.out.print("|   " + "" + "   ");
                             }
                         }else if(army1.get(i).get(j) != null){
-                            System.out.printf("|  1%s%2d ", obtenerInicial(army1.get(i).get(j)), army1.get(i).get(j).getLifeActual());
+                            System.out.printf("| 1%2s%2d ", obtenerInicial(army1.get(i).get(j)), army1.get(i).get(j).getLifeActual());
                         }else if(army2.get(i).get(j) != null){
-                            System.out.printf("|  2%s%2d ", obtenerInicial(army2.get(i).get(j)), army2.get(i).get(j).getLifeActual());
+                            System.out.printf("| 2%2s%2d ", obtenerInicial(army2.get(i).get(j)), army2.get(i).get(j).getLifeActual());
                         }else{
                             System.out.print("|   " + " " + "   ");
                         }
@@ -210,9 +316,9 @@ public class Mapa {
         }
         System.out.println("\n*********************************");
     }
-    public static Soldado getRandomSoldado() {
+    public static Soldado getRandomSoldado(String armyespe) {
         Random rdm = new Random();
-        int tipoSoldado = rdm.nextInt(4);
+        int tipoSoldado = rdm.nextInt(5);
         switch (tipoSoldado) {
             case 0:
                 return new Espadachin();
@@ -222,6 +328,18 @@ public class Mapa {
                 return new Lancero();
             case 3:
                 return new Caballero();
+            case 4:
+                if(armyespe == "Inglaterra"){
+                    return new EspadachinReal();
+                }else if(armyespe == "Francia"){
+                    return new CaballeroFranco();
+                }else if(armyespe == "Sacro"){
+                    return new EspadachinTeutonico();
+                }else if(armyespe == "Aragon" || armyespe == "Castilla"){
+                    return new EspadachinConquistador();
+                }else if(armyespe == "Moros"){
+                    return new CaballeroMoro();
+                }
             default:
                 return new Espadachin();
         }
@@ -235,8 +353,18 @@ public class Mapa {
             return "C";
         } else if (soldado instanceof Lancero) {
             return "L";
-        } else {
-            return "S";
+        } else if (soldado instanceof EspadachinReal){
+            return "ER";
+        } else if (soldado instanceof CaballeroFranco){
+            return "CF";
+        } else if (soldado instanceof EspadachinTeutonico){
+            return "ET";
+        } else if (soldado instanceof EspadachinConquistador){
+            return "EC";
+        } else if (soldado instanceof CaballeroMoro){
+            return "CM";
+        }else{
+            return " ";
         }
     }
     public void bonificacion(ArrayList<ArrayList<Soldado>> army, String territory , String kingdom) {
