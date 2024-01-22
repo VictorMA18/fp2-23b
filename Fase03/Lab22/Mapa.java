@@ -1,4 +1,5 @@
 import java.text.DecimalFormat;
+import javax.swing.*;
 import java.util.*;
 
 public class Mapa {
@@ -14,16 +15,16 @@ public class Mapa {
         this.board = fillboard();
     }
     public void iniciarJuego() {
-        menuBatalla();
-        int n = sc.nextInt();
-        while (n == 1) {
+        boolean play = true;
+        while (play) {
+            territory = typesterritory[rdm.nextInt(5)];
+            JOptionPane.showMessageDialog(null, "El tipo de territorio es: " + territory);
             String kingdom1 = kingdoms[rdm.nextInt(6)];
             String kingdom2 = kingdoms[rdm.nextInt(6)];
             ArrayList<ArrayList<Soldado>> army1 = fillarray(kingdom1, 1);
             ArrayList<ArrayList<Soldado>> army2 = fillarray(kingdom2, 2);
             army1e = new Ejercito(army1,kingdom1);
             army2e = new Ejercito(army2,kingdom2);
-            territory = typesterritory[rdm.nextInt(5)];
             System.out.println("\n*********************************");
             System.out.println("El tipo de territorio es: " + territory);
             System.out.println("\n*********************************");
@@ -52,7 +53,12 @@ public class Mapa {
             double sumtotal = (sum1 * 1.0) + (sum2 * 1.0);
             resbattle(sumtotal, sum1, sum2, 1, 2, kingdom1, kingdom2);
             volveraJugar();
-            n = sc.nextInt();
+            int n = sc.nextInt();
+            if(n == 1){
+                play = true;
+            }else{
+                play = false;
+            }
         }
     }
     public static ArrayList<ArrayList<Soldado>> fillboard(){
