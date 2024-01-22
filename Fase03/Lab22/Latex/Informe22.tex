@@ -2960,6 +2960,845 @@
 		 2 : NO JUGAR
 		
 	\end{lstlisting}
+	\subsection{Ejercicio JuegoPrincipal}
+	\begin{itemize}	
+		\item En esta seccion en el método main, he creado una interfaz gráfica de usuario (GUI) utilizando la biblioteca Swing de Java. La interfaz consta de un JFrame llamado ventanaBienvenida que representa el menú de inicio del juego. Este marco tiene un tamaño predeterminado de 350x145 píxeles y se cerrará cuando el usuario haga clic en el botón de cierre. El diseño del contenido se gestiona mediante un JPanel llamado panelPrincipal, que utiliza un diseño de flujo (FlowLayout) para centrar y espaciar los elementos.
+		\item Dentro del panel, he añadido un JLabel llamado mensajeLabel con el texto "¿Desea iniciar el juego?" y dos botones (JButton), botonSi y botonNo, con los textos "Sí" y "No" respectivamente. Los botones tienen colores de fondo distintivos (verde para "Sí" y rojo para "No"). Se ha agregado un ActionListener a cada botón para manejar los eventos de clic.
+		\item Si el usuario hace clic en el botón "Sí", se cierra la ventana de bienvenida (ventanaBienvenida.dispose()) y se crea un objeto Mapa para iniciar el juego llamando al método iniciarJuego() de la clase Mapa. Si el usuario hace clic en el botón "No", se cierra la ventana de bienvenida y se muestra un cuadro de diálogo (JOptionPane) con el mensaje "Programa finalizado".
+		\item Finalmente, se configuran propiedades adicionales de la ventana, como su posición (ventanaBienvenida.setLocationRelativeTo(null)) para que aparezca en el centro de la pantalla, y se establece la visibilidad de la ventana en true para mostrarla al usuario. 
+		\item El codigo y el commit seria el siguiente:
+	\end{itemize}	
+	\begin{lstlisting}[language=bash,caption={Commit}][H]
+		$ git commit -m "Agregandole GUI al main el cual importamos java swing y java awt para el menu de inicio del juego y los diferentes metodos que aplicamos para su buena dispocion graficamente"
+	\end{lstlisting}	
+	\begin{lstlisting}[language=java,caption={Las lineas de codigos de la clase JuegoPrincipal}][H]
+		import javax.swing.*;
+		import java.awt.*;
+		import java.awt.event.ActionEvent;
+		import java.awt.event.ActionListener;
+		public class Juegoprincipal{
+			public static void main(String[] args) {
+				JFrame ventanaBienvenida = new JFrame("MENU DE BATALLA");
+				ventanaBienvenida.setSize(350, 145);
+				ventanaBienvenida.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				JPanel panelPrincipal = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 30));
+				JLabel mensajeLabel = new JLabel("-Desea iniciar el juego-");
+				JButton botonSi = new JButton("Si");
+				JButton botonNo = new JButton("No");
+				botonSi.setBackground(Color.GREEN);
+				botonNo.setBackground(Color.RED);
+				panelPrincipal.add(mensajeLabel);
+				panelPrincipal.add(botonSi);
+				panelPrincipal.add(botonNo);
+				botonSi.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {             
+						ventanaBienvenida.dispose();
+						Mapa mapa = new Mapa();
+						mapa.iniciarJuego();
+					}
+				});
+				botonNo.addActionListener(new ActionListener() {              
+					public void actionPerformed(ActionEvent e) {
+						ventanaBienvenida.dispose();
+						JOptionPane.showMessageDialog(null, "Programa finalizado.");
+					}
+				});
+				ventanaBienvenida.add(panelPrincipal);
+				ventanaBienvenida.setLocationRelativeTo(null); 
+				ventanaBienvenida.setVisible(true);      
+			}
+		}
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit11-1.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit11-2.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		El Ejercito Castilla tiene 9 soldados : 
+
+		Registrando al 1 soldado del Ejercito Castilla
+		
+		Nombre: Arquero0X1
+		Vida: 4
+		Fila: 1
+		Columna: J
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 4
+		Velocidad: 5
+		Actitud: Arquero
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito Castilla
+		
+		Nombre: Caballero1X1
+		Vida: 11
+		Fila: 5
+		Columna: J
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 11
+		Velocidad: 4
+		Actitud: Caballero
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito Castilla
+		
+		Nombre: Arquero2X1
+		Vida: 5
+		Fila: 10
+		Columna: J
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 5
+		Velocidad: 5
+		Actitud: Arquero
+		Estado: true
+		---------------------------------
+		Registrando al 4 soldado del Ejercito Castilla
+		
+		Nombre: Caballero3X1
+		Vida: 11
+		Fila: 3
+		Columna: C
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 11
+		Velocidad: 2
+		Actitud: Caballero
+		Estado: true
+		---------------------------------
+		Registrando al 5 soldado del Ejercito Castilla
+		
+		Nombre: Arquero4X1
+		Vida: 4
+		Fila: 5
+		Columna: B
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 4
+		Velocidad: 3
+		Actitud: Arquero
+		Estado: true
+		---------------------------------
+		Registrando al 6 soldado del Ejercito Castilla
+		
+		Nombre: Caballero5X1
+		Vida: 10
+		Fila: 9
+		Columna: D
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 10
+		Velocidad: 4
+		Actitud: Caballero
+		Estado: true
+		---------------------------------
+		Registrando al 7 soldado del Ejercito Castilla
+		
+		Nombre: Caballero6X1
+		Vida: 12
+		Fila: 5
+		Columna: H
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 12
+		Velocidad: 2
+		Actitud: Caballero
+		Estado: true
+		---------------------------------
+		Registrando al 8 soldado del Ejercito Castilla
+		
+		Nombre: Caballero7X1
+		Vida: 10
+		Fila: 2
+		Columna: I
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 10
+		Velocidad: 3
+		Actitud: Caballero
+		Estado: true
+		---------------------------------
+		Registrando al 9 soldado del Ejercito Castilla
+		
+		Nombre: Espadachin Conquistador8X1
+		Vida: 14
+		Fila: 9
+		Columna: H
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 14
+		Velocidad: 3
+		Actitud: Espadachin Conquistador
+		Estado: true
+		---------------------------------
+		*********************************
+		El Ejercito Moros tiene 8 soldados : 
+		
+		Registrando al 1 soldado del Ejercito Moros
+		
+		Nombre: Caballero0X2
+		Vida: 12
+		Fila: 9
+		Columna: D
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 12
+		Velocidad: 1
+		Actitud: Caballero
+		Estado: true
+		---------------------------------
+		Registrando al 2 soldado del Ejercito Moros
+		
+		Nombre: Caballero1X2
+		Vida: 12
+		Fila: 10
+		Columna: A
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 12
+		Velocidad: 3
+		Actitud: Caballero
+		Estado: true
+		---------------------------------
+		Registrando al 3 soldado del Ejercito Moros
+		
+		Nombre: Espadachin2X2
+		Vida: 10
+		Fila: 6
+		Columna: B
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 10
+		Velocidad: 2
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		Registrando al 4 soldado del Ejercito Moros
+		
+		Nombre: Espadachin3X2
+		Vida: 8
+		Fila: 4
+		Columna: J
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 8
+		Velocidad: 3
+		Actitud: Espadachin
+		Estado: true
+		---------------------------------
+		Registrando al 5 soldado del Ejercito Moros
+		
+		Nombre: Caballero Moro4X2
+		Vida: 13
+		Fila: 8
+		Columna: A
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 13
+		Velocidad: 5
+		Actitud: Caballero Moro
+		Estado: true
+		---------------------------------
+		Registrando al 6 soldado del Ejercito Moros
+		
+		Nombre: Caballero Moro5X2
+		Vida: 13
+		Fila: 1
+		Columna: A
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 13
+		Velocidad: 2
+		Actitud: Caballero Moro
+		Estado: true
+		---------------------------------
+		Registrando al 7 soldado del Ejercito Moros
+		
+		Nombre: Lancero6X2
+		Vida: 7
+		Fila: 9
+		Columna: H
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 7
+		Velocidad: 2
+		Actitud: Lancero
+		Estado: true
+		---------------------------------
+		Registrando al 8 soldado del Ejercito Moros
+		
+		Nombre: Arquero7X2
+		Vida: 5
+		Fila: 1
+		Columna: H
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 5
+		Velocidad: 5
+		Actitud: Arquero
+		Estado: true
+		---------------------------------
+		*********************************
+		
+		*********************************
+		El tipo de territorio es: playa
+		
+		*********************************
+		El Ejercito Castilla del 1 ejercito sus soldados son :
+		
+		*********************************
+		El 1 soldado es: 
+		
+		Nombre: Arquero0X1
+		Vida: 4
+		Fila: 1
+		Columna: J
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 4
+		Velocidad: 5
+		Actitud: Arquero
+		Estado: true
+		
+		*********************************
+		El 2 soldado es: 
+		
+		Nombre: Caballero7X1
+		Vida: 10
+		Fila: 2
+		Columna: I
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 10
+		Velocidad: 3
+		Actitud: Caballero
+		Estado: true
+		
+		*********************************
+		El 3 soldado es: 
+		
+		Nombre: Caballero3X1
+		Vida: 11
+		Fila: 3
+		Columna: C
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 11
+		Velocidad: 2
+		Actitud: Caballero
+		Estado: true
+		
+		*********************************
+		El 4 soldado es: 
+		
+		Nombre: Arquero4X1
+		Vida: 4
+		Fila: 5
+		Columna: B
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 4
+		Velocidad: 3
+		Actitud: Arquero
+		Estado: true
+		
+		*********************************
+		El 5 soldado es: 
+		
+		Nombre: Caballero6X1
+		Vida: 12
+		Fila: 5
+		Columna: H
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 12
+		Velocidad: 2
+		Actitud: Caballero
+		Estado: true
+		
+		*********************************
+		El 6 soldado es: 
+		
+		Nombre: Caballero1X1
+		Vida: 11
+		Fila: 5
+		Columna: J
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 11
+		Velocidad: 4
+		Actitud: Caballero
+		Estado: true
+		
+		*********************************
+		El 7 soldado es: 
+		
+		Nombre: Caballero5X1
+		Vida: 10
+		Fila: 9
+		Columna: D
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 10
+		Velocidad: 4
+		Actitud: Caballero
+		Estado: true
+		
+		*********************************
+		El 8 soldado es: 
+		
+		Nombre: Espadachin Conquistador8X1
+		Vida: 14
+		Fila: 9
+		Columna: H
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 14
+		Velocidad: 3
+		Actitud: Espadachin Conquistador
+		Estado: true
+		
+		*********************************
+		El 9 soldado es: 
+		
+		Nombre: Arquero2X1
+		Vida: 5
+		Fila: 10
+		Columna: J
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 5
+		Velocidad: 5
+		Actitud: Arquero
+		Estado: true
+		El Ejercito Moros del 2 ejercito sus soldados son :
+		
+		*********************************
+		El 1 soldado es: 
+		
+		Nombre: Caballero Moro5X2
+		Vida: 13
+		Fila: 1
+		Columna: A
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 13
+		Velocidad: 2
+		Actitud: Caballero Moro
+		Estado: true
+		
+		*********************************
+		El 2 soldado es: 
+		
+		Nombre: Arquero7X2
+		Vida: 5
+		Fila: 1
+		Columna: H
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 5
+		Velocidad: 5
+		Actitud: Arquero
+		Estado: true
+		
+		*********************************
+		El 3 soldado es: 
+		
+		Nombre: Espadachin3X2
+		Vida: 8
+		Fila: 4
+		Columna: J
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 8
+		Velocidad: 3
+		Actitud: Espadachin
+		Estado: true
+		
+		*********************************
+		El 4 soldado es: 
+		
+		Nombre: Espadachin2X2
+		Vida: 10
+		Fila: 6
+		Columna: B
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 10
+		Velocidad: 2
+		Actitud: Espadachin
+		Estado: true
+		
+		*********************************
+		El 5 soldado es: 
+		
+		Nombre: Caballero Moro4X2
+		Vida: 13
+		Fila: 8
+		Columna: A
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 13
+		Velocidad: 5
+		Actitud: Caballero Moro
+		Estado: true
+		
+		*********************************
+		El 6 soldado es: 
+		
+		Nombre: Caballero0X2
+		Vida: 12
+		Fila: 9
+		Columna: D
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 12
+		Velocidad: 1
+		Actitud: Caballero
+		Estado: true
+		
+		*********************************
+		El 7 soldado es: 
+		
+		Nombre: Lancero6X2
+		Vida: 7
+		Fila: 9
+		Columna: H
+		Nivel de ataque: 5
+		Nivel de Defensa: 10
+		Nivel de vida: 7
+		Velocidad: 2
+		Actitud: Lancero
+		Estado: true
+		
+		*********************************
+		El 8 soldado es: 
+		
+		Nombre: Caballero1X2
+		Vida: 12
+		Fila: 10
+		Columna: A
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 12
+		Velocidad: 3
+		Actitud: Caballero
+		Estado: true
+		
+		*********************************
+		El tipo de territorio es: playa
+		
+		*********************************
+		
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit11-3.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		El soldado con mayor vida del Ejercito Castilla es: 
+		
+		Nombre: Caballero6X1
+		Vida: 12
+		Fila: 5
+		Columna: H
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 12
+		Velocidad: 2
+		Actitud: Caballero
+		Estado: true
+		*********************************
+		El soldado con mayor vida del Ejercito Moros es: 
+		
+		Nombre: Caballero Moro5X2
+		Vida: 13
+		Fila: 1
+		Columna: A
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 13
+		Velocidad: 2
+		Actitud: Caballero Moro
+		Estado: true
+		*********************************
+		El promedio de puntos de vida del Ejercito Castilla es: 
+		8.0
+		*********************************
+		El promedio de puntos de vida del Ejercito Moros es: 
+		9.0
+		*********************************
+		
+		El Ejercito Castilla ordenando por metodo insercion: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito Castilla ..... ////// --->
+		
+		Puesto 1
+		Nombre: Caballero6X1
+		Vida: 12
+		Fila: 5
+		Columna: H
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 12
+		Velocidad: 2
+		Actitud: Caballero
+		Estado: true
+		------------------
+		
+		Puesto 2
+		Nombre: Caballero3X1
+		Vida: 11
+		Fila: 3
+		Columna: C
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 11
+		Velocidad: 2
+		Actitud: Caballero
+		Estado: true
+		------------------
+		
+		Puesto 3
+		Nombre: Caballero1X1
+		Vida: 11
+		Fila: 5
+		Columna: J
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 11
+		Velocidad: 4
+		Actitud: Caballero
+		Estado: true
+		------------------
+		
+		Puesto 4
+		Nombre: Caballero7X1
+		Vida: 10
+		Fila: 2
+		Columna: I
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 10
+		Velocidad: 3
+		Actitud: Caballero
+		Estado: true
+		------------------
+		
+		Puesto 5
+		Nombre: Espadachin Conquistador8X1
+		Vida: 7
+		Fila: 9
+		Columna: H
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 14
+		Velocidad: 3
+		Actitud: Espadachin Conquistador
+		Estado: true
+		------------------
+		
+		Puesto 6
+		Nombre: Arquero2X1
+		Vida: 5
+		Fila: 10
+		Columna: J
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 5
+		Velocidad: 5
+		Actitud: Arquero
+		Estado: true
+		------------------
+		
+		Puesto 7
+		Nombre: Arquero0X1
+		Vida: 4
+		Fila: 1
+		Columna: J
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 4
+		Velocidad: 5
+		Actitud: Arquero
+		Estado: true
+		------------------
+		
+		Puesto 8
+		Nombre: Arquero4X1
+		Vida: 4
+		Fila: 5
+		Columna: B
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 4
+		Velocidad: 3
+		Actitud: Arquero
+		Estado: true
+		------------------
+		*********************************
+		
+		El Ejercito Moros ordenando por metodo insercion: 
+		------------------------------------------
+		Mostrando Ranking del Ejercito Moros ..... ////// --->
+		
+		Puesto 1
+		Nombre: Caballero Moro5X2
+		Vida: 13
+		Fila: 1
+		Columna: A
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 13
+		Velocidad: 2
+		Actitud: Caballero Moro
+		Estado: true
+		------------------
+		
+		Puesto 2
+		Nombre: Caballero Moro4X2
+		Vida: 13
+		Fila: 8
+		Columna: A
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 13
+		Velocidad: 5
+		Actitud: Caballero Moro
+		Estado: true
+		------------------
+		
+		Puesto 3
+		Nombre: Caballero1X2
+		Vida: 12
+		Fila: 10
+		Columna: A
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 12
+		Velocidad: 3
+		Actitud: Caballero
+		Estado: true
+		------------------
+		
+		Puesto 4
+		Nombre: Espadachin2X2
+		Vida: 10
+		Fila: 6
+		Columna: B
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 10
+		Velocidad: 2
+		Actitud: Espadachin
+		Estado: true
+		------------------
+		
+		Puesto 5
+		Nombre: Espadachin3X2
+		Vida: 8
+		Fila: 4
+		Columna: J
+		Nivel de ataque: 10
+		Nivel de Defensa: 8
+		Nivel de vida: 8
+		Velocidad: 3
+		Actitud: Espadachin
+		Estado: true
+		------------------
+		
+		Puesto 6
+		Nombre: Arquero7X2
+		Vida: 5
+		Fila: 1
+		Columna: H
+		Nivel de ataque: 7
+		Nivel de Defensa: 3
+		Nivel de vida: 5
+		Velocidad: 5
+		Actitud: Arquero
+		Estado: true
+		------------------
+		
+		Puesto 7
+		Nombre: Caballero0X2
+		Vida: 2
+		Fila: 9
+		Columna: D
+		Nivel de ataque: 13
+		Nivel de Defensa: 7
+		Nivel de vida: 12
+		Velocidad: 1
+		Actitud: Caballero
+		Estado: true
+		------------------
+		*********************************
+		
+		*********************************
+		El tipo de territorio es: playa
+		
+		*********************************
+		
+	\end{lstlisting}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1.0\textwidth,keepaspectratio]{img/Commit11-3.png}
+		%\includesvg{img/automata.svg}
+		%\label{img:mot2}
+		%\caption{Product backlog.}
+	\end{figure}
+	\begin{lstlisting}[language=bash,caption={Ejecucion:}][H]
+		*********************************
+		Ejercito 1 : Castilla
+		Cantidad total de soldados creados: 8
+		Espadachines: 0
+		Arqueros: 3
+		Caballeros: 4
+		Lanceros: 0
+		Espadachin Real: 0
+		Caballero Moro: 0
+		Caballero Franco: 0
+		Espadachin Teutonico: 0
+		Espadachin Conquistador: 1
+		
+		Ejercito 2 : Moros
+		Cantidad total de soldados creados: 7
+		Espadachines: 2
+		Arqueros: 1
+		Caballeros: 2
+		Lanceros: 0
+		Espadachin Real: 0
+		Caballero Moro: 2
+		Caballero Franco: 0
+		Espadachin Teutonico: 0
+		Espadachin Conquistador: 0
+		
+		Ejercito 1: Castilla: 71
+		Ejercito 2: Moros: 73
+		El ganador es el ejercito 2 de: Moros. Ya que al generar los porcentajes de probabilidad de victoria basada en los niveles de vida de sus soldados y aplicando un experimento aleatorio salio vencedor. (Aleatorio generado : 50.69)
+		
+		*********************************
+		 DESEA VOLVER A JUGAR
+		 1 : JUGAR
+		 2 : NO JUGAR
+		
+	\end{lstlisting}
 	\subsection{Estructura de laboratorio 22}
 	\begin{itemize}	
 		\item El contenido que se entrega en este laboratorio22 es el siguiente:
