@@ -21,9 +21,9 @@ public class CaballeroFranco extends Soldado{
             evolve++;
             numspears += evolve;
             numspears += evolve;
-            System.out.println("Espadachín Real evolucionó a nivel " + evolve);
+            System.out.println("Caballero Franco evolucionó a nivel " + evolve);
         }else{
-            System.out.println("Espadachín Real ya está en su nivel máximo de evolución.");
+            System.out.println("Caballero Franco ya está en su nivel máximo de evolución.");
         }
     }
     public int getnumSpears(){

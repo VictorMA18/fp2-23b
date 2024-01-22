@@ -24,9 +24,9 @@ public class EspadachinTeutonico extends Soldado{
             evolve++;
             numjavelin += evolve;
             longjavelin += evolve;
-            System.out.println("Espadachín Real evolucionó a nivel " + evolve);
+            System.out.println("Espadachín Teutonico evolucionó a nivel " + evolve);
         }else{
-            System.out.println("Espadachín Real ya está en su nivel máximo de evolución.");
+            System.out.println("Espadachín Teutonico ya está en su nivel máximo de evolución.");
         }
     }
     public void setnumJavelin(int n){
